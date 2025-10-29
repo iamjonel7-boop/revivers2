@@ -1,0 +1,20 @@
+GPATH
+GRTAGS
+GTAGS
+
+# Latex aux files
+
+*.aux
+*.log
+*.out
+*.lof
+*.lot
+*.gz
+*.toc
+
+# Emacs file backups
+
+*~
+
+# notes
+notes.org

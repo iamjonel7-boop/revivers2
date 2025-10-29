@@ -1,0 +1,7 @@
+{
+    duman = {
+        english = "go",
+        synonyms = [],
+        actions = [ "movement" ]
+    }
+}

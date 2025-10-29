@@ -1,0 +1,69 @@
+#+TITLE: Design Notes
+#+AUTOR: Jonel
+
+** The game engine loads the lexicon manager and grammar manager.
+
+** The world manager manages the stages and the AI functions, events, accomplishments,
+
+** The action formation manager manages the creation of actions.
+*** player selects tile
+*** player selects an entity
+*** depending on the entity, show conjugation or declination
+Player can choose several entities but one verb.
+As the player chooses arguments, the sentence is shown forming above the action formation section.
+*** period signals end of argument selection, proceed to validation
+*** call lexicon manager for validating argument correctness
+**** turn will be consumed whether grammar is correct or incorrect
+
+** once valid for execution, call action manager for verb executions.
+There are systems in the action manager that are mapped to verbs.
+handles switch cases for voice and aspect.
+contemplative and perfective have same implementation.
+imperfective gives player control to its character that will end once goal of the action is satisfied.
+*** then call the turn manager
+
+update world manager
+
+* Aktsionart, lexicalAspect
+by Zeno Vendler
+four categories:
+** allow continous and progressive aspects
+*** activities
+do not have terminal point. a point before which the activity has taken place and after which it cannot continue
+*** accomplishments
+have a terminal point. take place immediately. ex. find, recognise
+** do not have continues and progressive aspects
+*** achievements
+instantaneous. approach an end point. ex. paint a picture
+*** states
+durative
+
+Comrie
+  |        | Puntual                 | Durative                   |
+  | telic  | achievemnt (to release) | accomplishments (to drown) |
+  | atelic | semelfactive (to knock) | activity (to walk)         |
+  | static |                         | state (to know)            |
+
+the voice dictates the arguments required
+** adjectives give states to the player that can last to one or more turns.
+the ma- verbs does not end a turn.
+
+** Game lexicon
+this contains verbs known to the game that are mapped to systems.
+#+BEGIN_SRC json
+{
+  "laog" : {
+  "englishName" : "enter",
+  "wordClass" : "verb", 
+  "synonyms" : ["", "", ]
+}
+#+END_SRC
+
+* Stages
+** Stage 1
+goal: learn verbs
+** Stage 2
+goal: recruit civilians
+** Stage 3
+
+

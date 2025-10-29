@@ -1,0 +1,24 @@
+types of commits:
+feat	A new feature
+fix	A bug fix
+refactor	Code change that neither fixes a bug nor adds a feature
+docs	Documentation only
+style	Formatting, whitespace, semicolons, etc. (no code logic changes)
+test	Adding or fixing tests
+chore	Build process or auxiliary tools changes
+
+* Pathfinding
+** single agent, single goal, A* algorithm
+** space representation
+the player navigates the map up, down, left, right, grid-based system
+entities move in straight lines on the road
+* Pathfollowing
+waypoints
+pathrefinemnt:  elimination of way points
+choose futhest way point visible to the entity
+* Influence Map
+vector fields
+tiles have values whether the entity is drawn to it or wants to avoid it
+
+
+entities are square, we use the center for ray casting/vision
