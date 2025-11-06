@@ -1,16 +1,10 @@
 #pragma once
 
 #include "ManagerEntity.h"
-#include "ManagerTurn.h"
-#include "ManagerStage.h"
-#include "ManagerLexicon.h"
-#include "ManagerSystem.h"
-#include "ManagerActionFormation.h"
-#include "ManagerActionResolution.h"
+#include "ManagerTextInput.h"
 #include "Actions.h"
 #include <memory>
 #include <map>
-#include <string>
 
 class GameEngine;
 
