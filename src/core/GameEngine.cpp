@@ -77,37 +77,12 @@ void GameEngine::sUserInput()
          quit();
       }
 
-      //text input
-      if(event.type == sf::Event::TextEntered && scene->isTyping())
-      {
-         if(event.text.unicode >= 32 && event.text.unicode <= 126)
-            scene->appendInputChar(static_cast<char>(event.text.unicode));
-         else if(event.text.unicode == 8)
-            scene->removeLastInputChar();
-      }
+      if(event.type == sf::Event::TextEntered)
+        {
+          textInputManager.handleTextEvent(event.text);
+          continue;
+        }
 
-      if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Enter)
-      {
-         if(scene->isTyping())
-         {
-            scene->commitInput();
-            scene->stopTyping();
-         }
-         else
-            scene->startTyping();
-      }
-
-      if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
-      {
-         if(scene->isTyping())
-         {
-            scene->stopTyping();
-            scene->inputClear();
-            continue;
-         }
-      }
-
-      //mapped actions
       if(event.type == sf::Event::KeyPressed || event.type == sf::Event::KeyReleased)
       {
          if(actionMap.find(event.key.code) == actionMap.end())
