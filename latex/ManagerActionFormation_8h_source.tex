@@ -1,0 +1,101 @@
+\hypertarget{ManagerActionFormation_8h_source}{}\doxysection{Manager\+Action\+Formation.\+h}
+\label{ManagerActionFormation_8h_source}\index{src/managers/ManagerActionFormation.h@{src/managers/ManagerActionFormation.h}}
+\mbox{\hyperlink{ManagerActionFormation_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Entity_8h}{Entity.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ManagerGrammar_8h}{ManagerGrammar.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structActionArgument}{ActionArgument}}}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \ \ \ std::shared\_ptr<Entity>\ \mbox{\hyperlink{structActionArgument_a5f6739650743ebdde34f4a581b9f4e1a}{entity}};}
+\DoxyCodeLine{00014\ \ \ \ std::string\ \mbox{\hyperlink{structActionArgument_a98a9377f2d0de2683c43a5d794b17c5f}{marker}};}
+\DoxyCodeLine{00015\ \ \ \ \mbox{\hyperlink{structActionArgument_ae162f0d889f1c84e207f2d38fbf0d493}{ActionArgument}}(std::shared\_ptr<Entity>\ e)}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ :\ \mbox{\hyperlink{SceneMain_8h_a4b741811d275d5e7d78bd9f3da5cdec0}{entity}}(e)}
+\DoxyCodeLine{00017\ \ \ \ \{}
+\DoxyCodeLine{00018\ \ \ \ \}}
+\DoxyCodeLine{00019\ \};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structLinguisticAction}{LinguisticAction}}}
+\DoxyCodeLine{00022\ \{}
+\DoxyCodeLine{00023\ \ \ \ std::map<std::string,\ std::shared\_ptr<Entity>>\ \mbox{\hyperlink{structLinguisticAction_a33a78f5ee3e8b8785818ca61867edf98}{markedEntities}};\ \textcolor{comment}{//marker,\ entity}}
+\DoxyCodeLine{00024\ \ \ \ std::string\ \mbox{\hyperlink{structLinguisticAction_aeae3d4d5b0957756e7398de2fe0fa184}{verbRoot}};}
+\DoxyCodeLine{00025\ \ \ \ std::string\ \mbox{\hyperlink{structLinguisticAction_a2e48466f3cf6914b94777c9215523e6a}{voice}};}
+\DoxyCodeLine{00026\ \ \ \ std::string\ \mbox{\hyperlink{structLinguisticAction_a83788473e7c475e43350e394b20a6245}{aspect}};}
+\DoxyCodeLine{00027\ \ \ \ std::string\ \mbox{\hyperlink{structLinguisticAction_a79680263b661ef34d5e1deb519336ac3}{formedSentence}};}
+\DoxyCodeLine{00028\ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structLinguisticAction_a241fc221f4fe2d5ff19bda5eba61b0da}{isFutureAction}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00029\ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structLinguisticAction_aa25c87ba041bdbae940db84b00365e73}{turnScheduled}}\ =\ 0;}
+\DoxyCodeLine{00030\ \ \ \ \mbox{\hyperlink{structLinguisticAction_af27805c50fa89ecc61f2003b4612c86b}{LinguisticAction}}()}
+\DoxyCodeLine{00031\ \ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \}}
+\DoxyCodeLine{00033\ \};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{ManagerActionFormation_8h_a3942fc10ac8eecb4ba975d00b3f0d9ce}{FormationState}}}
+\DoxyCodeLine{00036\ \{}
+\DoxyCodeLine{00037\ \ \ \ \mbox{\hyperlink{ManagerActionFormation_8h_a3942fc10ac8eecb4ba975d00b3f0d9ceaa5daf7f2ebbba4975d61dab1c40188c7}{IDLE}},}
+\DoxyCodeLine{00038\ \ \ \ \mbox{\hyperlink{ManagerActionFormation_8h_a3942fc10ac8eecb4ba975d00b3f0d9cea6044f3a43e40651adea4321c4fd836bf}{SELECTING\_ENTITY\_AND\_MARKER}},}
+\DoxyCodeLine{00039\ \ \ \ \mbox{\hyperlink{ManagerActionFormation_8h_a3942fc10ac8eecb4ba975d00b3f0d9cea88566e21ef006dc4fb34b2a03d6fa2fd}{SELECTING\_VERB\_ROOT}},}
+\DoxyCodeLine{00040\ \ \ \ \mbox{\hyperlink{ManagerActionFormation_8h_a3942fc10ac8eecb4ba975d00b3f0d9cea8ba65f25f274f14de623e8f40e25bfff}{SELECTING\_VOICE}},}
+\DoxyCodeLine{00041\ \ \ \ \mbox{\hyperlink{ManagerActionFormation_8h_a3942fc10ac8eecb4ba975d00b3f0d9ceaad4540cb665e22967d4150ba78a31ba8}{SELECTING\_ASPECT}},}
+\DoxyCodeLine{00042\ \ \ \ \mbox{\hyperlink{ManagerActionFormation_8h_a3942fc10ac8eecb4ba975d00b3f0d9cea36250289c9c8a172135ba8502166d295}{READY\_TO\_EXECUTE}}}
+\DoxyCodeLine{00043\ \};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classActionFormationManager}{ActionFormationManager}}}
+\DoxyCodeLine{00046\ \{}
+\DoxyCodeLine{00047\ \ \ \ \mbox{\hyperlink{ManagerActionFormation_8h_a3942fc10ac8eecb4ba975d00b3f0d9ce}{FormationState}}\ m\_state\ =\ FormationState::IDLE;}
+\DoxyCodeLine{00048\ \ \ \ \mbox{\hyperlink{structLinguisticAction}{LinguisticAction}}\ m\_currentAction;}
+\DoxyCodeLine{00049\ \ \ \ std::vector<std::string>\ m\_availableMarkers;}
+\DoxyCodeLine{00050\ \ \ \ std::vector<std::string>\ m\_usedMarkers;}
+\DoxyCodeLine{00051\ \ \ \ std::string\ m\_selectionPrompt;}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ GrammarManager*\ m\_grammarManager;}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00056\ \ \ \ \mbox{\hyperlink{classActionFormationManager_a7ed5123e683efbfeaaaf7424338af33c}{ActionFormationManager}}(GrammarManager*\ grammarManager)}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ :\ m\_grammarManager(grammarManager)}
+\DoxyCodeLine{00058\ \ \ \ \{}
+\DoxyCodeLine{00059\ \ \ \ \}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \textcolor{comment}{//action\ formation}}
+\DoxyCodeLine{00062\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classActionFormationManager_a3b5f38694a97746fd5702732a8999477}{startFormation}}();}
+\DoxyCodeLine{00063\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classActionFormationManager_a2eaa0a80c23d3edca49674c0df424ae0}{selectEntityWithMarker}}(std::shared\_ptr<Entity>\ \mbox{\hyperlink{SceneMain_8h_a4b741811d275d5e7d78bd9f3da5cdec0}{entity}},\ \textcolor{keyword}{const}\ std::string\&\ marker);}
+\DoxyCodeLine{00064\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classActionFormationManager_acd626e2d43c6a00bd8c6d2b674748c8c}{selectVerbRoot}}(\textcolor{keyword}{const}\ std::string\&\ verbRoot);}
+\DoxyCodeLine{00065\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classActionFormationManager_af2f7524dc1be7b4152c9dff6b9c63042}{selectVoice}}(\textcolor{keyword}{const}\ std::string\&\ voice);}
+\DoxyCodeLine{00066\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classActionFormationManager_aba28db2640c0838c6d514fbd72b5b1e7}{selectAspect}}(\textcolor{keyword}{const}\ std::string\&\ aspect);}
+\DoxyCodeLine{00067\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classActionFormationManager_ab6c97337bf2f94a7c2f16957b4b04b63}{cancelFormation}}();}
+\DoxyCodeLine{00068\ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classActionFormationManager_a695b946e5fc2c5987041419fc1c7dcd5}{isFormationComplete}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00069\ \textcolor{keyword}{\ \ \ }\{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_state\ ==\ FormationState::READY\_TO\_EXECUTE;}
+\DoxyCodeLine{00071\ \ \ \ \}}
+\DoxyCodeLine{00072\ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classActionFormationManager_a496649a3ab5ac5f173239d18857b6065}{isFormationInProgress}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00073\ \textcolor{keyword}{\ \ \ }\{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_state\ !=\ FormationState::IDLE;}
+\DoxyCodeLine{00075\ \ \ \ \}}
+\DoxyCodeLine{00076\ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structLinguisticAction}{LinguisticAction}}\&\ \mbox{\hyperlink{classActionFormationManager_a3aa75a23597c75755ca2c98d6cf36e3a}{getCurrentAction}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00077\ \textcolor{keyword}{\ \ \ }\{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_currentAction;}
+\DoxyCodeLine{00079\ \ \ \ \}}
+\DoxyCodeLine{00080\ \ \ \ std::string\ \mbox{\hyperlink{classActionFormationManager_af66d6461dc78078990cfaa6927918d60}{getSelectionPrompt}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00081\ \textcolor{keyword}{\ \ \ }\{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_selectionPrompt;}
+\DoxyCodeLine{00083\ \ \ \ \}}
+\DoxyCodeLine{00084\ \ \ \ \mbox{\hyperlink{ManagerActionFormation_8h_a3942fc10ac8eecb4ba975d00b3f0d9ce}{FormationState}}\ \mbox{\hyperlink{classActionFormationManager_aa0ee3edb9e977a39819a477fd9139bba}{getCurrentState}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00085\ \textcolor{keyword}{\ \ \ }\{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_state;}
+\DoxyCodeLine{00087\ \ \ \ \}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classActionFormationManager_a2228fb58450baeefedbe12f1cfe6604d}{renderUI}}();}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00092\ \ \ \ \textcolor{keywordtype}{void}\ buildSentence();}
+\DoxyCodeLine{00093\ \ \ \ \textcolor{keywordtype}{bool}\ isEntityValidForMarker(std::shared\_ptr<Entity>\ \mbox{\hyperlink{SceneMain_8h_a4b741811d275d5e7d78bd9f3da5cdec0}{entity}},\ \textcolor{keyword}{const}\ std::string\&\ marker)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00094\ \ \ \ \textcolor{keywordtype}{void}\ proceedToVerbSelection();}
+\DoxyCodeLine{00095\ \};}
+
+\end{DoxyCode}

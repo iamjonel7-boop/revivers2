@@ -1,0 +1,80 @@
+\hypertarget{Entity_8h_source}{}\doxysection{Entity.\+h}
+\label{Entity_8h_source}\index{src/core/Entity.h@{src/core/Entity.h}}
+\mbox{\hyperlink{Entity_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Components_8h}{Components.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <optional>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classEntityManager}{EntityManager}};}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{typedef}\ std::tuple<}
+\DoxyCodeLine{00011\ \ \ \ std::optional<CTransform>,}
+\DoxyCodeLine{00012\ \ \ \ std::optional<CLifeSpan>,}
+\DoxyCodeLine{00013\ \ \ \ std::optional<CInput>,}
+\DoxyCodeLine{00014\ \ \ \ std::optional<CNoun>,}
+\DoxyCodeLine{00015\ \ \ \ std::optional<CVerb>,}
+\DoxyCodeLine{00016\ \ \ \ std::optional<CRender>,}
+\DoxyCodeLine{00017\ \ \ \ std::optional<CText>}
+\DoxyCodeLine{00018\ \ \ \ >\ \mbox{\hyperlink{Entity_8h_a4674e95013899684665246c5cc452545}{ComponentTuple}};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classEntity}{Entity}}\{}
+\DoxyCodeLine{00021\ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classEntityManager}{EntityManager}};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \textcolor{keywordtype}{bool}\ m\_active\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00024\ \ \ \ \textcolor{keywordtype}{size\_t}\ m\_id\ =\ 0;}
+\DoxyCodeLine{00025\ \ \ \ std::string\ m\_tag\ =\ \textcolor{stringliteral}{"{}default"{}};}
+\DoxyCodeLine{00026\ \ \ \ \mbox{\hyperlink{Entity_8h_a4674e95013899684665246c5cc452545}{ComponentTuple}}\ m\_components;}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \textcolor{comment}{//\ constructor\ and\ destructor}}
+\DoxyCodeLine{00029\ \ \ \ \mbox{\hyperlink{classEntity}{Entity}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ std::string\&\ \mbox{\hyperlink{classEntity_aa3fd1893a2f154dc7d00201003a3e2eb}{tag}}):}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ m\_id(\mbox{\hyperlink{classEntity_a8126d4eb99f0684f00f32c30247ef482}{id}}),\ m\_tag(\mbox{\hyperlink{classEntity_aa3fd1893a2f154dc7d00201003a3e2eb}{tag}})\{\}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00033\ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classEntity_a513f0590fc7ef8fa82056ff2ebe5e5f5}{isDead}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00034\ \ \ \ \textcolor{keyword}{const}\ std::string\&\ \mbox{\hyperlink{classEntity_aa3fd1893a2f154dc7d00201003a3e2eb}{tag}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00035\ \ \ \ \textcolor{keyword}{const}\ std::string\&\ \mbox{\hyperlink{classEntity_a5b22d4c4c1320feaded68e91609890b2}{role}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00036\ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classEntity_a8126d4eb99f0684f00f32c30247ef482}{id}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00037\ \ \ }
+\DoxyCodeLine{00038\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEntity_a691dbe5f9ec930c27af2af0b97907a9e}{destroy}}();}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00041\ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classEntity_aa622a8d79153a90d0e3b9b992ca2d38b}{hasComponent}}()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::get<std::optional<T>>(m\_components).has\_value();}
+\DoxyCodeLine{00043\ \ \ \ \}}
+\DoxyCodeLine{00044\ \ }
+\DoxyCodeLine{00045\ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}...\ TArgs>}
+\DoxyCodeLine{00046\ \ \ \ T\&\ \mbox{\hyperlink{classEntity_aafe23d7d7ea7f427ca40454edcae460e}{addComponent}}(TArgs\&\&...\ mArgs)\{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ opt\ =\ std::get<std::optional<T>>(m\_components);}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ opt.emplace(std::forward<TArgs>(mArgs)...);}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *opt;}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \textcolor{comment}{/*\ auto\&\ component\ =\ etComponent<T>();}}
+\DoxyCodeLine{00051\ \textcolor{comment}{\ \ \ \ \ \ component\ =\ T(std::forward<TArgs>(mArgs)...);}}
+\DoxyCodeLine{00052\ \textcolor{comment}{\ \ \ \ \ \ component.has\ =\ true;}}
+\DoxyCodeLine{00053\ \textcolor{comment}{\ \ \ \ \ \ return\ component;*/}}
+\DoxyCodeLine{00054\ \ \ \ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00057\ \ \ \ T\&\ \mbox{\hyperlink{classEntity_af378c2ea70fa68a8433f19500261393d}{getComponent}}()\{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *std::get<std::optional<T>>(m\_components);}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \textcolor{comment}{//return\ std::get<std::optional<T>>(m\_components);}}
+\DoxyCodeLine{00060\ \ \ \ \}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00063\ \ \ \ \textcolor{keyword}{const}\ T\&\ \mbox{\hyperlink{classEntity_a67794319327b8c2889b44587e8174e98}{getComponent}}()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *std::get<std::optional<T>>(m\_components);}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \textcolor{comment}{//return\ std::get<T>(m\_components);}}
+\DoxyCodeLine{00066\ \ \ \ \}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00069\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEntity_a590ddbda675cf9b188977d553e396a0f}{removeComponent}}()\{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ std::get<std::optional<T>>(m\_components).reset();}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \textcolor{comment}{//getComponent<T>()\ =\ T();}}
+\DoxyCodeLine{00072\ \ \ \ \}}
+\DoxyCodeLine{00073\ \ \ }
+\DoxyCodeLine{00074\ \};}
+
+\end{DoxyCode}

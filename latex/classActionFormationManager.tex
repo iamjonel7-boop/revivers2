@@ -1,0 +1,175 @@
+\hypertarget{classActionFormationManager}{}\doxysection{Action\+Formation\+Manager Class Reference}
+\label{classActionFormationManager}\index{ActionFormationManager@{ActionFormationManager}}
+
+
+{\ttfamily \#include $<$Manager\+Action\+Formation.\+h$>$}
+
+
+
+Collaboration diagram for Action\+Formation\+Manager\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=219pt]{classActionFormationManager__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classActionFormationManager_a7ed5123e683efbfeaaaf7424338af33c}{Action\+Formation\+Manager}} (Grammar\+Manager $\ast$grammar\+Manager)
+\item 
+void \mbox{\hyperlink{classActionFormationManager_a3b5f38694a97746fd5702732a8999477}{start\+Formation}} ()
+\item 
+void \mbox{\hyperlink{classActionFormationManager_a2eaa0a80c23d3edca49674c0df424ae0}{select\+Entity\+With\+Marker}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classEntity}{Entity}} $>$ \mbox{\hyperlink{SceneMain_8h_a4b741811d275d5e7d78bd9f3da5cdec0}{entity}}, const std\+::string \&marker)
+\item 
+void \mbox{\hyperlink{classActionFormationManager_acd626e2d43c6a00bd8c6d2b674748c8c}{select\+Verb\+Root}} (const std\+::string \&verb\+Root)
+\item 
+void \mbox{\hyperlink{classActionFormationManager_af2f7524dc1be7b4152c9dff6b9c63042}{select\+Voice}} (const std\+::string \&voice)
+\item 
+void \mbox{\hyperlink{classActionFormationManager_aba28db2640c0838c6d514fbd72b5b1e7}{select\+Aspect}} (const std\+::string \&aspect)
+\item 
+void \mbox{\hyperlink{classActionFormationManager_ab6c97337bf2f94a7c2f16957b4b04b63}{cancel\+Formation}} ()
+\item 
+bool \mbox{\hyperlink{classActionFormationManager_a695b946e5fc2c5987041419fc1c7dcd5}{is\+Formation\+Complete}} () const
+\item 
+bool \mbox{\hyperlink{classActionFormationManager_a496649a3ab5ac5f173239d18857b6065}{is\+Formation\+In\+Progress}} () const
+\item 
+const \mbox{\hyperlink{structLinguisticAction}{Linguistic\+Action}} \& \mbox{\hyperlink{classActionFormationManager_a3aa75a23597c75755ca2c98d6cf36e3a}{get\+Current\+Action}} () const
+\item 
+std\+::string \mbox{\hyperlink{classActionFormationManager_af66d6461dc78078990cfaa6927918d60}{get\+Selection\+Prompt}} () const
+\item 
+\mbox{\hyperlink{ManagerActionFormation_8h_a3942fc10ac8eecb4ba975d00b3f0d9ce}{Formation\+State}} \mbox{\hyperlink{classActionFormationManager_aa0ee3edb9e977a39819a477fd9139bba}{get\+Current\+State}} () const
+\item 
+void \mbox{\hyperlink{classActionFormationManager_a2228fb58450baeefedbe12f1cfe6604d}{render\+UI}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classActionFormationManager_a7ed5123e683efbfeaaaf7424338af33c}\label{classActionFormationManager_a7ed5123e683efbfeaaaf7424338af33c}} 
+\index{ActionFormationManager@{ActionFormationManager}!ActionFormationManager@{ActionFormationManager}}
+\index{ActionFormationManager@{ActionFormationManager}!ActionFormationManager@{ActionFormationManager}}
+\doxysubsubsection{\texorpdfstring{ActionFormationManager()}{ActionFormationManager()}}
+{\footnotesize\ttfamily Action\+Formation\+Manager\+::\+Action\+Formation\+Manager (\begin{DoxyParamCaption}\item[{Grammar\+Manager $\ast$}]{grammar\+Manager }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classActionFormationManager_ab6c97337bf2f94a7c2f16957b4b04b63}\label{classActionFormationManager_ab6c97337bf2f94a7c2f16957b4b04b63}} 
+\index{ActionFormationManager@{ActionFormationManager}!cancelFormation@{cancelFormation}}
+\index{cancelFormation@{cancelFormation}!ActionFormationManager@{ActionFormationManager}}
+\doxysubsubsection{\texorpdfstring{cancelFormation()}{cancelFormation()}}
+{\footnotesize\ttfamily void Action\+Formation\+Manager\+::cancel\+Formation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classActionFormationManager_ab6c97337bf2f94a7c2f16957b4b04b63_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classActionFormationManager_a3aa75a23597c75755ca2c98d6cf36e3a}\label{classActionFormationManager_a3aa75a23597c75755ca2c98d6cf36e3a}} 
+\index{ActionFormationManager@{ActionFormationManager}!getCurrentAction@{getCurrentAction}}
+\index{getCurrentAction@{getCurrentAction}!ActionFormationManager@{ActionFormationManager}}
+\doxysubsubsection{\texorpdfstring{getCurrentAction()}{getCurrentAction()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{structLinguisticAction}{Linguistic\+Action}} \& Action\+Formation\+Manager\+::get\+Current\+Action (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classActionFormationManager_a3aa75a23597c75755ca2c98d6cf36e3a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classActionFormationManager_aa0ee3edb9e977a39819a477fd9139bba}\label{classActionFormationManager_aa0ee3edb9e977a39819a477fd9139bba}} 
+\index{ActionFormationManager@{ActionFormationManager}!getCurrentState@{getCurrentState}}
+\index{getCurrentState@{getCurrentState}!ActionFormationManager@{ActionFormationManager}}
+\doxysubsubsection{\texorpdfstring{getCurrentState()}{getCurrentState()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ManagerActionFormation_8h_a3942fc10ac8eecb4ba975d00b3f0d9ce}{Formation\+State}} Action\+Formation\+Manager\+::get\+Current\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classActionFormationManager_af66d6461dc78078990cfaa6927918d60}\label{classActionFormationManager_af66d6461dc78078990cfaa6927918d60}} 
+\index{ActionFormationManager@{ActionFormationManager}!getSelectionPrompt@{getSelectionPrompt}}
+\index{getSelectionPrompt@{getSelectionPrompt}!ActionFormationManager@{ActionFormationManager}}
+\doxysubsubsection{\texorpdfstring{getSelectionPrompt()}{getSelectionPrompt()}}
+{\footnotesize\ttfamily std\+::string Action\+Formation\+Manager\+::get\+Selection\+Prompt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classActionFormationManager_a695b946e5fc2c5987041419fc1c7dcd5}\label{classActionFormationManager_a695b946e5fc2c5987041419fc1c7dcd5}} 
+\index{ActionFormationManager@{ActionFormationManager}!isFormationComplete@{isFormationComplete}}
+\index{isFormationComplete@{isFormationComplete}!ActionFormationManager@{ActionFormationManager}}
+\doxysubsubsection{\texorpdfstring{isFormationComplete()}{isFormationComplete()}}
+{\footnotesize\ttfamily bool Action\+Formation\+Manager\+::is\+Formation\+Complete (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classActionFormationManager_a695b946e5fc2c5987041419fc1c7dcd5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classActionFormationManager_a496649a3ab5ac5f173239d18857b6065}\label{classActionFormationManager_a496649a3ab5ac5f173239d18857b6065}} 
+\index{ActionFormationManager@{ActionFormationManager}!isFormationInProgress@{isFormationInProgress}}
+\index{isFormationInProgress@{isFormationInProgress}!ActionFormationManager@{ActionFormationManager}}
+\doxysubsubsection{\texorpdfstring{isFormationInProgress()}{isFormationInProgress()}}
+{\footnotesize\ttfamily bool Action\+Formation\+Manager\+::is\+Formation\+In\+Progress (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classActionFormationManager_a496649a3ab5ac5f173239d18857b6065_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classActionFormationManager_a2228fb58450baeefedbe12f1cfe6604d}\label{classActionFormationManager_a2228fb58450baeefedbe12f1cfe6604d}} 
+\index{ActionFormationManager@{ActionFormationManager}!renderUI@{renderUI}}
+\index{renderUI@{renderUI}!ActionFormationManager@{ActionFormationManager}}
+\doxysubsubsection{\texorpdfstring{renderUI()}{renderUI()}}
+{\footnotesize\ttfamily void Action\+Formation\+Manager\+::render\+UI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classActionFormationManager_aba28db2640c0838c6d514fbd72b5b1e7}\label{classActionFormationManager_aba28db2640c0838c6d514fbd72b5b1e7}} 
+\index{ActionFormationManager@{ActionFormationManager}!selectAspect@{selectAspect}}
+\index{selectAspect@{selectAspect}!ActionFormationManager@{ActionFormationManager}}
+\doxysubsubsection{\texorpdfstring{selectAspect()}{selectAspect()}}
+{\footnotesize\ttfamily void Action\+Formation\+Manager\+::select\+Aspect (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{aspect }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classActionFormationManager_a2eaa0a80c23d3edca49674c0df424ae0}\label{classActionFormationManager_a2eaa0a80c23d3edca49674c0df424ae0}} 
+\index{ActionFormationManager@{ActionFormationManager}!selectEntityWithMarker@{selectEntityWithMarker}}
+\index{selectEntityWithMarker@{selectEntityWithMarker}!ActionFormationManager@{ActionFormationManager}}
+\doxysubsubsection{\texorpdfstring{selectEntityWithMarker()}{selectEntityWithMarker()}}
+{\footnotesize\ttfamily void Action\+Formation\+Manager\+::select\+Entity\+With\+Marker (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classEntity}{Entity}} $>$}]{entity,  }\item[{const std\+::string \&}]{marker }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classActionFormationManager_acd626e2d43c6a00bd8c6d2b674748c8c}\label{classActionFormationManager_acd626e2d43c6a00bd8c6d2b674748c8c}} 
+\index{ActionFormationManager@{ActionFormationManager}!selectVerbRoot@{selectVerbRoot}}
+\index{selectVerbRoot@{selectVerbRoot}!ActionFormationManager@{ActionFormationManager}}
+\doxysubsubsection{\texorpdfstring{selectVerbRoot()}{selectVerbRoot()}}
+{\footnotesize\ttfamily void Action\+Formation\+Manager\+::select\+Verb\+Root (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{verb\+Root }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classActionFormationManager_af2f7524dc1be7b4152c9dff6b9c63042}\label{classActionFormationManager_af2f7524dc1be7b4152c9dff6b9c63042}} 
+\index{ActionFormationManager@{ActionFormationManager}!selectVoice@{selectVoice}}
+\index{selectVoice@{selectVoice}!ActionFormationManager@{ActionFormationManager}}
+\doxysubsubsection{\texorpdfstring{selectVoice()}{selectVoice()}}
+{\footnotesize\ttfamily void Action\+Formation\+Manager\+::select\+Voice (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{voice }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classActionFormationManager_a3b5f38694a97746fd5702732a8999477}\label{classActionFormationManager_a3b5f38694a97746fd5702732a8999477}} 
+\index{ActionFormationManager@{ActionFormationManager}!startFormation@{startFormation}}
+\index{startFormation@{startFormation}!ActionFormationManager@{ActionFormationManager}}
+\doxysubsubsection{\texorpdfstring{startFormation()}{startFormation()}}
+{\footnotesize\ttfamily void Action\+Formation\+Manager\+::start\+Formation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classActionFormationManager_a3b5f38694a97746fd5702732a8999477_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/managers/\mbox{\hyperlink{ManagerActionFormation_8h}{Manager\+Action\+Formation.\+h}}\item 
+src/managers/\mbox{\hyperlink{ManagerActionFormation_8cpp}{Manager\+Action\+Formation.\+cpp}}\end{DoxyCompactItemize}

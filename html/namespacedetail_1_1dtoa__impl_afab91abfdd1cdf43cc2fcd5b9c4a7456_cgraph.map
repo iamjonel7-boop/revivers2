@@ -1,0 +1,4 @@
+<map id="detail::dtoa_impl::format_buffer" name="detail::dtoa_impl::format_buffer">
+<area shape="rect" id="node1" title="prettify v = buf * 10^decimal_exponent" alt="" coords="5,5,130,48"/>
+<area shape="rect" id="node2" href="$namespacedetail_1_1dtoa__impl.html#aec9f6655c3b629aeb0e8c887aea5da87" title="appends a decimal representation of e to buf" alt="" coords="178,5,302,48"/>
+</map>

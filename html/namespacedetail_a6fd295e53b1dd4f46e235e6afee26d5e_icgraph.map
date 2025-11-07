@@ -1,0 +1,6 @@
+<map id="detail::replace_substring" name="detail::replace_substring">
+<area shape="rect" id="node1" title="replace all occurrences of a substring by another string" alt="" coords="327,31,489,57"/>
+<area shape="rect" id="node2" href="$namespacedetail.html#af2a9ce4740e0b45d33129e2c8e53a0a8" title="string escaping as described in RFC 6901 (Sect. 4)" alt="" coords="170,5,272,32"/>
+<area shape="rect" id="node4" href="$namespacedetail.html#aa45018148d8569ca6f4d10a983221df1" title="string unescaping as described in RFC 6901 (Sect. 4)" alt="" coords="163,56,279,83"/>
+<area shape="rect" id="node3" href="$classbasic__json.html#a940e724a2e8d5400ab772eb22af0387c" title="creates a diff as a JSON patch" alt="" coords="5,5,115,32"/>
+</map>

@@ -1,0 +1,431 @@
+\hypertarget{classTurnManager}{}\doxysection{Turn\+Manager Class Reference}
+\label{classTurnManager}\index{TurnManager@{TurnManager}}
+
+
+{\ttfamily \#include $<$Manager\+Turn.\+h$>$}
+
+
+
+Collaboration diagram for Turn\+Manager\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=207pt]{classTurnManager__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTurnManager_a4bd624a2c847c998e353ee1a2c23eef7}{Turn\+Manager}} (\mbox{\hyperlink{classSystemManager}{System\+Manager}} $\ast$system\+Manager, \mbox{\hyperlink{classLexiconManager}{Lexicon\+Manager}} $\ast$lexicon\+Manager, \mbox{\hyperlink{classActionFormationManager}{Action\+Formation\+Manager}} $\ast$formation\+Manager, \mbox{\hyperlink{classActionResolutionManager}{Action\+Resolution\+Manager}} $\ast$resolution\+Manager)
+\item 
+void \mbox{\hyperlink{classTurnManager_af1bba901d1410ce5418213270b5388cd}{start\+Turn}} ()
+\item 
+void \mbox{\hyperlink{classTurnManager_ade74a1914a24f832b30252cff34668bf}{end\+Turn}} ()
+\item 
+void \mbox{\hyperlink{classTurnManager_a112365fd220e181148ac6313390bfefb}{process\+Turn\+Phase}} ()
+\item 
+void \mbox{\hyperlink{classTurnManager_af0af68eda36f0eb00ab1c0a497dea311}{advance\+To\+Next\+Phase}} ()
+\item 
+void \mbox{\hyperlink{classTurnManager_a490242a203da660ca6e61c909d7565a4}{execute\+Player\+Action}} ()
+\item 
+void \mbox{\hyperlink{classTurnManager_aa875fdae3f9d41b7558d59771e1a4f08}{cancel\+Player\+Action}} ()
+\item 
+void \mbox{\hyperlink{classTurnManager_a7f43e317f4994897b0ca27fd5353fd70}{process\+Player\+Phase}} ()
+\item 
+void \mbox{\hyperlink{classTurnManager_ab74f700bc39ef5e4865c4f5a3a8ca941}{process\+NPCPhase}} ()
+\item 
+void \mbox{\hyperlink{classTurnManager_a885f4d5c2429682587a09c1e0f2bfa93}{process\+Event\+Phase}} ()
+\item 
+void \mbox{\hyperlink{classTurnManager_a95f1823f759af13f972a0a139af343e4}{process\+Turn\+End}} ()
+\item 
+void \mbox{\hyperlink{classTurnManager_ae69a56193971808396282e7594827409}{register\+Entity\+For\+Turns}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classEntity}{Entity}} $>$ \mbox{\hyperlink{SceneMain_8h_a4b741811d275d5e7d78bd9f3da5cdec0}{entity}})
+\item 
+void \mbox{\hyperlink{classTurnManager_ac56b00432038ab03a145ed61fc72563e}{unregister\+Entity\+For\+Turns}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classEntity}{Entity}} $>$ \mbox{\hyperlink{SceneMain_8h_a4b741811d275d5e7d78bd9f3da5cdec0}{entity}})
+\item 
+void \mbox{\hyperlink{classTurnManager_a71588b1204e82d3693641108ffe38869}{process\+Ongoing\+Actions}} ()
+\item 
+void \mbox{\hyperlink{classTurnManager_aba1b27fe690df3b8c7d104d4398c1357}{process\+Future\+Actions}} ()
+\item 
+bool \mbox{\hyperlink{classTurnManager_a31b0059dd6dbd36fa5a0c5ab0c756e83}{is\+Player\+Turn}} () const
+\item 
+bool \mbox{\hyperlink{classTurnManager_a87bbbe47c9aa0b602f6ab07daa91250f}{has\+Player\+Action\+Points}} () const
+\item 
+int \mbox{\hyperlink{classTurnManager_a58c631e4584ff1409d0bc4c1a08e1568}{get\+Current\+Turn}} () const
+\item 
+\mbox{\hyperlink{structTurnState_a2ba2c88cca608b2542c77069a256d2df}{Turn\+State\+::\+Turn\+Phase}} \mbox{\hyperlink{classTurnManager_aaa194f877dd0fb838aa37fa66bb28e9f}{get\+Current\+Phase}} () const
+\item 
+int \mbox{\hyperlink{classTurnManager_acdb0326944ed7fb0454b92dbfd712431}{get\+Player\+Action\+Points}} () const
+\item 
+bool \mbox{\hyperlink{classTurnManager_ab4c3894c98a5e9614e56117393bb25d4}{is\+Turn\+In\+Progress}} () const
+\item 
+void \mbox{\hyperlink{classTurnManager_a2430101bcd6150831589dc7bae4b8060}{set\+Player\+Entity}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classEntity}{Entity}} $>$ player)
+\item 
+void \mbox{\hyperlink{classTurnManager_a8fc6451152f235ac6c018a79f324dd91}{set\+Lexicon\+Manager}} (\mbox{\hyperlink{classLexiconManager}{Lexicon\+Manager}} $\ast$\mbox{\hyperlink{classLexiconManager}{Lexicon\+Manager}})
+\item 
+void \mbox{\hyperlink{classTurnManager_abc30aafe2e5a70e520ad32aaaa8690eb}{start\+Action\+Formation}} ()
+\item 
+void \mbox{\hyperlink{classTurnManager_a9c049dbf687059c0205082a2a8ac7019}{select\+Entity}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classEntity}{Entity}} $>$ \mbox{\hyperlink{SceneMain_8h_a4b741811d275d5e7d78bd9f3da5cdec0}{entity}})
+\item 
+void \mbox{\hyperlink{classTurnManager_a2b136663fdf867269343493087c42991}{select\+Marker}} (const std\+::string \&marker)
+\item 
+void \mbox{\hyperlink{classTurnManager_ab0e35f79cf8533ac9f5e062783380f63}{select\+Verb\+Root}} (const std\+::string \&verb\+Root)
+\item 
+void \mbox{\hyperlink{classTurnManager_a4c4db908431e76cca2c22570c9063de0}{select\+Voice}} (const std\+::string \&voice)
+\item 
+void \mbox{\hyperlink{classTurnManager_ae0e1606b27be5d39e219ec094fcdfe34}{select\+Aspect}} (const std\+::string \&aspect)
+\item 
+std\+::string \mbox{\hyperlink{classTurnManager_a967cab63a5f024ed4547275fb3336ab6}{get\+Selection\+Prompt}} () const
+\item 
+bool \mbox{\hyperlink{classTurnManager_a7ed60a25c4baa7346ac999194c093e41}{is\+Action\+Formation\+In\+Progress}} () const
+\item 
+bool \mbox{\hyperlink{classTurnManager_a9f82a9da762a551d1e2899a04e64432c}{is\+Action\+Ready\+To\+Execute}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classTurnManager_a4bd624a2c847c998e353ee1a2c23eef7}\label{classTurnManager_a4bd624a2c847c998e353ee1a2c23eef7}} 
+\index{TurnManager@{TurnManager}!TurnManager@{TurnManager}}
+\index{TurnManager@{TurnManager}!TurnManager@{TurnManager}}
+\doxysubsubsection{\texorpdfstring{TurnManager()}{TurnManager()}}
+{\footnotesize\ttfamily Turn\+Manager\+::\+Turn\+Manager (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSystemManager}{System\+Manager}} $\ast$}]{system\+Manager,  }\item[{\mbox{\hyperlink{classLexiconManager}{Lexicon\+Manager}} $\ast$}]{lexicon\+Manager,  }\item[{\mbox{\hyperlink{classActionFormationManager}{Action\+Formation\+Manager}} $\ast$}]{formation\+Manager,  }\item[{\mbox{\hyperlink{classActionResolutionManager}{Action\+Resolution\+Manager}} $\ast$}]{resolution\+Manager }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classTurnManager_af0af68eda36f0eb00ab1c0a497dea311}\label{classTurnManager_af0af68eda36f0eb00ab1c0a497dea311}} 
+\index{TurnManager@{TurnManager}!advanceToNextPhase@{advanceToNextPhase}}
+\index{advanceToNextPhase@{advanceToNextPhase}!TurnManager@{TurnManager}}
+\doxysubsubsection{\texorpdfstring{advanceToNextPhase()}{advanceToNextPhase()}}
+{\footnotesize\ttfamily void Turn\+Manager\+::advance\+To\+Next\+Phase (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTurnManager_af0af68eda36f0eb00ab1c0a497dea311_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTurnManager_af0af68eda36f0eb00ab1c0a497dea311_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTurnManager_aa875fdae3f9d41b7558d59771e1a4f08}\label{classTurnManager_aa875fdae3f9d41b7558d59771e1a4f08}} 
+\index{TurnManager@{TurnManager}!cancelPlayerAction@{cancelPlayerAction}}
+\index{cancelPlayerAction@{cancelPlayerAction}!TurnManager@{TurnManager}}
+\doxysubsubsection{\texorpdfstring{cancelPlayerAction()}{cancelPlayerAction()}}
+{\footnotesize\ttfamily void Turn\+Manager\+::cancel\+Player\+Action (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classTurnManager_ade74a1914a24f832b30252cff34668bf}\label{classTurnManager_ade74a1914a24f832b30252cff34668bf}} 
+\index{TurnManager@{TurnManager}!endTurn@{endTurn}}
+\index{endTurn@{endTurn}!TurnManager@{TurnManager}}
+\doxysubsubsection{\texorpdfstring{endTurn()}{endTurn()}}
+{\footnotesize\ttfamily void Turn\+Manager\+::end\+Turn (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTurnManager_ade74a1914a24f832b30252cff34668bf_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTurnManager_ade74a1914a24f832b30252cff34668bf_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTurnManager_a490242a203da660ca6e61c909d7565a4}\label{classTurnManager_a490242a203da660ca6e61c909d7565a4}} 
+\index{TurnManager@{TurnManager}!executePlayerAction@{executePlayerAction}}
+\index{executePlayerAction@{executePlayerAction}!TurnManager@{TurnManager}}
+\doxysubsubsection{\texorpdfstring{executePlayerAction()}{executePlayerAction()}}
+{\footnotesize\ttfamily void Turn\+Manager\+::execute\+Player\+Action (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTurnManager_a490242a203da660ca6e61c909d7565a4_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTurnManager_aaa194f877dd0fb838aa37fa66bb28e9f}\label{classTurnManager_aaa194f877dd0fb838aa37fa66bb28e9f}} 
+\index{TurnManager@{TurnManager}!getCurrentPhase@{getCurrentPhase}}
+\index{getCurrentPhase@{getCurrentPhase}!TurnManager@{TurnManager}}
+\doxysubsubsection{\texorpdfstring{getCurrentPhase()}{getCurrentPhase()}}
+{\footnotesize\ttfamily Turn\+Manager\+::\+Turn\+Phase Turn\+Manager\+::get\+Current\+Phase (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classTurnManager_a58c631e4584ff1409d0bc4c1a08e1568}\label{classTurnManager_a58c631e4584ff1409d0bc4c1a08e1568}} 
+\index{TurnManager@{TurnManager}!getCurrentTurn@{getCurrentTurn}}
+\index{getCurrentTurn@{getCurrentTurn}!TurnManager@{TurnManager}}
+\doxysubsubsection{\texorpdfstring{getCurrentTurn()}{getCurrentTurn()}}
+{\footnotesize\ttfamily int Turn\+Manager\+::get\+Current\+Turn (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classTurnManager_acdb0326944ed7fb0454b92dbfd712431}\label{classTurnManager_acdb0326944ed7fb0454b92dbfd712431}} 
+\index{TurnManager@{TurnManager}!getPlayerActionPoints@{getPlayerActionPoints}}
+\index{getPlayerActionPoints@{getPlayerActionPoints}!TurnManager@{TurnManager}}
+\doxysubsubsection{\texorpdfstring{getPlayerActionPoints()}{getPlayerActionPoints()}}
+{\footnotesize\ttfamily int Turn\+Manager\+::get\+Player\+Action\+Points (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classTurnManager_a967cab63a5f024ed4547275fb3336ab6}\label{classTurnManager_a967cab63a5f024ed4547275fb3336ab6}} 
+\index{TurnManager@{TurnManager}!getSelectionPrompt@{getSelectionPrompt}}
+\index{getSelectionPrompt@{getSelectionPrompt}!TurnManager@{TurnManager}}
+\doxysubsubsection{\texorpdfstring{getSelectionPrompt()}{getSelectionPrompt()}}
+{\footnotesize\ttfamily std\+::string Turn\+Manager\+::get\+Selection\+Prompt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classTurnManager_a87bbbe47c9aa0b602f6ab07daa91250f}\label{classTurnManager_a87bbbe47c9aa0b602f6ab07daa91250f}} 
+\index{TurnManager@{TurnManager}!hasPlayerActionPoints@{hasPlayerActionPoints}}
+\index{hasPlayerActionPoints@{hasPlayerActionPoints}!TurnManager@{TurnManager}}
+\doxysubsubsection{\texorpdfstring{hasPlayerActionPoints()}{hasPlayerActionPoints()}}
+{\footnotesize\ttfamily bool Turn\+Manager\+::has\+Player\+Action\+Points (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTurnManager_a87bbbe47c9aa0b602f6ab07daa91250f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTurnManager_a7ed60a25c4baa7346ac999194c093e41}\label{classTurnManager_a7ed60a25c4baa7346ac999194c093e41}} 
+\index{TurnManager@{TurnManager}!isActionFormationInProgress@{isActionFormationInProgress}}
+\index{isActionFormationInProgress@{isActionFormationInProgress}!TurnManager@{TurnManager}}
+\doxysubsubsection{\texorpdfstring{isActionFormationInProgress()}{isActionFormationInProgress()}}
+{\footnotesize\ttfamily bool Turn\+Manager\+::is\+Action\+Formation\+In\+Progress (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classTurnManager_a9f82a9da762a551d1e2899a04e64432c}\label{classTurnManager_a9f82a9da762a551d1e2899a04e64432c}} 
+\index{TurnManager@{TurnManager}!isActionReadyToExecute@{isActionReadyToExecute}}
+\index{isActionReadyToExecute@{isActionReadyToExecute}!TurnManager@{TurnManager}}
+\doxysubsubsection{\texorpdfstring{isActionReadyToExecute()}{isActionReadyToExecute()}}
+{\footnotesize\ttfamily bool Turn\+Manager\+::is\+Action\+Ready\+To\+Execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classTurnManager_a31b0059dd6dbd36fa5a0c5ab0c756e83}\label{classTurnManager_a31b0059dd6dbd36fa5a0c5ab0c756e83}} 
+\index{TurnManager@{TurnManager}!isPlayerTurn@{isPlayerTurn}}
+\index{isPlayerTurn@{isPlayerTurn}!TurnManager@{TurnManager}}
+\doxysubsubsection{\texorpdfstring{isPlayerTurn()}{isPlayerTurn()}}
+{\footnotesize\ttfamily bool Turn\+Manager\+::is\+Player\+Turn (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTurnManager_a31b0059dd6dbd36fa5a0c5ab0c756e83_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTurnManager_ab4c3894c98a5e9614e56117393bb25d4}\label{classTurnManager_ab4c3894c98a5e9614e56117393bb25d4}} 
+\index{TurnManager@{TurnManager}!isTurnInProgress@{isTurnInProgress}}
+\index{isTurnInProgress@{isTurnInProgress}!TurnManager@{TurnManager}}
+\doxysubsubsection{\texorpdfstring{isTurnInProgress()}{isTurnInProgress()}}
+{\footnotesize\ttfamily bool Turn\+Manager\+::is\+Turn\+In\+Progress (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classTurnManager_a885f4d5c2429682587a09c1e0f2bfa93}\label{classTurnManager_a885f4d5c2429682587a09c1e0f2bfa93}} 
+\index{TurnManager@{TurnManager}!processEventPhase@{processEventPhase}}
+\index{processEventPhase@{processEventPhase}!TurnManager@{TurnManager}}
+\doxysubsubsection{\texorpdfstring{processEventPhase()}{processEventPhase()}}
+{\footnotesize\ttfamily void Turn\+Manager\+::process\+Event\+Phase (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTurnManager_a885f4d5c2429682587a09c1e0f2bfa93_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTurnManager_a885f4d5c2429682587a09c1e0f2bfa93_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTurnManager_aba1b27fe690df3b8c7d104d4398c1357}\label{classTurnManager_aba1b27fe690df3b8c7d104d4398c1357}} 
+\index{TurnManager@{TurnManager}!processFutureActions@{processFutureActions}}
+\index{processFutureActions@{processFutureActions}!TurnManager@{TurnManager}}
+\doxysubsubsection{\texorpdfstring{processFutureActions()}{processFutureActions()}}
+{\footnotesize\ttfamily void Turn\+Manager\+::process\+Future\+Actions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classTurnManager_ab74f700bc39ef5e4865c4f5a3a8ca941}\label{classTurnManager_ab74f700bc39ef5e4865c4f5a3a8ca941}} 
+\index{TurnManager@{TurnManager}!processNPCPhase@{processNPCPhase}}
+\index{processNPCPhase@{processNPCPhase}!TurnManager@{TurnManager}}
+\doxysubsubsection{\texorpdfstring{processNPCPhase()}{processNPCPhase()}}
+{\footnotesize\ttfamily void Turn\+Manager\+::process\+NPCPhase (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTurnManager_ab74f700bc39ef5e4865c4f5a3a8ca941_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTurnManager_ab74f700bc39ef5e4865c4f5a3a8ca941_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTurnManager_a71588b1204e82d3693641108ffe38869}\label{classTurnManager_a71588b1204e82d3693641108ffe38869}} 
+\index{TurnManager@{TurnManager}!processOngoingActions@{processOngoingActions}}
+\index{processOngoingActions@{processOngoingActions}!TurnManager@{TurnManager}}
+\doxysubsubsection{\texorpdfstring{processOngoingActions()}{processOngoingActions()}}
+{\footnotesize\ttfamily void Turn\+Manager\+::process\+Ongoing\+Actions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classTurnManager_a7f43e317f4994897b0ca27fd5353fd70}\label{classTurnManager_a7f43e317f4994897b0ca27fd5353fd70}} 
+\index{TurnManager@{TurnManager}!processPlayerPhase@{processPlayerPhase}}
+\index{processPlayerPhase@{processPlayerPhase}!TurnManager@{TurnManager}}
+\doxysubsubsection{\texorpdfstring{processPlayerPhase()}{processPlayerPhase()}}
+{\footnotesize\ttfamily void Turn\+Manager\+::process\+Player\+Phase (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTurnManager_a7f43e317f4994897b0ca27fd5353fd70_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTurnManager_a7f43e317f4994897b0ca27fd5353fd70_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTurnManager_a95f1823f759af13f972a0a139af343e4}\label{classTurnManager_a95f1823f759af13f972a0a139af343e4}} 
+\index{TurnManager@{TurnManager}!processTurnEnd@{processTurnEnd}}
+\index{processTurnEnd@{processTurnEnd}!TurnManager@{TurnManager}}
+\doxysubsubsection{\texorpdfstring{processTurnEnd()}{processTurnEnd()}}
+{\footnotesize\ttfamily void Turn\+Manager\+::process\+Turn\+End (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTurnManager_a95f1823f759af13f972a0a139af343e4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTurnManager_a95f1823f759af13f972a0a139af343e4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTurnManager_a112365fd220e181148ac6313390bfefb}\label{classTurnManager_a112365fd220e181148ac6313390bfefb}} 
+\index{TurnManager@{TurnManager}!processTurnPhase@{processTurnPhase}}
+\index{processTurnPhase@{processTurnPhase}!TurnManager@{TurnManager}}
+\doxysubsubsection{\texorpdfstring{processTurnPhase()}{processTurnPhase()}}
+{\footnotesize\ttfamily void Turn\+Manager\+::process\+Turn\+Phase (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTurnManager_a112365fd220e181148ac6313390bfefb_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTurnManager_ae69a56193971808396282e7594827409}\label{classTurnManager_ae69a56193971808396282e7594827409}} 
+\index{TurnManager@{TurnManager}!registerEntityForTurns@{registerEntityForTurns}}
+\index{registerEntityForTurns@{registerEntityForTurns}!TurnManager@{TurnManager}}
+\doxysubsubsection{\texorpdfstring{registerEntityForTurns()}{registerEntityForTurns()}}
+{\footnotesize\ttfamily void Turn\+Manager\+::register\+Entity\+For\+Turns (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classEntity}{Entity}} $>$}]{entity }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classTurnManager_ae0e1606b27be5d39e219ec094fcdfe34}\label{classTurnManager_ae0e1606b27be5d39e219ec094fcdfe34}} 
+\index{TurnManager@{TurnManager}!selectAspect@{selectAspect}}
+\index{selectAspect@{selectAspect}!TurnManager@{TurnManager}}
+\doxysubsubsection{\texorpdfstring{selectAspect()}{selectAspect()}}
+{\footnotesize\ttfamily void Turn\+Manager\+::select\+Aspect (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{aspect }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classTurnManager_a9c049dbf687059c0205082a2a8ac7019}\label{classTurnManager_a9c049dbf687059c0205082a2a8ac7019}} 
+\index{TurnManager@{TurnManager}!selectEntity@{selectEntity}}
+\index{selectEntity@{selectEntity}!TurnManager@{TurnManager}}
+\doxysubsubsection{\texorpdfstring{selectEntity()}{selectEntity()}}
+{\footnotesize\ttfamily void Turn\+Manager\+::select\+Entity (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classEntity}{Entity}} $>$}]{entity }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classTurnManager_a2b136663fdf867269343493087c42991}\label{classTurnManager_a2b136663fdf867269343493087c42991}} 
+\index{TurnManager@{TurnManager}!selectMarker@{selectMarker}}
+\index{selectMarker@{selectMarker}!TurnManager@{TurnManager}}
+\doxysubsubsection{\texorpdfstring{selectMarker()}{selectMarker()}}
+{\footnotesize\ttfamily void Turn\+Manager\+::select\+Marker (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{marker }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classTurnManager_ab0e35f79cf8533ac9f5e062783380f63}\label{classTurnManager_ab0e35f79cf8533ac9f5e062783380f63}} 
+\index{TurnManager@{TurnManager}!selectVerbRoot@{selectVerbRoot}}
+\index{selectVerbRoot@{selectVerbRoot}!TurnManager@{TurnManager}}
+\doxysubsubsection{\texorpdfstring{selectVerbRoot()}{selectVerbRoot()}}
+{\footnotesize\ttfamily void Turn\+Manager\+::select\+Verb\+Root (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{verb\+Root }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classTurnManager_a4c4db908431e76cca2c22570c9063de0}\label{classTurnManager_a4c4db908431e76cca2c22570c9063de0}} 
+\index{TurnManager@{TurnManager}!selectVoice@{selectVoice}}
+\index{selectVoice@{selectVoice}!TurnManager@{TurnManager}}
+\doxysubsubsection{\texorpdfstring{selectVoice()}{selectVoice()}}
+{\footnotesize\ttfamily void Turn\+Manager\+::select\+Voice (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{voice }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classTurnManager_a8fc6451152f235ac6c018a79f324dd91}\label{classTurnManager_a8fc6451152f235ac6c018a79f324dd91}} 
+\index{TurnManager@{TurnManager}!setLexiconManager@{setLexiconManager}}
+\index{setLexiconManager@{setLexiconManager}!TurnManager@{TurnManager}}
+\doxysubsubsection{\texorpdfstring{setLexiconManager()}{setLexiconManager()}}
+{\footnotesize\ttfamily void Turn\+Manager\+::set\+Lexicon\+Manager (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classLexiconManager}{Lexicon\+Manager}} $\ast$}]{Lexicon\+Manager }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classTurnManager_a2430101bcd6150831589dc7bae4b8060}\label{classTurnManager_a2430101bcd6150831589dc7bae4b8060}} 
+\index{TurnManager@{TurnManager}!setPlayerEntity@{setPlayerEntity}}
+\index{setPlayerEntity@{setPlayerEntity}!TurnManager@{TurnManager}}
+\doxysubsubsection{\texorpdfstring{setPlayerEntity()}{setPlayerEntity()}}
+{\footnotesize\ttfamily void Turn\+Manager\+::set\+Player\+Entity (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classEntity}{Entity}} $>$}]{player }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classTurnManager_abc30aafe2e5a70e520ad32aaaa8690eb}\label{classTurnManager_abc30aafe2e5a70e520ad32aaaa8690eb}} 
+\index{TurnManager@{TurnManager}!startActionFormation@{startActionFormation}}
+\index{startActionFormation@{startActionFormation}!TurnManager@{TurnManager}}
+\doxysubsubsection{\texorpdfstring{startActionFormation()}{startActionFormation()}}
+{\footnotesize\ttfamily void Turn\+Manager\+::start\+Action\+Formation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classTurnManager_af1bba901d1410ce5418213270b5388cd}\label{classTurnManager_af1bba901d1410ce5418213270b5388cd}} 
+\index{TurnManager@{TurnManager}!startTurn@{startTurn}}
+\index{startTurn@{startTurn}!TurnManager@{TurnManager}}
+\doxysubsubsection{\texorpdfstring{startTurn()}{startTurn()}}
+{\footnotesize\ttfamily void Turn\+Manager\+::start\+Turn (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTurnManager_af1bba901d1410ce5418213270b5388cd_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTurnManager_af1bba901d1410ce5418213270b5388cd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTurnManager_ac56b00432038ab03a145ed61fc72563e}\label{classTurnManager_ac56b00432038ab03a145ed61fc72563e}} 
+\index{TurnManager@{TurnManager}!unregisterEntityForTurns@{unregisterEntityForTurns}}
+\index{unregisterEntityForTurns@{unregisterEntityForTurns}!TurnManager@{TurnManager}}
+\doxysubsubsection{\texorpdfstring{unregisterEntityForTurns()}{unregisterEntityForTurns()}}
+{\footnotesize\ttfamily void Turn\+Manager\+::unregister\+Entity\+For\+Turns (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classEntity}{Entity}} $>$}]{entity }\end{DoxyParamCaption})}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/managers/\mbox{\hyperlink{ManagerTurn_8h}{Manager\+Turn.\+h}}\item 
+src/managers/\mbox{\hyperlink{ManagerTurn_8cpp}{Manager\+Turn.\+cpp}}\end{DoxyCompactItemize}

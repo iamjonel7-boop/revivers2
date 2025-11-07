@@ -1,0 +1,5 @@
+<map id="SceneCombat" name="SceneCombat">
+<area shape="rect" id="node1" title=" " alt="" coords="14,311,202,696"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,85,64,167"/>
+<area shape="rect" id="node3" href="$structSceneCombat_1_1CombatState.html" title=" " alt="" coords="88,5,277,247"/>
+</map>

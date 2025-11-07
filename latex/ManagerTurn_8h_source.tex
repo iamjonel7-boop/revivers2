@@ -1,0 +1,101 @@
+\hypertarget{ManagerTurn_8h_source}{}\doxysection{Manager\+Turn.\+h}
+\label{ManagerTurn_8h_source}\index{src/managers/ManagerTurn.h@{src/managers/ManagerTurn.h}}
+\mbox{\hyperlink{ManagerTurn_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ManagerLexicon_8h}{ManagerLexicon.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ManagerSystem_8h}{ManagerSystem.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ManagerActionFormation_8h}{ManagerActionFormation.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ManagerActionResolution_8h}{ManagerActionResolution.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structTurnState}{TurnState}}}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structTurnState_a854f388232620d8c18ffd30630eaa004}{currentTurn}}\ =\ 0;}
+\DoxyCodeLine{00014\ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structTurnState_ad97ddb344c770b6d9ea4b768af99f4d3}{turnInProgress}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00015\ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structTurnState_aa07572076a255fcd2c40e2fbb11723a0}{playerActionPoints}}\ =\ 1;}
+\DoxyCodeLine{00016\ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structTurnState_aa6608fc3eea82a1f01580a39af74b858}{maxPlayerActionPoints}}\ =\ 1;}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{structTurnState_a2ba2c88cca608b2542c77069a256d2df}{TurnPhase}}}
+\DoxyCodeLine{00019\ \ \ \ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \mbox{\hyperlink{structTurnState_a2ba2c88cca608b2542c77069a256d2dfac2b0bdb6a2b54d7160a817bca3708829}{PlayerAction}},}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \mbox{\hyperlink{structTurnState_a2ba2c88cca608b2542c77069a256d2dfabfacc9cfa1b61ccb2286b8b800b7772d}{NPCAction}},}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \mbox{\hyperlink{structTurnState_a2ba2c88cca608b2542c77069a256d2dfa5b2ac1ee44beb3d1409e607fdcd6fc45}{EventResolution}},}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \mbox{\hyperlink{structTurnState_a2ba2c88cca608b2542c77069a256d2dfa38359b47e8a905ee2bb4209a662a13c6}{TurnEnd}}}
+\DoxyCodeLine{00024\ \ \ \ \}}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \mbox{\hyperlink{structTurnState_a1c62fdb5b6c0281afae942cfe18e97e2}{currentPhase}}\ =\ \mbox{\hyperlink{structTurnState_a2ba2c88cca608b2542c77069a256d2dfac2b0bdb6a2b54d7160a817bca3708829}{PlayerAction}};}
+\DoxyCodeLine{00026\ \};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTurnManager}{TurnManager}}}
+\DoxyCodeLine{00029\ \{}
+\DoxyCodeLine{00030\ \ \ \ \mbox{\hyperlink{structTurnState}{TurnState}}\ m\_state;}
+\DoxyCodeLine{00031\ \ \ \ std::vector<std::shared\_ptr<Entity>>\ m\_entitiesWithTurns;}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \textcolor{comment}{//delegated\ to\ specialized\ managers}}
+\DoxyCodeLine{00034\ \ \ \ \mbox{\hyperlink{classActionFormationManager}{ActionFormationManager}}*\ m\_formationManager;}
+\DoxyCodeLine{00035\ \ \ \ \mbox{\hyperlink{classActionResolutionManager}{ActionResolutionManager}}*\ m\_resolutionManager;}
+\DoxyCodeLine{00036\ \ \ \ \mbox{\hyperlink{classSystemManager}{SystemManager}}*\ m\_systemManager;}
+\DoxyCodeLine{00037\ \ \ \ \mbox{\hyperlink{classLexiconManager}{LexiconManager}}*\ m\_lexiconManager;}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00040\ \ \ \ \mbox{\hyperlink{classTurnManager}{TurnManager}}(\mbox{\hyperlink{classSystemManager}{SystemManager}}*\ systemManager,\ \mbox{\hyperlink{classLexiconManager}{LexiconManager}}*\ lexiconManager,\ \mbox{\hyperlink{classActionFormationManager}{ActionFormationManager}}*\ formationManager,\ \mbox{\hyperlink{classActionResolutionManager}{ActionResolutionManager}}*\ resolutionManager);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \textcolor{comment}{//turn\ management}}
+\DoxyCodeLine{00043\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTurnManager_af1bba901d1410ce5418213270b5388cd}{startTurn}}();}
+\DoxyCodeLine{00044\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTurnManager_ade74a1914a24f832b30252cff34668bf}{endTurn}}();}
+\DoxyCodeLine{00045\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTurnManager_a112365fd220e181148ac6313390bfefb}{processTurnPhase}}();}
+\DoxyCodeLine{00046\ \ \ \ \textcolor{comment}{//\ \ void\ consumePlayerActionPoint();}}
+\DoxyCodeLine{00047\ \ \ \ \textcolor{comment}{//void\ resetPlayerActionPoints();}}
+\DoxyCodeLine{00048\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTurnManager_af0af68eda36f0eb00ab1c0a497dea311}{advanceToNextPhase}}();}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \textcolor{comment}{//player\ action\ interface}}
+\DoxyCodeLine{00051\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTurnManager_a490242a203da660ca6e61c909d7565a4}{executePlayerAction}}();}
+\DoxyCodeLine{00052\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTurnManager_aa875fdae3f9d41b7558d59771e1a4f08}{cancelPlayerAction}}();}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \textcolor{comment}{//processing}}
+\DoxyCodeLine{00055\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTurnManager_a7f43e317f4994897b0ca27fd5353fd70}{processPlayerPhase}}();}
+\DoxyCodeLine{00056\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTurnManager_ab74f700bc39ef5e4865c4f5a3a8ca941}{processNPCPhase}}();}
+\DoxyCodeLine{00057\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTurnManager_a885f4d5c2429682587a09c1e0f2bfa93}{processEventPhase}}();}
+\DoxyCodeLine{00058\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTurnManager_a95f1823f759af13f972a0a139af343e4}{processTurnEnd}}();}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \textcolor{comment}{//entity\ registration,}}
+\DoxyCodeLine{00061\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTurnManager_ae69a56193971808396282e7594827409}{registerEntityForTurns}}(std::shared\_ptr<Entity>\ \mbox{\hyperlink{SceneMain_8h_a4b741811d275d5e7d78bd9f3da5cdec0}{entity}});}
+\DoxyCodeLine{00062\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTurnManager_ac56b00432038ab03a145ed61fc72563e}{unregisterEntityForTurns}}(std::shared\_ptr<Entity>\ \mbox{\hyperlink{SceneMain_8h_a4b741811d275d5e7d78bd9f3da5cdec0}{entity}});}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \textcolor{comment}{//action\ processing}}
+\DoxyCodeLine{00065\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTurnManager_a71588b1204e82d3693641108ffe38869}{processOngoingActions}}();}
+\DoxyCodeLine{00066\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTurnManager_aba1b27fe690df3b8c7d104d4398c1357}{processFutureActions}}();}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \textcolor{comment}{//state\ queries}}
+\DoxyCodeLine{00069\ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classTurnManager_a31b0059dd6dbd36fa5a0c5ab0c756e83}{isPlayerTurn}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00070\ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classTurnManager_a87bbbe47c9aa0b602f6ab07daa91250f}{hasPlayerActionPoints}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00071\ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classTurnManager_a58c631e4584ff1409d0bc4c1a08e1568}{getCurrentTurn}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00072\ \ \ \ \mbox{\hyperlink{structTurnState_a2ba2c88cca608b2542c77069a256d2df}{TurnState::TurnPhase}}\ \mbox{\hyperlink{classTurnManager_aaa194f877dd0fb838aa37fa66bb28e9f}{getCurrentPhase}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00073\ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classTurnManager_acdb0326944ed7fb0454b92dbfd712431}{getPlayerActionPoints}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00074\ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classTurnManager_ab4c3894c98a5e9614e56117393bb25d4}{isTurnInProgress}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \textcolor{comment}{//player\ entity\ management}}
+\DoxyCodeLine{00077\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTurnManager_a2430101bcd6150831589dc7bae4b8060}{setPlayerEntity}}(std::shared\_ptr<Entity>\ player);}
+\DoxyCodeLine{00078\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTurnManager_a8fc6451152f235ac6c018a79f324dd91}{setLexiconManager}}(\mbox{\hyperlink{classLexiconManager}{LexiconManager}}*\ \mbox{\hyperlink{classLexiconManager}{LexiconManager}});}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \textcolor{comment}{//action\ formation\ delegation}}
+\DoxyCodeLine{00081\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTurnManager_abc30aafe2e5a70e520ad32aaaa8690eb}{startActionFormation}}();}
+\DoxyCodeLine{00082\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTurnManager_a9c049dbf687059c0205082a2a8ac7019}{selectEntity}}(std::shared\_ptr<Entity>\ \mbox{\hyperlink{SceneMain_8h_a4b741811d275d5e7d78bd9f3da5cdec0}{entity}});}
+\DoxyCodeLine{00083\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTurnManager_a2b136663fdf867269343493087c42991}{selectMarker}}(\textcolor{keyword}{const}\ std::string\&\ marker);}
+\DoxyCodeLine{00084\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTurnManager_ab0e35f79cf8533ac9f5e062783380f63}{selectVerbRoot}}(\textcolor{keyword}{const}\ std::string\&\ verbRoot);}
+\DoxyCodeLine{00085\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTurnManager_a4c4db908431e76cca2c22570c9063de0}{selectVoice}}(\textcolor{keyword}{const}\ std::string\&\ voice);}
+\DoxyCodeLine{00086\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTurnManager_ae0e1606b27be5d39e219ec094fcdfe34}{selectAspect}}(\textcolor{keyword}{const}\ std::string\&\ aspect);}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ std::string\ \mbox{\hyperlink{classTurnManager_a967cab63a5f024ed4547275fb3336ab6}{getSelectionPrompt}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00089\ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classTurnManager_a7ed60a25c4baa7346ac999194c093e41}{isActionFormationInProgress}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00090\ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classTurnManager_a9f82a9da762a551d1e2899a04e64432c}{isActionReadyToExecute}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00093\ \ \ \ \textcolor{keywordtype}{void}\ consumePlayerActionPoint();}
+\DoxyCodeLine{00094\ \ \ \ \textcolor{keywordtype}{void}\ resetPlayerActionPoints();}
+\DoxyCodeLine{00095\ \};}
+
+\end{DoxyCode}

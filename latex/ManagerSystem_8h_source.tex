@@ -1,0 +1,63 @@
+\hypertarget{ManagerSystem_8h_source}{}\doxysection{Manager\+System.\+h}
+\label{ManagerSystem_8h_source}\index{src/managers/ManagerSystem.h@{src/managers/ManagerSystem.h}}
+\mbox{\hyperlink{ManagerSystem_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ManagerEntity_8h}{ManagerEntity.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ManagerGrammar_8h}{ManagerGrammar.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}System.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Entity_8h}{Entity.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSystemManager}{SystemManager}}}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00016\ \ \ \ \mbox{\hyperlink{classEntityManager}{EntityManager}}*\ m\_entityManager;}
+\DoxyCodeLine{00017\ \ \ \ GrammarManager*\ m\_grammarManager;}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \textcolor{comment}{//system\ name\ -\/>\ function\ the\ implements\ the\ system}}
+\DoxyCodeLine{00020\ \ \ \ std::unordered\_map<std::string,\ std::unique\_ptr<System>>\ m\_systems;}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ \ \ \ \mbox{\hyperlink{classSystemManager_acda3e0836e05a478c3a7855199f57e69}{SystemManager}}(\mbox{\hyperlink{classEntityManager}{EntityManager}}*\ entityManager,\ GrammarManager*\ grammarManager)}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ :\ m\_entityManager(entityManager),\ m\_grammarManager(grammarManager)}
+\DoxyCodeLine{00025\ \ \ \ \{}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \textcolor{comment}{//register\ a\ system,\ player\ inputs\ verb\ to\ register\ them}}
+\DoxyCodeLine{00030\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSystemManager_a7a52fc6aa8ac5ce7efe98d6389db706e}{registerSystem}}(\textcolor{keyword}{const}\ std::string\&\ systemName,\ std::unique\_ptr<System>\ system)}
+\DoxyCodeLine{00031\ \ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ m\_systems[systemName]\ =\ std::move(system);}
+\DoxyCodeLine{00033\ \ \ \ \}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \textcolor{comment}{//execute\ a\ system}}
+\DoxyCodeLine{00036\ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classSystemManager_a07f9b37832ae33e37d47751f49ed4b7f}{executeSystem}}(\textcolor{keyword}{const}\ std::string\&\ systemName,\ \textcolor{keyword}{const}\ std::map<std::string,\ std::shared\_ptr<Entity>>\&\ markedEntities,\ \textcolor{keyword}{const}\ std::string\&\ voice,\ \textcolor{keyword}{const}\ std::string\&\ aspect)}
+\DoxyCodeLine{00037\ \ \ \ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ m\_systems.find(systemName);}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(it\ !=\ m\_systems.end()\ \&\&\ it-\/>second)}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ it-\/>second-\/>execute(markedEntities,\ voice,\ aspect);}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}System\ not\ found:\ "{}}\ <<\ systemName\ <<\ std::endl;}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00046\ \ \ \ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \textcolor{comment}{//check\ if\ a\ system\ exists}}
+\DoxyCodeLine{00049\ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classSystemManager_acc49533888f643d49139b861b730dc24}{systemExists}}(\textcolor{keyword}{const}\ std::string\&\ systemName)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00050\ \textcolor{keyword}{\ \ \ }\{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_systems.find(systemName)\ !=\ m\_systems.end();}
+\DoxyCodeLine{00052\ \ \ \ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00055\ \ \ \ \textcolor{keywordtype}{void}\ registerDefaultSystems()\{\}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \};}
+
+\end{DoxyCode}

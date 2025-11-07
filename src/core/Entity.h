@@ -14,7 +14,6 @@ typedef std::tuple<
    std::optional<CNoun>,
    std::optional<CVerb>,
    std::optional<CRender>,
-   std::optional<CGift>,
    std::optional<CText>
    > ComponentTuple;
 

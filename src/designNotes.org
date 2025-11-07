@@ -66,4 +66,6 @@ goal: learn verbs
 goal: recruit civilians
 ** Stage 3
 
+* We put action registrations under while blocks of each state
+
 

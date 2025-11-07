@@ -4,7 +4,6 @@
 
 
 * TODO remake the Makefile 
-SCHEDULED: <2025-10-28 Tue>
 
 * Test the individual managers [0/6]
 ** TODO Entity
@@ -13,3 +12,10 @@ SCHEDULED: <2025-10-28 Tue>
 ** TODO World
 ** TODO Verb
 ** TODO Turn
+
+* DONE Test the bicol grammar cpp
+
+* TODO create the scene main to display the map
+
+* TODO randomiser for map creation. we randomise where the entities be located and then an algorith 
+the connects each building entity to each other. that will be the path. 

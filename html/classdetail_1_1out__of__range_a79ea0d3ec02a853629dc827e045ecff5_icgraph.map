@@ -1,0 +1,8 @@
+<map id="detail::out_of_range::create" name="detail::out_of_range::create">
+<area shape="rect" id="node1" title=" " alt="" coords="599,23,735,65"/>
+<area shape="rect" id="node2" href="$classjson__pointer.html#aba71e63e4032cfc46dd90aeb09e5cb0f" title="return last reference token" alt="" coords="410,5,537,32"/>
+<area shape="rect" id="node5" href="$classjson__pointer.html#a662118b470c87a1b564946c2602c49ce" title="remove last reference token" alt="" coords="396,56,551,83"/>
+<area shape="rect" id="node3" href="$classbasic__json.html#a693812b31e106dec9166e93d8f6dd7d7" title="applies a JSON patch in&#45;place without copying the object" alt="" coords="177,5,348,32"/>
+<area shape="rect" id="node4" href="$classbasic__json.html#a145a004c0a2fa5be84b260ecc98ab5d9" title="applies a JSON patch to a copy of the current object" alt="" coords="5,5,129,32"/>
+<area shape="rect" id="node6" href="$classjson__pointer.html#aa03c0c1206e171342d27a4583258858b" title="returns the parent of this JSON pointer" alt="" coords="195,56,330,99"/>
+</map>

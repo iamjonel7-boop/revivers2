@@ -1,0 +1,155 @@
+\hypertarget{structSceneCombat_1_1CombatState}{}\doxysection{Scene\+Combat\+::Combat\+State Struct Reference}
+\label{structSceneCombat_1_1CombatState}\index{SceneCombat::CombatState@{SceneCombat::CombatState}}
+
+
+{\ttfamily \#include $<$Scene\+Combat.\+h$>$}
+
+
+
+Collaboration diagram for Scene\+Combat\+::Combat\+State\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{structSceneCombat_1_1CombatState__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{structSceneCombat_1_1CombatState_a0c9639ba723ddf5ab481a2b77c69d6e6}{current\+Round}} = 0
+\item 
+int \mbox{\hyperlink{structSceneCombat_1_1CombatState_aaddd45d6f3729d950d676c90dea10779}{max\+Rounds}} = 3
+\item 
+float \mbox{\hyperlink{structSceneCombat_1_1CombatState_af8c12c336a1671193e8809bb12a80596}{timer}} = 30.\+0f
+\item 
+float \mbox{\hyperlink{structSceneCombat_1_1CombatState_a847ab588d2da0876705c03d2e1e5e3ed}{max\+Time}} = 30.\+0f
+\item 
+bool \mbox{\hyperlink{structSceneCombat_1_1CombatState_a8832fffb55e1cacb43233996890fe051}{timer\+Active}} = false
+\item 
+std\+::string \mbox{\hyperlink{structSceneCombat_1_1CombatState_a71243055ad2add23aef96f2d9428ace4}{current\+English\+Word}}
+\item 
+std\+::string \mbox{\hyperlink{structSceneCombat_1_1CombatState_ab78128a135f766b5976687d7999547d9}{current\+Native\+Word}}
+\item 
+int \mbox{\hyperlink{structSceneCombat_1_1CombatState_a56e166ac1402b79fd7cbdcdb9b1f60a8}{base\+Damage}} = 10
+\item 
+int \mbox{\hyperlink{structSceneCombat_1_1CombatState_a4422500d2ee2e4631a1179dc11dad30e}{final\+Damage}} = 10
+\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{structSceneCombat_1_1CombatState_a5f18d4d7583b2d2de06029e883af1895}{semantic\+Chain}}
+\item 
+float \mbox{\hyperlink{structSceneCombat_1_1CombatState_a0f4519d061abe673ba49e6ab64689bd9}{chain\+Multiplier}} = 1.\+2f
+\item 
+int \mbox{\hyperlink{structSceneCombat_1_1CombatState_a7c8edc3a90b1aa7aefb1e3b9ff3206fb}{max\+Chain\+Length}} = 5
+\item 
+std\+::string \mbox{\hyperlink{structSceneCombat_1_1CombatState_aff238c7aae7671a31d8358079aabf7e2}{player\+Answer}}
+\item 
+std\+::string \mbox{\hyperlink{structSceneCombat_1_1CombatState_a3f8eee31dfe48eccdcbae914b7e5eedb}{feedback\+Message}}
+\item 
+bool \mbox{\hyperlink{structSceneCombat_1_1CombatState_a4758132061b755dbbe543525af706a17}{show\+Input}} = false
+\item 
+bool \mbox{\hyperlink{structSceneCombat_1_1CombatState_a30919d25e00badf2d74b12486ba6c156}{show\+Chain\+UI}} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structSceneCombat_1_1CombatState_a56e166ac1402b79fd7cbdcdb9b1f60a8}\label{structSceneCombat_1_1CombatState_a56e166ac1402b79fd7cbdcdb9b1f60a8}} 
+\index{SceneCombat::CombatState@{SceneCombat::CombatState}!baseDamage@{baseDamage}}
+\index{baseDamage@{baseDamage}!SceneCombat::CombatState@{SceneCombat::CombatState}}
+\doxysubsubsection{\texorpdfstring{baseDamage}{baseDamage}}
+{\footnotesize\ttfamily int Scene\+Combat\+::\+Combat\+State\+::base\+Damage = 10}
+
+\mbox{\Hypertarget{structSceneCombat_1_1CombatState_a0f4519d061abe673ba49e6ab64689bd9}\label{structSceneCombat_1_1CombatState_a0f4519d061abe673ba49e6ab64689bd9}} 
+\index{SceneCombat::CombatState@{SceneCombat::CombatState}!chainMultiplier@{chainMultiplier}}
+\index{chainMultiplier@{chainMultiplier}!SceneCombat::CombatState@{SceneCombat::CombatState}}
+\doxysubsubsection{\texorpdfstring{chainMultiplier}{chainMultiplier}}
+{\footnotesize\ttfamily float Scene\+Combat\+::\+Combat\+State\+::chain\+Multiplier = 1.\+2f}
+
+\mbox{\Hypertarget{structSceneCombat_1_1CombatState_a71243055ad2add23aef96f2d9428ace4}\label{structSceneCombat_1_1CombatState_a71243055ad2add23aef96f2d9428ace4}} 
+\index{SceneCombat::CombatState@{SceneCombat::CombatState}!currentEnglishWord@{currentEnglishWord}}
+\index{currentEnglishWord@{currentEnglishWord}!SceneCombat::CombatState@{SceneCombat::CombatState}}
+\doxysubsubsection{\texorpdfstring{currentEnglishWord}{currentEnglishWord}}
+{\footnotesize\ttfamily std\+::string Scene\+Combat\+::\+Combat\+State\+::current\+English\+Word}
+
+\mbox{\Hypertarget{structSceneCombat_1_1CombatState_ab78128a135f766b5976687d7999547d9}\label{structSceneCombat_1_1CombatState_ab78128a135f766b5976687d7999547d9}} 
+\index{SceneCombat::CombatState@{SceneCombat::CombatState}!currentNativeWord@{currentNativeWord}}
+\index{currentNativeWord@{currentNativeWord}!SceneCombat::CombatState@{SceneCombat::CombatState}}
+\doxysubsubsection{\texorpdfstring{currentNativeWord}{currentNativeWord}}
+{\footnotesize\ttfamily std\+::string Scene\+Combat\+::\+Combat\+State\+::current\+Native\+Word}
+
+\mbox{\Hypertarget{structSceneCombat_1_1CombatState_a0c9639ba723ddf5ab481a2b77c69d6e6}\label{structSceneCombat_1_1CombatState_a0c9639ba723ddf5ab481a2b77c69d6e6}} 
+\index{SceneCombat::CombatState@{SceneCombat::CombatState}!currentRound@{currentRound}}
+\index{currentRound@{currentRound}!SceneCombat::CombatState@{SceneCombat::CombatState}}
+\doxysubsubsection{\texorpdfstring{currentRound}{currentRound}}
+{\footnotesize\ttfamily int Scene\+Combat\+::\+Combat\+State\+::current\+Round = 0}
+
+\mbox{\Hypertarget{structSceneCombat_1_1CombatState_a3f8eee31dfe48eccdcbae914b7e5eedb}\label{structSceneCombat_1_1CombatState_a3f8eee31dfe48eccdcbae914b7e5eedb}} 
+\index{SceneCombat::CombatState@{SceneCombat::CombatState}!feedbackMessage@{feedbackMessage}}
+\index{feedbackMessage@{feedbackMessage}!SceneCombat::CombatState@{SceneCombat::CombatState}}
+\doxysubsubsection{\texorpdfstring{feedbackMessage}{feedbackMessage}}
+{\footnotesize\ttfamily std\+::string Scene\+Combat\+::\+Combat\+State\+::feedback\+Message}
+
+\mbox{\Hypertarget{structSceneCombat_1_1CombatState_a4422500d2ee2e4631a1179dc11dad30e}\label{structSceneCombat_1_1CombatState_a4422500d2ee2e4631a1179dc11dad30e}} 
+\index{SceneCombat::CombatState@{SceneCombat::CombatState}!finalDamage@{finalDamage}}
+\index{finalDamage@{finalDamage}!SceneCombat::CombatState@{SceneCombat::CombatState}}
+\doxysubsubsection{\texorpdfstring{finalDamage}{finalDamage}}
+{\footnotesize\ttfamily int Scene\+Combat\+::\+Combat\+State\+::final\+Damage = 10}
+
+\mbox{\Hypertarget{structSceneCombat_1_1CombatState_a7c8edc3a90b1aa7aefb1e3b9ff3206fb}\label{structSceneCombat_1_1CombatState_a7c8edc3a90b1aa7aefb1e3b9ff3206fb}} 
+\index{SceneCombat::CombatState@{SceneCombat::CombatState}!maxChainLength@{maxChainLength}}
+\index{maxChainLength@{maxChainLength}!SceneCombat::CombatState@{SceneCombat::CombatState}}
+\doxysubsubsection{\texorpdfstring{maxChainLength}{maxChainLength}}
+{\footnotesize\ttfamily int Scene\+Combat\+::\+Combat\+State\+::max\+Chain\+Length = 5}
+
+\mbox{\Hypertarget{structSceneCombat_1_1CombatState_aaddd45d6f3729d950d676c90dea10779}\label{structSceneCombat_1_1CombatState_aaddd45d6f3729d950d676c90dea10779}} 
+\index{SceneCombat::CombatState@{SceneCombat::CombatState}!maxRounds@{maxRounds}}
+\index{maxRounds@{maxRounds}!SceneCombat::CombatState@{SceneCombat::CombatState}}
+\doxysubsubsection{\texorpdfstring{maxRounds}{maxRounds}}
+{\footnotesize\ttfamily int Scene\+Combat\+::\+Combat\+State\+::max\+Rounds = 3}
+
+\mbox{\Hypertarget{structSceneCombat_1_1CombatState_a847ab588d2da0876705c03d2e1e5e3ed}\label{structSceneCombat_1_1CombatState_a847ab588d2da0876705c03d2e1e5e3ed}} 
+\index{SceneCombat::CombatState@{SceneCombat::CombatState}!maxTime@{maxTime}}
+\index{maxTime@{maxTime}!SceneCombat::CombatState@{SceneCombat::CombatState}}
+\doxysubsubsection{\texorpdfstring{maxTime}{maxTime}}
+{\footnotesize\ttfamily float Scene\+Combat\+::\+Combat\+State\+::max\+Time = 30.\+0f}
+
+\mbox{\Hypertarget{structSceneCombat_1_1CombatState_aff238c7aae7671a31d8358079aabf7e2}\label{structSceneCombat_1_1CombatState_aff238c7aae7671a31d8358079aabf7e2}} 
+\index{SceneCombat::CombatState@{SceneCombat::CombatState}!playerAnswer@{playerAnswer}}
+\index{playerAnswer@{playerAnswer}!SceneCombat::CombatState@{SceneCombat::CombatState}}
+\doxysubsubsection{\texorpdfstring{playerAnswer}{playerAnswer}}
+{\footnotesize\ttfamily std\+::string Scene\+Combat\+::\+Combat\+State\+::player\+Answer}
+
+\mbox{\Hypertarget{structSceneCombat_1_1CombatState_a5f18d4d7583b2d2de06029e883af1895}\label{structSceneCombat_1_1CombatState_a5f18d4d7583b2d2de06029e883af1895}} 
+\index{SceneCombat::CombatState@{SceneCombat::CombatState}!semanticChain@{semanticChain}}
+\index{semanticChain@{semanticChain}!SceneCombat::CombatState@{SceneCombat::CombatState}}
+\doxysubsubsection{\texorpdfstring{semanticChain}{semanticChain}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::string$>$ Scene\+Combat\+::\+Combat\+State\+::semantic\+Chain}
+
+\mbox{\Hypertarget{structSceneCombat_1_1CombatState_a30919d25e00badf2d74b12486ba6c156}\label{structSceneCombat_1_1CombatState_a30919d25e00badf2d74b12486ba6c156}} 
+\index{SceneCombat::CombatState@{SceneCombat::CombatState}!showChainUI@{showChainUI}}
+\index{showChainUI@{showChainUI}!SceneCombat::CombatState@{SceneCombat::CombatState}}
+\doxysubsubsection{\texorpdfstring{showChainUI}{showChainUI}}
+{\footnotesize\ttfamily bool Scene\+Combat\+::\+Combat\+State\+::show\+Chain\+UI = false}
+
+\mbox{\Hypertarget{structSceneCombat_1_1CombatState_a4758132061b755dbbe543525af706a17}\label{structSceneCombat_1_1CombatState_a4758132061b755dbbe543525af706a17}} 
+\index{SceneCombat::CombatState@{SceneCombat::CombatState}!showInput@{showInput}}
+\index{showInput@{showInput}!SceneCombat::CombatState@{SceneCombat::CombatState}}
+\doxysubsubsection{\texorpdfstring{showInput}{showInput}}
+{\footnotesize\ttfamily bool Scene\+Combat\+::\+Combat\+State\+::show\+Input = false}
+
+\mbox{\Hypertarget{structSceneCombat_1_1CombatState_af8c12c336a1671193e8809bb12a80596}\label{structSceneCombat_1_1CombatState_af8c12c336a1671193e8809bb12a80596}} 
+\index{SceneCombat::CombatState@{SceneCombat::CombatState}!timer@{timer}}
+\index{timer@{timer}!SceneCombat::CombatState@{SceneCombat::CombatState}}
+\doxysubsubsection{\texorpdfstring{timer}{timer}}
+{\footnotesize\ttfamily float Scene\+Combat\+::\+Combat\+State\+::timer = 30.\+0f}
+
+\mbox{\Hypertarget{structSceneCombat_1_1CombatState_a8832fffb55e1cacb43233996890fe051}\label{structSceneCombat_1_1CombatState_a8832fffb55e1cacb43233996890fe051}} 
+\index{SceneCombat::CombatState@{SceneCombat::CombatState}!timerActive@{timerActive}}
+\index{timerActive@{timerActive}!SceneCombat::CombatState@{SceneCombat::CombatState}}
+\doxysubsubsection{\texorpdfstring{timerActive}{timerActive}}
+{\footnotesize\ttfamily bool Scene\+Combat\+::\+Combat\+State\+::timer\+Active = false}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/scenes/\mbox{\hyperlink{SceneCombat_8h}{Scene\+Combat.\+h}}\end{DoxyCompactItemize}

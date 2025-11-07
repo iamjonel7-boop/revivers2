@@ -21,14 +21,24 @@ class SentencingManager
 
   struct sentence
   {
-    std::map<std::shared_ptr<Entity>, int> m_MarkedEntities;
+    std::map<int, std::shared_ptr<Entity>> m_MarkedEntities;
     // mapped to index of the markers
-    int
+    std::string verb; //the player typed the verb
   };
 
   std::shared_pointer<Entity> m_entity;
   std::vector<Entity> m_entities;
 
  public:
+  SentencingManager()
+  {
+  }
+
+  void displayEntities();
+  void selectEntity();
+  void selectMarker();
+  void selectVerb();
+  void selectVoice();
+  void selectAspect();
 
 };

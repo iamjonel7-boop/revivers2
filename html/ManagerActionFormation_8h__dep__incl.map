@@ -1,0 +1,12 @@
+<map id="src/managers/ManagerActionFormation.h" name="src/managers/ManagerActionFormation.h">
+<area shape="rect" id="node1" title=" " alt="" coords="221,5,413,48"/>
+<area shape="rect" id="node2" href="$ManagerActionFormation_8cpp.html" title=" " alt="" coords="5,96,197,139"/>
+<area shape="rect" id="node3" href="$ManagerActionResolution_8h.html" title=" " alt="" coords="221,96,413,139"/>
+<area shape="rect" id="node4" href="$ManagerTurn_8h.html" title=" " alt="" coords="288,187,479,213"/>
+<area shape="rect" id="node5" href="$ManagerTurn_8cpp.html" title=" " alt="" coords="169,261,374,288"/>
+<area shape="rect" id="node6" href="$SceneEspionage_8h.html" title=" " alt="" coords="398,261,596,288"/>
+<area shape="rect" id="node7" href="$SceneEspionage_8cpp.html" title=" " alt="" coords="284,336,496,363"/>
+<area shape="rect" id="node8" href="$SceneMain_8h.html" title=" " alt="" coords="521,336,686,363"/>
+<area shape="rect" id="node9" href="$SceneMain_8cpp.html" title=" " alt="" coords="411,411,591,437"/>
+<area shape="rect" id="node10" href="$SceneMenu_8cpp.html" title=" " alt="" coords="615,411,798,437"/>
+</map>

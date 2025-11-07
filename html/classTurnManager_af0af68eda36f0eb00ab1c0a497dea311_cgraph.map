@@ -1,0 +1,8 @@
+<map id="TurnManager::advanceToNextPhase" name="TurnManager::advanceToNextPhase">
+<area shape="rect" id="node1" title=" " alt="" coords="5,101,202,144"/>
+<area shape="rect" id="node2" href="$classTurnManager.html#ade74a1914a24f832b30252cff34668bf" title=" " alt="" coords="250,83,402,109"/>
+<area shape="rect" id="node5" href="$classTurnManager.html#af1bba901d1410ce5418213270b5388cd" title=" " alt="" coords="454,139,612,165"/>
+<area shape="rect" id="node3" href="$classActionFormationManager.html#ab6c97337bf2f94a7c2f16957b4b04b63" title=" " alt="" coords="450,5,616,48"/>
+<area shape="rect" id="node4" href="$classActionFormationManager.html#a496649a3ab5ac5f173239d18857b6065" title=" " alt="" coords="450,72,616,115"/>
+<area shape="rect" id="node6" href="$classActionResolutionManager.html#ab0df536666191614ab0d1b1fd4c87610" title=" " alt="" coords="664,131,835,173"/>
+</map>

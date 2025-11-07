@@ -1,0 +1,479 @@
+\hypertarget{classSceneEspionage}{}\doxysection{Scene\+Espionage Class Reference}
+\label{classSceneEspionage}\index{SceneEspionage@{SceneEspionage}}
+
+
+{\ttfamily \#include $<$Scene\+Espionage.\+h$>$}
+
+
+
+Inheritance diagram for Scene\+Espionage\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=218pt]{classSceneEspionage__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Scene\+Espionage\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=218pt]{classSceneEspionage__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structSceneEspionage_1_1KeyPoint}{Key\+Point}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{classSceneEspionage_a7bd5b7b23254ec6161f1dfc581146250}{Espionage\+State}} \{ \newline
+\mbox{\hyperlink{classSceneEspionage_a7bd5b7b23254ec6161f1dfc581146250a778ecc96730832ff0575b3b292e45bd3}{INFILTRATING}}
+, \mbox{\hyperlink{classSceneEspionage_a7bd5b7b23254ec6161f1dfc581146250afeb8e4a8a8b1796f0b434ec7d7a04170}{SOLVING\+\_\+\+ANAGRAM}}
+, \mbox{\hyperlink{classSceneEspionage_a7bd5b7b23254ec6161f1dfc581146250a588fdd0164a2cae8d980560d10e2054b}{FINAL\+\_\+\+TRANSLATION}}
+, \mbox{\hyperlink{classSceneEspionage_a7bd5b7b23254ec6161f1dfc581146250a8f7afecbc8fbc4cd0f50a57d1172482e}{COMPLETED}}
+, \newline
+\mbox{\hyperlink{classSceneEspionage_a7bd5b7b23254ec6161f1dfc581146250ab9e14d9b2886bcff408b85aefa780419}{FAILED}}
+, \mbox{\hyperlink{classSceneEspionage_a7bd5b7b23254ec6161f1dfc581146250a5cd8a3828ce36907a27551de5e71221e}{DETECTED}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSceneEspionage_a43d84626d89c17683003c3559cb5e35f}{Scene\+Espionage}} (\mbox{\hyperlink{classGameEngine}{Game\+Engine}} $\ast$game\+Engine, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classEntity}{Entity}} $>$ player, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classEntity}{Entity}} $>$ building, const std\+::string \&english\+Name)
+\item 
+void \mbox{\hyperlink{classSceneEspionage_a2e728ad393f17334b4704d7117fff263}{s\+Render}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classSceneEspionage_ac23c6c5b8dea1613e9efd6265563e655}{init}} ()
+\item 
+void \mbox{\hyperlink{classSceneEspionage_aa33f48012627102e3f7c2b3aaf4aa9a2}{update}} ()
+\item 
+void \mbox{\hyperlink{classSceneEspionage_a392e7a93c22fac7515a9ca5dc2d89b8a}{s\+Do\+Action}} (const \mbox{\hyperlink{classAction}{Action}} \&action)
+\item 
+void \mbox{\hyperlink{classSceneEspionage_a55299a7b15415bc44d9539e32d03a29d}{on\+End}} ()
+\item 
+void \mbox{\hyperlink{classSceneEspionage_a3e3cf5029f48cb7147cde8d8485f5660}{s\+Initialize\+Floor\+Plan}} ()
+\item 
+void \mbox{\hyperlink{classSceneEspionage_af17ffd31299dcaec235c747da7cfe3fd}{s\+Move\+To\+Next\+Point}} ()
+\item 
+void \mbox{\hyperlink{classSceneEspionage_a0beb2bcc2d668fb4083f9e9cd6858d6e}{s\+Generate\+Anagram}} ()
+\item 
+void \mbox{\hyperlink{classSceneEspionage_a2db8e0dd02a0d248053c84718c1af3eb}{s\+Check\+Anagram\+Solution}} ()
+\item 
+void \mbox{\hyperlink{classSceneEspionage_ae1c4d00a4aa16de96bfd2f1710595412}{s\+Check\+Final\+Translation}} ()
+\item 
+void \mbox{\hyperlink{classSceneEspionage_ac879372794a46591642b333cea0854be}{s\+Complete\+Espionage}} ()
+\item 
+void \mbox{\hyperlink{classSceneEspionage_ae8072115af23613fcfc877d41530fb1b}{s\+Fail\+Espionage}} ()
+\item 
+void \mbox{\hyperlink{classSceneEspionage_a839c67aef57ea8325a73af36f16e6b4b}{s\+Render\+Floor\+Plan}} ()
+\item 
+void \mbox{\hyperlink{classSceneEspionage_a3c4eb1b78ab2f6c402e2c218b4ac4a6a}{s\+Render\+Anagram\+UI}} ()
+\item 
+void \mbox{\hyperlink{classSceneEspionage_ac916dee2dd7d58f6abdbb4d5e1304374}{s\+Render\+Translation\+UI}} ()
+\item 
+void \mbox{\hyperlink{classSceneEspionage_a728f9922ea915bd8f5eff0ae94376bc0}{s\+Render\+Player\+Marker}} ()
+\item 
+std\+::string \mbox{\hyperlink{classSceneEspionage_aa790fbce1ce5d9d5a4415de6ab6f2f43}{s\+Scramble\+Word}} (const std\+::string \&word)
+\item 
+bool \mbox{\hyperlink{classSceneEspionage_a61b6c90735ef3658dc94373682b02a60}{s\+Isvalid\+Translation}} (const std\+::string \&translation)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Font \mbox{\hyperlink{classSceneEspionage_a935309b68a934ee10eef88b8021ee690}{m\+\_\+font\+Main}}
+\item 
+sf\+::\+Color \mbox{\hyperlink{classSceneEspionage_ac09d7e7dc78d695586255ed7f85f400c}{m\+\_\+color\+Main}}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classTurnManager}{Turn\+Manager}} $>$ \mbox{\hyperlink{classSceneEspionage_a2f694ef8680006d571a91a8135cdf344}{m\+\_\+turn\+Manager}}
+\item 
+sf\+::\+Clock \mbox{\hyperlink{classSceneEspionage_aefe4a6ed77bcea77c08d5e18dcbe711d}{m\+\_\+timer}}
+\item 
+bool \mbox{\hyperlink{classSceneEspionage_a0156d1bbf36b6e08afc405621fc4137c}{m\+\_\+is\+Returning}} = false
+\item 
+float \mbox{\hyperlink{classSceneEspionage_aaf43f1565b68e3e6dac2b6689accaf40}{m\+\_\+return\+Delay}} = 3.f
+\item 
+\mbox{\hyperlink{classSceneEspionage_a7bd5b7b23254ec6161f1dfc581146250}{Espionage\+State}} \mbox{\hyperlink{classSceneEspionage_a52b6268a77c9a1aa7693cf05c2e0fca9}{m\+\_\+state}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structSceneEspionage_1_1KeyPoint}{Key\+Point}} $>$ \mbox{\hyperlink{classSceneEspionage_aa077e6d79f8fa78ecf048201e64e2969}{m\+\_\+key\+Points}}
+\item 
+int \mbox{\hyperlink{classSceneEspionage_a6cd4886e0819a9897b729c122397e8b4}{m\+\_\+current\+Key\+Point}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classEntity}{Entity}} $>$ \mbox{\hyperlink{classSceneEspionage_a67085610621aaf0353681662f2dc585a}{m\+\_\+building\+Entity}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classEntity}{Entity}} $>$ \mbox{\hyperlink{classSceneEspionage_ac82b40ef600f7327f5ec24e8666c5044}{m\+\_\+player\+Entity}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classEntity}{Entity}} $>$ \mbox{\hyperlink{classSceneEspionage_a3d2abf44ea7fa09c37f6f9f97d83a3f0}{m\+\_\+cursor\+Entity}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classEntity}{Entity}} $>$ \mbox{\hyperlink{classSceneEspionage_a9460305b7e0b1b5a39d90ff0fd1a24d5}{m\+\_\+guard\+Entity}}
+\item 
+std\+::vector$<$ std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classEntity}{Entity}} $>$ $>$ $>$ \mbox{\hyperlink{classSceneEspionage_aa4f86f2e7de8f64f47f05f237a4df559}{m\+\_\+grid}}
+\item 
+st\+::\+Vector2i \mbox{\hyperlink{classSceneEspionage_aaf7148d558984b7bb59547f8b10327f0}{m\+\_\+grid\+Size}}
+\item 
+int \mbox{\hyperlink{classSceneEspionage_ae546e741c34750cb51cca42d85522179}{m\+\_\+tile\+Size}}
+\item 
+std\+::string \mbox{\hyperlink{classSceneEspionage_a981e60bb0380ed5692f9816e0695d55b}{m\+\_\+building\+English\+Name}}
+\item 
+std\+::string \mbox{\hyperlink{classSceneEspionage_a7b03021ad28f2b5bf8faf9f7c7180f01}{m\+\_\+building\+Native\+Name}}
+\item 
+std\+::string \mbox{\hyperlink{classSceneEspionage_a0e7af2b8c802c34f55206d182ca2340a}{m\+\_\+current\+Anagram}}
+\item 
+std\+::string \mbox{\hyperlink{classSceneEspionage_ab425571688fc8010085bfa39679d479c}{m\+\_\+player\+Solution}}
+\item 
+std\+::string \mbox{\hyperlink{classSceneEspionage_ac5cb204f2b967273aaf78883cc28ef34}{m\+\_\+feedback\+Message}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classEntity}{Entity}} $>$ \mbox{\hyperlink{classSceneEspionage_a348fe5fab60f664ff048f56bd92949b2}{m\+\_\+espionage\+UIEntity}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classSceneEspionage_a7bd5b7b23254ec6161f1dfc581146250}\label{classSceneEspionage_a7bd5b7b23254ec6161f1dfc581146250}} 
+\index{SceneEspionage@{SceneEspionage}!EspionageState@{EspionageState}}
+\index{EspionageState@{EspionageState}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{EspionageState}{EspionageState}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{classSceneEspionage_a7bd5b7b23254ec6161f1dfc581146250}{Scene\+Espionage\+::\+Espionage\+State}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{INFILTRATING@{INFILTRATING}!SceneEspionage@{SceneEspionage}}\index{SceneEspionage@{SceneEspionage}!INFILTRATING@{INFILTRATING}}}\mbox{\Hypertarget{classSceneEspionage_a7bd5b7b23254ec6161f1dfc581146250a778ecc96730832ff0575b3b292e45bd3}\label{classSceneEspionage_a7bd5b7b23254ec6161f1dfc581146250a778ecc96730832ff0575b3b292e45bd3}} 
+INFILTRATING&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SOLVING\_ANAGRAM@{SOLVING\_ANAGRAM}!SceneEspionage@{SceneEspionage}}\index{SceneEspionage@{SceneEspionage}!SOLVING\_ANAGRAM@{SOLVING\_ANAGRAM}}}\mbox{\Hypertarget{classSceneEspionage_a7bd5b7b23254ec6161f1dfc581146250afeb8e4a8a8b1796f0b434ec7d7a04170}\label{classSceneEspionage_a7bd5b7b23254ec6161f1dfc581146250afeb8e4a8a8b1796f0b434ec7d7a04170}} 
+SOLVING\+\_\+\+ANAGRAM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FINAL\_TRANSLATION@{FINAL\_TRANSLATION}!SceneEspionage@{SceneEspionage}}\index{SceneEspionage@{SceneEspionage}!FINAL\_TRANSLATION@{FINAL\_TRANSLATION}}}\mbox{\Hypertarget{classSceneEspionage_a7bd5b7b23254ec6161f1dfc581146250a588fdd0164a2cae8d980560d10e2054b}\label{classSceneEspionage_a7bd5b7b23254ec6161f1dfc581146250a588fdd0164a2cae8d980560d10e2054b}} 
+FINAL\+\_\+\+TRANSLATION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{COMPLETED@{COMPLETED}!SceneEspionage@{SceneEspionage}}\index{SceneEspionage@{SceneEspionage}!COMPLETED@{COMPLETED}}}\mbox{\Hypertarget{classSceneEspionage_a7bd5b7b23254ec6161f1dfc581146250a8f7afecbc8fbc4cd0f50a57d1172482e}\label{classSceneEspionage_a7bd5b7b23254ec6161f1dfc581146250a8f7afecbc8fbc4cd0f50a57d1172482e}} 
+COMPLETED&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FAILED@{FAILED}!SceneEspionage@{SceneEspionage}}\index{SceneEspionage@{SceneEspionage}!FAILED@{FAILED}}}\mbox{\Hypertarget{classSceneEspionage_a7bd5b7b23254ec6161f1dfc581146250ab9e14d9b2886bcff408b85aefa780419}\label{classSceneEspionage_a7bd5b7b23254ec6161f1dfc581146250ab9e14d9b2886bcff408b85aefa780419}} 
+FAILED&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DETECTED@{DETECTED}!SceneEspionage@{SceneEspionage}}\index{SceneEspionage@{SceneEspionage}!DETECTED@{DETECTED}}}\mbox{\Hypertarget{classSceneEspionage_a7bd5b7b23254ec6161f1dfc581146250a5cd8a3828ce36907a27551de5e71221e}\label{classSceneEspionage_a7bd5b7b23254ec6161f1dfc581146250a5cd8a3828ce36907a27551de5e71221e}} 
+DETECTED&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSceneEspionage_a43d84626d89c17683003c3559cb5e35f}\label{classSceneEspionage_a43d84626d89c17683003c3559cb5e35f}} 
+\index{SceneEspionage@{SceneEspionage}!SceneEspionage@{SceneEspionage}}
+\index{SceneEspionage@{SceneEspionage}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{SceneEspionage()}{SceneEspionage()}}
+{\footnotesize\ttfamily Scene\+Espionage\+::\+Scene\+Espionage (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGameEngine}{Game\+Engine}} $\ast$}]{game\+Engine,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classEntity}{Entity}} $>$}]{player,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classEntity}{Entity}} $>$}]{building,  }\item[{const std\+::string \&}]{english\+Name }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneEspionage_a43d84626d89c17683003c3559cb5e35f_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSceneEspionage_ac23c6c5b8dea1613e9efd6265563e655}\label{classSceneEspionage_ac23c6c5b8dea1613e9efd6265563e655}} 
+\index{SceneEspionage@{SceneEspionage}!init@{init}}
+\index{init@{init}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void Scene\+Espionage\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneEspionage_ac23c6c5b8dea1613e9efd6265563e655_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSceneEspionage_a55299a7b15415bc44d9539e32d03a29d}\label{classSceneEspionage_a55299a7b15415bc44d9539e32d03a29d}} 
+\index{SceneEspionage@{SceneEspionage}!onEnd@{onEnd}}
+\index{onEnd@{onEnd}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{onEnd()}{onEnd()}}
+{\footnotesize\ttfamily void Scene\+Espionage\+::on\+End (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneEspionage_a2db8e0dd02a0d248053c84718c1af3eb}\label{classSceneEspionage_a2db8e0dd02a0d248053c84718c1af3eb}} 
+\index{SceneEspionage@{SceneEspionage}!sCheckAnagramSolution@{sCheckAnagramSolution}}
+\index{sCheckAnagramSolution@{sCheckAnagramSolution}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{sCheckAnagramSolution()}{sCheckAnagramSolution()}}
+{\footnotesize\ttfamily void Scene\+Espionage\+::s\+Check\+Anagram\+Solution (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneEspionage_a2db8e0dd02a0d248053c84718c1af3eb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSceneEspionage_ae1c4d00a4aa16de96bfd2f1710595412}\label{classSceneEspionage_ae1c4d00a4aa16de96bfd2f1710595412}} 
+\index{SceneEspionage@{SceneEspionage}!sCheckFinalTranslation@{sCheckFinalTranslation}}
+\index{sCheckFinalTranslation@{sCheckFinalTranslation}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{sCheckFinalTranslation()}{sCheckFinalTranslation()}}
+{\footnotesize\ttfamily void Scene\+Espionage\+::s\+Check\+Final\+Translation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneEspionage_ae1c4d00a4aa16de96bfd2f1710595412_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSceneEspionage_ac879372794a46591642b333cea0854be}\label{classSceneEspionage_ac879372794a46591642b333cea0854be}} 
+\index{SceneEspionage@{SceneEspionage}!sCompleteEspionage@{sCompleteEspionage}}
+\index{sCompleteEspionage@{sCompleteEspionage}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{sCompleteEspionage()}{sCompleteEspionage()}}
+{\footnotesize\ttfamily void Scene\+Espionage\+::s\+Complete\+Espionage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneEspionage_a392e7a93c22fac7515a9ca5dc2d89b8a}\label{classSceneEspionage_a392e7a93c22fac7515a9ca5dc2d89b8a}} 
+\index{SceneEspionage@{SceneEspionage}!sDoAction@{sDoAction}}
+\index{sDoAction@{sDoAction}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{sDoAction()}{sDoAction()}}
+{\footnotesize\ttfamily void Scene\+Espionage\+::s\+Do\+Action (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classAction}{Action}} \&}]{action }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneEspionage_a392e7a93c22fac7515a9ca5dc2d89b8a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSceneEspionage_ae8072115af23613fcfc877d41530fb1b}\label{classSceneEspionage_ae8072115af23613fcfc877d41530fb1b}} 
+\index{SceneEspionage@{SceneEspionage}!sFailEspionage@{sFailEspionage}}
+\index{sFailEspionage@{sFailEspionage}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{sFailEspionage()}{sFailEspionage()}}
+{\footnotesize\ttfamily void Scene\+Espionage\+::s\+Fail\+Espionage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneEspionage_a0beb2bcc2d668fb4083f9e9cd6858d6e}\label{classSceneEspionage_a0beb2bcc2d668fb4083f9e9cd6858d6e}} 
+\index{SceneEspionage@{SceneEspionage}!sGenerateAnagram@{sGenerateAnagram}}
+\index{sGenerateAnagram@{sGenerateAnagram}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{sGenerateAnagram()}{sGenerateAnagram()}}
+{\footnotesize\ttfamily void Scene\+Espionage\+::s\+Generate\+Anagram (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneEspionage_a3e3cf5029f48cb7147cde8d8485f5660}\label{classSceneEspionage_a3e3cf5029f48cb7147cde8d8485f5660}} 
+\index{SceneEspionage@{SceneEspionage}!sInitializeFloorPlan@{sInitializeFloorPlan}}
+\index{sInitializeFloorPlan@{sInitializeFloorPlan}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{sInitializeFloorPlan()}{sInitializeFloorPlan()}}
+{\footnotesize\ttfamily void Scene\+Espionage\+::s\+Initialize\+Floor\+Plan (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneEspionage_a61b6c90735ef3658dc94373682b02a60}\label{classSceneEspionage_a61b6c90735ef3658dc94373682b02a60}} 
+\index{SceneEspionage@{SceneEspionage}!sIsvalidTranslation@{sIsvalidTranslation}}
+\index{sIsvalidTranslation@{sIsvalidTranslation}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{sIsvalidTranslation()}{sIsvalidTranslation()}}
+{\footnotesize\ttfamily bool Scene\+Espionage\+::s\+Isvalid\+Translation (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{translation }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneEspionage_af17ffd31299dcaec235c747da7cfe3fd}\label{classSceneEspionage_af17ffd31299dcaec235c747da7cfe3fd}} 
+\index{SceneEspionage@{SceneEspionage}!sMoveToNextPoint@{sMoveToNextPoint}}
+\index{sMoveToNextPoint@{sMoveToNextPoint}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{sMoveToNextPoint()}{sMoveToNextPoint()}}
+{\footnotesize\ttfamily void Scene\+Espionage\+::s\+Move\+To\+Next\+Point (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneEspionage_af17ffd31299dcaec235c747da7cfe3fd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSceneEspionage_a2e728ad393f17334b4704d7117fff263}\label{classSceneEspionage_a2e728ad393f17334b4704d7117fff263}} 
+\index{SceneEspionage@{SceneEspionage}!sRender@{sRender}}
+\index{sRender@{sRender}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{sRender()}{sRender()}}
+{\footnotesize\ttfamily void Scene\+Espionage\+::s\+Render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classSceneEspionage_a3c4eb1b78ab2f6c402e2c218b4ac4a6a}\label{classSceneEspionage_a3c4eb1b78ab2f6c402e2c218b4ac4a6a}} 
+\index{SceneEspionage@{SceneEspionage}!sRenderAnagramUI@{sRenderAnagramUI}}
+\index{sRenderAnagramUI@{sRenderAnagramUI}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{sRenderAnagramUI()}{sRenderAnagramUI()}}
+{\footnotesize\ttfamily void Scene\+Espionage\+::s\+Render\+Anagram\+UI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneEspionage_a839c67aef57ea8325a73af36f16e6b4b}\label{classSceneEspionage_a839c67aef57ea8325a73af36f16e6b4b}} 
+\index{SceneEspionage@{SceneEspionage}!sRenderFloorPlan@{sRenderFloorPlan}}
+\index{sRenderFloorPlan@{sRenderFloorPlan}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{sRenderFloorPlan()}{sRenderFloorPlan()}}
+{\footnotesize\ttfamily void Scene\+Espionage\+::s\+Render\+Floor\+Plan (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneEspionage_a728f9922ea915bd8f5eff0ae94376bc0}\label{classSceneEspionage_a728f9922ea915bd8f5eff0ae94376bc0}} 
+\index{SceneEspionage@{SceneEspionage}!sRenderPlayerMarker@{sRenderPlayerMarker}}
+\index{sRenderPlayerMarker@{sRenderPlayerMarker}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{sRenderPlayerMarker()}{sRenderPlayerMarker()}}
+{\footnotesize\ttfamily void Scene\+Espionage\+::s\+Render\+Player\+Marker (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneEspionage_ac916dee2dd7d58f6abdbb4d5e1304374}\label{classSceneEspionage_ac916dee2dd7d58f6abdbb4d5e1304374}} 
+\index{SceneEspionage@{SceneEspionage}!sRenderTranslationUI@{sRenderTranslationUI}}
+\index{sRenderTranslationUI@{sRenderTranslationUI}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{sRenderTranslationUI()}{sRenderTranslationUI()}}
+{\footnotesize\ttfamily void Scene\+Espionage\+::s\+Render\+Translation\+UI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneEspionage_aa790fbce1ce5d9d5a4415de6ab6f2f43}\label{classSceneEspionage_aa790fbce1ce5d9d5a4415de6ab6f2f43}} 
+\index{SceneEspionage@{SceneEspionage}!sScrambleWord@{sScrambleWord}}
+\index{sScrambleWord@{sScrambleWord}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{sScrambleWord()}{sScrambleWord()}}
+{\footnotesize\ttfamily std\+::string Scene\+Espionage\+::s\+Scramble\+Word (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{word }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneEspionage_aa33f48012627102e3f7c2b3aaf4aa9a2}\label{classSceneEspionage_aa33f48012627102e3f7c2b3aaf4aa9a2}} 
+\index{SceneEspionage@{SceneEspionage}!update@{update}}
+\index{update@{update}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Scene\+Espionage\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classSceneEspionage_a981e60bb0380ed5692f9816e0695d55b}\label{classSceneEspionage_a981e60bb0380ed5692f9816e0695d55b}} 
+\index{SceneEspionage@{SceneEspionage}!m\_buildingEnglishName@{m\_buildingEnglishName}}
+\index{m\_buildingEnglishName@{m\_buildingEnglishName}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{m\_buildingEnglishName}{m\_buildingEnglishName}}
+{\footnotesize\ttfamily std\+::string Scene\+Espionage\+::m\+\_\+building\+English\+Name\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneEspionage_a67085610621aaf0353681662f2dc585a}\label{classSceneEspionage_a67085610621aaf0353681662f2dc585a}} 
+\index{SceneEspionage@{SceneEspionage}!m\_buildingEntity@{m\_buildingEntity}}
+\index{m\_buildingEntity@{m\_buildingEntity}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{m\_buildingEntity}{m\_buildingEntity}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classEntity}{Entity}}$>$ Scene\+Espionage\+::m\+\_\+building\+Entity\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneEspionage_a7b03021ad28f2b5bf8faf9f7c7180f01}\label{classSceneEspionage_a7b03021ad28f2b5bf8faf9f7c7180f01}} 
+\index{SceneEspionage@{SceneEspionage}!m\_buildingNativeName@{m\_buildingNativeName}}
+\index{m\_buildingNativeName@{m\_buildingNativeName}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{m\_buildingNativeName}{m\_buildingNativeName}}
+{\footnotesize\ttfamily std\+::string Scene\+Espionage\+::m\+\_\+building\+Native\+Name\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneEspionage_ac09d7e7dc78d695586255ed7f85f400c}\label{classSceneEspionage_ac09d7e7dc78d695586255ed7f85f400c}} 
+\index{SceneEspionage@{SceneEspionage}!m\_colorMain@{m\_colorMain}}
+\index{m\_colorMain@{m\_colorMain}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{m\_colorMain}{m\_colorMain}}
+{\footnotesize\ttfamily sf\+::\+Color Scene\+Espionage\+::m\+\_\+color\+Main\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneEspionage_a0e7af2b8c802c34f55206d182ca2340a}\label{classSceneEspionage_a0e7af2b8c802c34f55206d182ca2340a}} 
+\index{SceneEspionage@{SceneEspionage}!m\_currentAnagram@{m\_currentAnagram}}
+\index{m\_currentAnagram@{m\_currentAnagram}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{m\_currentAnagram}{m\_currentAnagram}}
+{\footnotesize\ttfamily std\+::string Scene\+Espionage\+::m\+\_\+current\+Anagram\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneEspionage_a6cd4886e0819a9897b729c122397e8b4}\label{classSceneEspionage_a6cd4886e0819a9897b729c122397e8b4}} 
+\index{SceneEspionage@{SceneEspionage}!m\_currentKeyPoint@{m\_currentKeyPoint}}
+\index{m\_currentKeyPoint@{m\_currentKeyPoint}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{m\_currentKeyPoint}{m\_currentKeyPoint}}
+{\footnotesize\ttfamily int Scene\+Espionage\+::m\+\_\+current\+Key\+Point\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneEspionage_a3d2abf44ea7fa09c37f6f9f97d83a3f0}\label{classSceneEspionage_a3d2abf44ea7fa09c37f6f9f97d83a3f0}} 
+\index{SceneEspionage@{SceneEspionage}!m\_cursorEntity@{m\_cursorEntity}}
+\index{m\_cursorEntity@{m\_cursorEntity}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{m\_cursorEntity}{m\_cursorEntity}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classEntity}{Entity}}$>$ Scene\+Espionage\+::m\+\_\+cursor\+Entity\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneEspionage_a348fe5fab60f664ff048f56bd92949b2}\label{classSceneEspionage_a348fe5fab60f664ff048f56bd92949b2}} 
+\index{SceneEspionage@{SceneEspionage}!m\_espionageUIEntity@{m\_espionageUIEntity}}
+\index{m\_espionageUIEntity@{m\_espionageUIEntity}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{m\_espionageUIEntity}{m\_espionageUIEntity}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classEntity}{Entity}}$>$ Scene\+Espionage\+::m\+\_\+espionage\+UIEntity\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneEspionage_ac5cb204f2b967273aaf78883cc28ef34}\label{classSceneEspionage_ac5cb204f2b967273aaf78883cc28ef34}} 
+\index{SceneEspionage@{SceneEspionage}!m\_feedbackMessage@{m\_feedbackMessage}}
+\index{m\_feedbackMessage@{m\_feedbackMessage}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{m\_feedbackMessage}{m\_feedbackMessage}}
+{\footnotesize\ttfamily std\+::string Scene\+Espionage\+::m\+\_\+feedback\+Message\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneEspionage_a935309b68a934ee10eef88b8021ee690}\label{classSceneEspionage_a935309b68a934ee10eef88b8021ee690}} 
+\index{SceneEspionage@{SceneEspionage}!m\_fontMain@{m\_fontMain}}
+\index{m\_fontMain@{m\_fontMain}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{m\_fontMain}{m\_fontMain}}
+{\footnotesize\ttfamily sf\+::\+Font Scene\+Espionage\+::m\+\_\+font\+Main\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneEspionage_aa4f86f2e7de8f64f47f05f237a4df559}\label{classSceneEspionage_aa4f86f2e7de8f64f47f05f237a4df559}} 
+\index{SceneEspionage@{SceneEspionage}!m\_grid@{m\_grid}}
+\index{m\_grid@{m\_grid}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{m\_grid}{m\_grid}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::vector$<$std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classEntity}{Entity}}$>$ $>$ $>$ Scene\+Espionage\+::m\+\_\+grid\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneEspionage_aaf7148d558984b7bb59547f8b10327f0}\label{classSceneEspionage_aaf7148d558984b7bb59547f8b10327f0}} 
+\index{SceneEspionage@{SceneEspionage}!m\_gridSize@{m\_gridSize}}
+\index{m\_gridSize@{m\_gridSize}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{m\_gridSize}{m\_gridSize}}
+{\footnotesize\ttfamily st\+::\+Vector2i Scene\+Espionage\+::m\+\_\+grid\+Size\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneEspionage_a9460305b7e0b1b5a39d90ff0fd1a24d5}\label{classSceneEspionage_a9460305b7e0b1b5a39d90ff0fd1a24d5}} 
+\index{SceneEspionage@{SceneEspionage}!m\_guardEntity@{m\_guardEntity}}
+\index{m\_guardEntity@{m\_guardEntity}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{m\_guardEntity}{m\_guardEntity}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classEntity}{Entity}}$>$ Scene\+Espionage\+::m\+\_\+guard\+Entity\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneEspionage_a0156d1bbf36b6e08afc405621fc4137c}\label{classSceneEspionage_a0156d1bbf36b6e08afc405621fc4137c}} 
+\index{SceneEspionage@{SceneEspionage}!m\_isReturning@{m\_isReturning}}
+\index{m\_isReturning@{m\_isReturning}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{m\_isReturning}{m\_isReturning}}
+{\footnotesize\ttfamily bool Scene\+Espionage\+::m\+\_\+is\+Returning = false\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneEspionage_aa077e6d79f8fa78ecf048201e64e2969}\label{classSceneEspionage_aa077e6d79f8fa78ecf048201e64e2969}} 
+\index{SceneEspionage@{SceneEspionage}!m\_keyPoints@{m\_keyPoints}}
+\index{m\_keyPoints@{m\_keyPoints}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{m\_keyPoints}{m\_keyPoints}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{structSceneEspionage_1_1KeyPoint}{Key\+Point}}$>$ Scene\+Espionage\+::m\+\_\+key\+Points\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneEspionage_ac82b40ef600f7327f5ec24e8666c5044}\label{classSceneEspionage_ac82b40ef600f7327f5ec24e8666c5044}} 
+\index{SceneEspionage@{SceneEspionage}!m\_playerEntity@{m\_playerEntity}}
+\index{m\_playerEntity@{m\_playerEntity}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{m\_playerEntity}{m\_playerEntity}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classEntity}{Entity}}$>$ Scene\+Espionage\+::m\+\_\+player\+Entity\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneEspionage_ab425571688fc8010085bfa39679d479c}\label{classSceneEspionage_ab425571688fc8010085bfa39679d479c}} 
+\index{SceneEspionage@{SceneEspionage}!m\_playerSolution@{m\_playerSolution}}
+\index{m\_playerSolution@{m\_playerSolution}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{m\_playerSolution}{m\_playerSolution}}
+{\footnotesize\ttfamily std\+::string Scene\+Espionage\+::m\+\_\+player\+Solution\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneEspionage_aaf43f1565b68e3e6dac2b6689accaf40}\label{classSceneEspionage_aaf43f1565b68e3e6dac2b6689accaf40}} 
+\index{SceneEspionage@{SceneEspionage}!m\_returnDelay@{m\_returnDelay}}
+\index{m\_returnDelay@{m\_returnDelay}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{m\_returnDelay}{m\_returnDelay}}
+{\footnotesize\ttfamily float Scene\+Espionage\+::m\+\_\+return\+Delay = 3.f\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneEspionage_a52b6268a77c9a1aa7693cf05c2e0fca9}\label{classSceneEspionage_a52b6268a77c9a1aa7693cf05c2e0fca9}} 
+\index{SceneEspionage@{SceneEspionage}!m\_state@{m\_state}}
+\index{m\_state@{m\_state}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{m\_state}{m\_state}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classSceneEspionage_a7bd5b7b23254ec6161f1dfc581146250}{Espionage\+State}} Scene\+Espionage\+::m\+\_\+state\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneEspionage_ae546e741c34750cb51cca42d85522179}\label{classSceneEspionage_ae546e741c34750cb51cca42d85522179}} 
+\index{SceneEspionage@{SceneEspionage}!m\_tileSize@{m\_tileSize}}
+\index{m\_tileSize@{m\_tileSize}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{m\_tileSize}{m\_tileSize}}
+{\footnotesize\ttfamily int Scene\+Espionage\+::m\+\_\+tile\+Size\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneEspionage_aefe4a6ed77bcea77c08d5e18dcbe711d}\label{classSceneEspionage_aefe4a6ed77bcea77c08d5e18dcbe711d}} 
+\index{SceneEspionage@{SceneEspionage}!m\_timer@{m\_timer}}
+\index{m\_timer@{m\_timer}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{m\_timer}{m\_timer}}
+{\footnotesize\ttfamily sf\+::\+Clock Scene\+Espionage\+::m\+\_\+timer\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneEspionage_a2f694ef8680006d571a91a8135cdf344}\label{classSceneEspionage_a2f694ef8680006d571a91a8135cdf344}} 
+\index{SceneEspionage@{SceneEspionage}!m\_turnManager@{m\_turnManager}}
+\index{m\_turnManager@{m\_turnManager}!SceneEspionage@{SceneEspionage}}
+\doxysubsubsection{\texorpdfstring{m\_turnManager}{m\_turnManager}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classTurnManager}{Turn\+Manager}}$>$ Scene\+Espionage\+::m\+\_\+turn\+Manager\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/scenes/\mbox{\hyperlink{SceneEspionage_8h}{Scene\+Espionage.\+h}}\item 
+src/scenes/\mbox{\hyperlink{SceneEspionage_8cpp}{Scene\+Espionage.\+cpp}}\end{DoxyCompactItemize}

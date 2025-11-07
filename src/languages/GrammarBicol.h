@@ -6,7 +6,7 @@
 
 class BicolGrammar : public Grammar
 {
-  enum NominalMarkers
+  enum class NominalMarkers
     {
       //direct
       SI, AN,

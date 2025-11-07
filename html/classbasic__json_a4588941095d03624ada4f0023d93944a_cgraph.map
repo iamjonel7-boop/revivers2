@@ -1,0 +1,10 @@
+<map id="basic_json::from_ubjson" name="basic_json::from_ubjson">
+<area shape="rect" id="node1" title="create a JSON value from an input in UBJSON format" alt="" coords="5,31,168,57"/>
+<area shape="rect" id="node2" href="$namespacedetail.html#aada1510d1b55ad2faf4a71c70cffb374" title=" " alt="" coords="415,5,553,32"/>
+<area shape="rect" id="node3" href="$classbasic__json.html#a602b1c389d92f2c7db21f89bb6fb9817" title=" " alt="" coords="216,56,367,83"/>
+<area shape="rect" id="node4" href="$classdetail_1_1binary__reader.html#a8e1b5452ae426e1d7b48761859e7f52d" title=" " alt="" coords="415,56,553,99"/>
+<area shape="rect" id="node5" href="$namespacedetail.html#a266fb3d4bf633ad6c506434cc91164da" title=" " alt="" coords="601,39,701,65"/>
+<area shape="rect" id="node8" href="$namespacedetail.html#a7116703ea757fe9821bf2e903b91c160" title=" " alt="" coords="612,89,690,116"/>
+<area shape="rect" id="node6" href="$namespacedetail.html#a89f967b745cf8df11ba9d59f93d97753" title=" " alt="" coords="756,13,883,40"/>
+<area shape="rect" id="node7" href="$namespacedetail.html#ac185140ed8c8fcc07a302a890b714b0d" title=" " alt="" coords="749,64,890,91"/>
+</map>

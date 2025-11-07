@@ -52,12 +52,14 @@ void GameEngine::sUserInput()
             scene->doAction(Action(actionName, actionType));
             break;
           }
+
         case sf::Event::TextEntered:
           if(event.text.unicode < 128)
             {
               textInputManager.addCharacter(static_cast<char>(event.text));
             }
           break;
+
         default:
           break;
         }

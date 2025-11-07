@@ -1,0 +1,57 @@
+var classLexiconManager =
+[
+    [ "SystemTrigger", "structLexiconManager_1_1SystemTrigger.html", "structLexiconManager_1_1SystemTrigger" ],
+    [ "WordData", "structLexiconManager_1_1WordData.html", "structLexiconManager_1_1WordData" ],
+    [ "GameSystem", "classLexiconManager.html#a31ba6cbaa61abef00c07c3a804041d07", [
+      [ "MOVEMENT_SYSTEM", "classLexiconManager.html#a31ba6cbaa61abef00c07c3a804041d07ad30f2b49f8b2c126b1b3164483622369", null ],
+      [ "RECRUITMENT_SYSTEM", "classLexiconManager.html#a31ba6cbaa61abef00c07c3a804041d07ac39f40f335d97fb0ec98f8fcfdbb5fbe", null ],
+      [ "COMBAT_SYSTEM", "classLexiconManager.html#a31ba6cbaa61abef00c07c3a804041d07a5a3210c716864ef6dc75b91f22370528", null ],
+      [ "RESOURCE_SYSTEM", "classLexiconManager.html#a31ba6cbaa61abef00c07c3a804041d07a59d230a6f06fa99d819cc1ca453375c5", null ],
+      [ "BUILDING_SYSTEM", "classLexiconManager.html#a31ba6cbaa61abef00c07c3a804041d07a424e631d1710420d5db558cc46a8f0e8", null ],
+      [ "ESPIONAGE_SYSTEM", "classLexiconManager.html#a31ba6cbaa61abef00c07c3a804041d07a392839a63f00a1f8b3523128e5d5d6c8", null ],
+      [ "DIALOGUE_SYSTEM", "classLexiconManager.html#a31ba6cbaa61abef00c07c3a804041d07af75a71ecb02f5b51ca2bb0e495325fc6", null ],
+      [ "CRAFTING_SYSTEM", "classLexiconManager.html#a31ba6cbaa61abef00c07c3a804041d07a253a0ccd178fa0cd13d208aa482f51e1", null ],
+      [ "HEALING_SYSTEM", "classLexiconManager.html#a31ba6cbaa61abef00c07c3a804041d07a7b972462a773a3bc7971141f2809145a", null ],
+      [ "STEALTH_SYSTEM", "classLexiconManager.html#a31ba6cbaa61abef00c07c3a804041d07a010f3742fff1733645d4e5a4773e9f5d", null ]
+    ] ],
+    [ "VerbCategory", "classLexiconManager.html#aa184320f96c9f13fde8e2b6f156d0977", [
+      [ "MOVEMENT", "classLexiconManager.html#aa184320f96c9f13fde8e2b6f156d0977ad1ac07d8b2c7db4901fc68f9cb7a923a", null ],
+      [ "SOCIAL", "classLexiconManager.html#aa184320f96c9f13fde8e2b6f156d0977ae16b95b6f0a088d2efe7477546ba52d9", null ],
+      [ "COMBAT", "classLexiconManager.html#aa184320f96c9f13fde8e2b6f156d0977acd4174be077f1cd1964ecb7b16168db6", null ],
+      [ "ESPIONAGE", "classLexiconManager.html#aa184320f96c9f13fde8e2b6f156d0977ae8c8ab731c515f61beef7f1d25f52389", null ],
+      [ "RESOURCE", "classLexiconManager.html#aa184320f96c9f13fde8e2b6f156d0977a4f49da9035f276c0947466eb7c42249a", null ]
+    ] ],
+    [ "WordType", "classLexiconManager.html#afe2ecde21da9a30ae39b83035e084034", [
+      [ "NOUN", "classLexiconManager.html#afe2ecde21da9a30ae39b83035e084034ab5d8555b3da2a1cc3777d4e1978e8f96", null ],
+      [ "VERB", "classLexiconManager.html#afe2ecde21da9a30ae39b83035e084034a9ab55524458a3237c512ccdf1e1e108f", null ],
+      [ "ADJECTIVE", "classLexiconManager.html#afe2ecde21da9a30ae39b83035e084034a25e7c2f520352b487644b4439f41573a", null ],
+      [ "PHRASE", "classLexiconManager.html#afe2ecde21da9a30ae39b83035e084034a326989110ddd70abcc96d1e4bf40afc9", null ],
+      [ "BUILDING", "classLexiconManager.html#afe2ecde21da9a30ae39b83035e084034a71a6834884666147c0334f0c40bc7295", null ],
+      [ "PROFESSION", "classLexiconManager.html#afe2ecde21da9a30ae39b83035e084034a34f72c31d01b22fad7a0c695ae605e09", null ]
+    ] ],
+    [ "LexiconManager", "classLexiconManager.html#aeacbcc6dd4850b4a0b7bed7fe1eb70c5", null ],
+    [ "addWordToPlayerDictionary", "classLexiconManager.html#af1b4498bea05980fa4798b50a592241c", null ],
+    [ "areWordsRelated", "classLexiconManager.html#a0ff52ca3c3a647d51cbc54fd4d6e3c24", null ],
+    [ "calculatePlayerPrestige", "classLexiconManager.html#a35cbde119a3dea97c23f25c6a4b7c83f", null ],
+    [ "clearPlayerDictionary", "classLexiconManager.html#a34dc2868e32a9ee1aa5fcb707c6fdbf7", null ],
+    [ "getAnagramCandidates", "classLexiconManager.html#a70160f8d6bc92c92837c9058f3608a1d", null ],
+    [ "getBuildingNames", "classLexiconManager.html#aa2221b2e7cc30e2136453df6490ef04c", null ],
+    [ "getCombatWords", "classLexiconManager.html#a894e49482484757e8263342b1277e89d", null ],
+    [ "getMovementVerbs", "classLexiconManager.html#a33e2512d4a5f46fd02bbd95e7ea0a43a", null ],
+    [ "getPlayerDictionary", "classLexiconManager.html#a734d7adaa1118b468cf8b64704e64705", null ],
+    [ "getPlayerVocabularySize", "classLexiconManager.html#a384648ce1c15ea13c102605f64e8fb3e", null ],
+    [ "getRandomEnglishWord", "classLexiconManager.html#ab25ac6a71b27a6c97ccb8cbc1ec0a110", null ],
+    [ "getRandomWordbyCategory", "classLexiconManager.html#aff2209eb68590f22d966f08580a35814", null ],
+    [ "getRandomWordbyType", "classLexiconManager.html#a09868f75fd2afb8f99168e9ce79278a6", null ],
+    [ "getRandomWords", "classLexiconManager.html#a4358ac1104145bf076962cc3898735bf", null ],
+    [ "getRelatedWords", "classLexiconManager.html#a222afdedae83a4625513fa2e9367dac9", null ],
+    [ "getSystemForVerb", "classLexiconManager.html#ad96c119b77838939d624763c0fb93be7", null ],
+    [ "getSystemTriggers", "classLexiconManager.html#abb9443b4d0b834592a2edc12c81ee97c", null ],
+    [ "getVocabularyBreakdown", "classLexiconManager.html#a4569dd67674a8b2017e6d4012e03c138", null ],
+    [ "getWordData", "classLexiconManager.html#a0b508c6b761e75f3d4b1751e3e691b7c", null ],
+    [ "getWordsByVerbCategory", "classLexiconManager.html#a3ebbf29d0e732f67655868e31d43f9a5", null ],
+    [ "playerKnowsWord", "classLexiconManager.html#acb818c5d20830316fedc9d818f7a28c9", null ],
+    [ "removeWordFromPlayerDictionary", "classLexiconManager.html#a139bc98d22f7c867aa1f1062a4106420", null ],
+    [ "searchWords", "classLexiconManager.html#a21176f61eefb09781eeba7d11f60cf84", null ],
+    [ "verbExists", "classLexiconManager.html#a3eb5bbe5953ffd34521b8ed3729a93b5", null ]
+];

@@ -4,21 +4,21 @@
 #include <vector>
 #include <map>
 
-enum Aspects
+enum class Aspects
   {
     PERFECTIVE,
     IMPERFECTIVE,
     CONTEMPLATIVE
   };
 
-enum Voices
+enum class Voices
   {
     ACTOR,
     PATIENT,
     LOCATIVE
   };
 
-enum Cases
+enum class Cases
   {
     DIRECT,
     INDIRECT,

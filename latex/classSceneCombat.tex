@@ -1,0 +1,567 @@
+\hypertarget{classSceneCombat}{}\doxysection{Scene\+Combat Class Reference}
+\label{classSceneCombat}\index{SceneCombat@{SceneCombat}}
+
+
+{\ttfamily \#include $<$Scene\+Combat.\+h$>$}
+
+
+
+Inheritance diagram for Scene\+Combat\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{classSceneCombat__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Scene\+Combat\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classSceneCombat__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structSceneCombat_1_1CombatState}{Combat\+State}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSceneCombat_a11322c5c131a823eeee0caea2caea587}{Scene\+Combat}} (\mbox{\hyperlink{classGameEngine}{Game\+Engine}} $\ast$game\+Engine, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classEntity}{Entity}} $>$ player, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classEntity}{Entity}} $>$ enemy)
+\item 
+void \mbox{\hyperlink{classSceneCombat_aa41a99f8d077d3f6fd90f73b6c427173}{s\+Render}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classSceneCombat_a998026e431b8e404e2f2a306b5eda817}{set\+Paused}} (bool paused)
+\item 
+void \mbox{\hyperlink{classSceneCombat_ae2d70c8aaf0342c04a50623fc5839b3d}{init}} ()
+\item 
+void \mbox{\hyperlink{classSceneCombat_a886a09ed8afb275de6df2383a242783c}{update}} ()
+\item 
+void \mbox{\hyperlink{classSceneCombat_a37f6cbef92fa92fc1532dafd265aefc5}{s\+Do\+Action}} (const \mbox{\hyperlink{classAction}{Action}} \&action)
+\item 
+void \mbox{\hyperlink{classSceneCombat_a23f4da6025f686abc182a05a52edeea2}{on\+End}} ()
+\item 
+void \mbox{\hyperlink{classSceneCombat_aa06cefcde7733735ed69989f0eac95fb}{s\+Combat\+Update}} ()
+\item 
+void \mbox{\hyperlink{classSceneCombat_aed515cf302c3f9f5dab23b2597ddc086}{s\+Generate\+Word\+Challenge}} ()
+\item 
+void \mbox{\hyperlink{classSceneCombat_a0fed287dccccef9e9431e9085899ae38}{s\+Process\+Player\+Answer}} ()
+\item 
+void \mbox{\hyperlink{classSceneCombat_a465c5aa967a785e6ecaf11b57f865de5}{s\+Apply\+Damage}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classEntity}{Entity}} $>$ target, int damage)
+\item 
+void \mbox{\hyperlink{classSceneCombat_af0b3bef84d34d470709b0a050771c44e}{s\+End\+Combat}} (bool player\+Won)
+\item 
+void \mbox{\hyperlink{classSceneCombat_a7b1e36e0481742dff817f70dfb45336f}{s\+Start\+Semantic\+Chaining}} ()
+\item 
+void \mbox{\hyperlink{classSceneCombat_a76d841c8792a343487dfb6d19d82b0b1}{s\+Add\+Word\+To\+Chain}} (const std\+::string \&word)
+\item 
+void \mbox{\hyperlink{classSceneCombat_a96eda451b05e50af9f18d47c40ce30be}{s\+Remove\+Last\+Word\+From\+Chain}} ()
+\item 
+void \mbox{\hyperlink{classSceneCombat_a8b6f0d1575a1082fe8a5b929d00ea88b}{s\+Submit\+Chain}} ()
+\item 
+void \mbox{\hyperlink{classSceneCombat_ada8c49991a48bf4c6aec2f7a537301fe}{s\+Calculate\+Chain\+Damage}} ()
+\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classSceneCombat_aad9fbc02da2720c6bfe3eaf3730d0e64}{s\+Get\+Available\+Chain\+Words}} () const
+\item 
+bool \mbox{\hyperlink{classSceneCombat_aece6655ddb0f2504638878f9321ef492}{s\+Validate\+Semantic\+Chain}} (const std\+::string \&new\+Word) const
+\item 
+bool \mbox{\hyperlink{classSceneCombat_a5438d9ea2e75ba54b357409cc47a6700}{s\+Player\+Knows\+Word}} (const std\+::string \&native\+Word) const
+\item 
+void \mbox{\hyperlink{classSceneCombat_a48f5e446a93b78ddff16b5ff5ba277e6}{s\+Render\+Combat\+UI}} ()
+\item 
+void \mbox{\hyperlink{classSceneCombat_a2fc2dd39fbf50f70f18261aec17e8458}{s\+Render\+Chain\+UI}} ()
+\item 
+void \mbox{\hyperlink{classSceneCombat_a2dde7bc9ed6127c5317f7f6fe3900257}{s\+Render\+Health\+Bars}} ()
+\item 
+void \mbox{\hyperlink{classSceneCombat_a2a2b228f2bf649ca460cbe33db05c394}{s\+Load\+Word\+Database}} ()
+\item 
+void \mbox{\hyperlink{classSceneCombat_ab3b1c676a3b2399dc7ce5c0c3bb5da6a}{s\+Load\+Semantic\+Relations}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Font \mbox{\hyperlink{classSceneCombat_ac05116c2d850206bcbf9b492f6976248}{m\+\_\+font\+Main}}
+\item 
+sf\+::\+Color \mbox{\hyperlink{classSceneCombat_a2d88a9e8b1af3d2170a460da6fc7a8b6}{m\+\_\+color\+Main}}
+\item 
+bool \mbox{\hyperlink{classSceneCombat_a6632304a6e65c7133c699d9fd1400e51}{m\+\_\+paused}} = false
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classEntity}{Entity}} $>$ \mbox{\hyperlink{classSceneCombat_a1b99cbedb2dc554bd13916adcfdec7f9}{m\+\_\+player\+Entity}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classEntity}{Entity}} $>$ \mbox{\hyperlink{classSceneCombat_a0855851891135ec11b5a68b78453401a}{m\+\_\+enemy\+Entity}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classEntity}{Entity}} $>$ \mbox{\hyperlink{classSceneCombat_a2a1e9d3f1afd592d8728c034babab98d}{m\+\_\+combat\+UIEntity}}
+\item 
+\mbox{\hyperlink{structSceneCombat_1_1CombatState}{Combat\+State}} \mbox{\hyperlink{classSceneCombat_a8bb5be8394a4722f394c57467bf49b6b}{m\+\_\+combat\+State}}
+\item 
+std\+::map$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{classSceneCombat_a6bf02d879767a2dad3517f1a1715dbe5}{m\+\_\+word\+Database}}
+\item 
+std\+::map$<$ std\+::string, std\+::vector$<$ std\+::string $>$ $>$ \mbox{\hyperlink{classSceneCombat_a01144ab36987436cb7391a6fccd1a3df}{m\+\_\+semantic\+Relations}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSceneCombat_a11322c5c131a823eeee0caea2caea587}\label{classSceneCombat_a11322c5c131a823eeee0caea2caea587}} 
+\index{SceneCombat@{SceneCombat}!SceneCombat@{SceneCombat}}
+\index{SceneCombat@{SceneCombat}!SceneCombat@{SceneCombat}}
+\doxysubsubsection{\texorpdfstring{SceneCombat()}{SceneCombat()}}
+{\footnotesize\ttfamily Scene\+Combat\+::\+Scene\+Combat (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGameEngine}{Game\+Engine}} $\ast$}]{game\+Engine,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classEntity}{Entity}} $>$}]{player,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classEntity}{Entity}} $>$}]{enemy }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneCombat_a11322c5c131a823eeee0caea2caea587_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSceneCombat_ae2d70c8aaf0342c04a50623fc5839b3d}\label{classSceneCombat_ae2d70c8aaf0342c04a50623fc5839b3d}} 
+\index{SceneCombat@{SceneCombat}!init@{init}}
+\index{init@{init}!SceneCombat@{SceneCombat}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void Scene\+Combat\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneCombat_ae2d70c8aaf0342c04a50623fc5839b3d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneCombat_ae2d70c8aaf0342c04a50623fc5839b3d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSceneCombat_a23f4da6025f686abc182a05a52edeea2}\label{classSceneCombat_a23f4da6025f686abc182a05a52edeea2}} 
+\index{SceneCombat@{SceneCombat}!onEnd@{onEnd}}
+\index{onEnd@{onEnd}!SceneCombat@{SceneCombat}}
+\doxysubsubsection{\texorpdfstring{onEnd()}{onEnd()}}
+{\footnotesize\ttfamily void Scene\+Combat\+::on\+End (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneCombat_a76d841c8792a343487dfb6d19d82b0b1}\label{classSceneCombat_a76d841c8792a343487dfb6d19d82b0b1}} 
+\index{SceneCombat@{SceneCombat}!sAddWordToChain@{sAddWordToChain}}
+\index{sAddWordToChain@{sAddWordToChain}!SceneCombat@{SceneCombat}}
+\doxysubsubsection{\texorpdfstring{sAddWordToChain()}{sAddWordToChain()}}
+{\footnotesize\ttfamily void Scene\+Combat\+::s\+Add\+Word\+To\+Chain (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{word }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneCombat_a76d841c8792a343487dfb6d19d82b0b1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneCombat_a76d841c8792a343487dfb6d19d82b0b1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSceneCombat_a465c5aa967a785e6ecaf11b57f865de5}\label{classSceneCombat_a465c5aa967a785e6ecaf11b57f865de5}} 
+\index{SceneCombat@{SceneCombat}!sApplyDamage@{sApplyDamage}}
+\index{sApplyDamage@{sApplyDamage}!SceneCombat@{SceneCombat}}
+\doxysubsubsection{\texorpdfstring{sApplyDamage()}{sApplyDamage()}}
+{\footnotesize\ttfamily void Scene\+Combat\+::s\+Apply\+Damage (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classEntity}{Entity}} $>$}]{target,  }\item[{int}]{damage }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneCombat_a465c5aa967a785e6ecaf11b57f865de5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSceneCombat_ada8c49991a48bf4c6aec2f7a537301fe}\label{classSceneCombat_ada8c49991a48bf4c6aec2f7a537301fe}} 
+\index{SceneCombat@{SceneCombat}!sCalculateChainDamage@{sCalculateChainDamage}}
+\index{sCalculateChainDamage@{sCalculateChainDamage}!SceneCombat@{SceneCombat}}
+\doxysubsubsection{\texorpdfstring{sCalculateChainDamage()}{sCalculateChainDamage()}}
+{\footnotesize\ttfamily void Scene\+Combat\+::s\+Calculate\+Chain\+Damage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneCombat_ada8c49991a48bf4c6aec2f7a537301fe_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSceneCombat_aa06cefcde7733735ed69989f0eac95fb}\label{classSceneCombat_aa06cefcde7733735ed69989f0eac95fb}} 
+\index{SceneCombat@{SceneCombat}!sCombatUpdate@{sCombatUpdate}}
+\index{sCombatUpdate@{sCombatUpdate}!SceneCombat@{SceneCombat}}
+\doxysubsubsection{\texorpdfstring{sCombatUpdate()}{sCombatUpdate()}}
+{\footnotesize\ttfamily void Scene\+Combat\+::s\+Combat\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneCombat_aa06cefcde7733735ed69989f0eac95fb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneCombat_aa06cefcde7733735ed69989f0eac95fb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSceneCombat_a37f6cbef92fa92fc1532dafd265aefc5}\label{classSceneCombat_a37f6cbef92fa92fc1532dafd265aefc5}} 
+\index{SceneCombat@{SceneCombat}!sDoAction@{sDoAction}}
+\index{sDoAction@{sDoAction}!SceneCombat@{SceneCombat}}
+\doxysubsubsection{\texorpdfstring{sDoAction()}{sDoAction()}}
+{\footnotesize\ttfamily void Scene\+Combat\+::s\+Do\+Action (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classAction}{Action}} \&}]{action }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneCombat_a37f6cbef92fa92fc1532dafd265aefc5_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSceneCombat_af0b3bef84d34d470709b0a050771c44e}\label{classSceneCombat_af0b3bef84d34d470709b0a050771c44e}} 
+\index{SceneCombat@{SceneCombat}!sEndCombat@{sEndCombat}}
+\index{sEndCombat@{sEndCombat}!SceneCombat@{SceneCombat}}
+\doxysubsubsection{\texorpdfstring{sEndCombat()}{sEndCombat()}}
+{\footnotesize\ttfamily void Scene\+Combat\+::s\+End\+Combat (\begin{DoxyParamCaption}\item[{bool}]{player\+Won }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneCombat_af0b3bef84d34d470709b0a050771c44e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSceneCombat_a998026e431b8e404e2f2a306b5eda817}\label{classSceneCombat_a998026e431b8e404e2f2a306b5eda817}} 
+\index{SceneCombat@{SceneCombat}!setPaused@{setPaused}}
+\index{setPaused@{setPaused}!SceneCombat@{SceneCombat}}
+\doxysubsubsection{\texorpdfstring{setPaused()}{setPaused()}}
+{\footnotesize\ttfamily void Scene\+Combat\+::set\+Paused (\begin{DoxyParamCaption}\item[{bool}]{paused }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneCombat_a998026e431b8e404e2f2a306b5eda817_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSceneCombat_aed515cf302c3f9f5dab23b2597ddc086}\label{classSceneCombat_aed515cf302c3f9f5dab23b2597ddc086}} 
+\index{SceneCombat@{SceneCombat}!sGenerateWordChallenge@{sGenerateWordChallenge}}
+\index{sGenerateWordChallenge@{sGenerateWordChallenge}!SceneCombat@{SceneCombat}}
+\doxysubsubsection{\texorpdfstring{sGenerateWordChallenge()}{sGenerateWordChallenge()}}
+{\footnotesize\ttfamily void Scene\+Combat\+::s\+Generate\+Word\+Challenge (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneCombat_aed515cf302c3f9f5dab23b2597ddc086_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSceneCombat_aad9fbc02da2720c6bfe3eaf3730d0e64}\label{classSceneCombat_aad9fbc02da2720c6bfe3eaf3730d0e64}} 
+\index{SceneCombat@{SceneCombat}!sGetAvailableChainWords@{sGetAvailableChainWords}}
+\index{sGetAvailableChainWords@{sGetAvailableChainWords}!SceneCombat@{SceneCombat}}
+\doxysubsubsection{\texorpdfstring{sGetAvailableChainWords()}{sGetAvailableChainWords()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ Scene\+Combat\+::s\+Get\+Available\+Chain\+Words (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneCombat_aad9fbc02da2720c6bfe3eaf3730d0e64_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneCombat_aad9fbc02da2720c6bfe3eaf3730d0e64_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSceneCombat_ab3b1c676a3b2399dc7ce5c0c3bb5da6a}\label{classSceneCombat_ab3b1c676a3b2399dc7ce5c0c3bb5da6a}} 
+\index{SceneCombat@{SceneCombat}!sLoadSemanticRelations@{sLoadSemanticRelations}}
+\index{sLoadSemanticRelations@{sLoadSemanticRelations}!SceneCombat@{SceneCombat}}
+\doxysubsubsection{\texorpdfstring{sLoadSemanticRelations()}{sLoadSemanticRelations()}}
+{\footnotesize\ttfamily void Scene\+Combat\+::s\+Load\+Semantic\+Relations (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneCombat_ab3b1c676a3b2399dc7ce5c0c3bb5da6a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSceneCombat_a2a2b228f2bf649ca460cbe33db05c394}\label{classSceneCombat_a2a2b228f2bf649ca460cbe33db05c394}} 
+\index{SceneCombat@{SceneCombat}!sLoadWordDatabase@{sLoadWordDatabase}}
+\index{sLoadWordDatabase@{sLoadWordDatabase}!SceneCombat@{SceneCombat}}
+\doxysubsubsection{\texorpdfstring{sLoadWordDatabase()}{sLoadWordDatabase()}}
+{\footnotesize\ttfamily void Scene\+Combat\+::s\+Load\+Word\+Database (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneCombat_a2a2b228f2bf649ca460cbe33db05c394_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSceneCombat_a5438d9ea2e75ba54b357409cc47a6700}\label{classSceneCombat_a5438d9ea2e75ba54b357409cc47a6700}} 
+\index{SceneCombat@{SceneCombat}!sPlayerKnowsWord@{sPlayerKnowsWord}}
+\index{sPlayerKnowsWord@{sPlayerKnowsWord}!SceneCombat@{SceneCombat}}
+\doxysubsubsection{\texorpdfstring{sPlayerKnowsWord()}{sPlayerKnowsWord()}}
+{\footnotesize\ttfamily bool Scene\+Combat\+::s\+Player\+Knows\+Word (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{native\+Word }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneCombat_a5438d9ea2e75ba54b357409cc47a6700_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSceneCombat_a0fed287dccccef9e9431e9085899ae38}\label{classSceneCombat_a0fed287dccccef9e9431e9085899ae38}} 
+\index{SceneCombat@{SceneCombat}!sProcessPlayerAnswer@{sProcessPlayerAnswer}}
+\index{sProcessPlayerAnswer@{sProcessPlayerAnswer}!SceneCombat@{SceneCombat}}
+\doxysubsubsection{\texorpdfstring{sProcessPlayerAnswer()}{sProcessPlayerAnswer()}}
+{\footnotesize\ttfamily void Scene\+Combat\+::s\+Process\+Player\+Answer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneCombat_a0fed287dccccef9e9431e9085899ae38_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneCombat_a0fed287dccccef9e9431e9085899ae38_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSceneCombat_a96eda451b05e50af9f18d47c40ce30be}\label{classSceneCombat_a96eda451b05e50af9f18d47c40ce30be}} 
+\index{SceneCombat@{SceneCombat}!sRemoveLastWordFromChain@{sRemoveLastWordFromChain}}
+\index{sRemoveLastWordFromChain@{sRemoveLastWordFromChain}!SceneCombat@{SceneCombat}}
+\doxysubsubsection{\texorpdfstring{sRemoveLastWordFromChain()}{sRemoveLastWordFromChain()}}
+{\footnotesize\ttfamily void Scene\+Combat\+::s\+Remove\+Last\+Word\+From\+Chain (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneCombat_a96eda451b05e50af9f18d47c40ce30be_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneCombat_a96eda451b05e50af9f18d47c40ce30be_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSceneCombat_aa41a99f8d077d3f6fd90f73b6c427173}\label{classSceneCombat_aa41a99f8d077d3f6fd90f73b6c427173}} 
+\index{SceneCombat@{SceneCombat}!sRender@{sRender}}
+\index{sRender@{sRender}!SceneCombat@{SceneCombat}}
+\doxysubsubsection{\texorpdfstring{sRender()}{sRender()}}
+{\footnotesize\ttfamily void Scene\+Combat\+::s\+Render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneCombat_aa41a99f8d077d3f6fd90f73b6c427173_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSceneCombat_a2fc2dd39fbf50f70f18261aec17e8458}\label{classSceneCombat_a2fc2dd39fbf50f70f18261aec17e8458}} 
+\index{SceneCombat@{SceneCombat}!sRenderChainUI@{sRenderChainUI}}
+\index{sRenderChainUI@{sRenderChainUI}!SceneCombat@{SceneCombat}}
+\doxysubsubsection{\texorpdfstring{sRenderChainUI()}{sRenderChainUI()}}
+{\footnotesize\ttfamily void Scene\+Combat\+::s\+Render\+Chain\+UI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneCombat_a2fc2dd39fbf50f70f18261aec17e8458_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSceneCombat_a48f5e446a93b78ddff16b5ff5ba277e6}\label{classSceneCombat_a48f5e446a93b78ddff16b5ff5ba277e6}} 
+\index{SceneCombat@{SceneCombat}!sRenderCombatUI@{sRenderCombatUI}}
+\index{sRenderCombatUI@{sRenderCombatUI}!SceneCombat@{SceneCombat}}
+\doxysubsubsection{\texorpdfstring{sRenderCombatUI()}{sRenderCombatUI()}}
+{\footnotesize\ttfamily void Scene\+Combat\+::s\+Render\+Combat\+UI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneCombat_a48f5e446a93b78ddff16b5ff5ba277e6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSceneCombat_a2dde7bc9ed6127c5317f7f6fe3900257}\label{classSceneCombat_a2dde7bc9ed6127c5317f7f6fe3900257}} 
+\index{SceneCombat@{SceneCombat}!sRenderHealthBars@{sRenderHealthBars}}
+\index{sRenderHealthBars@{sRenderHealthBars}!SceneCombat@{SceneCombat}}
+\doxysubsubsection{\texorpdfstring{sRenderHealthBars()}{sRenderHealthBars()}}
+{\footnotesize\ttfamily void Scene\+Combat\+::s\+Render\+Health\+Bars (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneCombat_a2dde7bc9ed6127c5317f7f6fe3900257_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSceneCombat_a7b1e36e0481742dff817f70dfb45336f}\label{classSceneCombat_a7b1e36e0481742dff817f70dfb45336f}} 
+\index{SceneCombat@{SceneCombat}!sStartSemanticChaining@{sStartSemanticChaining}}
+\index{sStartSemanticChaining@{sStartSemanticChaining}!SceneCombat@{SceneCombat}}
+\doxysubsubsection{\texorpdfstring{sStartSemanticChaining()}{sStartSemanticChaining()}}
+{\footnotesize\ttfamily void Scene\+Combat\+::s\+Start\+Semantic\+Chaining (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneCombat_a7b1e36e0481742dff817f70dfb45336f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSceneCombat_a8b6f0d1575a1082fe8a5b929d00ea88b}\label{classSceneCombat_a8b6f0d1575a1082fe8a5b929d00ea88b}} 
+\index{SceneCombat@{SceneCombat}!sSubmitChain@{sSubmitChain}}
+\index{sSubmitChain@{sSubmitChain}!SceneCombat@{SceneCombat}}
+\doxysubsubsection{\texorpdfstring{sSubmitChain()}{sSubmitChain()}}
+{\footnotesize\ttfamily void Scene\+Combat\+::s\+Submit\+Chain (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneCombat_a8b6f0d1575a1082fe8a5b929d00ea88b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSceneCombat_aece6655ddb0f2504638878f9321ef492}\label{classSceneCombat_aece6655ddb0f2504638878f9321ef492}} 
+\index{SceneCombat@{SceneCombat}!sValidateSemanticChain@{sValidateSemanticChain}}
+\index{sValidateSemanticChain@{sValidateSemanticChain}!SceneCombat@{SceneCombat}}
+\doxysubsubsection{\texorpdfstring{sValidateSemanticChain()}{sValidateSemanticChain()}}
+{\footnotesize\ttfamily bool Scene\+Combat\+::s\+Validate\+Semantic\+Chain (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{new\+Word }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneCombat_aece6655ddb0f2504638878f9321ef492_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSceneCombat_a886a09ed8afb275de6df2383a242783c}\label{classSceneCombat_a886a09ed8afb275de6df2383a242783c}} 
+\index{SceneCombat@{SceneCombat}!update@{update}}
+\index{update@{update}!SceneCombat@{SceneCombat}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Scene\+Combat\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneCombat_a886a09ed8afb275de6df2383a242783c_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classSceneCombat_a2d88a9e8b1af3d2170a460da6fc7a8b6}\label{classSceneCombat_a2d88a9e8b1af3d2170a460da6fc7a8b6}} 
+\index{SceneCombat@{SceneCombat}!m\_colorMain@{m\_colorMain}}
+\index{m\_colorMain@{m\_colorMain}!SceneCombat@{SceneCombat}}
+\doxysubsubsection{\texorpdfstring{m\_colorMain}{m\_colorMain}}
+{\footnotesize\ttfamily sf\+::\+Color Scene\+Combat\+::m\+\_\+color\+Main\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneCombat_a8bb5be8394a4722f394c57467bf49b6b}\label{classSceneCombat_a8bb5be8394a4722f394c57467bf49b6b}} 
+\index{SceneCombat@{SceneCombat}!m\_combatState@{m\_combatState}}
+\index{m\_combatState@{m\_combatState}!SceneCombat@{SceneCombat}}
+\doxysubsubsection{\texorpdfstring{m\_combatState}{m\_combatState}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSceneCombat_1_1CombatState}{Combat\+State}} Scene\+Combat\+::m\+\_\+combat\+State\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneCombat_a2a1e9d3f1afd592d8728c034babab98d}\label{classSceneCombat_a2a1e9d3f1afd592d8728c034babab98d}} 
+\index{SceneCombat@{SceneCombat}!m\_combatUIEntity@{m\_combatUIEntity}}
+\index{m\_combatUIEntity@{m\_combatUIEntity}!SceneCombat@{SceneCombat}}
+\doxysubsubsection{\texorpdfstring{m\_combatUIEntity}{m\_combatUIEntity}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classEntity}{Entity}}$>$ Scene\+Combat\+::m\+\_\+combat\+UIEntity\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneCombat_a0855851891135ec11b5a68b78453401a}\label{classSceneCombat_a0855851891135ec11b5a68b78453401a}} 
+\index{SceneCombat@{SceneCombat}!m\_enemyEntity@{m\_enemyEntity}}
+\index{m\_enemyEntity@{m\_enemyEntity}!SceneCombat@{SceneCombat}}
+\doxysubsubsection{\texorpdfstring{m\_enemyEntity}{m\_enemyEntity}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classEntity}{Entity}}$>$ Scene\+Combat\+::m\+\_\+enemy\+Entity\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneCombat_ac05116c2d850206bcbf9b492f6976248}\label{classSceneCombat_ac05116c2d850206bcbf9b492f6976248}} 
+\index{SceneCombat@{SceneCombat}!m\_fontMain@{m\_fontMain}}
+\index{m\_fontMain@{m\_fontMain}!SceneCombat@{SceneCombat}}
+\doxysubsubsection{\texorpdfstring{m\_fontMain}{m\_fontMain}}
+{\footnotesize\ttfamily sf\+::\+Font Scene\+Combat\+::m\+\_\+font\+Main\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneCombat_a6632304a6e65c7133c699d9fd1400e51}\label{classSceneCombat_a6632304a6e65c7133c699d9fd1400e51}} 
+\index{SceneCombat@{SceneCombat}!m\_paused@{m\_paused}}
+\index{m\_paused@{m\_paused}!SceneCombat@{SceneCombat}}
+\doxysubsubsection{\texorpdfstring{m\_paused}{m\_paused}}
+{\footnotesize\ttfamily bool Scene\+Combat\+::m\+\_\+paused = false\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneCombat_a1b99cbedb2dc554bd13916adcfdec7f9}\label{classSceneCombat_a1b99cbedb2dc554bd13916adcfdec7f9}} 
+\index{SceneCombat@{SceneCombat}!m\_playerEntity@{m\_playerEntity}}
+\index{m\_playerEntity@{m\_playerEntity}!SceneCombat@{SceneCombat}}
+\doxysubsubsection{\texorpdfstring{m\_playerEntity}{m\_playerEntity}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classEntity}{Entity}}$>$ Scene\+Combat\+::m\+\_\+player\+Entity\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneCombat_a01144ab36987436cb7391a6fccd1a3df}\label{classSceneCombat_a01144ab36987436cb7391a6fccd1a3df}} 
+\index{SceneCombat@{SceneCombat}!m\_semanticRelations@{m\_semanticRelations}}
+\index{m\_semanticRelations@{m\_semanticRelations}!SceneCombat@{SceneCombat}}
+\doxysubsubsection{\texorpdfstring{m\_semanticRelations}{m\_semanticRelations}}
+{\footnotesize\ttfamily std\+::map$<$std\+::string, std\+::vector$<$std\+::string$>$ $>$ Scene\+Combat\+::m\+\_\+semantic\+Relations\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneCombat_a6bf02d879767a2dad3517f1a1715dbe5}\label{classSceneCombat_a6bf02d879767a2dad3517f1a1715dbe5}} 
+\index{SceneCombat@{SceneCombat}!m\_wordDatabase@{m\_wordDatabase}}
+\index{m\_wordDatabase@{m\_wordDatabase}!SceneCombat@{SceneCombat}}
+\doxysubsubsection{\texorpdfstring{m\_wordDatabase}{m\_wordDatabase}}
+{\footnotesize\ttfamily std\+::map$<$std\+::string, std\+::string$>$ Scene\+Combat\+::m\+\_\+word\+Database\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/scenes/\mbox{\hyperlink{SceneCombat_8h}{Scene\+Combat.\+h}}\item 
+src/scenes/\mbox{\hyperlink{SceneCombat_8cpp}{Scene\+Combat.\+cpp}}\end{DoxyCompactItemize}

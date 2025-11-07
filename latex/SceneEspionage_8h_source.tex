@@ -1,0 +1,99 @@
+\hypertarget{SceneEspionage_8h_source}{}\doxysection{Scene\+Espionage.\+h}
+\label{SceneEspionage_8h_source}\index{src/scenes/SceneEspionage.h@{src/scenes/SceneEspionage.h}}
+\mbox{\hyperlink{SceneEspionage_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Scene_8h}{Scene.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{GameEngine_8h}{GameEngine.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ManagerEntity_8h}{ManagerEntity.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ManagerTurn_8h}{ManagerTurn.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Components_8h}{Components.h}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSceneEspionage}{SceneEspionage}}\ :\ \textcolor{keyword}{public}\ Scene}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{classSceneEspionage_a7bd5b7b23254ec6161f1dfc581146250}{EspionageState}}}
+\DoxyCodeLine{00016\ \ \ \ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \mbox{\hyperlink{classSceneEspionage_a7bd5b7b23254ec6161f1dfc581146250a778ecc96730832ff0575b3b292e45bd3}{INFILTRATING}},}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \mbox{\hyperlink{classSceneEspionage_a7bd5b7b23254ec6161f1dfc581146250afeb8e4a8a8b1796f0b434ec7d7a04170}{SOLVING\_ANAGRAM}},}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \mbox{\hyperlink{classSceneEspionage_a7bd5b7b23254ec6161f1dfc581146250a588fdd0164a2cae8d980560d10e2054b}{FINAL\_TRANSLATION}},}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \mbox{\hyperlink{classSceneEspionage_a7bd5b7b23254ec6161f1dfc581146250a8f7afecbc8fbc4cd0f50a57d1172482e}{COMPLETED}},}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \mbox{\hyperlink{classSceneEspionage_a7bd5b7b23254ec6161f1dfc581146250ab9e14d9b2886bcff408b85aefa780419}{FAILED}},}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \mbox{\hyperlink{classSceneEspionage_a7bd5b7b23254ec6161f1dfc581146250a5cd8a3828ce36907a27551de5e71221e}{DETECTED}}}
+\DoxyCodeLine{00023\ \ \ \ \};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structSceneEspionage_1_1KeyPoint}{KeyPoint}}}
+\DoxyCodeLine{00026\ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ sf::Vector2i\ \mbox{\hyperlink{structSceneEspionage_1_1KeyPoint_aef67a03084ecc4ac452a0a5d973905d1}{position}};}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{structSceneEspionage_1_1KeyPoint_ab5b1afadaff49dbc6a6d177f6b59c628}{anagram}};}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{structSceneEspionage_1_1KeyPoint_af5e6b9c96418514445586397e5c3ca45}{solution}};}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structSceneEspionage_1_1KeyPoint_a1ffd34af8a2757819570840d9372d972}{isCompleted}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00031\ \ \ \ \};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00034\ \ \ \ sf::Font\ \mbox{\hyperlink{classSceneEspionage_a935309b68a934ee10eef88b8021ee690}{m\_fontMain}};}
+\DoxyCodeLine{00035\ \ \ \ sf::Color\ \mbox{\hyperlink{classSceneEspionage_ac09d7e7dc78d695586255ed7f85f400c}{m\_colorMain}};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ std::unique\_ptr<TurnManager>\ \mbox{\hyperlink{classSceneEspionage_a2f694ef8680006d571a91a8135cdf344}{m\_turnManager}};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ sf::Clock\ \mbox{\hyperlink{classSceneEspionage_aefe4a6ed77bcea77c08d5e18dcbe711d}{m\_timer}};}
+\DoxyCodeLine{00040\ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classSceneEspionage_a0156d1bbf36b6e08afc405621fc4137c}{m\_isReturning}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00041\ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classSceneEspionage_aaf43f1565b68e3e6dac2b6689accaf40}{m\_returnDelay}}\ =\ 3.f;}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \textcolor{comment}{//espionage\ state}}
+\DoxyCodeLine{00044\ \ \ \ \mbox{\hyperlink{classSceneEspionage_a7bd5b7b23254ec6161f1dfc581146250}{EspionageState}}\ \mbox{\hyperlink{classSceneEspionage_a52b6268a77c9a1aa7693cf05c2e0fca9}{m\_state}};}
+\DoxyCodeLine{00045\ \ \ \ std::vector<KeyPoint>\ \mbox{\hyperlink{classSceneEspionage_aa077e6d79f8fa78ecf048201e64e2969}{m\_keyPoints}};}
+\DoxyCodeLine{00046\ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSceneEspionage_a6cd4886e0819a9897b729c122397e8b4}{m\_currentKeyPoint}};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \textcolor{comment}{//entities}}
+\DoxyCodeLine{00049\ \ \ \ std::shared\_ptr<Entity>\ \mbox{\hyperlink{classSceneEspionage_a67085610621aaf0353681662f2dc585a}{m\_buildingEntity}};}
+\DoxyCodeLine{00050\ \ \ \ std::shared\_ptr<Entity>\ \mbox{\hyperlink{classSceneEspionage_ac82b40ef600f7327f5ec24e8666c5044}{m\_playerEntity}};}
+\DoxyCodeLine{00051\ \ \ \ std::shared\_ptr<Entity>\ \mbox{\hyperlink{classSceneEspionage_a3d2abf44ea7fa09c37f6f9f97d83a3f0}{m\_cursorEntity}};}
+\DoxyCodeLine{00052\ \ \ \ std::shared\_ptr<Entity>\ \mbox{\hyperlink{classSceneEspionage_a9460305b7e0b1b5a39d90ff0fd1a24d5}{m\_guardEntity}};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \textcolor{comment}{//map\ data}}
+\DoxyCodeLine{00055\ \ \ \ std::vector<std::vector<std::shared\_ptr<Entity>>>\ \mbox{\hyperlink{classSceneEspionage_aa4f86f2e7de8f64f47f05f237a4df559}{m\_grid}};}
+\DoxyCodeLine{00056\ \ \ \ st::Vector2i\ \mbox{\hyperlink{classSceneEspionage_aaf7148d558984b7bb59547f8b10327f0}{m\_gridSize}};}
+\DoxyCodeLine{00057\ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSceneEspionage_ae546e741c34750cb51cca42d85522179}{m\_tileSize}};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \textcolor{comment}{//game\ state}}
+\DoxyCodeLine{00060\ \ \ \ std::string\ \mbox{\hyperlink{classSceneEspionage_a981e60bb0380ed5692f9816e0695d55b}{m\_buildingEnglishName}};}
+\DoxyCodeLine{00061\ \ \ \ std::string\ \mbox{\hyperlink{classSceneEspionage_a7b03021ad28f2b5bf8faf9f7c7180f01}{m\_buildingNativeName}};}
+\DoxyCodeLine{00062\ \ \ \ std::string\ \mbox{\hyperlink{classSceneEspionage_a0e7af2b8c802c34f55206d182ca2340a}{m\_currentAnagram}};}
+\DoxyCodeLine{00063\ \ \ \ std::string\ \mbox{\hyperlink{classSceneEspionage_ab425571688fc8010085bfa39679d479c}{m\_playerSolution}};}
+\DoxyCodeLine{00064\ \ \ \ std::string\ \mbox{\hyperlink{classSceneEspionage_ac5cb204f2b967273aaf78883cc28ef34}{m\_feedbackMessage}};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \textcolor{comment}{//ui}}
+\DoxyCodeLine{00067\ \ \ \ std::shared\_ptr<Entity>\ \mbox{\hyperlink{classSceneEspionage_a348fe5fab60f664ff048f56bd92949b2}{m\_espionageUIEntity}};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSceneEspionage_ac23c6c5b8dea1613e9efd6265563e655}{init}}();}
+\DoxyCodeLine{00070\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSceneEspionage_aa33f48012627102e3f7c2b3aaf4aa9a2}{update}}();}
+\DoxyCodeLine{00071\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSceneEspionage_a392e7a93c22fac7515a9ca5dc2d89b8a}{sDoAction}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classAction}{Action}}\&\ action);}
+\DoxyCodeLine{00072\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSceneEspionage_a55299a7b15415bc44d9539e32d03a29d}{onEnd}}();}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSceneEspionage_a3e3cf5029f48cb7147cde8d8485f5660}{sInitializeFloorPlan}}();}
+\DoxyCodeLine{00075\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSceneEspionage_af17ffd31299dcaec235c747da7cfe3fd}{sMoveToNextPoint}}();}
+\DoxyCodeLine{00076\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSceneEspionage_a0beb2bcc2d668fb4083f9e9cd6858d6e}{sGenerateAnagram}}();}
+\DoxyCodeLine{00077\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSceneEspionage_a2db8e0dd02a0d248053c84718c1af3eb}{sCheckAnagramSolution}}();}
+\DoxyCodeLine{00078\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSceneEspionage_ae1c4d00a4aa16de96bfd2f1710595412}{sCheckFinalTranslation}}();}
+\DoxyCodeLine{00079\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSceneEspionage_ac879372794a46591642b333cea0854be}{sCompleteEspionage}}();}
+\DoxyCodeLine{00080\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSceneEspionage_ae8072115af23613fcfc877d41530fb1b}{sFailEspionage}}();}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSceneEspionage_a839c67aef57ea8325a73af36f16e6b4b}{sRenderFloorPlan}}();}
+\DoxyCodeLine{00083\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSceneEspionage_a3c4eb1b78ab2f6c402e2c218b4ac4a6a}{sRenderAnagramUI}}();}
+\DoxyCodeLine{00084\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSceneEspionage_ac916dee2dd7d58f6abdbb4d5e1304374}{sRenderTranslationUI}}();}
+\DoxyCodeLine{00085\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSceneEspionage_a728f9922ea915bd8f5eff0ae94376bc0}{sRenderPlayerMarker}}();}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ std::string\ \mbox{\hyperlink{classSceneEspionage_aa790fbce1ce5d9d5a4415de6ab6f2f43}{sScrambleWord}}(\textcolor{keyword}{const}\ std::string\&\ word);}
+\DoxyCodeLine{00088\ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classSceneEspionage_a61b6c90735ef3658dc94373682b02a60}{sIsvalidTranslation}}(\textcolor{keyword}{const}\ std::string\&\ translation);}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00091\ \ \ \ \mbox{\hyperlink{classSceneEspionage}{SceneEspionage}}(\mbox{\hyperlink{classGameEngine}{GameEngine}}*\ gameEngine,\ std::shared\_ptr<Entity>\ player,\ std::shared\_ptr<Entity>\ building,\ \textcolor{keyword}{const}\ std::string\&\ englishName);}
+\DoxyCodeLine{00092\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSceneEspionage_a2e728ad393f17334b4704d7117fff263}{sRender}}();}
+\DoxyCodeLine{00093\ \};}
+
+\end{DoxyCode}

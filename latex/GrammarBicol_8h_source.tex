@@ -1,0 +1,98 @@
+\hypertarget{GrammarBicol_8h_source}{}\doxysection{Grammar\+Bicol.\+h}
+\label{GrammarBicol_8h_source}\index{src/languages/GrammarBicol.h@{src/languages/GrammarBicol.h}}
+\mbox{\hyperlink{GrammarBicol_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Grammar_8h}{Grammar.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classBicolGrammar}{BicolGrammar}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classGrammar}{Grammar}}}
+\DoxyCodeLine{00008\ \{}
+\DoxyCodeLine{00009\ \ \ \textcolor{keyword}{enum\ class}\ NominalMarkers}
+\DoxyCodeLine{00010\ \ \ \ \ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \textcolor{comment}{//direct}}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ SI,\ AN,}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \textcolor{comment}{//indirect}}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ NI,\ KAN,}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \textcolor{comment}{//oblique}}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ SA,\ KI}
+\DoxyCodeLine{00017\ \ \ \ \ \};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \textcolor{comment}{/*\ \ enum\ PronominalMarkers}}
+\DoxyCodeLine{00020\ \textcolor{comment}{\ \ \ \ \{}}
+\DoxyCodeLine{00021\ \textcolor{comment}{\ \ \ \ \ \ //direct}}
+\DoxyCodeLine{00022\ \textcolor{comment}{\ \ \ \ \ \ AKO,\ IKA,\ SIYA,}}
+\DoxyCodeLine{00023\ \textcolor{comment}{\ \ \ \ \ \ //indirect}}
+\DoxyCodeLine{00024\ \textcolor{comment}{\ \ \ \ \ \ KO,\ MO,\ NIYA,}}
+\DoxyCodeLine{00025\ \textcolor{comment}{\ \ \ \ \ \ //oblique}}
+\DoxyCodeLine{00026\ \textcolor{comment}{\ \ \ \ \ \ SAKO,\ SAIMO,\ SAIYA}}
+\DoxyCodeLine{00027\ \textcolor{comment}{\ \ \ \ \};}}
+\DoxyCodeLine{00028\ \textcolor{comment}{\ \ */}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ std::map<Cases,\ std::map<std::string,\ NominalMarkers>>\ m\_NomMarkers;}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00033\ \ \ \mbox{\hyperlink{classBicolGrammar_a8f07b6cad87eeff5182bed1495b196a2}{BicolGrammar}}()}
+\DoxyCodeLine{00034\ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{classGrammar_a5a0ef2626c925aca805b76fd0a0dc137}{m\_language}}\ =\ \textcolor{stringliteral}{"{}Bicol"{}};}
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{classGrammar_acffc8c954dea825b48ab6db8dd41a067}{m\_aspects}}\ =\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}imperfective"{}},\ Aspects::IMPERFECTIVE\},}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}perfective"{}},\ Aspects::PERFECTIVE\},}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}contemplative"{}},\ Aspects::CONTEMPLATIVE\}}
+\DoxyCodeLine{00040\ \ \ \ \ \};}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{classGrammar_a0cbd2e7945f32cf90113ad11a5e25638}{m\_voices}}\ =\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}actor"{}},\ Voices::ACTOR\},}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}patient"{}},\ Voices::PATIENT\},}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}voices"{}},\ Voices::LOCATIVE\}}
+\DoxyCodeLine{00045\ \ \ \ \ \};}
+\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{classGrammar_a58490ea2d4c4189f81f1fe706a028640}{m\_cases}}\ =\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}direct"{}},\ Cases::DIRECT\},}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}indirect"{}},\ Cases::INDIRECT\},}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}oblique"{}},\ Cases::OBLIQUE\}}
+\DoxyCodeLine{00050\ \ \ \ \ \};}
+\DoxyCodeLine{00051\ \ \ \ \ m\_NomMarkers\ =\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \{Cases::DIRECT,\ \{\{\textcolor{stringliteral}{"{}si"{}},\ NominalMarkers::SI\},\ \{\textcolor{stringliteral}{"{}an"{}},\ NominalMarkers::AN\}\}\},}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \{Cases::INDIRECT,\ \{\{\textcolor{stringliteral}{"{}ni"{}},\ NominalMarkers::NI\},\ \{\textcolor{stringliteral}{"{}kan"{}},\ NominalMarkers::KAN\}\}\},}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \{Cases::INDIRECT,\ \{\{\textcolor{stringliteral}{"{}sa"{}},\ NominalMarkers::SA\},\ \{\textcolor{stringliteral}{"{}ki"{}},\ NominalMarkers::KI\}\}\}}
+\DoxyCodeLine{00055\ \ \ \ \ \};}
+\DoxyCodeLine{00056\ \ \ \}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBicolGrammar_a31349a4aa44e9372fe2cdd377032d142}{printAspects}}()}
+\DoxyCodeLine{00059\ \ \ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [key,\ value]:\ \mbox{\hyperlink{classGrammar_acffc8c954dea825b48ab6db8dd41a067}{m\_aspects}})}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ std::cout\ <<\ key\ <<\ std::endl;}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00064\ \ \ \}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBicolGrammar_ae1816d4a0f7621180f9303dfbc6014f2}{printVoices}}()}
+\DoxyCodeLine{00067\ \ \ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [key,\ value]\ :\ \mbox{\hyperlink{classGrammar_a0cbd2e7945f32cf90113ad11a5e25638}{m\_voices}})}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ std::cout\ <<\ key\ <<\ std::endl;}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00072\ \ \ \}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBicolGrammar_ab8e8215f03164b3b4b18a05737316194}{printCases}}()}
+\DoxyCodeLine{00075\ \ \ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [key,\ value]\ :\ \mbox{\hyperlink{classGrammar_a58490ea2d4c4189f81f1fe706a028640}{m\_cases}})}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ std::cout\ <<\ key\ <<\ std::endl;}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00080\ \ \ \}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBicolGrammar_ae29c4997208f38a07589770ad9c7e96f}{printNomMarkers}}()}
+\DoxyCodeLine{00083\ \ \ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [caseKey,\ markers]\ :\ m\_NomMarkers)}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [markerKey,\ value]\ :\ markers)}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ markerKey\ <<\ std::endl;}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00091\ \ \ \}}
+\DoxyCodeLine{00092\ \};}
+
+\end{DoxyCode}

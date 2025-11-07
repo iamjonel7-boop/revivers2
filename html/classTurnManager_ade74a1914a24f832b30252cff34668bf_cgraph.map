@@ -1,0 +1,7 @@
+<map id="TurnManager::endTurn" name="TurnManager::endTurn">
+<area shape="rect" id="node1" title=" " alt="" coords="5,80,158,107"/>
+<area shape="rect" id="node2" href="$classActionFormationManager.html#ab6c97337bf2f94a7c2f16957b4b04b63" title=" " alt="" coords="206,5,372,48"/>
+<area shape="rect" id="node3" href="$classActionFormationManager.html#a496649a3ab5ac5f173239d18857b6065" title=" " alt="" coords="206,72,372,115"/>
+<area shape="rect" id="node4" href="$classTurnManager.html#af1bba901d1410ce5418213270b5388cd" title=" " alt="" coords="210,139,368,165"/>
+<area shape="rect" id="node5" href="$classActionResolutionManager.html#ab0df536666191614ab0d1b1fd4c87610" title=" " alt="" coords="420,131,590,173"/>
+</map>

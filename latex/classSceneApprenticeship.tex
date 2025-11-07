@@ -1,0 +1,250 @@
+\hypertarget{classSceneApprenticeship}{}\doxysection{Scene\+Apprenticeship Class Reference}
+\label{classSceneApprenticeship}\index{SceneApprenticeship@{SceneApprenticeship}}
+
+
+{\ttfamily \#include $<$Scene\+Apprenticeship.\+h$>$}
+
+
+
+Inheritance diagram for Scene\+Apprenticeship\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=240pt]{classSceneApprenticeship__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Scene\+Apprenticeship\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=240pt]{classSceneApprenticeship__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSceneApprenticeship_a7c462ee9273d7cec66890a2f6d449cd2}{Scene\+Apprenticeship}} (\mbox{\hyperlink{classGameEngine}{Game\+Engine}} $\ast$game\+Engine)
+\item 
+virtual \mbox{\hyperlink{classSceneApprenticeship_ab17ed4206f745ba505b981dec5c1ee47}{$\sim$\+Scene\+Apprenticeship}} ()
+\item 
+void \mbox{\hyperlink{classSceneApprenticeship_a586cc9dfaf7a04110ddd7e621a9920ae}{s\+Render}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Gift \mbox{\hyperlink{classSceneApprenticeship_a8fc49c70350606d877441a7fdbd5456c}{string\+To\+Gift}} (const std\+::string \&s)
+\item 
+void \mbox{\hyperlink{classSceneApprenticeship_a026d86301a2ac94f24da3b0f8a1cbaeb}{init}} ()
+\item 
+void \mbox{\hyperlink{classSceneApprenticeship_aa1fa0122e614307a87e337589def4aac}{update}} ()
+\item 
+void \mbox{\hyperlink{classSceneApprenticeship_ab1514eacf8326c34edf89e3df10909a2}{s\+Do\+Action}} (const \mbox{\hyperlink{classAction}{Action}} \&action)
+\item 
+void \mbox{\hyperlink{classSceneApprenticeship_a7a0482d2b0810c74f64fece942cf08d4}{on\+End}} ()
+\item 
+void \mbox{\hyperlink{classSceneApprenticeship_ad830b3cf5344cbb9ef03f5a22af0fec6}{load\+Dialogue}} (const std\+::string \&path)
+\item 
+void \mbox{\hyperlink{classSceneApprenticeship_ad8bf82e2c510a4f2182a1cdcaf4843e2}{register\+Apprenticeship\+Actions}} ()
+\item 
+void \mbox{\hyperlink{classSceneApprenticeship_a565bf72d142adc5e3b19c7d28e87a094}{spawn\+Player}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classEntity}{Entity}} $>$ \mbox{\hyperlink{classSceneApprenticeship_a5a96e8143e3154e40a4ddbf56aebd6c9}{m\+\_\+player\+Entity}}
+\item 
+std\+::string \mbox{\hyperlink{classSceneApprenticeship_a716f662f9e0c14714a5a4df015fcde79}{m\+\_\+title}}
+\item 
+Dialogue\+Data \mbox{\hyperlink{classSceneApprenticeship_ad5d9119e3e5da3dedab68f8bb45bed18}{m\+\_\+dialogue}}
+\item 
+Dialogue\+Node $\ast$ \mbox{\hyperlink{classSceneApprenticeship_ad5c45ee45098dee80e0b993c8f8cee1d}{m\+\_\+current\+Node}} = nullptr
+\item 
+size\+\_\+t \mbox{\hyperlink{classSceneApprenticeship_af715c36feb12b429a54a38ab9a6e55c3}{m\+\_\+selected\+Option}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSceneApprenticeship_a7c462ee9273d7cec66890a2f6d449cd2}\label{classSceneApprenticeship_a7c462ee9273d7cec66890a2f6d449cd2}} 
+\index{SceneApprenticeship@{SceneApprenticeship}!SceneApprenticeship@{SceneApprenticeship}}
+\index{SceneApprenticeship@{SceneApprenticeship}!SceneApprenticeship@{SceneApprenticeship}}
+\doxysubsubsection{\texorpdfstring{SceneApprenticeship()}{SceneApprenticeship()}}
+{\footnotesize\ttfamily Scene\+Apprenticeship\+::\+Scene\+Apprenticeship (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGameEngine}{Game\+Engine}} $\ast$}]{game\+Engine }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneApprenticeship_a7c462ee9273d7cec66890a2f6d449cd2_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSceneApprenticeship_ab17ed4206f745ba505b981dec5c1ee47}\label{classSceneApprenticeship_ab17ed4206f745ba505b981dec5c1ee47}} 
+\index{SceneApprenticeship@{SceneApprenticeship}!````~SceneApprenticeship@{$\sim$SceneApprenticeship}}
+\index{````~SceneApprenticeship@{$\sim$SceneApprenticeship}!SceneApprenticeship@{SceneApprenticeship}}
+\doxysubsubsection{\texorpdfstring{$\sim$SceneApprenticeship()}{~SceneApprenticeship()}}
+{\footnotesize\ttfamily Scene\+Apprenticeship\+::$\sim$\+Scene\+Apprenticeship (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSceneApprenticeship_a026d86301a2ac94f24da3b0f8a1cbaeb}\label{classSceneApprenticeship_a026d86301a2ac94f24da3b0f8a1cbaeb}} 
+\index{SceneApprenticeship@{SceneApprenticeship}!init@{init}}
+\index{init@{init}!SceneApprenticeship@{SceneApprenticeship}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void Scene\+Apprenticeship\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneApprenticeship_a026d86301a2ac94f24da3b0f8a1cbaeb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=339pt]{classSceneApprenticeship_a026d86301a2ac94f24da3b0f8a1cbaeb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSceneApprenticeship_ad830b3cf5344cbb9ef03f5a22af0fec6}\label{classSceneApprenticeship_ad830b3cf5344cbb9ef03f5a22af0fec6}} 
+\index{SceneApprenticeship@{SceneApprenticeship}!loadDialogue@{loadDialogue}}
+\index{loadDialogue@{loadDialogue}!SceneApprenticeship@{SceneApprenticeship}}
+\doxysubsubsection{\texorpdfstring{loadDialogue()}{loadDialogue()}}
+{\footnotesize\ttfamily void Scene\+Apprenticeship\+::load\+Dialogue (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=306pt]{classSceneApprenticeship_ad830b3cf5344cbb9ef03f5a22af0fec6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneApprenticeship_ad830b3cf5344cbb9ef03f5a22af0fec6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSceneApprenticeship_a7a0482d2b0810c74f64fece942cf08d4}\label{classSceneApprenticeship_a7a0482d2b0810c74f64fece942cf08d4}} 
+\index{SceneApprenticeship@{SceneApprenticeship}!onEnd@{onEnd}}
+\index{onEnd@{onEnd}!SceneApprenticeship@{SceneApprenticeship}}
+\doxysubsubsection{\texorpdfstring{onEnd()}{onEnd()}}
+{\footnotesize\ttfamily void Scene\+Apprenticeship\+::on\+End (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneApprenticeship_ad8bf82e2c510a4f2182a1cdcaf4843e2}\label{classSceneApprenticeship_ad8bf82e2c510a4f2182a1cdcaf4843e2}} 
+\index{SceneApprenticeship@{SceneApprenticeship}!registerApprenticeshipActions@{registerApprenticeshipActions}}
+\index{registerApprenticeshipActions@{registerApprenticeshipActions}!SceneApprenticeship@{SceneApprenticeship}}
+\doxysubsubsection{\texorpdfstring{registerApprenticeshipActions()}{registerApprenticeshipActions()}}
+{\footnotesize\ttfamily void Scene\+Apprenticeship\+::register\+Apprenticeship\+Actions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneApprenticeship_ad8bf82e2c510a4f2182a1cdcaf4843e2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSceneApprenticeship_ab1514eacf8326c34edf89e3df10909a2}\label{classSceneApprenticeship_ab1514eacf8326c34edf89e3df10909a2}} 
+\index{SceneApprenticeship@{SceneApprenticeship}!sDoAction@{sDoAction}}
+\index{sDoAction@{sDoAction}!SceneApprenticeship@{SceneApprenticeship}}
+\doxysubsubsection{\texorpdfstring{sDoAction()}{sDoAction()}}
+{\footnotesize\ttfamily void Scene\+Apprenticeship\+::s\+Do\+Action (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classAction}{Action}} \&}]{action }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=333pt]{classSceneApprenticeship_ab1514eacf8326c34edf89e3df10909a2_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSceneApprenticeship_a565bf72d142adc5e3b19c7d28e87a094}\label{classSceneApprenticeship_a565bf72d142adc5e3b19c7d28e87a094}} 
+\index{SceneApprenticeship@{SceneApprenticeship}!spawnPlayer@{spawnPlayer}}
+\index{spawnPlayer@{spawnPlayer}!SceneApprenticeship@{SceneApprenticeship}}
+\doxysubsubsection{\texorpdfstring{spawnPlayer()}{spawnPlayer()}}
+{\footnotesize\ttfamily void Scene\+Apprenticeship\+::spawn\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneApprenticeship_a565bf72d142adc5e3b19c7d28e87a094_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSceneApprenticeship_a586cc9dfaf7a04110ddd7e621a9920ae}\label{classSceneApprenticeship_a586cc9dfaf7a04110ddd7e621a9920ae}} 
+\index{SceneApprenticeship@{SceneApprenticeship}!sRender@{sRender}}
+\index{sRender@{sRender}!SceneApprenticeship@{SceneApprenticeship}}
+\doxysubsubsection{\texorpdfstring{sRender()}{sRender()}}
+{\footnotesize\ttfamily void Scene\+Apprenticeship\+::s\+Render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classSceneApprenticeship_a8fc49c70350606d877441a7fdbd5456c}\label{classSceneApprenticeship_a8fc49c70350606d877441a7fdbd5456c}} 
+\index{SceneApprenticeship@{SceneApprenticeship}!stringToGift@{stringToGift}}
+\index{stringToGift@{stringToGift}!SceneApprenticeship@{SceneApprenticeship}}
+\doxysubsubsection{\texorpdfstring{stringToGift()}{stringToGift()}}
+{\footnotesize\ttfamily Gift Scene\+Apprenticeship\+::string\+To\+Gift (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=333pt]{classSceneApprenticeship_a8fc49c70350606d877441a7fdbd5456c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSceneApprenticeship_aa1fa0122e614307a87e337589def4aac}\label{classSceneApprenticeship_aa1fa0122e614307a87e337589def4aac}} 
+\index{SceneApprenticeship@{SceneApprenticeship}!update@{update}}
+\index{update@{update}!SceneApprenticeship@{SceneApprenticeship}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Scene\+Apprenticeship\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classSceneApprenticeship_ad5c45ee45098dee80e0b993c8f8cee1d}\label{classSceneApprenticeship_ad5c45ee45098dee80e0b993c8f8cee1d}} 
+\index{SceneApprenticeship@{SceneApprenticeship}!m\_currentNode@{m\_currentNode}}
+\index{m\_currentNode@{m\_currentNode}!SceneApprenticeship@{SceneApprenticeship}}
+\doxysubsubsection{\texorpdfstring{m\_currentNode}{m\_currentNode}}
+{\footnotesize\ttfamily Dialogue\+Node$\ast$ Scene\+Apprenticeship\+::m\+\_\+current\+Node = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneApprenticeship_ad5d9119e3e5da3dedab68f8bb45bed18}\label{classSceneApprenticeship_ad5d9119e3e5da3dedab68f8bb45bed18}} 
+\index{SceneApprenticeship@{SceneApprenticeship}!m\_dialogue@{m\_dialogue}}
+\index{m\_dialogue@{m\_dialogue}!SceneApprenticeship@{SceneApprenticeship}}
+\doxysubsubsection{\texorpdfstring{m\_dialogue}{m\_dialogue}}
+{\footnotesize\ttfamily Dialogue\+Data Scene\+Apprenticeship\+::m\+\_\+dialogue\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneApprenticeship_a5a96e8143e3154e40a4ddbf56aebd6c9}\label{classSceneApprenticeship_a5a96e8143e3154e40a4ddbf56aebd6c9}} 
+\index{SceneApprenticeship@{SceneApprenticeship}!m\_playerEntity@{m\_playerEntity}}
+\index{m\_playerEntity@{m\_playerEntity}!SceneApprenticeship@{SceneApprenticeship}}
+\doxysubsubsection{\texorpdfstring{m\_playerEntity}{m\_playerEntity}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classEntity}{Entity}}$>$ Scene\+Apprenticeship\+::m\+\_\+player\+Entity\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneApprenticeship_af715c36feb12b429a54a38ab9a6e55c3}\label{classSceneApprenticeship_af715c36feb12b429a54a38ab9a6e55c3}} 
+\index{SceneApprenticeship@{SceneApprenticeship}!m\_selectedOption@{m\_selectedOption}}
+\index{m\_selectedOption@{m\_selectedOption}!SceneApprenticeship@{SceneApprenticeship}}
+\doxysubsubsection{\texorpdfstring{m\_selectedOption}{m\_selectedOption}}
+{\footnotesize\ttfamily size\+\_\+t Scene\+Apprenticeship\+::m\+\_\+selected\+Option = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneApprenticeship_a716f662f9e0c14714a5a4df015fcde79}\label{classSceneApprenticeship_a716f662f9e0c14714a5a4df015fcde79}} 
+\index{SceneApprenticeship@{SceneApprenticeship}!m\_title@{m\_title}}
+\index{m\_title@{m\_title}!SceneApprenticeship@{SceneApprenticeship}}
+\doxysubsubsection{\texorpdfstring{m\_title}{m\_title}}
+{\footnotesize\ttfamily std\+::string Scene\+Apprenticeship\+::m\+\_\+title\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/scenes/\mbox{\hyperlink{SceneApprenticeship_8h}{Scene\+Apprenticeship.\+h}}\item 
+src/scenes/\mbox{\hyperlink{SceneApprenticeship_8cpp}{Scene\+Apprenticeship.\+cpp}}\end{DoxyCompactItemize}

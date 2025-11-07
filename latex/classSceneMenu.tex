@@ -1,0 +1,369 @@
+\hypertarget{classSceneMenu}{}\doxysection{Scene\+Menu Class Reference}
+\label{classSceneMenu}\index{SceneMenu@{SceneMenu}}
+
+
+{\ttfamily \#include $<$Scene\+Menu.\+h$>$}
+
+
+
+Inheritance diagram for Scene\+Menu\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=200pt]{classSceneMenu__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Scene\+Menu\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=200pt]{classSceneMenu__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSceneMenu_ab0704fe9063a5edfbab4a7655dd86ee1}{Scene\+Menu}} (\mbox{\hyperlink{classGameEngine}{Game\+Engine}} $\ast$game\+Engine)
+\item 
+virtual \mbox{\hyperlink{classSceneMenu_a077293dadcb11b643337fc8d28303e53}{$\sim$\+Scene\+Menu}} ()
+\item 
+void \mbox{\hyperlink{classSceneMenu_a656457e79763c7ec1e200b4f2b1ff953}{s\+Render}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{classSceneMenu_a300d9b38a8d370ba26afd4e90db9fabb}{Menu\+State}} \{ \mbox{\hyperlink{classSceneMenu_a300d9b38a8d370ba26afd4e90db9fabbaa16d505f03a4b6f35486f65f6a61317e}{MAIN\+\_\+\+MENU}}
+, \mbox{\hyperlink{classSceneMenu_a300d9b38a8d370ba26afd4e90db9fabba31a046ea3c185ca990c2abd3d771d132}{ENTERING\+\_\+\+NAME}}
+, \mbox{\hyperlink{classSceneMenu_a300d9b38a8d370ba26afd4e90db9fabba113c77861b104db0c91a2152e002abaa}{CONFIRMING\+\_\+\+NAME}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classSceneMenu_a1e0a038fc28762603ea6075cebaa50a8}{init}} ()
+\item 
+void \mbox{\hyperlink{classSceneMenu_ac6e77b0a28ed0e22ae17e15749634c8c}{register\+Menu\+Actions}} ()
+\item 
+void \mbox{\hyperlink{classSceneMenu_ad63744f74774790a3962459694708ff9}{navigate\+Up}} ()
+\item 
+void \mbox{\hyperlink{classSceneMenu_ac740193db5948d0c30115f0263e4b3c4}{navigate\+Down}} ()
+\item 
+void \mbox{\hyperlink{classSceneMenu_ad4d5c5264ab44135416c2d7f06176967}{select\+Menu\+Item}} ()
+\item 
+void \mbox{\hyperlink{classSceneMenu_a0fb73962d5f5b776549345815803acad}{start\+Name\+Input}} ()
+\item 
+void \mbox{\hyperlink{classSceneMenu_a9c88dac40b7c8cbcdc34bc9e4866b8b7}{handle\+Name\+Input}} (const std\+::string \&input)
+\item 
+void \mbox{\hyperlink{classSceneMenu_a9f32bab2b6081fda33920fc0bf63ca82}{confirm\+Name}} ()
+\item 
+void \mbox{\hyperlink{classSceneMenu_a2b18d7565c45999553edb2ce141bcc03}{cancel\+Name\+Input}} ()
+\item 
+void \mbox{\hyperlink{classSceneMenu_ac1e5d0750470863a8ce61621394d54b1}{render\+Main\+Menu}} ()
+\item 
+void \mbox{\hyperlink{classSceneMenu_ac7cb8a47a09a593c1db0c86fd5af2bd1}{render\+Name\+Input}} ()
+\item 
+void \mbox{\hyperlink{classSceneMenu_ad89ea7b3f6635375c547a8d346ca23ef}{render\+Menu\+Items}} ()
+\item 
+void \mbox{\hyperlink{classSceneMenu_a131d3f366007ee8d2efdbfcb25d7c826}{s\+Do\+Action}} (const \mbox{\hyperlink{classAction}{Action}} \&action)
+\item 
+void \mbox{\hyperlink{classSceneMenu_aa13ff3a36eb7edee5dee8cd46acdc462}{update}} ()
+\item 
+void \mbox{\hyperlink{classSceneMenu_a48c41ee597c3fd481d73c5f5952e94ab}{on\+End}} ()
+\item 
+void \mbox{\hyperlink{classSceneMenu_a8b85d1d3bf12291df1896c0b46dac77e}{initialize\+Managers}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Font \mbox{\hyperlink{classSceneMenu_af1fad4c141a13a9c2b52a495770e31e5}{m\+\_\+font\+Title}}
+\item 
+sf\+::\+Font \mbox{\hyperlink{classSceneMenu_ac408d4481bb8c6262cbd2a47c32730ec}{m\+\_\+font\+Menu}}
+\item 
+sf\+::\+Color \mbox{\hyperlink{classSceneMenu_a45c77dbf2439a314d0895259d60bc5b0}{m\+\_\+color\+Title}}
+\item 
+sf\+::\+Color \mbox{\hyperlink{classSceneMenu_a960b1f462384a89381881e2356af8675}{m\+\_\+color\+Menu}}
+\item 
+sf\+::\+Color \mbox{\hyperlink{classSceneMenu_ad9fbeedc738fd9a0a92ff60d17a82694}{m\+\_\+color\+Selected}}
+\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classSceneMenu_a3de8e8bf946aa44175129d08281f7c7d}{m\+\_\+menu\+Items}}
+\item 
+int \mbox{\hyperlink{classSceneMenu_a88a3f322800fd68ddc75e4530495cefb}{m\+\_\+selected\+Item}}
+\item 
+std\+::string \mbox{\hyperlink{classSceneMenu_a5183bca6626f002d0a159de2439cdb0e}{m\+\_\+player\+Name}}
+\item 
+sf\+::\+Text \mbox{\hyperlink{classSceneMenu_ac57c5daa74b88c28f720d0424c3f69e4}{m\+\_\+name\+Prompt\+Text}}
+\item 
+sf\+::\+Text \mbox{\hyperlink{classSceneMenu_aa7773f29c5f9f563a59558edbdd26600}{m\+\_\+name\+Input\+Text}}
+\item 
+sf\+::\+Text \mbox{\hyperlink{classSceneMenu_a5e1477aec282807fb4393dbe3e08a45a}{m\+\_\+name\+Confirm\+Text}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classSceneMenu_a300d9b38a8d370ba26afd4e90db9fabb}\label{classSceneMenu_a300d9b38a8d370ba26afd4e90db9fabb}} 
+\index{SceneMenu@{SceneMenu}!MenuState@{MenuState}}
+\index{MenuState@{MenuState}!SceneMenu@{SceneMenu}}
+\doxysubsubsection{\texorpdfstring{MenuState}{MenuState}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{classSceneMenu_a300d9b38a8d370ba26afd4e90db9fabb}{Scene\+Menu\+::\+Menu\+State}}\hspace{0.3cm}{\ttfamily [strong]}, {\ttfamily [protected]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MAIN\_MENU@{MAIN\_MENU}!SceneMenu@{SceneMenu}}\index{SceneMenu@{SceneMenu}!MAIN\_MENU@{MAIN\_MENU}}}\mbox{\Hypertarget{classSceneMenu_a300d9b38a8d370ba26afd4e90db9fabbaa16d505f03a4b6f35486f65f6a61317e}\label{classSceneMenu_a300d9b38a8d370ba26afd4e90db9fabbaa16d505f03a4b6f35486f65f6a61317e}} 
+MAIN\+\_\+\+MENU&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ENTERING\_NAME@{ENTERING\_NAME}!SceneMenu@{SceneMenu}}\index{SceneMenu@{SceneMenu}!ENTERING\_NAME@{ENTERING\_NAME}}}\mbox{\Hypertarget{classSceneMenu_a300d9b38a8d370ba26afd4e90db9fabba31a046ea3c185ca990c2abd3d771d132}\label{classSceneMenu_a300d9b38a8d370ba26afd4e90db9fabba31a046ea3c185ca990c2abd3d771d132}} 
+ENTERING\+\_\+\+NAME&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CONFIRMING\_NAME@{CONFIRMING\_NAME}!SceneMenu@{SceneMenu}}\index{SceneMenu@{SceneMenu}!CONFIRMING\_NAME@{CONFIRMING\_NAME}}}\mbox{\Hypertarget{classSceneMenu_a300d9b38a8d370ba26afd4e90db9fabba113c77861b104db0c91a2152e002abaa}\label{classSceneMenu_a300d9b38a8d370ba26afd4e90db9fabba113c77861b104db0c91a2152e002abaa}} 
+CONFIRMING\+\_\+\+NAME&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSceneMenu_ab0704fe9063a5edfbab4a7655dd86ee1}\label{classSceneMenu_ab0704fe9063a5edfbab4a7655dd86ee1}} 
+\index{SceneMenu@{SceneMenu}!SceneMenu@{SceneMenu}}
+\index{SceneMenu@{SceneMenu}!SceneMenu@{SceneMenu}}
+\doxysubsubsection{\texorpdfstring{SceneMenu()}{SceneMenu()}}
+{\footnotesize\ttfamily Scene\+Menu\+::\+Scene\+Menu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGameEngine}{Game\+Engine}} $\ast$}]{game\+Engine }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneMenu_ab0704fe9063a5edfbab4a7655dd86ee1_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSceneMenu_a077293dadcb11b643337fc8d28303e53}\label{classSceneMenu_a077293dadcb11b643337fc8d28303e53}} 
+\index{SceneMenu@{SceneMenu}!````~SceneMenu@{$\sim$SceneMenu}}
+\index{````~SceneMenu@{$\sim$SceneMenu}!SceneMenu@{SceneMenu}}
+\doxysubsubsection{\texorpdfstring{$\sim$SceneMenu()}{~SceneMenu()}}
+{\footnotesize\ttfamily Scene\+Menu\+::$\sim$\+Scene\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSceneMenu_a2b18d7565c45999553edb2ce141bcc03}\label{classSceneMenu_a2b18d7565c45999553edb2ce141bcc03}} 
+\index{SceneMenu@{SceneMenu}!cancelNameInput@{cancelNameInput}}
+\index{cancelNameInput@{cancelNameInput}!SceneMenu@{SceneMenu}}
+\doxysubsubsection{\texorpdfstring{cancelNameInput()}{cancelNameInput()}}
+{\footnotesize\ttfamily void Scene\+Menu\+::cancel\+Name\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneMenu_a9f32bab2b6081fda33920fc0bf63ca82}\label{classSceneMenu_a9f32bab2b6081fda33920fc0bf63ca82}} 
+\index{SceneMenu@{SceneMenu}!confirmName@{confirmName}}
+\index{confirmName@{confirmName}!SceneMenu@{SceneMenu}}
+\doxysubsubsection{\texorpdfstring{confirmName()}{confirmName()}}
+{\footnotesize\ttfamily void Scene\+Menu\+::confirm\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneMenu_a9c88dac40b7c8cbcdc34bc9e4866b8b7}\label{classSceneMenu_a9c88dac40b7c8cbcdc34bc9e4866b8b7}} 
+\index{SceneMenu@{SceneMenu}!handleNameInput@{handleNameInput}}
+\index{handleNameInput@{handleNameInput}!SceneMenu@{SceneMenu}}
+\doxysubsubsection{\texorpdfstring{handleNameInput()}{handleNameInput()}}
+{\footnotesize\ttfamily void Scene\+Menu\+::handle\+Name\+Input (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneMenu_a1e0a038fc28762603ea6075cebaa50a8}\label{classSceneMenu_a1e0a038fc28762603ea6075cebaa50a8}} 
+\index{SceneMenu@{SceneMenu}!init@{init}}
+\index{init@{init}!SceneMenu@{SceneMenu}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void Scene\+Menu\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneMenu_a1e0a038fc28762603ea6075cebaa50a8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{classSceneMenu_a1e0a038fc28762603ea6075cebaa50a8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSceneMenu_a8b85d1d3bf12291df1896c0b46dac77e}\label{classSceneMenu_a8b85d1d3bf12291df1896c0b46dac77e}} 
+\index{SceneMenu@{SceneMenu}!initializeManagers@{initializeManagers}}
+\index{initializeManagers@{initializeManagers}!SceneMenu@{SceneMenu}}
+\doxysubsubsection{\texorpdfstring{initializeManagers()}{initializeManagers()}}
+{\footnotesize\ttfamily void Scene\+Menu\+::initialize\+Managers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneMenu_ac740193db5948d0c30115f0263e4b3c4}\label{classSceneMenu_ac740193db5948d0c30115f0263e4b3c4}} 
+\index{SceneMenu@{SceneMenu}!navigateDown@{navigateDown}}
+\index{navigateDown@{navigateDown}!SceneMenu@{SceneMenu}}
+\doxysubsubsection{\texorpdfstring{navigateDown()}{navigateDown()}}
+{\footnotesize\ttfamily void Scene\+Menu\+::navigate\+Down (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneMenu_ad63744f74774790a3962459694708ff9}\label{classSceneMenu_ad63744f74774790a3962459694708ff9}} 
+\index{SceneMenu@{SceneMenu}!navigateUp@{navigateUp}}
+\index{navigateUp@{navigateUp}!SceneMenu@{SceneMenu}}
+\doxysubsubsection{\texorpdfstring{navigateUp()}{navigateUp()}}
+{\footnotesize\ttfamily void Scene\+Menu\+::navigate\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneMenu_a48c41ee597c3fd481d73c5f5952e94ab}\label{classSceneMenu_a48c41ee597c3fd481d73c5f5952e94ab}} 
+\index{SceneMenu@{SceneMenu}!onEnd@{onEnd}}
+\index{onEnd@{onEnd}!SceneMenu@{SceneMenu}}
+\doxysubsubsection{\texorpdfstring{onEnd()}{onEnd()}}
+{\footnotesize\ttfamily void Scene\+Menu\+::on\+End (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=337pt]{classSceneMenu_a48c41ee597c3fd481d73c5f5952e94ab_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSceneMenu_ac6e77b0a28ed0e22ae17e15749634c8c}\label{classSceneMenu_ac6e77b0a28ed0e22ae17e15749634c8c}} 
+\index{SceneMenu@{SceneMenu}!registerMenuActions@{registerMenuActions}}
+\index{registerMenuActions@{registerMenuActions}!SceneMenu@{SceneMenu}}
+\doxysubsubsection{\texorpdfstring{registerMenuActions()}{registerMenuActions()}}
+{\footnotesize\ttfamily void Scene\+Menu\+::register\+Menu\+Actions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneMenu_ac6e77b0a28ed0e22ae17e15749634c8c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSceneMenu_ac1e5d0750470863a8ce61621394d54b1}\label{classSceneMenu_ac1e5d0750470863a8ce61621394d54b1}} 
+\index{SceneMenu@{SceneMenu}!renderMainMenu@{renderMainMenu}}
+\index{renderMainMenu@{renderMainMenu}!SceneMenu@{SceneMenu}}
+\doxysubsubsection{\texorpdfstring{renderMainMenu()}{renderMainMenu()}}
+{\footnotesize\ttfamily void Scene\+Menu\+::render\+Main\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneMenu_ad89ea7b3f6635375c547a8d346ca23ef}\label{classSceneMenu_ad89ea7b3f6635375c547a8d346ca23ef}} 
+\index{SceneMenu@{SceneMenu}!renderMenuItems@{renderMenuItems}}
+\index{renderMenuItems@{renderMenuItems}!SceneMenu@{SceneMenu}}
+\doxysubsubsection{\texorpdfstring{renderMenuItems()}{renderMenuItems()}}
+{\footnotesize\ttfamily void Scene\+Menu\+::render\+Menu\+Items (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneMenu_ac7cb8a47a09a593c1db0c86fd5af2bd1}\label{classSceneMenu_ac7cb8a47a09a593c1db0c86fd5af2bd1}} 
+\index{SceneMenu@{SceneMenu}!renderNameInput@{renderNameInput}}
+\index{renderNameInput@{renderNameInput}!SceneMenu@{SceneMenu}}
+\doxysubsubsection{\texorpdfstring{renderNameInput()}{renderNameInput()}}
+{\footnotesize\ttfamily void Scene\+Menu\+::render\+Name\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneMenu_a131d3f366007ee8d2efdbfcb25d7c826}\label{classSceneMenu_a131d3f366007ee8d2efdbfcb25d7c826}} 
+\index{SceneMenu@{SceneMenu}!sDoAction@{sDoAction}}
+\index{sDoAction@{sDoAction}!SceneMenu@{SceneMenu}}
+\doxysubsubsection{\texorpdfstring{sDoAction()}{sDoAction()}}
+{\footnotesize\ttfamily void Scene\+Menu\+::s\+Do\+Action (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classAction}{Action}} \&}]{action }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=337pt]{classSceneMenu_a131d3f366007ee8d2efdbfcb25d7c826_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSceneMenu_ad4d5c5264ab44135416c2d7f06176967}\label{classSceneMenu_ad4d5c5264ab44135416c2d7f06176967}} 
+\index{SceneMenu@{SceneMenu}!selectMenuItem@{selectMenuItem}}
+\index{selectMenuItem@{selectMenuItem}!SceneMenu@{SceneMenu}}
+\doxysubsubsection{\texorpdfstring{selectMenuItem()}{selectMenuItem()}}
+{\footnotesize\ttfamily void Scene\+Menu\+::select\+Menu\+Item (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneMenu_a656457e79763c7ec1e200b4f2b1ff953}\label{classSceneMenu_a656457e79763c7ec1e200b4f2b1ff953}} 
+\index{SceneMenu@{SceneMenu}!sRender@{sRender}}
+\index{sRender@{sRender}!SceneMenu@{SceneMenu}}
+\doxysubsubsection{\texorpdfstring{sRender()}{sRender()}}
+{\footnotesize\ttfamily void Scene\+Menu\+::s\+Render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classSceneMenu_a0fb73962d5f5b776549345815803acad}\label{classSceneMenu_a0fb73962d5f5b776549345815803acad}} 
+\index{SceneMenu@{SceneMenu}!startNameInput@{startNameInput}}
+\index{startNameInput@{startNameInput}!SceneMenu@{SceneMenu}}
+\doxysubsubsection{\texorpdfstring{startNameInput()}{startNameInput()}}
+{\footnotesize\ttfamily void Scene\+Menu\+::start\+Name\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneMenu_aa13ff3a36eb7edee5dee8cd46acdc462}\label{classSceneMenu_aa13ff3a36eb7edee5dee8cd46acdc462}} 
+\index{SceneMenu@{SceneMenu}!update@{update}}
+\index{update@{update}!SceneMenu@{SceneMenu}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Scene\+Menu\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classSceneMenu_a960b1f462384a89381881e2356af8675}\label{classSceneMenu_a960b1f462384a89381881e2356af8675}} 
+\index{SceneMenu@{SceneMenu}!m\_colorMenu@{m\_colorMenu}}
+\index{m\_colorMenu@{m\_colorMenu}!SceneMenu@{SceneMenu}}
+\doxysubsubsection{\texorpdfstring{m\_colorMenu}{m\_colorMenu}}
+{\footnotesize\ttfamily sf\+::\+Color Scene\+Menu\+::m\+\_\+color\+Menu\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneMenu_ad9fbeedc738fd9a0a92ff60d17a82694}\label{classSceneMenu_ad9fbeedc738fd9a0a92ff60d17a82694}} 
+\index{SceneMenu@{SceneMenu}!m\_colorSelected@{m\_colorSelected}}
+\index{m\_colorSelected@{m\_colorSelected}!SceneMenu@{SceneMenu}}
+\doxysubsubsection{\texorpdfstring{m\_colorSelected}{m\_colorSelected}}
+{\footnotesize\ttfamily sf\+::\+Color Scene\+Menu\+::m\+\_\+color\+Selected\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneMenu_a45c77dbf2439a314d0895259d60bc5b0}\label{classSceneMenu_a45c77dbf2439a314d0895259d60bc5b0}} 
+\index{SceneMenu@{SceneMenu}!m\_colorTitle@{m\_colorTitle}}
+\index{m\_colorTitle@{m\_colorTitle}!SceneMenu@{SceneMenu}}
+\doxysubsubsection{\texorpdfstring{m\_colorTitle}{m\_colorTitle}}
+{\footnotesize\ttfamily sf\+::\+Color Scene\+Menu\+::m\+\_\+color\+Title\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneMenu_ac408d4481bb8c6262cbd2a47c32730ec}\label{classSceneMenu_ac408d4481bb8c6262cbd2a47c32730ec}} 
+\index{SceneMenu@{SceneMenu}!m\_fontMenu@{m\_fontMenu}}
+\index{m\_fontMenu@{m\_fontMenu}!SceneMenu@{SceneMenu}}
+\doxysubsubsection{\texorpdfstring{m\_fontMenu}{m\_fontMenu}}
+{\footnotesize\ttfamily sf\+::\+Font Scene\+Menu\+::m\+\_\+font\+Menu\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneMenu_af1fad4c141a13a9c2b52a495770e31e5}\label{classSceneMenu_af1fad4c141a13a9c2b52a495770e31e5}} 
+\index{SceneMenu@{SceneMenu}!m\_fontTitle@{m\_fontTitle}}
+\index{m\_fontTitle@{m\_fontTitle}!SceneMenu@{SceneMenu}}
+\doxysubsubsection{\texorpdfstring{m\_fontTitle}{m\_fontTitle}}
+{\footnotesize\ttfamily sf\+::\+Font Scene\+Menu\+::m\+\_\+font\+Title\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneMenu_a3de8e8bf946aa44175129d08281f7c7d}\label{classSceneMenu_a3de8e8bf946aa44175129d08281f7c7d}} 
+\index{SceneMenu@{SceneMenu}!m\_menuItems@{m\_menuItems}}
+\index{m\_menuItems@{m\_menuItems}!SceneMenu@{SceneMenu}}
+\doxysubsubsection{\texorpdfstring{m\_menuItems}{m\_menuItems}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::string$>$ Scene\+Menu\+::m\+\_\+menu\+Items\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneMenu_a5e1477aec282807fb4393dbe3e08a45a}\label{classSceneMenu_a5e1477aec282807fb4393dbe3e08a45a}} 
+\index{SceneMenu@{SceneMenu}!m\_nameConfirmText@{m\_nameConfirmText}}
+\index{m\_nameConfirmText@{m\_nameConfirmText}!SceneMenu@{SceneMenu}}
+\doxysubsubsection{\texorpdfstring{m\_nameConfirmText}{m\_nameConfirmText}}
+{\footnotesize\ttfamily sf\+::\+Text Scene\+Menu\+::m\+\_\+name\+Confirm\+Text\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneMenu_aa7773f29c5f9f563a59558edbdd26600}\label{classSceneMenu_aa7773f29c5f9f563a59558edbdd26600}} 
+\index{SceneMenu@{SceneMenu}!m\_nameInputText@{m\_nameInputText}}
+\index{m\_nameInputText@{m\_nameInputText}!SceneMenu@{SceneMenu}}
+\doxysubsubsection{\texorpdfstring{m\_nameInputText}{m\_nameInputText}}
+{\footnotesize\ttfamily sf\+::\+Text Scene\+Menu\+::m\+\_\+name\+Input\+Text\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneMenu_ac57c5daa74b88c28f720d0424c3f69e4}\label{classSceneMenu_ac57c5daa74b88c28f720d0424c3f69e4}} 
+\index{SceneMenu@{SceneMenu}!m\_namePromptText@{m\_namePromptText}}
+\index{m\_namePromptText@{m\_namePromptText}!SceneMenu@{SceneMenu}}
+\doxysubsubsection{\texorpdfstring{m\_namePromptText}{m\_namePromptText}}
+{\footnotesize\ttfamily sf\+::\+Text Scene\+Menu\+::m\+\_\+name\+Prompt\+Text\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneMenu_a5183bca6626f002d0a159de2439cdb0e}\label{classSceneMenu_a5183bca6626f002d0a159de2439cdb0e}} 
+\index{SceneMenu@{SceneMenu}!m\_playerName@{m\_playerName}}
+\index{m\_playerName@{m\_playerName}!SceneMenu@{SceneMenu}}
+\doxysubsubsection{\texorpdfstring{m\_playerName}{m\_playerName}}
+{\footnotesize\ttfamily std\+::string Scene\+Menu\+::m\+\_\+player\+Name\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneMenu_a88a3f322800fd68ddc75e4530495cefb}\label{classSceneMenu_a88a3f322800fd68ddc75e4530495cefb}} 
+\index{SceneMenu@{SceneMenu}!m\_selectedItem@{m\_selectedItem}}
+\index{m\_selectedItem@{m\_selectedItem}!SceneMenu@{SceneMenu}}
+\doxysubsubsection{\texorpdfstring{m\_selectedItem}{m\_selectedItem}}
+{\footnotesize\ttfamily int Scene\+Menu\+::m\+\_\+selected\+Item\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/scenes/\mbox{\hyperlink{SceneMenu_8h}{Scene\+Menu.\+h}}\item 
+src/scenes/\mbox{\hyperlink{SceneMenu_8cpp}{Scene\+Menu.\+cpp}}\end{DoxyCompactItemize}

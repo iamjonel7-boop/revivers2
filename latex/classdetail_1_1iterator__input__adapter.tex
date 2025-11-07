@@ -1,0 +1,89 @@
+\hypertarget{classdetail_1_1iterator__input__adapter}{}\doxysection{detail\+::iterator\+\_\+input\+\_\+adapter\texorpdfstring{$<$}{<} Iterator\+Type \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classdetail_1_1iterator__input__adapter}\index{detail::iterator\_input\_adapter$<$ IteratorType $>$@{detail::iterator\_input\_adapter$<$ IteratorType $>$}}
+
+
+{\ttfamily \#include $<$json.\+hpp$>$}
+
+
+
+Collaboration diagram for detail\+::iterator\+\_\+input\+\_\+adapter\texorpdfstring{$<$}{<} Iterator\+Type \texorpdfstring{$>$}{>}\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=205pt]{classdetail_1_1iterator__input__adapter__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classdetail_1_1iterator__input__adapter_a6c852966a1cd5719ae32e8e486691fbe}{char\+\_\+type}} = typename std\+::iterator\+\_\+traits$<$ Iterator\+Type $>$\+::value\+\_\+type
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classdetail_1_1iterator__input__adapter_a6bbdb33434a11f90d6bfe2a9a71ee356}{iterator\+\_\+input\+\_\+adapter}} (Iterator\+Type first, Iterator\+Type last)
+\item 
+\mbox{\hyperlink{structdetail_1_1char__traits}{char\+\_\+traits}}$<$ \mbox{\hyperlink{classdetail_1_1iterator__input__adapter_a6c852966a1cd5719ae32e8e486691fbe}{char\+\_\+type}} $>$\+::int\+\_\+type \mbox{\hyperlink{classdetail_1_1iterator__input__adapter_a3c71e463d5ad1e7e60f83be0c0a2f3ca}{get\+\_\+character}} ()
+\item 
+{\footnotesize template$<$class T $>$ }\\std\+::size\+\_\+t \mbox{\hyperlink{classdetail_1_1iterator__input__adapter_a8098cf8a19a71db5ba795f433d0a40a2}{get\+\_\+elements}} (T $\ast$dest, std\+::size\+\_\+t count=1)
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Base\+Input\+Adapter , size\+\_\+t T$>$ }\\struct \mbox{\hyperlink{classdetail_1_1iterator__input__adapter_ab86106ba230f1542b94dcd96e6ab3221}{wide\+\_\+string\+\_\+input\+\_\+helper}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classdetail_1_1iterator__input__adapter_a6c852966a1cd5719ae32e8e486691fbe}\label{classdetail_1_1iterator__input__adapter_a6c852966a1cd5719ae32e8e486691fbe}} 
+\index{detail::iterator\_input\_adapter$<$ IteratorType $>$@{detail::iterator\_input\_adapter$<$ IteratorType $>$}!char\_type@{char\_type}}
+\index{char\_type@{char\_type}!detail::iterator\_input\_adapter$<$ IteratorType $>$@{detail::iterator\_input\_adapter$<$ IteratorType $>$}}
+\doxysubsubsection{\texorpdfstring{char\_type}{char\_type}}
+{\footnotesize\ttfamily template$<$typename Iterator\+Type $>$ \\
+using \mbox{\hyperlink{classdetail_1_1iterator__input__adapter}{detail\+::iterator\+\_\+input\+\_\+adapter}}$<$ Iterator\+Type $>$\+::char\+\_\+type =  typename std\+::iterator\+\_\+traits$<$Iterator\+Type$>$\+::value\+\_\+type}
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classdetail_1_1iterator__input__adapter_a6bbdb33434a11f90d6bfe2a9a71ee356}\label{classdetail_1_1iterator__input__adapter_a6bbdb33434a11f90d6bfe2a9a71ee356}} 
+\index{detail::iterator\_input\_adapter$<$ IteratorType $>$@{detail::iterator\_input\_adapter$<$ IteratorType $>$}!iterator\_input\_adapter@{iterator\_input\_adapter}}
+\index{iterator\_input\_adapter@{iterator\_input\_adapter}!detail::iterator\_input\_adapter$<$ IteratorType $>$@{detail::iterator\_input\_adapter$<$ IteratorType $>$}}
+\doxysubsubsection{\texorpdfstring{iterator\_input\_adapter()}{iterator\_input\_adapter()}}
+{\footnotesize\ttfamily template$<$typename Iterator\+Type $>$ \\
+\mbox{\hyperlink{classdetail_1_1iterator__input__adapter}{detail\+::iterator\+\_\+input\+\_\+adapter}}$<$ Iterator\+Type $>$\+::iterator\+\_\+input\+\_\+adapter (\begin{DoxyParamCaption}\item[{Iterator\+Type}]{first,  }\item[{Iterator\+Type}]{last }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classdetail_1_1iterator__input__adapter_a3c71e463d5ad1e7e60f83be0c0a2f3ca}\label{classdetail_1_1iterator__input__adapter_a3c71e463d5ad1e7e60f83be0c0a2f3ca}} 
+\index{detail::iterator\_input\_adapter$<$ IteratorType $>$@{detail::iterator\_input\_adapter$<$ IteratorType $>$}!get\_character@{get\_character}}
+\index{get\_character@{get\_character}!detail::iterator\_input\_adapter$<$ IteratorType $>$@{detail::iterator\_input\_adapter$<$ IteratorType $>$}}
+\doxysubsubsection{\texorpdfstring{get\_character()}{get\_character()}}
+{\footnotesize\ttfamily template$<$typename Iterator\+Type $>$ \\
+\mbox{\hyperlink{structdetail_1_1char__traits}{char\+\_\+traits}}$<$ \mbox{\hyperlink{classdetail_1_1iterator__input__adapter_a6c852966a1cd5719ae32e8e486691fbe}{char\+\_\+type}} $>$\+::int\+\_\+type \mbox{\hyperlink{classdetail_1_1iterator__input__adapter}{detail\+::iterator\+\_\+input\+\_\+adapter}}$<$ Iterator\+Type $>$\+::get\+\_\+character (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classdetail_1_1iterator__input__adapter_a8098cf8a19a71db5ba795f433d0a40a2}\label{classdetail_1_1iterator__input__adapter_a8098cf8a19a71db5ba795f433d0a40a2}} 
+\index{detail::iterator\_input\_adapter$<$ IteratorType $>$@{detail::iterator\_input\_adapter$<$ IteratorType $>$}!get\_elements@{get\_elements}}
+\index{get\_elements@{get\_elements}!detail::iterator\_input\_adapter$<$ IteratorType $>$@{detail::iterator\_input\_adapter$<$ IteratorType $>$}}
+\doxysubsubsection{\texorpdfstring{get\_elements()}{get\_elements()}}
+{\footnotesize\ttfamily template$<$typename Iterator\+Type $>$ \\
+template$<$class T $>$ \\
+std\+::size\+\_\+t \mbox{\hyperlink{classdetail_1_1iterator__input__adapter}{detail\+::iterator\+\_\+input\+\_\+adapter}}$<$ Iterator\+Type $>$\+::get\+\_\+elements (\begin{DoxyParamCaption}\item[{T $\ast$}]{dest,  }\item[{std\+::size\+\_\+t}]{count = {\ttfamily 1} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classdetail_1_1iterator__input__adapter_ab86106ba230f1542b94dcd96e6ab3221}\label{classdetail_1_1iterator__input__adapter_ab86106ba230f1542b94dcd96e6ab3221}} 
+\index{detail::iterator\_input\_adapter$<$ IteratorType $>$@{detail::iterator\_input\_adapter$<$ IteratorType $>$}!wide\_string\_input\_helper@{wide\_string\_input\_helper}}
+\index{wide\_string\_input\_helper@{wide\_string\_input\_helper}!detail::iterator\_input\_adapter$<$ IteratorType $>$@{detail::iterator\_input\_adapter$<$ IteratorType $>$}}
+\doxysubsubsection{\texorpdfstring{wide\_string\_input\_helper}{wide\_string\_input\_helper}}
+{\footnotesize\ttfamily template$<$typename Iterator\+Type $>$ \\
+template$<$typename Base\+Input\+Adapter , size\+\_\+t T$>$ \\
+friend struct \mbox{\hyperlink{structdetail_1_1wide__string__input__helper}{wide\+\_\+string\+\_\+input\+\_\+helper}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/nlohmann/\mbox{\hyperlink{json_8hpp}{json.\+hpp}}\end{DoxyCompactItemize}

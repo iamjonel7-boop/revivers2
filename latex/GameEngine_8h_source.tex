@@ -1,0 +1,58 @@
+\hypertarget{GameEngine_8h_source}{}\doxysection{Game\+Engine.\+h}
+\label{GameEngine_8h_source}\index{src/core/GameEngine.h@{src/core/GameEngine.h}}
+\mbox{\hyperlink{GameEngine_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }Scene;}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{typedef}\ std::map<std::string,\ std::shared\_ptr<Scene>>\ \mbox{\hyperlink{GameEngine_8h_a30a44bde9f6d41838c12dc8ed3eb61d6}{SceneMap}};}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGameEngine}{GameEngine}}}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ sf::RenderWindow\ m\_window;}
+\DoxyCodeLine{00016\ \ \ std::string\ m\_currentScene;}
+\DoxyCodeLine{00017\ \ \ \mbox{\hyperlink{GameEngine_8h_a30a44bde9f6d41838c12dc8ed3eb61d6}{SceneMap}}\ m\_sceneMap;}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \textcolor{keywordtype}{bool}\ m\_running\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \textcolor{keywordtype}{void}\ init();}
+\DoxyCodeLine{00022\ \ \ \textcolor{keywordtype}{void}\ update();}
+\DoxyCodeLine{00023\ \ \ \textcolor{keywordtype}{void}\ sUserInput();}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ std::shared\_ptr<Scene>\ currentScene();}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00028\ \ \ \mbox{\hyperlink{classGameEngine_a64c430f74d72e2745646fdbffbd97930}{GameEngine}}();}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classGameEngine_ab27ba85439a1e05d106f6327ef7e00c5}{WIDTH}}\ =\ 800;}
+\DoxyCodeLine{00031\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classGameEngine_a5b91898cc66b27e1cfa3bb05ac269f00}{HEIGHT}}\ =\ 600;}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameEngine_ac0c888c4497f401b42c501c698e7e47a}{changeScene}}(\textcolor{keyword}{const}\ std::string\&\ sceneName,}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::shared\_ptr<Scene>\ scene,}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ endCurrentScene\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameEngine_ad82b626def2e52b28f0d6c2d167589f6}{quit}}();}
+\DoxyCodeLine{00038\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameEngine_ab01970da2c68fefbf48b98c59d5627ae}{run}}();}
+\DoxyCodeLine{00039\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameEngine_a28f41c8e2ee04b818b7458fd75d02e63}{sRender}}();}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ sf::RenderWindow\&\ \mbox{\hyperlink{classGameEngine_ab54532076e85b26619be743450d3a0e5}{window}}();}
+\DoxyCodeLine{00042\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGameEngine_ac7fe66907626424cd391f7b4692ba68e}{isRunning}}();}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classGameEngine_a74ee315422a58fc5ef2c76705ed685d9}{windowWidth}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00045\ \textcolor{keyword}{\ \ }\{}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordflow}{return}\ m\_window.getSize().x;}
+\DoxyCodeLine{00047\ \ \ \}}
+\DoxyCodeLine{00048\ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classGameEngine_a0e063b9dbdb787ebfa67681f2197c246}{windowHeight}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00049\ \textcolor{keyword}{\ \ }\{}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordflow}{return}\ m\_window.getSize().y;}
+\DoxyCodeLine{00051\ \ \ \}}
+\DoxyCodeLine{00052\ \};}
+
+\end{DoxyCode}

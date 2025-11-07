@@ -1,0 +1,69 @@
+\hypertarget{SceneMenu_8h_source}{}\doxysection{Scene\+Menu.\+h}
+\label{SceneMenu_8h_source}\index{src/scenes/SceneMenu.h@{src/scenes/SceneMenu.h}}
+\mbox{\hyperlink{SceneMenu_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Scene_8h}{Scene.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{GameEngine_8h}{GameEngine.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{SceneApprenticeship_8h}{SceneApprenticeship.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Components_8h}{Components.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSceneMenu}{SceneMenu}}\ :\ \textcolor{keyword}{public}\ Scene}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00014\ \ \ \ sf::Font\ \mbox{\hyperlink{classSceneMenu_af1fad4c141a13a9c2b52a495770e31e5}{m\_fontTitle}};}
+\DoxyCodeLine{00015\ \ \ \ sf::Font\ \mbox{\hyperlink{classSceneMenu_ac408d4481bb8c6262cbd2a47c32730ec}{m\_fontMenu}};}
+\DoxyCodeLine{00016\ \ \ \ sf::Color\ \mbox{\hyperlink{classSceneMenu_a45c77dbf2439a314d0895259d60bc5b0}{m\_colorTitle}};}
+\DoxyCodeLine{00017\ \ \ \ sf::Color\ \mbox{\hyperlink{classSceneMenu_a960b1f462384a89381881e2356af8675}{m\_colorMenu}};}
+\DoxyCodeLine{00018\ \ \ \ sf::Color\ \mbox{\hyperlink{classSceneMenu_ad9fbeedc738fd9a0a92ff60d17a82694}{m\_colorSelected}};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{classSceneMenu_a300d9b38a8d370ba26afd4e90db9fabb}{MenuState}}}
+\DoxyCodeLine{00021\ \ \ \ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \mbox{\hyperlink{classSceneMenu_a300d9b38a8d370ba26afd4e90db9fabbaa16d505f03a4b6f35486f65f6a61317e}{MAIN\_MENU}},}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \mbox{\hyperlink{classSceneMenu_a300d9b38a8d370ba26afd4e90db9fabba31a046ea3c185ca990c2abd3d771d132}{ENTERING\_NAME}},}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \mbox{\hyperlink{classSceneMenu_a300d9b38a8d370ba26afd4e90db9fabba113c77861b104db0c91a2152e002abaa}{CONFIRMING\_NAME}}}
+\DoxyCodeLine{00025\ \ \ \ \};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \textcolor{comment}{//menu\ items}}
+\DoxyCodeLine{00028\ \ \ \ std::vector<std::string>\ \mbox{\hyperlink{classSceneMenu_a3de8e8bf946aa44175129d08281f7c7d}{m\_menuItems}};}
+\DoxyCodeLine{00029\ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSceneMenu_a88a3f322800fd68ddc75e4530495cefb}{m\_selectedItem}};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \textcolor{comment}{//player\ name\ input}}
+\DoxyCodeLine{00032\ \ \ \ std::string\ \mbox{\hyperlink{classSceneMenu_a5183bca6626f002d0a159de2439cdb0e}{m\_playerName}};}
+\DoxyCodeLine{00033\ \ \ \ sf::Text\ \mbox{\hyperlink{classSceneMenu_ac57c5daa74b88c28f720d0424c3f69e4}{m\_namePromptText}};}
+\DoxyCodeLine{00034\ \ \ \ sf::Text\ \mbox{\hyperlink{classSceneMenu_aa7773f29c5f9f563a59558edbdd26600}{m\_nameInputText}};}
+\DoxyCodeLine{00035\ \ \ \ sf::Text\ \mbox{\hyperlink{classSceneMenu_a5e1477aec282807fb4393dbe3e08a45a}{m\_nameConfirmText}};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSceneMenu_a1e0a038fc28762603ea6075cebaa50a8}{init}}();}
+\DoxyCodeLine{00038\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSceneMenu_ac6e77b0a28ed0e22ae17e15749634c8c}{registerMenuActions}}();}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSceneMenu_ad63744f74774790a3962459694708ff9}{navigateUp}}();}
+\DoxyCodeLine{00041\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSceneMenu_ac740193db5948d0c30115f0263e4b3c4}{navigateDown}}();}
+\DoxyCodeLine{00042\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSceneMenu_ad4d5c5264ab44135416c2d7f06176967}{selectMenuItem}}();}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSceneMenu_a0fb73962d5f5b776549345815803acad}{startNameInput}}();}
+\DoxyCodeLine{00045\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSceneMenu_a9c88dac40b7c8cbcdc34bc9e4866b8b7}{handleNameInput}}(\textcolor{keyword}{const}\ std::string\&\ input);}
+\DoxyCodeLine{00046\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSceneMenu_a9f32bab2b6081fda33920fc0bf63ca82}{confirmName}}();}
+\DoxyCodeLine{00047\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSceneMenu_a2b18d7565c45999553edb2ce141bcc03}{cancelNameInput}}();}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSceneMenu_ac1e5d0750470863a8ce61621394d54b1}{renderMainMenu}}();}
+\DoxyCodeLine{00050\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSceneMenu_ac7cb8a47a09a593c1db0c86fd5af2bd1}{renderNameInput}}();}
+\DoxyCodeLine{00051\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSceneMenu_ad89ea7b3f6635375c547a8d346ca23ef}{renderMenuItems}}();}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSceneMenu_a131d3f366007ee8d2efdbfcb25d7c826}{sDoAction}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classAction}{Action}}\&\ action);}
+\DoxyCodeLine{00054\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSceneMenu_aa13ff3a36eb7edee5dee8cd46acdc462}{update}}();}
+\DoxyCodeLine{00055\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSceneMenu_a48c41ee597c3fd481d73c5f5952e94ab}{onEnd}}();}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSceneMenu_a8b85d1d3bf12291df1896c0b46dac77e}{initializeManagers}}()\{\}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00060\ \ \ \ \mbox{\hyperlink{classSceneMenu}{SceneMenu}}(\mbox{\hyperlink{classGameEngine}{GameEngine}}*\ gameEngine);}
+\DoxyCodeLine{00061\ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classSceneMenu_a077293dadcb11b643337fc8d28303e53}{\string~SceneMenu}}();}
+\DoxyCodeLine{00062\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSceneMenu_a656457e79763c7ec1e200b4f2b1ff953}{sRender}}();}
+\DoxyCodeLine{00063\ \};}
+
+\end{DoxyCode}

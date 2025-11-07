@@ -65,7 +65,6 @@ public:
    void selectVoice(const std::string& voice);
    void selectAspect(const std::string& aspect);
    void cancelFormation();
-
    bool isFormationComplete() const
    {
       return m_state == FormationState::READY_TO_EXECUTE;

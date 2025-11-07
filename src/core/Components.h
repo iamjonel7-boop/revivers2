@@ -10,19 +10,6 @@ struct Component
    bool has = false;
 };
 
-enum class Gift
-{
-   Kind, //npcs more willing to cooperate but weak damage
-   Clever, //unlocks hints, faster solutions, subtle advantages
-   Cautious, //reduces risk in challenger, avoids negative outcomes
-   Courageous //more damage to enemy but more encounters
-};
-
-struct CGift : Component
-{
-   Gift gift; //addComponent<CGift>({Gift::Clever})
-};
-
 struct CBoundingBox : Component
 {
    Vec2 size;

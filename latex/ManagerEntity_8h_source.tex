@@ -1,0 +1,29 @@
+\hypertarget{ManagerEntity_8h_source}{}\doxysection{Manager\+Entity.\+h}
+\label{ManagerEntity_8h_source}\index{src/managers/ManagerEntity.h@{src/managers/ManagerEntity.h}}
+\mbox{\hyperlink{ManagerEntity_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Entity_8h}{Entity.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{typedef}\ std::vector<std::shared\_ptr<Entity>>\ \mbox{\hyperlink{ManagerEntity_8h_a09dfc6fcc286236e5a41fc73b3ecbab7}{EntityVec}};}
+\DoxyCodeLine{00009\ \textcolor{keyword}{typedef}\ std::map<std::string,\ EntityVec>\ \mbox{\hyperlink{ManagerEntity_8h_a7c3297ed6fca9d717478cc6ba401bfa8}{EntityMap}};}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classEntityManager}{EntityManager}}\{}
+\DoxyCodeLine{00012\ \ \ \mbox{\hyperlink{ManagerEntity_8h_a09dfc6fcc286236e5a41fc73b3ecbab7}{EntityVec}}\ m\_entities;}
+\DoxyCodeLine{00013\ \ \ \mbox{\hyperlink{ManagerEntity_8h_a09dfc6fcc286236e5a41fc73b3ecbab7}{EntityVec}}\ m\_toAdd;\ \textcolor{comment}{//delaying\ entities\ to\ add,\ to\ avoid\ iterator\ invalidation}}
+\DoxyCodeLine{00014\ \ \ \mbox{\hyperlink{ManagerEntity_8h_a7c3297ed6fca9d717478cc6ba401bfa8}{EntityMap}}\ m\_entityMap;}
+\DoxyCodeLine{00015\ \ \ \textcolor{keywordtype}{size\_t}\ m\_totalEntities\ =\ 0;}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \mbox{\hyperlink{classEntityManager_a7555637657d090171be6ceee8451de0a}{EntityManager}}();}
+\DoxyCodeLine{00019\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEntityManager_abc6a2cc5077501f4b06d88f4ed3e7e31}{update}}();\ \textcolor{comment}{//called\ at\ the\ beginning\ of\ frame\ to\ add\ the\ entities}}
+\DoxyCodeLine{00020\ \ \ std::shared\_ptr<Entity>\ \mbox{\hyperlink{classEntityManager_a85c22d45c0bde41cd2b82336b6f32046}{addEntity}}(\textcolor{keyword}{const}\ std::string\&\ tag);}
+\DoxyCodeLine{00021\ \ \ \mbox{\hyperlink{ManagerEntity_8h_a09dfc6fcc286236e5a41fc73b3ecbab7}{EntityVec}}\&\ \mbox{\hyperlink{classEntityManager_ad718816dd5307c5f90bf25dd8e9b750b}{getEntities}}();}
+\DoxyCodeLine{00022\ \ \ \mbox{\hyperlink{ManagerEntity_8h_a09dfc6fcc286236e5a41fc73b3ecbab7}{EntityVec}}\&\ \mbox{\hyperlink{classEntityManager_ad718816dd5307c5f90bf25dd8e9b750b}{getEntities}}(\textcolor{keyword}{const}\ std::string\&\ tag);}
+\DoxyCodeLine{00023\ \};}
+
+\end{DoxyCode}

@@ -1,0 +1,38 @@
+var classSceneMenu =
+[
+    [ "MenuState", "classSceneMenu.html#a300d9b38a8d370ba26afd4e90db9fabb", [
+      [ "MAIN_MENU", "classSceneMenu.html#a300d9b38a8d370ba26afd4e90db9fabbaa16d505f03a4b6f35486f65f6a61317e", null ],
+      [ "ENTERING_NAME", "classSceneMenu.html#a300d9b38a8d370ba26afd4e90db9fabba31a046ea3c185ca990c2abd3d771d132", null ],
+      [ "CONFIRMING_NAME", "classSceneMenu.html#a300d9b38a8d370ba26afd4e90db9fabba113c77861b104db0c91a2152e002abaa", null ]
+    ] ],
+    [ "SceneMenu", "classSceneMenu.html#ab0704fe9063a5edfbab4a7655dd86ee1", null ],
+    [ "~SceneMenu", "classSceneMenu.html#a077293dadcb11b643337fc8d28303e53", null ],
+    [ "cancelNameInput", "classSceneMenu.html#a2b18d7565c45999553edb2ce141bcc03", null ],
+    [ "confirmName", "classSceneMenu.html#a9f32bab2b6081fda33920fc0bf63ca82", null ],
+    [ "handleNameInput", "classSceneMenu.html#a9c88dac40b7c8cbcdc34bc9e4866b8b7", null ],
+    [ "init", "classSceneMenu.html#a1e0a038fc28762603ea6075cebaa50a8", null ],
+    [ "initializeManagers", "classSceneMenu.html#a8b85d1d3bf12291df1896c0b46dac77e", null ],
+    [ "navigateDown", "classSceneMenu.html#ac740193db5948d0c30115f0263e4b3c4", null ],
+    [ "navigateUp", "classSceneMenu.html#ad63744f74774790a3962459694708ff9", null ],
+    [ "onEnd", "classSceneMenu.html#a48c41ee597c3fd481d73c5f5952e94ab", null ],
+    [ "registerMenuActions", "classSceneMenu.html#ac6e77b0a28ed0e22ae17e15749634c8c", null ],
+    [ "renderMainMenu", "classSceneMenu.html#ac1e5d0750470863a8ce61621394d54b1", null ],
+    [ "renderMenuItems", "classSceneMenu.html#ad89ea7b3f6635375c547a8d346ca23ef", null ],
+    [ "renderNameInput", "classSceneMenu.html#ac7cb8a47a09a593c1db0c86fd5af2bd1", null ],
+    [ "sDoAction", "classSceneMenu.html#a131d3f366007ee8d2efdbfcb25d7c826", null ],
+    [ "selectMenuItem", "classSceneMenu.html#ad4d5c5264ab44135416c2d7f06176967", null ],
+    [ "sRender", "classSceneMenu.html#a656457e79763c7ec1e200b4f2b1ff953", null ],
+    [ "startNameInput", "classSceneMenu.html#a0fb73962d5f5b776549345815803acad", null ],
+    [ "update", "classSceneMenu.html#aa13ff3a36eb7edee5dee8cd46acdc462", null ],
+    [ "m_colorMenu", "classSceneMenu.html#a960b1f462384a89381881e2356af8675", null ],
+    [ "m_colorSelected", "classSceneMenu.html#ad9fbeedc738fd9a0a92ff60d17a82694", null ],
+    [ "m_colorTitle", "classSceneMenu.html#a45c77dbf2439a314d0895259d60bc5b0", null ],
+    [ "m_fontMenu", "classSceneMenu.html#ac408d4481bb8c6262cbd2a47c32730ec", null ],
+    [ "m_fontTitle", "classSceneMenu.html#af1fad4c141a13a9c2b52a495770e31e5", null ],
+    [ "m_menuItems", "classSceneMenu.html#a3de8e8bf946aa44175129d08281f7c7d", null ],
+    [ "m_nameConfirmText", "classSceneMenu.html#a5e1477aec282807fb4393dbe3e08a45a", null ],
+    [ "m_nameInputText", "classSceneMenu.html#aa7773f29c5f9f563a59558edbdd26600", null ],
+    [ "m_namePromptText", "classSceneMenu.html#ac57c5daa74b88c28f720d0424c3f69e4", null ],
+    [ "m_playerName", "classSceneMenu.html#a5183bca6626f002d0a159de2439cdb0e", null ],
+    [ "m_selectedItem", "classSceneMenu.html#a88a3f322800fd68ddc75e4530495cefb", null ]
+];

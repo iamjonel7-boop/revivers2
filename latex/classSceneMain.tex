@@ -1,0 +1,164 @@
+\hypertarget{classSceneMain}{}\doxysection{Scene\+Main Class Reference}
+\label{classSceneMain}\index{SceneMain@{SceneMain}}
+
+
+{\ttfamily \#include $<$Scene\+Main.\+h$>$}
+
+
+
+Inheritance diagram for Scene\+Main\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=170pt]{classSceneMain__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Scene\+Main\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=170pt]{classSceneMain__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSceneMain_ad00a74adf62a2ffc087889f3f944a769}{Scene\+Main}} (\mbox{\hyperlink{classGameEngine}{Game\+Engine}} $\ast$game\+Engine)
+\item 
+void \mbox{\hyperlink{classSceneMain_a1505ca622529feeef935186da8e2a2c9}{s\+Render}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{classSceneMain_abd6d1076f7dbd55eb5f3a9568e7be591}{Map\+Control\+State}} \{ \mbox{\hyperlink{classSceneMain_abd6d1076f7dbd55eb5f3a9568e7be591a1c0fdfe680565ed1a3c76fab3d60e0a1}{NAVIGATING}}
+, \mbox{\hyperlink{classSceneMain_abd6d1076f7dbd55eb5f3a9568e7be591a0eb537ffa5721fd0dfcb43e0fd5b59b9}{SENTENCING}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classSceneMain_ac7ebb8a441ea7818b86fb937b7ce01d7}{create\+Map}} ()
+\item 
+void \mbox{\hyperlink{classSceneMain_afe13a21b7504fb3452216be6f9b76148}{init}} ()
+\item 
+void \mbox{\hyperlink{classSceneMain_a6c4237aec077b0882d606d1485727a0a}{update}} ()
+\item 
+void \mbox{\hyperlink{classSceneMain_aa582634969352dcb396b01fef3fdc546}{s\+Do\+Action}} (const \mbox{\hyperlink{classAction}{Action}} \&action)
+\item 
+void \mbox{\hyperlink{classSceneMain_ab2c7558681c057aa236dec27a3a4e5a3}{on\+End}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{SceneMain_8h_a4b741811d275d5e7d78bd9f3da5cdec0}{entity}} \mbox{\hyperlink{classSceneMain_a3fb6ff058a7f4f78883edab22106bccf}{m\+\_\+cursor\+Entity}}
+\item 
+\mbox{\hyperlink{classSceneMain_abd6d1076f7dbd55eb5f3a9568e7be591}{Map\+Control\+State}} \mbox{\hyperlink{classSceneMain_a1720f7df38ca40b0226b41fe40ed5147}{m\+\_\+control\+State}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classSceneMain_abd6d1076f7dbd55eb5f3a9568e7be591}\label{classSceneMain_abd6d1076f7dbd55eb5f3a9568e7be591}} 
+\index{SceneMain@{SceneMain}!MapControlState@{MapControlState}}
+\index{MapControlState@{MapControlState}!SceneMain@{SceneMain}}
+\doxysubsubsection{\texorpdfstring{MapControlState}{MapControlState}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{classSceneMain_abd6d1076f7dbd55eb5f3a9568e7be591}{Scene\+Main\+::\+Map\+Control\+State}}\hspace{0.3cm}{\ttfamily [strong]}, {\ttfamily [protected]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NAVIGATING@{NAVIGATING}!SceneMain@{SceneMain}}\index{SceneMain@{SceneMain}!NAVIGATING@{NAVIGATING}}}\mbox{\Hypertarget{classSceneMain_abd6d1076f7dbd55eb5f3a9568e7be591a1c0fdfe680565ed1a3c76fab3d60e0a1}\label{classSceneMain_abd6d1076f7dbd55eb5f3a9568e7be591a1c0fdfe680565ed1a3c76fab3d60e0a1}} 
+NAVIGATING&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SENTENCING@{SENTENCING}!SceneMain@{SceneMain}}\index{SceneMain@{SceneMain}!SENTENCING@{SENTENCING}}}\mbox{\Hypertarget{classSceneMain_abd6d1076f7dbd55eb5f3a9568e7be591a0eb537ffa5721fd0dfcb43e0fd5b59b9}\label{classSceneMain_abd6d1076f7dbd55eb5f3a9568e7be591a0eb537ffa5721fd0dfcb43e0fd5b59b9}} 
+SENTENCING&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSceneMain_ad00a74adf62a2ffc087889f3f944a769}\label{classSceneMain_ad00a74adf62a2ffc087889f3f944a769}} 
+\index{SceneMain@{SceneMain}!SceneMain@{SceneMain}}
+\index{SceneMain@{SceneMain}!SceneMain@{SceneMain}}
+\doxysubsubsection{\texorpdfstring{SceneMain()}{SceneMain()}}
+{\footnotesize\ttfamily SMain\+::\+Scene\+Main (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGameEngine}{Game\+Engine}} $\ast$}]{game\+Engine }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=319pt]{classSceneMain_ad00a74adf62a2ffc087889f3f944a769_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSceneMain_ac7ebb8a441ea7818b86fb937b7ce01d7}\label{classSceneMain_ac7ebb8a441ea7818b86fb937b7ce01d7}} 
+\index{SceneMain@{SceneMain}!createMap@{createMap}}
+\index{createMap@{createMap}!SceneMain@{SceneMain}}
+\doxysubsubsection{\texorpdfstring{createMap()}{createMap()}}
+{\footnotesize\ttfamily void SMain\+::create\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneMain_afe13a21b7504fb3452216be6f9b76148}\label{classSceneMain_afe13a21b7504fb3452216be6f9b76148}} 
+\index{SceneMain@{SceneMain}!init@{init}}
+\index{init@{init}!SceneMain@{SceneMain}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void SMain\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=319pt]{classSceneMain_afe13a21b7504fb3452216be6f9b76148_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSceneMain_ab2c7558681c057aa236dec27a3a4e5a3}\label{classSceneMain_ab2c7558681c057aa236dec27a3a4e5a3}} 
+\index{SceneMain@{SceneMain}!onEnd@{onEnd}}
+\index{onEnd@{onEnd}!SceneMain@{SceneMain}}
+\doxysubsubsection{\texorpdfstring{onEnd()}{onEnd()}}
+{\footnotesize\ttfamily void SMain\+::on\+End (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneMain_aa582634969352dcb396b01fef3fdc546}\label{classSceneMain_aa582634969352dcb396b01fef3fdc546}} 
+\index{SceneMain@{SceneMain}!sDoAction@{sDoAction}}
+\index{sDoAction@{sDoAction}!SceneMain@{SceneMain}}
+\doxysubsubsection{\texorpdfstring{sDoAction()}{sDoAction()}}
+{\footnotesize\ttfamily void SMain\+::s\+Do\+Action (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classAction}{Action}} \&}]{action }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneMain_a1505ca622529feeef935186da8e2a2c9}\label{classSceneMain_a1505ca622529feeef935186da8e2a2c9}} 
+\index{SceneMain@{SceneMain}!sRender@{sRender}}
+\index{sRender@{sRender}!SceneMain@{SceneMain}}
+\doxysubsubsection{\texorpdfstring{sRender()}{sRender()}}
+{\footnotesize\ttfamily void Scene\+Main\+::s\+Render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+\mbox{\Hypertarget{classSceneMain_a6c4237aec077b0882d606d1485727a0a}\label{classSceneMain_a6c4237aec077b0882d606d1485727a0a}} 
+\index{SceneMain@{SceneMain}!update@{update}}
+\index{update@{update}!SceneMain@{SceneMain}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void SMain\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classSceneMain_a1720f7df38ca40b0226b41fe40ed5147}\label{classSceneMain_a1720f7df38ca40b0226b41fe40ed5147}} 
+\index{SceneMain@{SceneMain}!m\_controlState@{m\_controlState}}
+\index{m\_controlState@{m\_controlState}!SceneMain@{SceneMain}}
+\doxysubsubsection{\texorpdfstring{m\_controlState}{m\_controlState}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classSceneMain_abd6d1076f7dbd55eb5f3a9568e7be591}{Map\+Control\+State}} Scene\+Main\+::m\+\_\+control\+State\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSceneMain_a3fb6ff058a7f4f78883edab22106bccf}\label{classSceneMain_a3fb6ff058a7f4f78883edab22106bccf}} 
+\index{SceneMain@{SceneMain}!m\_cursorEntity@{m\_cursorEntity}}
+\index{m\_cursorEntity@{m\_cursorEntity}!SceneMain@{SceneMain}}
+\doxysubsubsection{\texorpdfstring{m\_cursorEntity}{m\_cursorEntity}}
+{\footnotesize\ttfamily \mbox{\hyperlink{SceneMain_8h_a4b741811d275d5e7d78bd9f3da5cdec0}{entity}} Scene\+Main\+::m\+\_\+cursor\+Entity\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/scenes/\mbox{\hyperlink{SceneMain_8h}{Scene\+Main.\+h}}\item 
+src/scenes/\mbox{\hyperlink{SceneMain_8cpp}{Scene\+Main.\+cpp}}\end{DoxyCompactItemize}
