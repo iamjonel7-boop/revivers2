@@ -13,6 +13,7 @@ class GameEngine
 {
 
   sf::RenderWindow m_window;
+
   std::string m_currentScene;
   SceneMap m_sceneMap;
 
@@ -26,9 +27,6 @@ class GameEngine
 
 public:
   GameEngine();
-
-  static constexpr int WIDTH = 800;
-  static constexpr int HEIGHT = 600;
 
   void changeScene(const std::string& sceneName,
                    std::shared_ptr<Scene> scene,

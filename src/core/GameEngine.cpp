@@ -1,5 +1,5 @@
 #include "GameEngine.h"
-//#include "SceneMain.h"
+#include "SceneMain.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -8,13 +8,13 @@
 GameEngine::GameEngine()
 {
   init();
-  changeScene("main", std::make_shared<dummyScene>(this));
 }
 
 void GameEngine::init()
 {
   std::cout << "Game engine running.\n";
-  m_window.create(sf::VideoMode(WIDTH, HEIGHT), "Revivers");
+  m_window.create(sf::VideoMode(800, 600), "Revivers");
+  m_window.setFramerateLimit(60);
   std::cout << "Window created.\n";
 }
 
@@ -44,6 +44,8 @@ void GameEngine::sUserInput()
         case sf::Event::KeyPressed:
         case sf::Event::KeyReleased:
           {
+            if(event.key.scancode == sf::Keyboard::Scan::Escape)
+              m_window.close();
             if(actionMap.find(event.key.code) == actionMap.end())
               continue;
 
@@ -56,7 +58,7 @@ void GameEngine::sUserInput()
         case sf::Event::TextEntered:
           if(event.text.unicode < 128)
             {
-              textInputManager.addCharacter(static_cast<char>(event.text));
+              textInputManager.addCharacter(static_cast<char>(event.text.unicode));
             }
           break;
 
@@ -90,11 +92,15 @@ void GameEngine::run()
 {
   std::cout << "Game engine running.\n";
 
+  changeScene("main", std::make_shared<SceneMain>(this));
+
   while(isRunning())
     {
       sUserInput();
       update();
+      m_window.clear();
       sRender();
+      m_window.display();
     }
 }
 
