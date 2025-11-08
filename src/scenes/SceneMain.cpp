@@ -49,15 +49,34 @@ void SMain::createMap()
 
 void SMain::sDoAction(const Action& action)
 {
+  auto& cursors = m_entities.getEntities("cursor");
+  if(cursors.empty()) return;
+
+  auto& cursor = cursors[0];
+  auto& cinput = cursor->getComponent<CInput>();
+
   if(action.type() == "START")
     {
       if(action.name() == "UP")
-        {
-          std::cout << "Move up.\n";
-          //set cinput values to true for the cursor entity
-        }
+          cinput.up = true;
+      else if(action.name() == "DOWN")
+        cinput.down = true;
+      else if(action.name() == "LEFT")
+        cinput.left = true;
+      else if(action.name() == "RIGHT")
+        cinput.right = true;
     }
-
+  else if(action.type() == "END")
+    {
+      if(action.name() == "UP")
+        cinput.up = false;
+      else if(action.name() == "DOWN")
+        cinput.down = false;
+      else if(action.name() == "LEFT")
+        cinput.left = false;
+      else if(action.name() == "RIGHT")
+        cinput.right = false;
+    }
 }
 
 void SMain::update()
