@@ -1,9 +1,0 @@
-<map id="TurnManager::processTurnEnd" name="TurnManager::processTurnEnd">
-<area shape="rect" id="node1" title=" " alt="" coords="5,109,206,136"/>
-<area shape="rect" id="node2" href="$classTurnManager.html#af0af68eda36f0eb00ab1c0a497dea311" title=" " alt="" coords="254,101,450,144"/>
-<area shape="rect" id="node3" href="$classTurnManager.html#ade74a1914a24f832b30252cff34668bf" title=" " alt="" coords="498,83,650,109"/>
-<area shape="rect" id="node6" href="$classTurnManager.html#af1bba901d1410ce5418213270b5388cd" title=" " alt="" coords="703,139,860,165"/>
-<area shape="rect" id="node4" href="$classActionFormationManager.html#ab6c97337bf2f94a7c2f16957b4b04b63" title=" " alt="" coords="698,5,865,48"/>
-<area shape="rect" id="node5" href="$classActionFormationManager.html#a496649a3ab5ac5f173239d18857b6065" title=" " alt="" coords="698,72,865,115"/>
-<area shape="rect" id="node7" href="$classActionResolutionManager.html#ab0df536666191614ab0d1b1fd4c87610" title=" " alt="" coords="913,131,1083,173"/>
-</map>

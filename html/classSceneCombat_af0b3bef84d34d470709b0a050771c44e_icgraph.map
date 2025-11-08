@@ -1,7 +1,0 @@
-<map id="SceneCombat::sEndCombat" name="SceneCombat::sEndCombat">
-<area shape="rect" id="node1" title=" " alt="" coords="482,35,670,61"/>
-<area shape="rect" id="node2" href="$classSceneCombat.html#aa06cefcde7733735ed69989f0eac95fb" title=" " alt="" coords="227,5,434,32"/>
-<area shape="rect" id="node4" href="$classSceneCombat.html#a0fed287dccccef9e9431e9085899ae38" title=" " alt="" coords="228,56,432,99"/>
-<area shape="rect" id="node3" href="$classSceneCombat.html#a886a09ed8afb275de6df2383a242783c" title=" " alt="" coords="16,5,168,32"/>
-<area shape="rect" id="node5" href="$classSceneCombat.html#a37f6cbef92fa92fc1532dafd265aefc5" title=" " alt="" coords="5,64,179,91"/>
-</map>

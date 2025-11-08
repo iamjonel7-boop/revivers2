@@ -1,6 +1,0 @@
-<map id="SceneCombat::sCalculateChainDamage" name="SceneCombat::sCalculateChainDamage">
-<area shape="rect" id="node1" title=" " alt="" coords="495,27,703,69"/>
-<area shape="rect" id="node2" href="$classSceneCombat.html#a76d841c8792a343487dfb6d19d82b0b1" title=" " alt="" coords="227,5,447,32"/>
-<area shape="rect" id="node4" href="$classSceneCombat.html#a96eda451b05e50af9f18d47c40ce30be" title=" " alt="" coords="240,56,434,99"/>
-<area shape="rect" id="node3" href="$classSceneCombat.html#a37f6cbef92fa92fc1532dafd265aefc5" title=" " alt="" coords="5,35,179,61"/>
-</map>

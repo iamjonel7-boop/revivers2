@@ -1,4 +1,0 @@
-<map id="detail::escape" name="detail::escape">
-<area shape="rect" id="node1" title="string escaping as described in RFC 6901 (Sect. 4)" alt="" coords="163,5,265,32"/>
-<area shape="rect" id="node2" href="$classbasic__json.html#a940e724a2e8d5400ab772eb22af0387c" title="creates a diff as a JSON patch" alt="" coords="5,5,115,32"/>
-</map>

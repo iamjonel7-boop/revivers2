@@ -1,5 +1,0 @@
-<map id="json_pointer::empty" name="json_pointer::empty">
-<area shape="rect" id="node1" title="return whether pointer points to the root document" alt="" coords="396,5,531,32"/>
-<area shape="rect" id="node2" href="$classbasic__json.html#a693812b31e106dec9166e93d8f6dd7d7" title="applies a JSON patch in&#45;place without copying the object" alt="" coords="177,5,348,32"/>
-<area shape="rect" id="node3" href="$classbasic__json.html#a145a004c0a2fa5be84b260ecc98ab5d9" title="applies a JSON patch to a copy of the current object" alt="" coords="5,5,129,32"/>
-</map>
