@@ -16,7 +16,7 @@ protected:
   GameEngine* m_game = nullptr;
 
   EntityManager m_entities;
-  TextInputManager m_textInputManger;
+  TextInputManager m_textInputManager;
 
   ActionMap m_actionMap;
 
@@ -30,7 +30,6 @@ public:
   Scene(GameEngine* gameEngine);
   virtual ~Scene() = default;
 
-  //core scene funtionality
   virtual void doAction(const Action& action);
   virtual void update() = 0;
   virtual void sDoAction(const Action& action) = 0;
@@ -39,9 +38,10 @@ public:
   void simulate(const size_t frames);
   void registerAction(int inputKey, const std::string& actionName);
 
-  const auto& getActionMap() const;
-  const auto& getTextInputManager() const;
-
-  //manager accessors
+  const ActionMap& getActionMap() const;
+  TextInputManager& getTextInputManager();
   EntityManager& getEntityManager();
+
+  size_t currentFrame() const;
+  bool hasEnded() const;
 };

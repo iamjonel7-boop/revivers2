@@ -36,16 +36,6 @@ void Scene::registerAction(int inputKey, const std::string& actionName)
    m_actionMap[inputKey] = actionName;
 }
 
-size_t Scene::width() const
-{
-   return m_game ? m_game->windowWidth() : 0;
-}
-
-size_t Scene::height() const
-{
-   return m_game ? m_game->windowHeight() : 0;
-}
-
 size_t Scene::currentFrame() const
 {
    return m_currentFrame;
@@ -61,7 +51,7 @@ const ActionMap& Scene::getActionMap() const
    return m_actionMap;
 }
 
-const auto& Scene::getTextInputManager() const
+TextInputManager& Scene::getTextInputManager()
 {
   return m_textInputManager;
 }

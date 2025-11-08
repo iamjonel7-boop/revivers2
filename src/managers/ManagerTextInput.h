@@ -10,7 +10,7 @@ class TextInputManager
  public:
   void start();
   void stop();
-  void isActive() const;
+  bool isActive() const;
   void clear();
 
   void addCharacter(char c);

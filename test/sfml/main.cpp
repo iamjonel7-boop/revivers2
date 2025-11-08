@@ -4,6 +4,10 @@
 int main()
 {
   sf::RenderWindow window(sf::VideoMode({800, 600}), "My window");
+  sf::View view;
+  view = sf::View(sf::FloatRect(0.f, 0.f, 100.f, 100.f));
+  view.setCenter(50.f, 50.f);
+  view.setViewport(sf::FloatRect(0.f, 0.f, 1.f, 0.5f)); // full width, top 50%
 
   window.setFramerateLimit(60);
   std::srand(static_cast<unsigned>(std::time(nullptr)));
@@ -76,9 +80,12 @@ int main()
               break;
             }
         }
+      window.setView(view);
+
       window.clear();
       // window.draw(text);
       //window.draw(triangle);
+
       for(int y = 0; y < mapHeight; ++y)
         {
           for(int x = 0; x < mapWidth; ++x)

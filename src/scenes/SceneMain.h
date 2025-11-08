@@ -11,6 +11,12 @@ class SceneMain : public Scene
 {
 protected:
   entity m_cursorEntity;
+  sf::View m_mainView;
+
+  int tileSize = 20;
+  int mapWidth = 800;
+  int mapHeight = 600;
+  sf::RectangleShape m_tile;
 
   enum class MapControlState
     {
@@ -23,9 +29,9 @@ protected:
   void createMap();
 
   void init();
-  void update();
-  void sDoAction(const Action& action);
-  void onEnd();
+  void update() override;
+  void sDoAction(const Action& action) override;
+  void onEnd() override;
 
 public:
   SceneMain(GameEngine* gameEngine);

@@ -18,3 +18,8 @@ GTAGS
 
 # notes
 notes.org
+
+doc/
+latex/
+script/
+html/
