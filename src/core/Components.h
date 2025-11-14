@@ -9,6 +9,16 @@ struct Component
   bool has = false;
 };
 
+struct CBuilding : Component
+{
+  std::string nativeName;
+  std::string imperialName;
+  bool isClaimed = false;
+  CBuilding()
+  {
+  }
+};
+
 struct CBoundingBox : Component
 {
   sf::Vector2i size;
@@ -56,16 +66,6 @@ struct CInput:  Component
   bool right = false;
   bool left = false;
   CInput()
-  {
-  }
-};
-
-struct CRender : Component
-{
-  std::shared_ptr<sf::Drawable> drawable;
-  int layer; //lower : drawn firts, higher : ddrawn top
-  CRender(std::shared_ptr<sf::Drawable> drawable, int layer = 0)
-    : drawable(std::move(drawable)), layer(layer)
   {
   }
 };
