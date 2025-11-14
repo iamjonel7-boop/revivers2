@@ -13,10 +13,11 @@ protected:
   entity m_cursorEntity;
   sf::View m_mainView;
 
-  int tileSize = 20;
-  int mapWidth = 800;
-  int mapHeight = 600;
-  sf::RectangleShape m_tile;
+  entity m_tile;
+  entity m_topRect; //stats at the top
+  entity m_building;
+
+  std::vector<m_building> m_buildings;
 
   enum class MapControlState
     {
