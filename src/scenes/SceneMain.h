@@ -17,7 +17,7 @@ protected:
   entity m_topRect; //stats at the top
   entity m_building;
 
-  std::vector<m_building> m_buildings;
+  std::vector<entity> m_buildings;
 
   enum class MapControlState
     {
