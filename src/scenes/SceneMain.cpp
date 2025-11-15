@@ -1,3 +1,4 @@
+
 #include "SceneMain.h"
 #include "Components.h"
 #include "GameEngine.h"
@@ -7,81 +8,130 @@
 using SMain = SceneMain;
 
 SMain::SceneMain(GameEngine* gameEngine) :
-   Scene(gameEngine)
+  Scene(gameEngine)
 {
-   init();
-   createMap();
+  init();
+  createMap();
 
-   m_controlState = MapControlState::NAVIGATING;
-   std::cout << "Navigating state.";
+  m_controlState = MapControlState::NAVIGATING;
+  std::cout << "Navigating state.";
 
-   switch (m_controlState)
-     {
-     case MapControlState::NAVIGATING:
-       registerAction(sf::Keyboard::W, "UP");
-       registerAction(sf::Keyboard::A, "LEFT");
-       registerAction(sf::Keyboard::S, "DOWN");
-       registerAction(sf::Keyboard::D, "RIGHT");
-       registerAction(sf::Keyboard::Space, "SELECT_TILE");
-       break;
-     case MapControlState::SENTENCING:
-       break;
-     }
+  registerAction(sf::Keyboard::W, "UP");
+  registerAction(sf::Keyboard::A, "LEFT");
+  registerAction(sf::Keyboard::S, "DOWN");
+  registerAction(sf::Keyboard::D, "RIGHT");
+  registerAction(sf::Keyboard::Space, "SELECT_TILE");
 }
 
 void SMain::init()
 {
+  // cursor entity
   m_cursorEntity = m_entities.addEntity("cursor");
+
   m_cursorEntity->addComponent<CTransform>();
+  auto& transform = m_cursorEntity->getComponent<CTransform>();
+  transform.position = sf::Vector2f(100.f, 100.f);
+
   m_cursorEntity->addComponent<CInput>();
 
+  auto shape = std::make_shared<sf::RectangleShape>(sf::Vector2f(20.f, 20.f));
+  shape->setFillColor(sf::Color::Yellow);
+  m_cursorEntity->addComponent<CShape>(shape);
+
+  // camera view
   m_mainView.setSize({800.f, 400.f});
   m_mainView.setCenter({400.f, 200.f});
-  m_mainView.setViewport(sf::FloatRect({0.0f, 0.0f}, {1.f, 2.f/3.f}));
+  m_mainView.setViewport(sf::FloatRect({0.0f, 0.05f}, {1.f, 2.f/3.f}));
 }
 
 void SMain::createMap()
 {
-  m_tile.setSize(sf::Vector2f(tileSize, tileSize));
-  m_tile.setFillColor(sf::Color::Transparent);
-  m_tile.setOutlineThickness(1);
+  m_tile = m_entities.addEntity("shape");
+  auto shape = std::make_shared<sf::RectangleShape>(sf::Vector2f(20.f, 20.f));
+  shape->setFillColor(sf::Color::Transparent);
+  shape->setOutlineThickness(1);
+  shape->setOutlineColor(sf::Color(255, 255, 255, 100));
+  m_tile->addComponent<CShape>(shape);
 }
 
 void SMain::sDoAction(const Action& action)
 {
-  auto& cursors = m_entities.getEntities("cursor");
-  if(cursors.empty()) return;
-
-  auto& cursor = cursors[0];
-  auto& cinput = cursor->getComponent<CInput>();
-
-  if(action.type() == "START")
+  if(m_controlState == MapControlState::NAVIGATING)
     {
-      if(action.name() == "UP")
-          cinput.up = true;
-      else if(action.name() == "DOWN")
-        cinput.down = true;
-      else if(action.name() == "LEFT")
-        cinput.left = true;
-      else if(action.name() == "RIGHT")
-        cinput.right = true;
+      auto& cinput = m_cursorEntity->getComponent<CInput>();
+
+      if(action.type() == "START")
+        {
+          if(action.name() == "UP")
+            cinput.up = true;
+          else if(action.name() == "DOWN")
+            cinput.down = true;
+          else if(action.name() == "LEFT")
+            cinput.left = true;
+          else if(action.name() == "RIGHT")
+            cinput.right = true;
+
+          else if(action.name() == "SELECT_TILE")
+            {
+              m_controlState = MapControlState::SENTENCING;
+              std::cout << "Sentencing state.\n";
+            }
+        }
+      else if(action.type() == "END")
+        {
+          if(action.name() == "UP")
+            cinput.up = false;
+          else if(action.name() == "DOWN")
+            cinput.down = false;
+          else if(action.name() == "LEFT")
+            cinput.left = false;
+          else if(action.name() == "RIGHT")
+            cinput.right = false;
+        }
     }
-  else if(action.type() == "END")
+  else if(m_controlState == MapControlState::SENTENCING)
     {
-      if(action.name() == "UP")
-        cinput.up = false;
-      else if(action.name() == "DOWN")
-        cinput.down = false;
-      else if(action.name() == "LEFT")
-        cinput.left = false;
-      else if(action.name() == "RIGHT")
-        cinput.right = false;
+      if(action.type() == "START")
+        {
+          if(action.name() == "SELECT_TILE")
+            {
+              m_controlState = MapControlState::NAVIGATING;
+              std::cout << "Navigating state.\n";
+            }
+        }
     }
 }
 
 void SMain::update()
 {
+  m_entities.update();
 
+  //move cursor
+  auto& transform = m_cursorEntity->getComponent<CTransform>();
+  auto& input = m_cursorEntity->getComponent<CInput>();
+
+  const float tileSize = 20.f;
+
+  if(input.up)
+    {
+      transform.position.y -= tileSize;
+      input.up = false;
+    }
+  if(input.down)
+    {
+      transform.position.y += tileSize;
+      input.down = false;
+    }
+  if(input.left)
+    {
+      transform.position.x -= tileSize;
+      input.left = false;
+    }
+  if(input.right)
+    {
+      transform.position.x += tileSize;
+      input.right = false;
+    }
 }
 
 void SMain::onEnd()
@@ -92,14 +142,25 @@ void SMain::sRender()
 {
   m_game->window().setView(m_mainView);
 
-  for(int y = 0; y < mapHeight; ++y)
+  for(int y = 0; y < 600; ++y)
     {
-      for(int x = 0; x < mapWidth; ++x)
+      for(int x = 0; x < 800; ++x)
         {
-          //int id = tileMap[y*mapWidth+x];
-          m_tile.setOutlineColor(sf::Color(255, 255, 255, 100));
-          m_tile.setPosition(x*tileSize, y*tileSize);
-          m_game->window().draw(m_tile);
+          auto& tileShape = m_tile->getComponent<CShape>().shape;
+          tileShape->setPosition(x*20.f, y*20.f);
+          m_game->window().draw(*tileShape);
+        }
+    }
+
+  for (auto& e : m_entities.getEntities())
+    {
+      if (e->hasComponent<CShape>() && e->hasComponent<CTransform>())
+        {
+          auto& shape = e->getComponent<CShape>().shape;
+          auto& transform = e->getComponent<CTransform>();
+
+          shape->setPosition(transform.position.x, transform.position.y);
+          m_game->window().draw(*shape);
         }
     }
 }
