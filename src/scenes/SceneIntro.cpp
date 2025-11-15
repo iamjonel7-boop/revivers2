@@ -44,12 +44,16 @@ void SIntro::sDoAction(const Action& action)
 {
   if(action.type() == "START")
     {
-      if(m_currentDialogue < m_elderWords.size())
+      if(action.name() == "ENTER")
         {
-          if(action.name() == "ENTER")
+          if(m_currentDialogue < m_elderWords.size())
             {
-              std::cout << m_elderWords.size();
               m_currentDialogue++;
+              std::cout << "dialogue " << m_currentDialogue << std::endl;
+            }
+          else if(m_currentDialogue == m_elderWords.size())
+            {
+              std::cout << "end" << std::endl;
             }
         }
     }
