@@ -33,20 +33,22 @@ void SIntro::update()
 {
   m_entities.update();
 
-  auto& dialogue = m_elderDialogue->getComponent<CText>().text;
-
-  dialogue.setString(m_elderWords[m_currentDialogue]);
+  if(m_currentDialogue < m_elderWords.size())
+    {
+      auto& dialogue = m_elderDialogue->getComponent<CText>().text;
+      dialogue.setString(m_elderWords[m_currentDialogue]);
+    }
 }
 
 void SIntro::sDoAction(const Action& action)
 {
   if(action.type() == "START")
     {
-      if(action.name() == "ENTER")
+      if(m_currentDialogue < m_elderWords.size())
         {
-          std::cout << "pressed enter\n";
-          if(m_currentDialogue < m_elderWords.size())
+          if(action.name() == "ENTER")
             {
+              std::cout << m_elderWords.size();
               m_currentDialogue++;
             }
         }
