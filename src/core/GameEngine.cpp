@@ -1,5 +1,5 @@
 #include "GameEngine.h"
-#include "SceneMain.h"
+#include "SceneIntro.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -92,7 +92,7 @@ void GameEngine::run()
 {
   std::cout << "Game engine running.\n";
 
-  changeScene("main", std::make_shared<SceneMain>(this));
+  changeScene("intro", std::make_shared<SceneIntro>(this));
 
   while(isRunning())
     {
