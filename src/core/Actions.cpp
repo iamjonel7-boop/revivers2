@@ -22,10 +22,3 @@ const std::string& Action::type() const
 {
   return m_type;
 }
-
-/*
-std::string Action::toString() const
-{
-
-}
-*/

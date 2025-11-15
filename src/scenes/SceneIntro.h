@@ -7,6 +7,13 @@ using entity = std::shared_ptr<Entity>;
 class SceneIntro : public Scene
 {
  protected:
+  enum class State
+    {
+      Dialogue, NameInput
+    };
+
+  State m_state;
+
   entity m_player;
 
   sf::Font m_elderFont;

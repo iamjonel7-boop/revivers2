@@ -10,7 +10,7 @@ SIntro::SceneIntro(GameEngine* gameEngine) :
   Scene(gameEngine)
 {
   init();
-
+  m_state = State::Dialogue;
   registerAction(sf::Keyboard::Enter, "ENTER");
 }
 
@@ -40,7 +40,7 @@ void SIntro::update()
     }
 }
 
-void SIntro::sDoAction(const Action& action)
+void SIntro::sDoAction(const Action& action) //maybe we can use switch here. it is prettier
 {
   if(action.type() == "START")
     {
@@ -53,7 +53,9 @@ void SIntro::sDoAction(const Action& action)
             }
           else if(m_currentDialogue == m_elderWords.size())
             {
-              std::cout << "end" << std::endl;
+              //the player will enter his name
+              m_textInputManager.start();
+              std::cout << m_textInputManager.getText() << std::endl;
             }
         }
     }
