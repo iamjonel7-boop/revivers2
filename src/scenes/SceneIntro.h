@@ -9,22 +9,27 @@ class SceneIntro : public Scene
  protected:
   enum class ActionName
     {
-      ENTER
+      NEXT,
+      BACK
     };
 
   enum class State
     {
-      Dialogue, NameInput
+      INTRO_DIALOGUE,
+      ELDER_DIALOGUE,
+      NAME_INPUT
     };
 
   State m_state;
 
   entity m_player;
 
-  sf::Font m_elderFont;
-  std::vector<std::string> m_elderWords;
-  entity m_elderDialogue;
-  size_t m_currentDialogue;
+  sf::Font m_font;
+  std::vector<std::string> m_introLines;
+  entity m_introLine;
+  std::vector<std::string> m_elderLines;
+  entity m_elderLine;
+  size_t m_currentLine;
 
   void init();
   void update() override;
