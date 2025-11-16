@@ -8,7 +8,9 @@
 
 class GameEngine;
 
-typedef std::map<int, std::string> ActionMap;
+typedef std::map<int, int> ActionMap;
+//the int key is the sfml key
+//the value is player defined
 
 class Scene
 {
@@ -36,7 +38,7 @@ public:
   virtual void sRender() = 0;
 
   void simulate(const size_t frames);
-  void registerAction(int inputKey, const std::string& actionName);
+  void registerAction(int inputKey, int actionName);
 
   const ActionMap& getActionMap() const;
   TextInputManager& getTextInputManager();

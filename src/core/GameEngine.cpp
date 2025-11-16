@@ -49,7 +49,8 @@ void GameEngine::sUserInput()
             if(actionMap.find(event.key.code) == actionMap.end())
               continue;
 
-            const std::string actionType = (event.type == sf::Event::KeyPressed) ? "START" : "END";
+            ActionType actionType = (event.type == sf::Event::KeyPressed) ?
+              ActionType::START : ActionType::END;
             auto actionName = actionMap.at(event.key.code);
             scene->doAction(Action(actionName, actionType));
             break;

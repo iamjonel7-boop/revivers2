@@ -16,11 +16,11 @@ SMain::SceneMain(GameEngine* gameEngine) :
   m_controlState = MapControlState::NAVIGATING;
   std::cout << "Navigating state.";
 
-  registerAction(sf::Keyboard::W, "UP");
-  registerAction(sf::Keyboard::A, "LEFT");
-  registerAction(sf::Keyboard::S, "DOWN");
-  registerAction(sf::Keyboard::D, "RIGHT");
-  registerAction(sf::Keyboard::Space, "SELECT_TILE");
+  registerAction(sf::Keyboard::W, static_cast<int>(ActionName::MOVE_UP));
+  registerAction(sf::Keyboard::A, static_cast<int>(ActionName::MOVE_LEFT));
+  registerAction(sf::Keyboard::S, static_cast<int>(ActionName::MOVE_DOWN));
+  registerAction(sf::Keyboard::D, static_cast<int>(ActionName::MOVE_RIGHT));
+  registerAction(sf::Keyboard::Space, static_cast<int>(ActionName::SELECT_TILE));
 }
 
 void SMain::init()
@@ -56,6 +56,66 @@ void SMain::createMap()
 
 void SMain::sDoAction(const Action& action)
 {
+  ActionName act = static_cast<ActionName>(action.name());
+  auto& cinput = m_cursorEntity->getComponent<CInput>();
+  switch(m_controlState)
+    {
+    case MapControlState::NAVIGATING:
+      switch(action.type())
+        {
+        case ActionType::START:
+          switch(act)
+            {
+            case ActionName::MOVE_UP:
+              cinput.up = true;
+              break;
+            case ActionName::MOVE_DOWN:
+              cinput.down = true;
+              break;
+            case ActionName::MOVE_LEFT:
+              cinput.left = true;
+              break;
+            case ActionName::MOVE_RIGHT:
+              cinput.right = true;
+              break;
+            case ActionName::SELECT_TILE:
+              m_controlState = MapControlState::SENTENCING;
+              break;
+            }
+          break;
+        case ActionType::END:
+          switch(act)
+            {
+            case ActionName::MOVE_UP:
+              cinput.up = false;
+              break;
+            case ActionName::MOVE_DOWN:
+              cinput.down = false;
+              break;
+            case ActionName::MOVE_LEFT:
+              cinput.left = false;
+              break;
+            case ActionName::MOVE_RIGHT:
+              cinput.right = false;
+              break;
+            default:
+              break;
+            }
+          break;
+        case ActionType::NONE:
+          break;
+        }
+      break;
+    case MapControlState::SENTENCING:
+      switch(action.type())
+        {
+        case ActionType::START:
+        case ActionType::END:
+        case ActionType::NONE:
+          break;
+        }
+    }
+  /*
   if(m_controlState == MapControlState::NAVIGATING)
     {
       auto& cinput = m_cursorEntity->getComponent<CInput>();
@@ -100,6 +160,7 @@ void SMain::sDoAction(const Action& action)
             }
         }
     }
+  */
 }
 
 void SMain::update()

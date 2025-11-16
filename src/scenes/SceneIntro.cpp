@@ -11,7 +11,7 @@ SIntro::SceneIntro(GameEngine* gameEngine) :
 {
   init();
   m_state = State::Dialogue;
-  registerAction(sf::Keyboard::Enter, "ENTER");
+  registerAction(sf::Keyboard::Enter, static_cast<int>(ActionName::ENTER));
 }
 
 void SIntro::init()
@@ -42,9 +42,10 @@ void SIntro::update()
 
 void SIntro::sDoAction(const Action& action) //maybe we can use switch here. it is prettier
 {
-  if(action.type() == "START")
+  ActionName act = static_cast<ActionName>(action.name());
+  if(action.type() == ActionType::START)
     {
-      if(action.name() == "ENTER")
+      if(act == ActionName::ENTER)
         {
           if(m_currentDialogue < m_elderWords.size())
             {
@@ -59,8 +60,9 @@ void SIntro::sDoAction(const Action& action) //maybe we can use switch here. it 
             }
         }
     }
-  else if(action.type() == "END")
+  else if(action.type() == ActionType::END)
     {
+      std::cout << "hello" << std::endl;
     }
 }
 

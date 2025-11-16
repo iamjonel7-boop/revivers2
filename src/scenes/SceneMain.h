@@ -10,6 +10,15 @@ using entity = std::shared_ptr<Entity>;
 class SceneMain : public Scene
 {
 protected:
+  enum class ActionName
+    {
+      MOVE_UP,
+      MOVE_DOWN,
+      MOVE_LEFT,
+      MOVE_RIGHT,
+      SELECT_TILE
+    };
+
   entity m_cursorEntity;
   sf::View m_mainView;
 

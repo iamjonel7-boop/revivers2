@@ -7,6 +7,11 @@ using entity = std::shared_ptr<Entity>;
 class SceneIntro : public Scene
 {
  protected:
+  enum class ActionName
+    {
+      ENTER
+    };
+
   enum class State
     {
       Dialogue, NameInput

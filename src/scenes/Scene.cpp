@@ -31,7 +31,7 @@ void Scene::simulate(const size_t frames)
    }
 }
 
-void Scene::registerAction(int inputKey, const std::string& actionName)
+void Scene::registerAction(int inputKey, int actionName)
 {
    m_actionMap[inputKey] = actionName;
 }
