@@ -12,7 +12,6 @@ SceneIntro::SceneIntro(GameEngine* gameEngine) :
 {
   init();
   m_state = State::INTRO_DIALOGUE;
-  m_currentLine = 0;
 
   registerAction(sf::Keyboard::D, static_cast<int>(ActionName::NEXT));
   registerAction(sf::Keyboard::A, static_cast<int>(ActionName::BACK));
@@ -28,6 +27,8 @@ void SceneIntro::init()
   m_player = m_entities.addEntity("player"); //remove
   m_player->addComponent<CTransform>();
   */
+
+  m_currentLine = 0;
 
   m_font.loadFromFile("/usr/local/share/fonts/Liberation/LiberationMono-Regular.ttf");
 
