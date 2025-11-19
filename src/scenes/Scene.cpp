@@ -55,3 +55,8 @@ TextInputManager& Scene::getTextInputManager()
 {
   return m_textInputManager;
 }
+
+MapManager& Scene::getMapManager()
+{
+  return m_mapManager;
+}

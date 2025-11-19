@@ -36,7 +36,7 @@ protected:
 
   MapControlState m_controlState;
 
-  void createMap();
+  void showMapGrid();
 
   void init();
   void update() override;

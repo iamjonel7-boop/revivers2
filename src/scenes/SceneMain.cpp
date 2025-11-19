@@ -2,6 +2,7 @@
 #include "SceneMain.h"
 #include "Components.h"
 #include "GameEngine.h"
+#include "ManagerMap.h"
 #include <iostream>
 #include <fstream>
 
@@ -11,7 +12,7 @@ SMain::SceneMain(GameEngine* gameEngine) :
   Scene(gameEngine)
 {
   init();
-  createMap();
+  showMapGrid();
 
   m_controlState = MapControlState::NAVIGATING;
   std::cout << "Navigating state.";
@@ -58,14 +59,17 @@ void SMain::init()
   m_mainView.setViewport(sf::FloatRect({0.0f, 0.05f}, {1.f, 2.f/3.f}));
 }
 
-void SMain::createMap()
+void SMain::showMapGrid()
 {
+  m_mapManager.createMapGrid(m_entities);
+  /*
   m_tile = m_entities.addEntity("shape");
   auto shape = std::make_shared<sf::RectangleShape>(sf::Vector2f(20.f, 20.f));
   shape->setFillColor(sf::Color::Transparent);
   shape->setOutlineThickness(1);
   shape->setOutlineColor(sf::Color(255, 255, 255, 100));
   m_tile->addComponent<CShape>(shape);
+  */
 }
 
 void SMain::sDoAction(const Action& action)
@@ -217,6 +221,9 @@ void SMain::sRender()
 {
   m_game->window().setView(m_mainView);
 
+  m_mapManager.renderGrid(m_game->window());
+
+  /*
   for(int y = 0; y < 600; ++y)
     {
       for(int x = 0; x < 800; ++x)
@@ -226,6 +233,7 @@ void SMain::sRender()
           m_game->window().draw(*tileShape);
         }
     }
+  */
 
   for (auto& e : m_entities.getEntities())
     {
