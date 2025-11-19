@@ -16,6 +16,8 @@ void GameEngine::init()
   m_window.create(sf::VideoMode(800, 600), "Revivers");
   m_window.setFramerateLimit(60);
   std::cout << "Window created.\n";
+
+  m_world = std::make_unique<WorldManager>(this);
 }
 
 void GameEngine::update()
@@ -41,6 +43,14 @@ void GameEngine::sUserInput()
           quit();
           break;
 
+        case sf::Event::TextEntered:
+          if(event.text.unicode < 128)
+            {
+              std::cout << "key entered " << static_cast<char>(event.text.unicode) << std::endl;
+              textInputManager.addCharacter(static_cast<char>(event.text.unicode));
+            }
+          break;
+
         case sf::Event::KeyPressed:
         case sf::Event::KeyReleased:
           {
@@ -55,13 +65,6 @@ void GameEngine::sUserInput()
             scene->doAction(Action(actionName, actionType));
             break;
           }
-
-        case sf::Event::TextEntered:
-          if(event.text.unicode < 128)
-            {
-              textInputManager.addCharacter(static_cast<char>(event.text.unicode));
-            }
-          break;
 
         default:
           break;
@@ -129,4 +132,14 @@ std::shared_ptr<Scene> GameEngine::currentScene()
 bool GameEngine::isRunning()
 {
   return m_running;
+}
+
+WorldManager* GameEngine::getWorldManager()
+{
+  return m_world.get();
+}
+
+const WorldManager* GameEngine::getWorldManager() const
+{
+  return m_world.get();
 }
