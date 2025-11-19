@@ -175,30 +175,33 @@ void SIntro::sDoAction(const Action& action) //maybe we can use switch here. it 
     }
 }
 
-void SIntro::onEnd()
+void SceneIntro::onEnd()
 {
 }
 
-void SIntro::sRender()
+void SceneIntro::renderText(const std::string& entityTag)
 {
-  auto& window = m_game->window();
+  for(auto& e : m_entities.getEntities(entityTag))
+    {
+      if(e->hasComponent<CText>())
+        m_game->window().draw(e->getComponent<CText>().text);
+    }
+}
 
+void SceneIntro::sRender()
+{
   switch(m_state)
     {
     case State::INTRO_DIALOGUE:
-      for(auto& e : m_entities.getEntities("textIntro"))
-        {
-          if(e->hasComponent<CText>())
-            window.draw(e->getComponent<CText>().text);
-        }
+        renderText("textIntro");
       break;
 
     case State::ELDER_DIALOGUE:
-      for(auto& e : m_entities.getEntities("textElder"))
-        {
-          if(e->hasComponent<CText>())
-            window.draw(e->getComponent<CText>().text);
-        }
+        renderText("textElder");
+      break;
+
+    case State::NAME_INPUT:
+        renderText("name");
       break;
 
     default:
