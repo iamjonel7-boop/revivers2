@@ -1,28 +1,33 @@
 #include "ManagerTextInput.h"
+#include <iostream>
 
-using TIM = TextInputManager;
-
-void TIM::start()
+void TextInputManager::start()
 {
+  clear();
   m_active = true;
+  std::cout << "textinputmanager turned active." << std::endl;
 }
 
-void TIM::stop()
+void TextInputManager::stop()
 {
   m_active = false;
+  std::cout << "textinputmanager turned inactive." << std::endl;
 }
 
-void TIM::clear()
+void TextInputManager::clear()
 {
   m_text.clear();
+  std::cout << "textinputmanager cleared buffer." << std::endl;
+  std::cout << "text: " << m_text << std::endl;
 }
 
-bool TIM::isActive() const
+bool TextInputManager::isActive() const
 {
+  std::cout << "textinputmanager is active." << std::endl;
   return m_active;
 }
 
-void TIM::addCharacter(char c)
+void TextInputManager::addCharacter(char c)
 {
   if(!m_active) return;
 
@@ -30,18 +35,21 @@ void TIM::addCharacter(char c)
     {
       if(!m_text.empty())
         m_text.pop_back();
+      std::cout << c << " deleted." << std::endl;
     }
   else if(c == '\r' || c == '\n')
     {
       stop();
+      std::cout << "final text: " << m_text << std::endl;
     }
   else if(c >= 32 && c < 127)
     {
       m_text += c;
+      std::cout << "current text processed: " << m_text << std::endl;
     }
 }
 
-const std::string& TIM::getText() const
+const std::string& TextInputManager::getText() const
 {
   return m_text;
 }
