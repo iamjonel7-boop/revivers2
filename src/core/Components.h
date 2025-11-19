@@ -19,6 +19,14 @@ struct CBuilding : Component
   }
 };
 
+struct CProfile : Component
+{
+  std::string playerName;
+  CProfile()
+  {
+  }
+};
+
 struct CBoundingBox : Component
 {
   sf::Vector2i size;
