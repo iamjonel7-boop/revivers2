@@ -5,8 +5,6 @@
 #include <map>
 #include <vector>
 
-using entity = std::shared_ptr<Entity>;
-
 class SceneMain : public Scene
 {
 protected:
@@ -19,14 +17,12 @@ protected:
       SELECT_TILE
     };
 
-  entity m_cursorEntity;
+  std::shared_ptr<Entity> m_cursorEntity;
   sf::View m_mainView;
 
-  entity m_tile;
-  entity m_topRect; //stats at the top
-  entity m_building;
+  std::shared_ptr<Entity> m_tile;
 
-  std::vector<entity> m_buildings;
+  std::vector<std::shared_ptr<Entity>> m_buildings;
 
   enum class MapControlState
     {
@@ -42,6 +38,9 @@ protected:
   void update() override;
   void sDoAction(const Action& action) override;
   void onEnd() override;
+
+  void makeBuildings();
+  void renderTileGrid();
 
 public:
   SceneMain(GameEngine* gameEngine);

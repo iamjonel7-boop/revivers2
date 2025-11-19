@@ -22,6 +22,10 @@ SMain::SceneMain(GameEngine* gameEngine) :
   registerAction(sf::Keyboard::S, static_cast<int>(ActionName::MOVE_DOWN));
   registerAction(sf::Keyboard::D, static_cast<int>(ActionName::MOVE_RIGHT));
   registerAction(sf::Keyboard::Space, static_cast<int>(ActionName::SELECT_TILE));
+
+  m_mapManager.locateBuilding();
+  m_mapManager.printBuildingCoords();
+  makeBuildings();
 }
 
 void SMain::init()
@@ -168,23 +172,42 @@ void SMain::onEnd()
 {
 }
 
-void SMain::sRender()
+void SceneMain::makeBuildings()
 {
-  m_game->window().setView(m_mainView);
-
-  m_mapManager.renderGrid(m_game->window());
-
-  /*
-  for(int y = 0; y < 600; ++y)
+  const auto& buildingCoords = m_mapManager.getBuildingCoords();
+  for(size_t i = 0; i < buildingCoords.size()-1; i++)
     {
-      for(int x = 0; x < 800; ++x)
+      std::shared_ptr<Entity> building = m_entities.addEntity("building");
+      building->addComponent<CTransform>();
+      auto& transform = building->getComponent<CTransform>();
+      transform.position = buildingCoords[i];
+
+      auto shape = std::make_shared<sf::RectangleShape>(sf::Vector2f(buildingCoords[i]));
+      shape->setFillColor(sf::Color::Red);
+      building->addComponent<CShape>(shape);
+
+      building->addComponent<CBuilding>();
+    }
+}
+
+void SMain::renderTileGrid()
+{
+  for(int y = 0; y < m_mapManager.getHeight(); y++)
+    {
+      for(int x = 0; x < m_mapManager.getWidth(); x++)
         {
           auto& tileShape = m_tile->getComponent<CShape>().shape;
           tileShape->setPosition(x*20.f, y*20.f);
           m_game->window().draw(*tileShape);
         }
     }
-  */
+}
+
+void SMain::sRender()
+{
+  m_game->window().setView(m_mainView);
+
+  renderTileGrid();
 
   for (auto& e : m_entities.getEntities())
     {
@@ -193,6 +216,14 @@ void SMain::sRender()
           auto& shape = e->getComponent<CShape>().shape;
           auto& transform = e->getComponent<CTransform>();
 
+          shape->setPosition(transform.position.x, transform.position.y);
+          m_game->window().draw(*shape);
+        }
+
+      if(e->hasComponent<CBuilding>() && e->hasComponent<CTransform>() && e->hasComponent<CShape>())
+        {
+          auto& shape = e->getComponent<CShape>().shape;
+          auto& transform = e->getComponent<CTransform>();
           shape->setPosition(transform.position.x, transform.position.y);
           m_game->window().draw(*shape);
         }
