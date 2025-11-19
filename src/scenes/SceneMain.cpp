@@ -25,6 +25,20 @@ SMain::SceneMain(GameEngine* gameEngine) :
 
 void SMain::init()
 {
+
+  auto  m_player = m_game->getWorldManager()->getPlayer();
+
+  // DEBUG: Check if same player exists
+  std::cout << "=== SCENE MAIN ===" << std::endl;
+  if (m_player) {
+    std::cout << "Player memory address: " << m_player.get() << std::endl;
+    std::cout << "Player name: " << m_player->getComponent<CProfile>().playerName << std::endl;
+    std::cout << "Has CTransform: " << m_player->hasComponent<CTransform>() << std::endl;
+    std::cout << "Has CProfile: " << m_player->hasComponent<CProfile>() << std::endl;
+  } else {
+    std::cout << "ERROR: Player is null!" << std::endl;
+  }
+
   // cursor entity
   m_cursorEntity = m_entities.addEntity("cursor");
 
