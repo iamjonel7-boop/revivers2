@@ -4,7 +4,7 @@ OBJ_DIR    = ${.CURDIR}/obj
 BIN_DIR    = ${.CURDIR}/bin
 
 CXX        = clang++
-CXXFLAGS   = -std=c++20 -Wall -Wextra -O2 \
+CXXFLAGS   = -std=c++20 -Wall -Wextra -g -O0\
 -I${SRC_DIR} \
 -I${SRC_DIR}/managers \
 -I${SRC_DIR}/core \
