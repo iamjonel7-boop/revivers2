@@ -61,15 +61,12 @@ void SMain::init()
 
 void SMain::showMapGrid()
 {
-  m_mapManager.createMapGrid(m_entities);
-  /*
   m_tile = m_entities.addEntity("shape");
   auto shape = std::make_shared<sf::RectangleShape>(sf::Vector2f(20.f, 20.f));
   shape->setFillColor(sf::Color::Transparent);
   shape->setOutlineThickness(1);
   shape->setOutlineColor(sf::Color(255, 255, 255, 100));
   m_tile->addComponent<CShape>(shape);
-  */
 }
 
 void SMain::sDoAction(const Action& action)
@@ -133,52 +130,6 @@ void SMain::sDoAction(const Action& action)
           break;
         }
     }
-  /*
-  if(m_controlState == MapControlState::NAVIGATING)
-    {
-      auto& cinput = m_cursorEntity->getComponent<CInput>();
-
-      if(action.type() == "START")
-        {
-          if(action.name() == "UP")
-            cinput.up = true;
-          else if(action.name() == "DOWN")
-            cinput.down = true;
-          else if(action.name() == "LEFT")
-            cinput.left = true;
-          else if(action.name() == "RIGHT")
-            cinput.right = true;
-
-          else if(action.name() == "SELECT_TILE")
-            {
-              m_controlState = MapControlState::SENTENCING;
-              std::cout << "Sentencing state.\n";
-            }
-        }
-      else if(action.type() == "END")
-        {
-          if(action.name() == "UP")
-            cinput.up = false;
-          else if(action.name() == "DOWN")
-            cinput.down = false;
-          else if(action.name() == "LEFT")
-            cinput.left = false;
-          else if(action.name() == "RIGHT")
-            cinput.right = false;
-        }
-    }
-  else if(m_controlState == MapControlState::SENTENCING)
-    {
-      if(action.type() == "START")
-        {
-          if(action.name() == "SELECT_TILE")
-            {
-              m_controlState = MapControlState::NAVIGATING;
-              std::cout << "Navigating state.\n";
-            }
-        }
-    }
-  */
 }
 
 void SMain::update()
