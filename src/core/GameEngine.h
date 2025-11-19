@@ -26,7 +26,7 @@ class GameEngine
   void sUserInput();
 
   std::shared_ptr<Scene> currentScene();
-  std::unique_ptr<WorldManager> m_world;
+  std::shared_ptr<WorldManager> m_world;
 
 public:
   GameEngine();
