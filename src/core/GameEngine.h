@@ -4,8 +4,10 @@
 #include <memory>
 #include <string>
 #include <map>
+#include "ManagerWorld.h"
 
 class Scene;
+class WorldManager;
 
 typedef std::map<std::string, std::shared_ptr<Scene>> SceneMap;
 
@@ -24,9 +26,12 @@ class GameEngine
   void sUserInput();
 
   std::shared_ptr<Scene> currentScene();
+  std::unique_ptr<WorldManager> m_world;
 
 public:
   GameEngine();
+  WorldManager* getWorldManager();
+  const WorldManager* getWorldManager() const;
 
   void changeScene(const std::string& sceneName,
                    std::shared_ptr<Scene> scene,
