@@ -15,12 +15,18 @@ SIntro::SceneIntro(GameEngine* gameEngine) :
 
   registerAction(sf::Keyboard::D, static_cast<int>(ActionName::NEXT));
   registerAction(sf::Keyboard::A, static_cast<int>(ActionName::BACK));
+  registerAction(sf::Keyboard::Enter, static_cast<int>(ActionName::ENTER));
 }
 
-void SIntro::init()
+void SceneIntro::init()
 {
-  m_player = m_entities.addEntity("player");
+  m_game->getWorldManager()->m_createPlayer(m_entities);
+  m_player = m_game->getWorldManager()->getPlayer();
+
+  /*
+  m_player = m_entities.addEntity("player"); //remove
   m_player->addComponent<CTransform>();
+  */
 
   m_font.loadFromFile("/usr/local/share/fonts/Liberation/LiberationMono-Regular.ttf");
 
