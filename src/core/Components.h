@@ -9,6 +9,14 @@ struct Component
   bool has = false;
 };
 
+struct CProfile : Component
+{
+  std::string playerName;
+  CProfile()
+  {
+  }
+};
+
 struct CBuilding : Component
 {
   std::string nativeName;
