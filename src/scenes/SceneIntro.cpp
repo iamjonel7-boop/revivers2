@@ -3,10 +3,11 @@
 #include "GameEngine.h"
 #include <iostream>
 #include <fstream>
+#include "SceneMain.h"
 
-using SIntro = SceneIntro;
+//TODO: add checks/warnings
 
-SIntro::SceneIntro(GameEngine* gameEngine) :
+SceneIntro::SceneIntro(GameEngine* gameEngine) :
   Scene(gameEngine)
 {
   init();
@@ -54,10 +55,16 @@ void SceneIntro::init()
                                    sf::Color::White);
 
   //input name part
+  m_playerName = m_entities.addEntity("name"); //remove
+  m_playerName->addComponent<CText>(m_font,
+                                    "",
+                                    24,
+                                    sf::Vector2f(200.f, 200.f),
+                                    sf::Color::White);
 
 }
 
-void SIntro::update()
+void SceneIntro::update()
 {
   m_entities.update();
 
@@ -95,13 +102,16 @@ void SIntro::update()
         }
       break;
     case State::NAME_INPUT:
+      auto& t = m_playerName->getComponent<CText>().text;
+      t.setString(getTextInputManager().getText());
       break;
     }
 }
 
-void SIntro::sDoAction(const Action& action) //maybe we can use switch here. it is prettier
+void SceneIntro::sDoAction(const Action& action) //maybe we can use switch here. it is prettier
 {
   ActionName act = static_cast<ActionName>(action.name());
+  std::string name;
 
   switch(m_state)
     {
@@ -118,9 +128,10 @@ void SIntro::sDoAction(const Action& action) //maybe we can use switch here. it 
                 }
               else if(m_currentLine == m_introLines.size()-1)
                 {
-                  std::cout << "currentline equal to elderlines" << std::endl;
+                  std::cout << "End of intro dialogue. --------------" << std::endl;
                   m_currentLine = 0;
                   m_state = State::ELDER_DIALOGUE;
+                  std::cout << "At elder_dialogue state." << std::endl;
                 }
               break;
             case ActionName::BACK:
@@ -129,8 +140,12 @@ void SIntro::sDoAction(const Action& action) //maybe we can use switch here. it 
                   m_currentLine--;
                 }
               break;
+
+            default:
+              break;
             }
           break;
+
         default:
           break;
         }
@@ -149,13 +164,17 @@ void SIntro::sDoAction(const Action& action) //maybe we can use switch here. it 
                 }
               else if(m_currentLine == m_elderLines.size()-1)
                 {
-                  std::cout << "end of elder dialogue." << std::endl;
+                  std::cout << "End of elder dialogue.--------------------" << std::endl;
+                  m_state = State::NAME_INPUT;
+                  std::cout << "At name_input state." << std::endl;
+                  getTextInputManager().start();
                 }
               break;
             default:
               break;
             }
           break;
+
         default:
           break;
         }
@@ -167,10 +186,14 @@ void SIntro::sDoAction(const Action& action) //maybe we can use switch here. it 
         case ActionType::START:
           switch(act)
             {
-            case ActionName::NEXT:
-              m_textInputManager.start();
-              std::cout << m_textInputManager.getText() << std::endl;
+            case ActionName::ENTER:
+              name = getTextInputManager().getText();
+              m_player->getComponent<CProfile>().playerName = name;
+
+              m_game->changeScene("main", std::make_shared<SceneMain>(m_game));
+              std::cout << "Scene changed to main/map." << std::endl;
               break;
+
             default:
               break;
             }

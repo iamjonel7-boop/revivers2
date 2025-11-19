@@ -10,7 +10,8 @@ class SceneIntro : public Scene
   enum class ActionName
     {
       NEXT,
-      BACK
+      BACK,
+      ENTER
     };
 
   enum class State
@@ -30,11 +31,14 @@ class SceneIntro : public Scene
   std::vector<std::string> m_elderLines;
   entity m_elderLine;
   size_t m_currentLine;
+  entity m_playerName;
 
   void init();
   void update() override;
   void sDoAction(const Action& action) override;
   void onEnd() override;
+
+  void renderText(const std::string& entityTag);
 
  public:
   SceneIntro(GameEngine* gameEngine);
