@@ -17,30 +17,38 @@ protected:
       SELECT_TILE
     };
 
-  std::shared_ptr<Entity> m_cursorEntity;
-  sf::View m_mainView;
-
-  std::shared_ptr<Entity> m_tile;
-
-  std::vector<std::shared_ptr<Entity>> m_buildings;
-
   enum class MapControlState
     {
       NAVIGATING,
       SENTENCING
     };
 
-  MapControlState m_controlState;
+  sf::View m_mainView;
 
-  void showMapGrid();
+  std::shared_ptr<Entity> m_cursorEntity;
+  std::shared_ptr<Entity> m_tileOutlineShape;
+
+  MapControlState m_controlState;
 
   void init();
   void update() override;
   void sDoAction(const Action& action) override;
   void onEnd() override;
 
+  void handleCursorNavigation(const Action& action, ActionName act, CInput& cinput);
+
+  void makeMapView();
+  void makeMapGrid();
+  void makeCursor();
   void makeBuildings();
+  void makePaths();
+
+  void updateCursorPos();
+
   void renderTileGrid();
+  void renderCursor();
+  void renderBuildings();
+  void renderPaths();
 
 public:
   SceneMain(GameEngine* gameEngine);
