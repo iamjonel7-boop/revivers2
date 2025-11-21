@@ -14,7 +14,8 @@ typedef std::tuple<
   std::optional<CShape>,
   std::optional<CText>,
   std::optional<CBuilding>,
-  std::optional<CProfile>
+  std::optional<CProfile>,
+  std::optional<CPath>
   > ComponentTuple;
 
 class Entity{
