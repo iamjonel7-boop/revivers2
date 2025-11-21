@@ -4,9 +4,19 @@
 #include <SFML/Graphics.hpp>
 #include <memory>
 
+class Entity;
+
 struct Component
 {
   bool has = false;
+};
+
+struct CPath: Component
+{
+  std::vector<std::shared_ptr<Entity>> entities;
+  CPath()
+  {
+  }
 };
 
 struct CBuilding : Component
