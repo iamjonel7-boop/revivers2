@@ -2,8 +2,6 @@
 
 #include "Scene.h"
 
-using entity = std::shared_ptr<Entity>;
-
 class SceneIntro : public Scene
 {
  protected:
@@ -23,22 +21,30 @@ class SceneIntro : public Scene
 
   State m_state;
 
-  entity m_player;
+  std::shared_ptr<Entity> m_player;
+  sf::Text m_playerName;
 
   sf::Font m_font;
   std::vector<std::string> m_introLines;
-  entity m_introLine;
+  std::shared_ptr<Entity> m_introLine;
+
   std::vector<std::string> m_elderLines;
-  entity m_elderLine;
+  std::shared_ptr<Entity> m_elderLine;
   size_t m_currentLine;
-  entity m_playerName;
 
   void init();
-  void update() override;
-  void sDoAction(const Action& action) override;
   void onEnd() override;
+  void readFile(std::string& filename);
+
+  void sDoAction(const Action& action) override;
+  void handleIntroDialogue(const Action& action, ActionName actionName);
+  void handleElderDialogue(const Action& action, ActionName actionName);
+  void handleNameInput(const Action& action, ActionName actionName, std::string& playerName);
+
+  void update() override;
 
   void renderText(const std::string& entityTag);
+  void renderPlayerName();
 
  public:
   SceneIntro(GameEngine* gameEngine);

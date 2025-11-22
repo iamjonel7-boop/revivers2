@@ -5,8 +5,6 @@
 #include <fstream>
 #include "SceneMain.h"
 
-//TODO: add checks/warnings
-
 SceneIntro::SceneIntro(GameEngine* gameEngine) :
   Scene(gameEngine)
 {
@@ -22,11 +20,6 @@ void SceneIntro::init()
 {
   m_game->getWorldManager()->m_createPlayer(m_entities);
   m_player = m_game->getWorldManager()->getPlayer();
-
-  /*
-  m_player = m_entities.addEntity("player"); //remove
-  m_player->addComponent<CTransform>();
-  */
 
   m_currentLine = 0;
 
@@ -55,36 +48,11 @@ void SceneIntro::init()
                                    sf::Vector2f(200.f, 200.f),
                                    sf::Color::White);
 
-  //input name part
-  m_playerName = m_entities.addEntity("name"); //remove
-  m_playerName->addComponent<CText>(m_font,
-                                    "",
-                                    24,
-                                    sf::Vector2f(200.f, 200.f),
-                                    sf::Color::White);
-
 }
 
 void SceneIntro::update()
 {
   m_entities.update();
-
-  /*
-  if (!m_introLine) { std::cerr << "m_introLine is null\n"; return; }
-  if (!m_elderLine) { std::cerr << "m_elderLine is null\n"; } // may be created later
-
-  if (!m_introLine->hasComponent<CText>()) {
-    std::cerr << "m_introLine missing CText\n";
-    return;
-  }
-  if (!m_elderLine->hasComponent<CText>()) {
-    std::cerr << "m_elderLine missing CText\n";
-  }
-
-  std::cerr << "m_currentLine=" << m_currentLine
-            << " introLines=" << m_introLines.size()
-            << " elderLines=" << m_elderLines.size() << "\n";
-  */
 
   switch(m_state)
     {
@@ -103,104 +71,120 @@ void SceneIntro::update()
         }
       break;
     case State::NAME_INPUT:
-      auto& t = m_playerName->getComponent<CText>().text;
-      t.setString(getTextInputManager().getText());
+      auto& t = m_player->getComponent<CProfile>().playerName;
+      t = getTextInputManager().getText();
+      m_playerName.setString(t);
       break;
     }
 }
 
-void SceneIntro::sDoAction(const Action& action) //maybe we can use switch here. it is prettier
+void SceneIntro::handleIntroDialogue(const Action& action, ActionName actionName)
 {
-  ActionName act = static_cast<ActionName>(action.name());
-  std::string name;
+  switch(action.type())
+    {
+    case ActionType::START:
+      switch(actionName)
+        {
+        case ActionName::NEXT:
+          if(m_currentLine < m_introLines.size()-1)
+            {
+              m_currentLine++;
+            }
+          else if(m_currentLine == m_introLines.size()-1)
+            {
+              std::cout << "===  End of intro dialogue. ===" << std::endl;
+              m_currentLine = 0;
+              m_state = State::ELDER_DIALOGUE;
+              std::cout << "=== Start elder dialogue. ===" << std::endl;
+            }
+          break;
+        case ActionName::BACK:
+          if(m_currentLine > 0)
+            {
+              m_currentLine--;
+            }
+          break;
+
+        default:
+          break;
+        }
+
+    default:
+      break;
+    }
+}
+
+void SceneIntro::handleElderDialogue(const Action& action, ActionName actionName)
+{
+  switch(action.type())
+    {
+    case ActionType::START:
+      switch(actionName)
+        {
+        case ActionName::NEXT:
+          if(m_currentLine < m_elderLines.size()-1)
+            {
+              m_currentLine++;
+            }
+          else if(m_currentLine == m_elderLines.size()-1)
+            {
+              std::cout << "=== End of elder dialogue. ===" << std::endl;
+              m_state = State::NAME_INPUT;
+              std::cout << "=== Start name_input state. ===" << std::endl;
+              getTextInputManager().start();
+            }
+          break;
+
+        default:
+          break;
+        }
+
+    default:
+      break;
+    }
+}
+
+void SceneIntro::handleNameInput(const Action& action, ActionName actionName, std::string& playerName)
+{
+  switch(action.type())
+    {
+    case ActionType::START:
+      switch(actionName)
+        {
+        case ActionName::ENTER:
+          playerName = getTextInputManager().getText();
+          m_player->getComponent<CProfile>().playerName = playerName;
+
+          m_game->changeScene("main", std::make_shared<SceneMain>(m_game));
+          std::cout << "Scene changed to main/map." << std::endl;
+          break;
+
+        default:
+          break;
+        }
+
+    default:
+      break;
+    }
+}
+
+void SceneIntro::sDoAction(const Action& action)
+{
+  ActionName actionName = static_cast<ActionName>(action.name());
+  std::string playerName;
 
   switch(m_state)
     {
     case State::INTRO_DIALOGUE:
-      switch(action.type())
-        {
-        case ActionType::START:
-          switch(act)
-            {
-            case ActionName::NEXT:
-              if(m_currentLine < m_introLines.size()-1)
-                {
-                  m_currentLine++;
-                }
-              else if(m_currentLine == m_introLines.size()-1)
-                {
-                  std::cout << "End of intro dialogue. --------------" << std::endl;
-                  m_currentLine = 0;
-                  m_state = State::ELDER_DIALOGUE;
-                  std::cout << "At elder_dialogue state." << std::endl;
-                }
-              break;
-            case ActionName::BACK:
-              if(m_currentLine > 0)
-                {
-                  m_currentLine--;
-                }
-              break;
-
-            default:
-              break;
-            }
-          break;
-
-        default:
-          break;
-        }
+      handleIntroDialogue(action, actionName);
       break;
 
     case State::ELDER_DIALOGUE:
-      switch(action.type())
-        {
-        case ActionType::START:
-          switch(act)
-            {
-            case ActionName::NEXT:
-              if(m_currentLine < m_elderLines.size()-1)
-                {
-                  m_currentLine++;
-                }
-              else if(m_currentLine == m_elderLines.size()-1)
-                {
-                  std::cout << "End of elder dialogue.--------------------" << std::endl;
-                  m_state = State::NAME_INPUT;
-                  std::cout << "At name_input state." << std::endl;
-                  getTextInputManager().start();
-                }
-              break;
-            default:
-              break;
-            }
-          break;
-
-        default:
-          break;
-        }
+      handleElderDialogue(action, actionName);
       break;
 
     case State::NAME_INPUT:
-      switch(action.type())
-        {
-        case ActionType::START:
-          switch(act)
-            {
-            case ActionName::ENTER:
-              name = getTextInputManager().getText();
-              m_player->getComponent<CProfile>().playerName = name;
-
-              m_game->changeScene("main", std::make_shared<SceneMain>(m_game));
-              std::cout << "Scene changed to main/map." << std::endl;
-              break;
-
-            default:
-              break;
-            }
-        default:
-          break;
-        }
+      handleNameInput(action, actionName, playerName);
       break;
     }
 }
@@ -218,20 +202,38 @@ void SceneIntro::renderText(const std::string& entityTag)
     }
 }
 
+void SceneIntro::renderPlayerName()
+{
+  m_playerName.setFont(m_font);
+  m_playerName.setCharacterSize(25);
+  m_playerName.setFillColor(sf::Color::Red);
+  m_playerName.setPosition(200.f, 200.f);
+
+  for(auto& e : m_entities.getEntities("player"))
+    {
+      if(e->hasComponent<CProfile>())
+        {
+          auto& name = e->getComponent<CProfile>().playerName;
+          m_playerName.setString(name);
+          m_game->window().draw(m_playerName);
+        }
+    }
+}
+
 void SceneIntro::sRender()
 {
   switch(m_state)
     {
     case State::INTRO_DIALOGUE:
-        renderText("textIntro");
+      renderText("textIntro");
       break;
 
     case State::ELDER_DIALOGUE:
-        renderText("textElder");
+      renderText("textElder");
       break;
 
     case State::NAME_INPUT:
-        renderText("name");
+      renderPlayerName();
       break;
 
     default:
