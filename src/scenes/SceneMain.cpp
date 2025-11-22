@@ -12,7 +12,6 @@ SMain::SceneMain(GameEngine* gameEngine) :
   Scene(gameEngine)
 {
   init();
-  makeMapGrid();
 
   m_controlState = MapControlState::NAVIGATING;
   std::cout << "Navigating state.";
@@ -22,17 +21,22 @@ SMain::SceneMain(GameEngine* gameEngine) :
   registerAction(sf::Keyboard::S, static_cast<int>(ActionName::MOVE_DOWN));
   registerAction(sf::Keyboard::D, static_cast<int>(ActionName::MOVE_RIGHT));
   registerAction(sf::Keyboard::Space, static_cast<int>(ActionName::SELECT_TILE));
-
-  m_mapManager.locateBuildings();
-  m_mapManager.printBuildingCoords();
-  makeBuildings();
-  m_mapManager.locatePaths();
-  m_mapManager.printPathCoords();
-  makePaths();
 }
 
 void SMain::init()
 {
+  makeMapView();
+  makeMapGrid();
+
+  m_mapManager.locateBuildings();
+  m_mapManager.printBuildingCoords();
+  makeBuildings();
+
+  m_mapManager.locatePaths();
+  m_mapManager.printPathCoords();
+  makePaths();
+
+  makeCursor();
 
   auto  m_player = m_game->getWorldManager()->getPlayer();
 
@@ -47,9 +51,6 @@ void SMain::init()
     {
       std::cout << "ERROR: Player is null!" << std::endl;
     }
-
-  makeMapView();
-  makeCursor();
 }
 
 void SMain::update()
