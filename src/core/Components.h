@@ -90,6 +90,7 @@ struct CInput:  Component
 
 struct CShape: Component
 {
+  bool isVisible = true;
   std::shared_ptr<sf::Shape> shape;
   CShape(std::shared_ptr<sf::Shape> s)
     : shape(std::move(s))
@@ -99,6 +100,7 @@ struct CShape: Component
 
 struct CText: Component
 {
+  bool isVisible = true;
   sf::Text text;
   CText(const sf::Font& font, const std::string& str, unsigned size, sf::Vector2f pos, sf::Color color)
   {
