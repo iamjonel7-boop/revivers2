@@ -3,6 +3,7 @@
 #include "ManagerEntity.h"
 #include "ManagerTextInput.h"
 #include "ManagerMap.h"
+#include "ManagerLexicon.h"
 #include "Actions.h"
 #include <memory>
 #include <map>
@@ -21,6 +22,7 @@ protected:
   EntityManager m_entities;
   TextInputManager m_textInputManager;
   MapManager m_mapManager;
+  LexiconManager m_lexiconManager;
 
   ActionMap m_actionMap;
 
@@ -46,6 +48,7 @@ public:
   TextInputManager& getTextInputManager();
   EntityManager& getEntityManager();
   MapManager& getMapManager();
+  LexiconManager& getLexiconManager();
 
   size_t currentFrame() const;
   bool hasEnded() const;
