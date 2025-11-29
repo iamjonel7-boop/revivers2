@@ -60,3 +60,28 @@ MapManager& Scene::getMapManager()
 {
   return m_mapManager;
 }
+
+LexiconManager& Scene::getLexiconManager()
+{
+  return m_lexiconManager;
+}
+
+sf::Text Scene::createText(const std::string& content, const sf::Font& font, sf::Vector2f pos, float charSize, sf::Color color) const
+{
+  sf::Text text;
+  text.setString(content);
+  text.setFont(font);
+  text.setPosition(pos);
+  text.setCharacterSize(charSize);
+  text.setFillColor(color);
+  return text;
+}
+
+sf::RectangleShape Scene::createBox(sf::Vector2f pos, sf::Vector2f size, sf::Color color) const
+{
+  sf::RectangleShape box;
+  box.setPosition(pos);
+  box.setSize(size);
+  box.setFillColor(color);
+  return box;
+}

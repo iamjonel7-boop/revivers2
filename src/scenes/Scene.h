@@ -52,4 +52,7 @@ public:
 
   size_t currentFrame() const;
   bool hasEnded() const;
+
+  sf::Text createText(const std::string& content, const sf::Font& font, sf::Vector2f pos, float charSize, sf::Color color) const;
+  sf::RectangleShape createBox(sf::Vector2f pos, sf::Vector2f size, sf::Color color) const;
 };
