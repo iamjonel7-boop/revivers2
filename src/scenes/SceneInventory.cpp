@@ -360,11 +360,9 @@ void SceneInventory::sRender()
 
 void SceneInventory::renderInputDetails()
 {
-  for(const auto& e : m_entities.getEntities("text_input"))
-    {
-      auto& t = e->getComponent<CText>().text;
-      m_game->window().draw(t);
-    }
+  m_game->window().draw(m_nativeName);
+  m_game->window().draw(m_imperialName);
+  m_game->window().draw(m_wordClass);
 }
 
 void SceneInventory::renderWordList(const std::unordered_map<std::string, LexiconManager::Word>& words)
