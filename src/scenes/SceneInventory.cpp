@@ -3,20 +3,24 @@
 #include <iostream>
 
 const float SceneInventory::TEXT_SIZE = 10;
+const float SceneInventory::INPUT_SIZE = 9;
 const sf::Vector2f SceneInventory::PANEL_SIZE = {44*7.f, 44*10.f};
+const sf::Vector2f SceneInventory::INPUT_FIELD_SIZE = {220.f, 30.f};
+
 const sf::Vector2f SceneInventory::INFO_PANEL_POS = {44.f, 44*2.f};
 const sf::Vector2f SceneInventory::LIST_PANEL_POS = {44*10.f, 44*2.f};
-const sf::Vector2f SceneInventory::INPUT_FIELD_SIZE = {220.f, 30.f};
 const sf::Vector2f SceneInventory::NAT_NAME_FIELD_POS = {88.f, 146.f};
 const sf::Vector2f SceneInventory::IMP_NAME_FIELD_POS = {88.f, 234.f};
 const sf::Vector2f SceneInventory::WORD_CLASS_FIELD_POS = {88.f, 322.f};
-
 const sf::Vector2f SceneInventory::NAT_NAME_TEXT_POS = {89.f, 119.f};
 const sf::Vector2f SceneInventory::IMP_NAME_TEXT_POS = {89.f, 207.f};
 const sf::Vector2f SceneInventory::CLASS_TEXT_POS = {89.f, 294.f};
 const sf::Vector2f SceneInventory::NOUN_TEXT_POS = {484.f, 112.f};
 const sf::Vector2f SceneInventory::ADJ_TEXT_POS = {570.f, 112.f};
 const sf::Vector2f SceneInventory::VERB_TEXT_POS = {678.f, 112.f};
+const sf::Vector2f SceneInventory::NAT_NAME_INPUT_POS = {100.f, 159.f};
+const sf::Vector2f SceneInventory::IMP_NAME_INPUT_POS = {100.f, 247.f};
+const sf::Vector2f SceneInventory::WORD_CLASS_INPUT_POS = {100.f, 334.f};
 
 const sf::Color SceneInventory::INPUT_FIELD_COLOR = sf::Color::Cyan;
 const sf::Color SceneInventory::PANEL_COLOR = sf::Color::White;
