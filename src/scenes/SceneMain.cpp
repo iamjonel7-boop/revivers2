@@ -3,6 +3,7 @@
 #include "Components.h"
 #include "GameEngine.h"
 #include "ManagerMap.h"
+#include "SceneInventory.h"
 #include <iostream>
 #include <fstream>
 
@@ -21,6 +22,7 @@ SMain::SceneMain(GameEngine* gameEngine) :
   registerAction(sf::Keyboard::S, static_cast<int>(ActionName::MOVE_DOWN));
   registerAction(sf::Keyboard::D, static_cast<int>(ActionName::MOVE_RIGHT));
   registerAction(sf::Keyboard::Space, static_cast<int>(ActionName::SELECT_TILE));
+  registerAction(sf::Keyboard::Tab, static_cast<int>(ActionName::OPEN_INVENTORY));
 }
 
 void SMain::init()
@@ -69,13 +71,8 @@ void SMain::sDoAction(const Action& action)
       handleCursorNavigation(action, act, cinput);
       break;
     case MapControlState::SENTENCING:
-      switch(action.type())
-        {
-        case ActionType::START:
-        case ActionType::END:
-        case ActionType::NONE:
-          break;
-        }
+      handleSentencing();
+      break;
     }
 }
 
@@ -105,6 +102,10 @@ void SMain::sRender()
   renderCursor();
 }
 
+void SceneMain::handleSentencing()
+{
+}
+
 void SceneMain::handleCursorNavigation(const Action& action, ActionName act, CInput& cinput)
 {
   switch(action.type())
@@ -126,6 +127,10 @@ void SceneMain::handleCursorNavigation(const Action& action, ActionName act, CIn
           break;
         case ActionName::SELECT_TILE:
           m_controlState = MapControlState::SENTENCING;
+          break;
+        case ActionName::OPEN_INVENTORY:
+          m_game->changeScene("inventory", std::make_shared<SceneInventory>(m_game));
+        default:
           break;
         }
       break;

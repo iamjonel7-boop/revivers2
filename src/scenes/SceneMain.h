@@ -14,13 +14,14 @@ protected:
       MOVE_DOWN,
       MOVE_LEFT,
       MOVE_RIGHT,
-      SELECT_TILE
+      SELECT_TILE,
+      OPEN_INVENTORY
     };
 
   enum class MapControlState
     {
       NAVIGATING,
-      SENTENCING
+      SENTENCING,
     };
 
   sf::View m_mainView;
@@ -36,6 +37,7 @@ protected:
   void onEnd() override;
 
   void handleCursorNavigation(const Action& action, ActionName act, CInput& cinput);
+  void handleSentencing();
 
   void makeMapView();
   void makeMapGrid();
