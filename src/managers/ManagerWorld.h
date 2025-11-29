@@ -14,6 +14,20 @@ class WorldManager
 
   void m_createPlayer(EntityManager& entityManager);
 
+  enum class Stage
+    {
+      FIRST,
+      SECOND,
+      THIRD,
+      FOURTH,
+      FIFTH,
+      SIXTH,
+      SEVENTH,
+      EIGHTH
+    };
+
+  Stage currentStage;
+
  public:
   WorldManager(GameEngine* gameEngine);
 
