@@ -36,7 +36,7 @@ SceneInventory::SceneInventory(GameEngine* gameEngine) :
   registerAction(sf::Keyboard::Right, static_cast<int>(ActionName::RIGHT));
   registerAction(sf::Keyboard::Up, static_cast<int>(ActionName::UP));
   registerAction(sf::Keyboard::Down, static_cast<int>(ActionName::DOWN));
-  registerAction(sf::Keyboard::Enter, static_cast<int>(ActionName::SELECT));
+  registerAction(sf::Keyboard::Tab, static_cast<int>(ActionName::SELECT));
 }
 
 void SceneInventory::init()
