@@ -5,6 +5,7 @@
 WorldManager::WorldManager(GameEngine* gameEngine) :
   m_gameEngine(gameEngine)
 {
+  currentStage = Stage::FIRST;
 }
 
 void WorldManager::m_createPlayer(EntityManager& entityManager)
