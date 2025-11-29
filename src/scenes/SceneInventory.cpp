@@ -192,14 +192,21 @@ void SceneInventory::update()
         {
         case 0:
           updateIndicator(NAT_NAME_FIELD_POS, INPUT_FIELD_SIZE, INDICATOR_COLOR);
+          updateInput();
           break;
         case 1:
           updateIndicator(IMP_NAME_FIELD_POS, INPUT_FIELD_SIZE, INDICATOR_COLOR);
+          updateInput();
           break;
         case 2:
           updateIndicator(WORD_CLASS_FIELD_POS, INPUT_FIELD_SIZE, INDICATOR_COLOR);
+          updateInput();
           break;
         }
+      break;
+      //    case InventoryState::WAITING_FOR_INPUT:
+      //updateInput();
+      // break;
     default:
       break;
     }
@@ -207,7 +214,21 @@ void SceneInventory::update()
 
 void SceneInventory::updateInput()
 {
+  std::string inputText = getTextInputManager().getText();
 
+  switch(m_currentWordInfo) {
+  case 0:
+    m_nativeName.setString(inputText);
+    break;
+  case 1:
+    m_imperialName.setString(inputText);
+    break;
+  case 2:
+    m_wordClass.setString(inputText);
+    break;
+  }
+
+  //m_state = InventoryState::ADDING_WORD;
 }
 
 void SceneInventory::updateIndicator(sf::Vector2f pos, sf::Vector2f size, sf::Color color)
