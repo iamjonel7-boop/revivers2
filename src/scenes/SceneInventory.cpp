@@ -242,68 +242,18 @@ void SceneInventory::sDoAction(const Action& action)
 {
   ActionName act = static_cast<ActionName>(action.name());
 
-  switch(m_state)
-    {
-    case InventoryState::ADD_OR_LOOK:
-      handleAddOrLook(action, act);
-      break;
-    case InventoryState::ADDING_WORD:
-      handleAddingWord(action, act);
-      break;
-    case InventoryState::LOOK_UP:
-      break;
-    default:
-      break;
-    }
-}
-
-void SceneInventory::handleAddingWord(const Action& action, ActionName act)
-{
-  auto& natName = m_nativeName->getComponent<CText>().text;
-  auto& impName = m_imperialName->getComponent<CText>().text;
-  auto& wordClass = m_wordClass->getComponent<CText>().text;
-
   switch(action.type())
     {
     case ActionType::START:
-      switch(act)
+      switch(m_state)
         {
-        case ActionName::DOWN:
-          m_currentWordInfo = (m_currentWordInfo + 1) % m_wordAddingDetails.size();
-          std::cout << m_currentWordInfo << std::endl;
+        case InventoryState::ADD_OR_LOOK:
+          handleAddOrLook(act);
           break;
-        case ActionName::UP:
-          m_currentWordInfo = (m_currentWordInfo - 1) % m_wordAddingDetails.size();
-          std::cout << m_currentWordInfo << std::endl;
+        case InventoryState::ADDING_WORD:
+          handleAddingWord(act);
           break;
-        case ActionName::SELECT:
-          m_state = m_wordAddingDetails[m_currentWordInfo];
-          switch(m_currentWordInfo)
-            {
-            case 0:
-              std::cout << "Input native name." << std::endl;
-              getTextInputManager().start();
-              natName.setString(getTextInputManager().getText());
-              std::cout << getTextInputManager().getText() << std::endl;
-              break;
-            case 1:
-              std::cout << "Input imperial name." << std::endl;
-              getTextInputManager().start();
-              impName.setString(getTextInputManager().getText());
-              std::cout << getTextInputManager().getText() << std::endl;
-              break;
-            case 2:
-              std::cout << "Input word class." << std::endl;
-              getTextInputManager().start();
-              wordClass.setString(getTextInputManager().getText());
-              std::cout << getTextInputManager().getText() << std::endl;
-              break;
-            }
-        case ActionName::SAVE_WORD:
-          if(!natName.getString().isEmpty() && !impName.getString().isEmpty() && !wordClass.getString().isEmpty())
-            {
-              getLexiconManager().m_addWord(natName.getString(), impName.getString(), wordClass.getString());
-            }
+        case InventoryState::LOOK_UP:
           break;
         default:
           break;
@@ -313,33 +263,55 @@ void SceneInventory::handleAddingWord(const Action& action, ActionName act)
     }
 }
 
-void SceneInventory::handleAddOrLook(const Action& action, ActionName act)
+void SceneInventory::handleAddingWord(ActionName act)
 {
-  switch(action.type())
+  switch(act)
     {
-    case ActionType::START:
-      switch(act)
-        {
-        case ActionName::LEFT:
-          m_currentInitState = (m_currentInitState - 1) % m_initStates.size();
-          std::cout << m_currentInitState << std::endl;
-          break;
-        case ActionName::RIGHT:
-          m_currentInitState = (m_currentInitState + 1) % m_initStates.size();
-          std::cout << m_currentInitState << std::endl;
-          break;
-        case ActionName::SELECT:
-          m_state = m_initStates[m_currentInitState];
-          switch(m_currentInitState)
-            {
-            case 0:
-              std::cout << "Info state." << std::endl; break;
-            case 1:
-              std::cout << "List state." << std::endl; break;
-            }
-        default:
-          break;
-        }
+    case ActionName::DOWN:
+      m_currentWordInfo = (m_currentWordInfo + 1) % m_wordAddingDetails.size();
+      handleInput();
+      break;
+    case ActionName::UP:
+      m_currentWordInfo = (m_currentWordInfo - 1) % m_wordAddingDetails.size();
+      handleInput();
+      break;
+      //case ActionName::SELECT:
+      //m_state = m_wordAddingDetails[m_currentWordInfo];
+      //handleInput(act);
+    case ActionName::LEFT:
+    case ActionName::RIGHT:
+      m_state = InventoryState::ADD_OR_LOOK;
+      break;
+      //  case ActionName::SAVE_WORD:
+      //if(!m_nativeName.getString().isEmpty() && !m_imperialName.getString().isEmpty() && !m_wordClass.getString().isEmpty())
+      //{
+      //  getLexiconManager().m_addWord(m_nativeName.getString(), m_imperialName.getString(), m_wordClass.getString());
+      //}
+      // break;
+    default:
+      break;
+    }
+}
+
+void SceneInventory::handleInput()
+{
+  getTextInputManager().start();
+}
+
+void SceneInventory::handleAddOrLook(ActionName act)
+{
+  switch(act)
+    {
+    case ActionName::LEFT:
+      m_currentInitState = (m_currentInitState - 1) % m_initStates.size();
+      break;
+    case ActionName::RIGHT:
+      m_currentInitState = (m_currentInitState + 1) % m_initStates.size();
+      break;
+    case ActionName::DOWN:
+      m_state = m_initStates[m_currentInitState];
+      if(m_state == InventoryState::ADDING_WORD)
+        handleInput();
     default:
       break;
     }

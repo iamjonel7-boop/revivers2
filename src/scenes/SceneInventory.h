@@ -7,6 +7,7 @@
 class SceneInventory : public Scene
 {
         static const float TEXT_SIZE;
+        static const float INPUT_SIZE;
         static const sf::Vector2f INPUT_FIELD_SIZE;
         static const sf::Vector2f PANEL_SIZE;
 
@@ -21,6 +22,9 @@ class SceneInventory : public Scene
         static const sf::Vector2f NOUN_TEXT_POS;
         static const sf::Vector2f VERB_TEXT_POS;
         static const sf::Vector2f ADJ_TEXT_POS;
+        static const sf::Vector2f NAT_NAME_INPUT_POS;
+        static const sf::Vector2f IMP_NAME_INPUT_POS;
+        static const sf::Vector2f WORD_CLASS_INPUT_POS;
 
         static const sf::Color INPUT_FIELD_COLOR;
         static const sf::Color PANEL_COLOR;
@@ -59,6 +63,9 @@ protected:
 
         sf::Font m_font;
         sf::RectangleShape m_indicator;
+        sf::Text m_nativeName;
+        sf::Text m_imperialName;
+        sf::Text m_wordClass;
 
         std::vector<std::string> m_words;
 
@@ -68,23 +75,21 @@ protected:
 
         std::shared_ptr<Entity> m_infoBox;
         std::shared_ptr<Entity> m_listBox;
-        std::shared_ptr<Entity> m_nativeName;
-        std::shared_ptr<Entity> m_imperialName;
-        std::shared_ptr<Entity> m_wordClass;
 
         void init();
         void makeIndicator();
         void makeInfoBox();
         void makeListBox();
-        void makeInputEntities();
+        void makeInputTexts();
 
         void update() override;
         void updateIndicator(sf::Vector2f pos, sf::Vector2f size, sf::Color color);
         void updateInput();
 
         void sDoAction(const Action& action) override;
-        void handleAddOrLook(const Action& action, ActionName act);
-        void handleAddingWord(const Action& action, ActionName act);
+        void handleAddOrLook(ActionName act);
+        void handleAddingWord(ActionName act);
+        void handleInput();
 
         void onEnd() override;
 
