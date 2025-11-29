@@ -1,7 +1,12 @@
-{
-    duman = {
-        english = "go",
-        synonyms = [],
-        actions = [ "movement" ]
-    }
-}
+duman verb 0 go
+laog verb 0 enter
+kaulay verb 0 talk
+magayon adjective 1 beautiful
+matibay adjective 1 amazing
+makusog adjective 1 strong
+mahigos adjective 1 hardworking
+dakula adjective 0.5 big
+sadit adjective 0.5 small
+makanos adjective 0 ugly
+
+
