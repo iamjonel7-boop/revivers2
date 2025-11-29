@@ -68,19 +68,14 @@ void SceneInventory::init()
   makeIndicator();
   makeInfoBox();
   makeListBox();
-  makeInputEntities();
+  makeInputTexts();
 }
 
-void SceneInventory::makeInputEntities()
+void SceneInventory::makeInputTexts()
 {
-  m_nativeName = m_entities.addEntity("input_text");
-  m_imperialName = m_entities.addEntity("input_text");
-  m_wordClass = m_entities.addEntity("input_text");
-
-  for(const auto& e : m_entities.getEntities("input_text"))
-    {
-      e->addComponent<CText>(m_font, " ", 9, sf::Vector2f(1.f, 1.f), TEXT_COLOR);
-    }
+  m_nativeName = createText("Input here", m_font, NAT_NAME_INPUT_POS, INPUT_SIZE, TEXT_COLOR);
+  m_imperialName = createText("Input here", m_font, IMP_NAME_INPUT_POS, INPUT_SIZE, TEXT_COLOR);
+  m_wordClass = createText("Input here", m_font, WORD_CLASS_INPUT_POS, INPUT_SIZE, TEXT_COLOR);
 }
 
 void SceneInventory::makeIndicator()
