@@ -85,3 +85,8 @@ sf::RectangleShape Scene::createBox(sf::Vector2f pos, sf::Vector2f size, sf::Col
   box.setFillColor(color);
   return box;
 }
+
+int Scene::wrapIndex(int current, int delta, int size)
+{
+		return (current + delta + size) % size;
+}
