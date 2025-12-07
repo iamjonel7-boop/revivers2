@@ -204,9 +204,9 @@ void SceneMain::makeCursor()
 
 void SceneMain::makeMapView()
 {
-  m_mainView.setSize({800.f, 400.f});
-  m_mainView.setCenter({400.f, 200.f});
-  m_mainView.setViewport(sf::FloatRect({0.0f, 0.05f}, {1.f, 2.f/3.f}));
+  m_mainView.setSize({800.f, 600.f});
+  m_mainView.setCenter({400.f, 300.f});
+  m_mainView.setViewport(sf::FloatRect({0.0f, 0.08f}, {0.75f, 2.f/3.f}));
 }
 
 void SMain::makeMapGrid()
