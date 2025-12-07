@@ -107,17 +107,37 @@ void LexiconManager::m_readFile(const std::string& filename)
 				  << "Adjective count: " << m_adjectives.size() << std::endl;
 }
 
-const std::unordered_map<std::string, LexiconManager::Word>& LexiconManager::getNouns() const
+const std::vector<std::string> LexiconManager::getNouns() const
 {
-  return m_nouns;
+		std::vector<std::string> nouns;
+		for(const auto& [key, value] : m_nouns)
+		{
+				nouns.push_back(key);
+		}
+		return nouns;
 }
 
-const std::unordered_map<std::string, LexiconManager::Word>& LexiconManager::getVerbs() const
+const std::vector<std::string> LexiconManager::getVerbs() const
 {
-  return m_verbs;
+		std::vector<std::string> verbs;
+		for(const auto& [key, value] : m_verbs)
+		{
+				verbs.push_back(key);
+		}
+		return verbs;
 }
 
-const std::unordered_map<std::string, LexiconManager::Word>& LexiconManager::getAdjectives() const
+const std::vector<std::string> LexiconManager::getAdjectives() const
 {
-  return m_adjectives;
+		std::vector<std::string> adjectives;
+		for(const auto& [key, value] : m_adjectives)
+				adjectives.push_back(key);
+		return adjectives;
+}
+
+const std::vector<std::string> LexiconManager::searchWord(std::string& nativeName) const
+{
+		//return the native name, imperial name, and wordclass
+		std::vector<std::string> wordInfo;
+
 }

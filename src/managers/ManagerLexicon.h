@@ -36,11 +36,12 @@ protected:
 		void m_readFile(const std::string& filename);
 		uint8_t m_parseWordClass(const std::string& wordClass);
 
- public:
-  LexiconManager();
-  const std::unordered_map<std::string, Word>& getNouns() const;
-  const std::unordered_map<std::string, Word>& getVerbs() const;
-  const std::unordered_map<std::string, Word>& getAdjectives() const;
+public:
+		LexiconManager();
+		const std::vector<std::string> getNouns() const;
+		const std::vector<std::string> getVerbs() const;
+		const std::vector<std::string> getAdjectives() const;
 
-  void m_addWord(const std::string& nativeName, const std::string& imperialName, const std::string& wordClass);
+		const std::vector<std::string> searchWord(std::string& nativeName) const;
+		void m_addWord(const std::string& nativeName, const std::string& imperialName, const std::string& wordClass);
 };
