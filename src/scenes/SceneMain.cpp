@@ -212,6 +212,40 @@ void SMain::sRender()
 
 void SceneMain::handleSentencing()
 {
+void SceneMain::getTileAtCursorPosition(sf::Vector2f pos)
+{
+		const float tileSize = 20.f;
+		int tileX = static_cast<int>(pos.x/tileSize);
+		int tileY = static_cast<int>(pos.y/tileSize);
+
+		auto& pathEnt = m_entities.getEntities("path");
+		for(auto& path : pathEnt)
+		{
+				if(path->getComponent<CTransform>())
+				{
+						auto& pathPos = path->getComponent<CTransform>.position;
+						int pathXpos = static_cast<int>(pathPos.x/tileSize);
+						int pathYpos = static_cast<int>(pathPos.y/tileSize);
+
+						if(tileX == pathXpos && tileY == pathYpos)
+								return path;
+				}
+		}
+
+		auto& buildEnt = m_entities.getEntities("building");
+		for(auto& build : buildEnt)
+		{
+				if(build->getComponent<CTransform>())
+				{
+						auto& buildPos = path->getComponent<CTransform>.position;
+						int buildXpos = static_cast<int>(buildPos.x/tileSize);
+						int buildYpos = static_cast<int>(buildPos.y/tileSize);
+
+						if(tileX == buildXpos && tileY == buildYpos)
+								return build;
+				}
+		}
+		return nullptr;
 }
 
 void SceneMain::handleCursorNavigation(const Action& action, ActionName act, CInput& cinput)
