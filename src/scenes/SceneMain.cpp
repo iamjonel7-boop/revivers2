@@ -10,49 +10,55 @@
 using SMain = SceneMain;
 
 SMain::SceneMain(GameEngine* gameEngine) :
-  Scene(gameEngine)
+		Scene(gameEngine)
 {
-  init();
+		init();
 
-  m_controlState = MapControlState::NAVIGATING;
-  std::cout << "Navigating state.";
+		m_controlState = MapControlState::NAVIGATING;
+		std::cout << "Navigating state.";
 
-  registerAction(sf::Keyboard::W, static_cast<int>(ActionName::MOVE_UP));
-  registerAction(sf::Keyboard::A, static_cast<int>(ActionName::MOVE_LEFT));
-  registerAction(sf::Keyboard::S, static_cast<int>(ActionName::MOVE_DOWN));
-  registerAction(sf::Keyboard::D, static_cast<int>(ActionName::MOVE_RIGHT));
-  registerAction(sf::Keyboard::Space, static_cast<int>(ActionName::SELECT_TILE));
-  registerAction(sf::Keyboard::Tab, static_cast<int>(ActionName::OPEN_INVENTORY));
+		registerAction(sf::Keyboard::W, static_cast<int>(ActionName::MOVE_UP));
+		registerAction(sf::Keyboard::A, static_cast<int>(ActionName::MOVE_LEFT));
+		registerAction(sf::Keyboard::S, static_cast<int>(ActionName::MOVE_DOWN));
+		registerAction(sf::Keyboard::D, static_cast<int>(ActionName::MOVE_RIGHT));
+		registerAction(sf::Keyboard::Space, static_cast<int>(ActionName::SELECT_TILE));
+		registerAction(sf::Keyboard::Tab, static_cast<int>(ActionName::OPEN_INVENTORY));
+		registerAction(sf::Keyboard::E, static_cast<int>(ActionName::SELECT_ENTITY));
+		registerAction(sf::Keyboard::Backspace, static_cast<int>(ActionName::RETURN));
 }
 
 void SMain::init()
 {
-  makeMapView();
-  makeMapGrid();
+		makeMapView();
+		makeMapGrid();
 
-  m_mapManager.locateBuildings();
-  m_mapManager.printBuildingCoords();
-  makeBuildings();
+		m_mapManager.locateBuildings();
+		m_mapManager.printBuildingCoords();
+		makeBuildings();
 
-  m_mapManager.locatePaths();
-  m_mapManager.printPathCoords();
-  makePaths();
+		m_mapManager.locatePaths();
+		m_mapManager.printPathCoords();
+		makePaths();
 
-  makeCursor();
+		m_entities.update(); //solve paths not exist
 
-  auto  m_player = m_game->getWorldManager()->getPlayer();
+		makeCursor();
 
-  std::cout << "=== SCENE MAIN ===" << std::endl;
-  if (m_player)
-    {
-      std::cout << "Player memory address: " << m_player.get() << std::endl;
-      std::cout << "Player name: " << m_player->getComponent<CProfile>().playerName << std::endl;
-      std::cout << "Has CTransform: " << m_player->hasComponent<CTransform>() << std::endl;
-      std::cout << "Has CProfile: " << m_player->hasComponent<CProfile>() << std::endl;
-    } else
-    {
-      std::cout << "ERROR: Player is null!" << std::endl;
-    }
+		createPopulation();
+
+		auto  m_player = m_game->getWorldManager()->getPlayer();
+
+		std::cout << "=== SCENE MAIN ===" << std::endl;
+		if (m_player)
+		{
+				std::cout << "Player memory address: " << m_player.get() << std::endl;
+				std::cout << "Player name: " << m_player->getComponent<CProfile>().playerName << std::endl;
+				std::cout << "Has CTransform: " << m_player->hasComponent<CTransform>() << std::endl;
+				std::cout << "Has CProfile: " << m_player->hasComponent<CProfile>() << std::endl;
+		} else
+		{
+				std::cout << "ERROR: Player is null!" << std::endl;
+		}
 }
 
 void SMain::update()
@@ -126,17 +132,19 @@ void SceneMain::createPopulation()
 
 void SMain::sDoAction(const Action& action)
 {
-  ActionName act = static_cast<ActionName>(action.name());
-  auto& cinput = m_cursorEntity->getComponent<CInput>();
-  switch(m_controlState)
-    {
-    case MapControlState::NAVIGATING:
-      handleCursorNavigation(action, act, cinput);
-      break;
-    case MapControlState::SENTENCING:
-      handleSentencing(act);
-      break;
-    }
+		ActionName act = static_cast<ActionName>(action.name());
+		auto& cinput = m_cursorEntity->getComponent<CInput>();
+		switch(m_controlState)
+		{
+		case MapControlState::NAVIGATING:
+				handleCursorNavigation(action, act, cinput);
+				break;
+		case MapControlState::SENTENCING:
+				handleSentencing(act);
+				break;
+		default:
+				break;
+		}
 }
 
 void SMain::onEnd()
@@ -145,24 +153,23 @@ void SMain::onEnd()
 
 void SMain::sRender()
 {
-  m_game->window().setView(m_mainView);
+		m_game->window().setView(m_mainView);
 
-  for (auto& e : m_entities.getEntities())
-    {
-      if (e->hasComponent<CShape>() && e->hasComponent<CTransform>())
-        {
-          auto& shape = e->getComponent<CShape>().shape;
-          auto& transform = e->getComponent<CTransform>();
+		for (auto& e : m_entities.getEntities())
+		{
+				if (e->hasComponent<CShape>() && e->hasComponent<CTransform>())
+				{
+						auto& shape = e->getComponent<CShape>().shape;
+						auto& transform = e->getComponent<CTransform>();
 
-          shape->setPosition(transform.position.x, transform.position.y);
-          m_game->window().draw(*shape);
-        }
-    }
+						shape->setPosition(transform.position.x, transform.position.y);
+						m_game->window().draw(*shape);
+				}
+		}
 
-  renderTileGrid();
-  //renderPaths();
-  renderBuildings();
-  renderCursor();
+		renderTileGrid();
+		renderBuildings();
+		renderCursor();
 }
 
 void SceneMain::handleSentencing()
@@ -171,82 +178,82 @@ void SceneMain::handleSentencing()
 
 void SceneMain::handleCursorNavigation(const Action& action, ActionName act, CInput& cinput)
 {
-  switch(action.type())
-    {
-    case ActionType::START:
-      switch(act)
-        {
-        case ActionName::MOVE_UP:
-          cinput.up = true;
-          break;
-        case ActionName::MOVE_DOWN:
-          cinput.down = true;
-          break;
-        case ActionName::MOVE_LEFT:
-          cinput.left = true;
-          break;
-        case ActionName::MOVE_RIGHT:
-          cinput.right = true;
-          break;
-        case ActionName::SELECT_TILE:
-          m_controlState = MapControlState::SENTENCING;
-          break;
-        case ActionName::OPEN_INVENTORY:
-          m_game->changeScene("inventory", std::make_shared<SceneInventory>(m_game));
-        default:
-          break;
-        }
-      break;
-    case ActionType::END:
-      switch(act)
-        {
-        case ActionName::MOVE_UP:
-          cinput.up = false;
-          break;
-        case ActionName::MOVE_DOWN:
-          cinput.down = false;
-          break;
-        case ActionName::MOVE_LEFT:
-          cinput.left = false;
-          break;
-        case ActionName::MOVE_RIGHT:
-          cinput.right = false;
-          break;
-        default:
-          break;
-        }
-      break;
-    case ActionType::NONE:
-      break;
-    }
+		switch(action.type())
+		{
+		case ActionType::START:
+				switch(act)
+				{
+				case ActionName::MOVE_UP:
+						cinput.up = true;
+						break;
+				case ActionName::MOVE_DOWN:
+						cinput.down = true;
+						break;
+				case ActionName::MOVE_LEFT:
+						cinput.left = true;
+						break;
+				case ActionName::MOVE_RIGHT:
+						cinput.right = true;
+						break;
+				case ActionName::SELECT_TILE:
+						m_controlState = MapControlState::SENTENCING;
+						break;
+				case ActionName::OPEN_INVENTORY:
+						m_game->changeScene("inventory", std::make_shared<SceneInventory>(m_game));
+				default:
+						break;
+				}
+				break;
+		case ActionType::END:
+				switch(act)
+				{
+				case ActionName::MOVE_UP:
+						cinput.up = false;
+						break;
+				case ActionName::MOVE_DOWN:
+						cinput.down = false;
+						break;
+				case ActionName::MOVE_LEFT:
+						cinput.left = false;
+						break;
+				case ActionName::MOVE_RIGHT:
+						cinput.right = false;
+						break;
+				default:
+						break;
+				}
+				break;
+		case ActionType::NONE:
+				break;
+		}
 }
 
 void SceneMain::renderCursor()
 {
-  for(auto& e : m_entities.getEntities("cursor"))
-    {
-      if(e->hasComponent<CTransform>() && e->hasComponent<CShape>() && e->hasComponent<CInput>())
-        {
-          auto& shape = e->getComponent<CShape>().shape;
-          auto& transform = e->getComponent<CTransform>();
-          shape->setPosition(transform.position.x, transform.position.y);
-          m_game->window().draw(*shape);
-        }
-    }
+		for(auto& e : m_entities.getEntities("cursor"))
+		{
+				if(e->hasComponent<CTransform>() && e->hasComponent<CShape>() && e->hasComponent<CInput>())
+				{
+						auto& shape = e->getComponent<CShape>().shape;
+						auto& transform = e->getComponent<CTransform>();
+						shape->setPosition(transform.position.x, transform.position.y);
+						m_game->window().draw(*shape);
+				}
+		}
 }
 
 void SceneMain::renderBuildings()
 {
-  for(auto& e : m_entities.getEntities("building"))
-    {
-      if(e->hasComponent<CBuilding>() && e->hasComponent<CTransform>() && e->hasComponent<CShape>())
-        {
-          auto& shape = e->getComponent<CShape>().shape;
-          auto& transform = e->getComponent<CTransform>();
-          shape->setPosition(transform.position.x, transform.position.y);
-          m_game->window().draw(*shape);
-        }
-    }
+		for(auto& e : m_entities.getEntities("building"))
+		{
+				if(e->hasComponent<CBuilding>() && e->hasComponent<CTransform>() && e->hasComponent<CShape>())
+				{
+						auto& shape = e->getComponent<CShape>().shape;
+						auto& transform = e->getComponent<CTransform>();
+						shape->setPosition(transform.position.x, transform.position.y);
+						m_game->window().draw(*shape);
+				}
+		}
 }
 
 
@@ -258,126 +265,126 @@ void SceneMain::makeCursor()
   auto& transform = m_cursorEntity->getComponent<CTransform>();
   transform.position = sf::Vector2f(100.f, 100.f);
 
-  m_cursorEntity->addComponent<CInput>();
+		m_cursorEntity->addComponent<CInput>();
 
-  auto shape = std::make_shared<sf::RectangleShape>(sf::Vector2f(20.f, 20.f));
-  shape->setFillColor(sf::Color::Yellow);
-  m_cursorEntity->addComponent<CShape>(shape);
+		auto shape = std::make_shared<sf::RectangleShape>(sf::Vector2f(20.f, 20.f));
+		shape->setFillColor(sf::Color::Yellow);
+		m_cursorEntity->addComponent<CShape>(shape);
 }
 
 void SceneMain::makeMapView()
 {
-  m_mainView.setSize({800.f, 600.f});
-  m_mainView.setCenter({400.f, 300.f});
-  m_mainView.setViewport(sf::FloatRect({0.0f, 0.08f}, {0.75f, 2.f/3.f}));
+		m_mainView.setSize({800.f, 600.f});
+		m_mainView.setCenter({400.f, 300.f});
+		m_mainView.setViewport(sf::FloatRect({0.0f, 0.08f}, {0.75f, 2.f/3.f}));
 }
 
 void SMain::makeMapGrid()
 {
-  m_tileOutlineShape = m_entities.addEntity("shape");
-  auto shape = std::make_shared<sf::RectangleShape>(sf::Vector2f(20.f, 20.f));
-  shape->setFillColor(sf::Color::Transparent);
-  shape->setOutlineThickness(1);
-  shape->setOutlineColor(sf::Color(255, 255, 255, 100));
-  m_tileOutlineShape->addComponent<CShape>(shape);
+		m_tileOutlineShape = m_entities.addEntity("shape");
+		auto shape = std::make_shared<sf::RectangleShape>(sf::Vector2f(20.f, 20.f));
+		shape->setFillColor(sf::Color::Transparent);
+		shape->setOutlineThickness(1);
+		shape->setOutlineColor(sf::Color(255, 255, 255, 100));
+		m_tileOutlineShape->addComponent<CShape>(shape);
 }
 
 
 void SceneMain::updateCursorPos()
 {
-  auto& transform = m_cursorEntity->getComponent<CTransform>();
-  auto& input = m_cursorEntity->getComponent<CInput>();
+		auto& transform = m_cursorEntity->getComponent<CTransform>();
+		auto& input = m_cursorEntity->getComponent<CInput>();
 
-  const float tileSize = 20.f;
+		const float tileSize = 20.f;
 
-  if(input.up)
-    {
-      transform.position.y -= tileSize;
-      input.up = false;
-    }
-  if(input.down)
-    {
-      transform.position.y += tileSize;
-      input.down = false;
-    }
-  if(input.left)
-    {
-      transform.position.x -= tileSize;
-      input.left = false;
-    }
-  if(input.right)
-    {
-      transform.position.x += tileSize;
-      input.right = false;
-    }
+		if(input.up)
+		{
+				transform.position.y -= tileSize;
+				input.up = false;
+		}
+		if(input.down)
+		{
+				transform.position.y += tileSize;
+				input.down = false;
+		}
+		if(input.left)
+		{
+				transform.position.x -= tileSize;
+				input.left = false;
+		}
+		if(input.right)
+		{
+				transform.position.x += tileSize;
+				input.right = false;
+		}
 }
-
 
 void SceneMain::makeBuildings()
 {
-  const auto& buildingCoords = m_mapManager.getBuildingCoords();
-  for(size_t i = 0; i < buildingCoords.size(); i++)
-    {
-      std::shared_ptr<Entity> building = m_entities.addEntity("building");
-      building->addComponent<CTransform>();
-      auto& transform = building->getComponent<CTransform>();
-      transform.position.x = static_cast<float>(buildingCoords[i].x);
-      transform.position.y = static_cast<float>(buildingCoords[i].y);
+		const auto& buildingCoords = m_mapManager.getBuildingCoords();
 
-      auto shape = std::make_shared<sf::RectangleShape>(sf::Vector2f(20.f, 20.f));
-      shape->setFillColor(sf::Color::Red);
-      building->addComponent<CShape>(shape);
+		for(size_t i = 0; i < buildingCoords.size(); i++)
+		{
+				std::shared_ptr<Entity> building = m_entities.addEntity("building");
+				building->addComponent<CTransform>();
+				auto& transform = building->getComponent<CTransform>();
+				transform.position.x = static_cast<float>(buildingCoords[i].x);
+				transform.position.y = static_cast<float>(buildingCoords[i].y);
 
-      building->addComponent<CBuilding>();
-    }
+				auto shape = std::make_shared<sf::RectangleShape>(sf::Vector2f(20.f, 20.f));
+				shape->setFillColor(sf::Color::Red);
+				building->addComponent<CShape>(shape);
+
+				building->addComponent<CBuilding>();
+		}
 }
 
 void SMain::renderTileGrid()
 {
-  for(int y = 0; y < m_mapManager.getHeight(); y++)
-    {
-      for(int x = 0; x < m_mapManager.getWidth(); x++)
-        {
-          auto& tileShape = m_tileOutlineShape->getComponent<CShape>().shape;
-          tileShape->setPosition(x*20.f, y*20.f);
-          m_game->window().draw(*tileShape);
-        }
-    }
+		for(int y = 0; y < m_mapManager.getHeight(); y++)
+		{
+				for(int x = 0; x < m_mapManager.getWidth(); x++)
+				{
+						auto& tileShape = m_tileOutlineShape->getComponent<CShape>().shape;
+						tileShape->setPosition(x*20.f, y*20.f);
+						m_game->window().draw(*tileShape);
+				}
+		}
 }
 
 void SceneMain::makePaths()
 {
-  const auto& pathCoords = m_mapManager.getPathCoords();
+		const auto& pathCoords = m_mapManager.getPathCoords();
 
-  std::cout << "Creating " << pathCoords.size() << " path entities" << std::endl;
+		std::cout << "Creating " << pathCoords.size() << " path entities" << std::endl;
 
-  for(size_t i = 0; i < pathCoords.size(); i++)
-    {
-      std::shared_ptr<Entity> path = m_entities.addEntity("path");
-      path->addComponent<CTransform>();
-      auto& transform = path->getComponent<CTransform>();
-      transform.position.x = static_cast<float>(pathCoords[i].x);
-      transform.position.y = static_cast<float>(pathCoords[i].y);
+		for(size_t i = 0; i < pathCoords.size(); i++)
+		{
+				std::shared_ptr<Entity> path = m_entities.addEntity("path");
+				path->addComponent<CTransform>();
+				auto& transform = path->getComponent<CTransform>();
+				transform.position.x = static_cast<float>(pathCoords[i].x);
+				transform.position.y = static_cast<float>(pathCoords[i].y);
 
-      auto shape = std::make_shared<sf::RectangleShape>(sf::Vector2f(20.f, 20.f));
-      shape->setFillColor(sf::Color::Green);
-      path->addComponent<CShape>(shape);
+				auto shape = std::make_shared<sf::RectangleShape>(sf::Vector2f(20.f, 20.f));
+				shape->setFillColor(sf::Color::Green);
+				path->addComponent<CShape>(shape);
 
-      path->addComponent<CPath>();
-    }
+				path->addComponent<CPath>();
+		}
 }
 
 void SceneMain::renderPaths()
 {
-  for(auto& e : m_entities.getEntities("path"))
-    {
-      if(e->hasComponent<CTransform>() && e->hasComponent<CShape>() && e->hasComponent<CPath>())
-        {
-          auto& shape = e->getComponent<CShape>().shape;
-          auto& transform = e->getComponent<CTransform>();
+		for(auto& e : m_entities.getEntities("path"))
+		{
+				if(e->hasComponent<CTransform>() && e->hasComponent<CShape>() && e->hasComponent<CPath>())
+				{
+						auto& shape = e->getComponent<CShape>().shape;
+						auto& transform = e->getComponent<CTransform>();
 
-          shape->setPosition(transform.position.x, transform.position.y);
-          m_game->window().draw(*shape);
-        }
-    }
+						shape->setPosition(transform.position.x, transform.position.y);
+						m_game->window().draw(*shape);
+				}
+		}
 }
