@@ -59,6 +59,69 @@ void SMain::update()
 {
   m_entities.update();
   updateCursorPos();
+void SceneMain::createPopulation()
+{
+		auto& pathEntities = m_entities.getEntities("path");
+
+		std::random_device rd;
+		std::mt19937 gen(rd());
+
+		std::cout << "[POPULATION] Spawning "
+				  << WorldManager::m_nativeEthnicity
+				  << " civilians..." << std::endl;
+
+		if (pathEntities.empty())
+		{
+				std::cout << "[POPULATION] ERROR: No path tiles exist!" << std::endl;
+				return;
+		}
+
+		for(int i = 0; i < WorldManager::m_nativeEthnicity; i++)
+		{
+				std::uniform_int_distribution<size_t> dist(0, pathEntities.size() - 1);
+				size_t randomIndex = dist(gen);
+
+				auto& pathTile = pathEntities[randomIndex];
+
+				if(pathTile->hasComponent<CPath>())
+				{
+						auto civ = m_entities.addEntity("nat_ethnic");
+						civ->addComponent<CPopulation>(Ethnicity::NATIVE_CIV, Language::IMPERIAL);
+
+						auto& tileEntityList = pathTile->getComponent<CPath>().entities;
+						tileEntityList.push_back(civ);
+
+						auto& pos = pathTile->getComponent<CTransform>();
+						std::cout << "[POPULATION] Native Civilian spawned on path at ("
+								  << pos.position.x << ", "
+								  << pos.position.y << ") — index "
+								  << randomIndex << std::endl;
+			    }
+
+		}
+
+		for(int i = 0; i < WorldManager::m_imperialEthnicity; i++)
+		{
+				std::uniform_int_distribution<size_t> dist(0, pathEntities.size() - 1);
+				size_t randomIndex = dist(gen);
+
+				auto& pathTile = pathEntities[randomIndex];
+
+				if(pathTile->hasComponent<CPath>())
+				{
+						auto civ = m_entities.addEntity("imp_ethnic");
+						civ->addComponent<CPopulation>(Ethnicity::IMPERIAL_CIV, Language::IMPERIAL);
+
+						auto& tileEntityList = pathTile->getComponent<CPath>().entities;
+						tileEntityList.push_back(civ);
+
+						auto& pos = pathTile->getComponent<CTransform>();
+						std::cout << "[POPULATION] Imperial Civilian spawned on path at ("
+								  << pos.position.x << ", "
+								  << pos.position.y << ") — index "
+								  << randomIndex << std::endl;
+			    }
+		}
 }
 
 void SMain::sDoAction(const Action& action)
