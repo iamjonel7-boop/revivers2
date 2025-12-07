@@ -8,51 +8,53 @@
 class SceneMain : public Scene
 {
 protected:
-  enum class ActionName
-    {
-      MOVE_UP,
-      MOVE_DOWN,
-      MOVE_LEFT,
-      MOVE_RIGHT,
-      SELECT_TILE,
-      OPEN_INVENTORY
-    };
+		enum class ActionName
+		{
+				MOVE_UP,
+				MOVE_DOWN,
+				MOVE_LEFT,
+				MOVE_RIGHT,
+				SELECT_TILE,
+				OPEN_INVENTORY
+		};
 
-  enum class MapControlState
-    {
-      NAVIGATING,
-      SENTENCING,
-    };
+		enum class MapControlState
+		{
+				NAVIGATING,
+				SENTENCING,
+		};
 
-  sf::View m_mainView;
+		sf::View m_mainView;
 
-  std::shared_ptr<Entity> m_cursorEntity;
-  std::shared_ptr<Entity> m_tileOutlineShape;
+		std::shared_ptr<Entity> m_cursorEntity;
+		std::shared_ptr<Entity> m_tileOutlineShape;
 
-  MapControlState m_controlState;
+		MapControlState m_controlState;
 
-  void init();
-  void update() override;
-  void sDoAction(const Action& action) override;
-  void onEnd() override;
+		void createPopulation();
 
-  void handleCursorNavigation(const Action& action, ActionName act, CInput& cinput);
-  void handleSentencing();
+		void init();
+		void update() override;
+		void sDoAction(const Action& action) override;
+		void onEnd() override;
 
-  void makeMapView();
-  void makeMapGrid();
-  void makeCursor();
-  void makeBuildings();
-  void makePaths();
+		void handleCursorNavigation(const Action& action, ActionName act, CInput& cinput);
+		void handleSentencing(ActionName act);
 
-  void updateCursorPos();
+		void makeMapView();
+		void makeMapGrid();
+		void makeCursor();
+		void makeBuildings();
+		void makePaths();
 
-  void renderTileGrid();
-  void renderCursor();
-  void renderBuildings();
-  void renderPaths();
+		void updateCursorPos();
+
+		void renderTileGrid();
+		void renderCursor();
+		void renderBuildings();
+		void renderPaths();
 
 public:
-  SceneMain(GameEngine* gameEngine);
-  void sRender() override;
+		SceneMain(GameEngine* gameEngine);
+		void sRender() override;
 };
