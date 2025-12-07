@@ -213,6 +213,7 @@ void SMain::sRender()
 void SceneMain::handleSentencing()
 {
 void SceneMain::getTileAtCursorPosition(sf::Vector2f pos)
+void SceneMain::getTileAtCursorPosition(const sf::Vector2f& pos)
 {
 		const float tileSize = 20.f;
 		int tileX = static_cast<int>(pos.x/tileSize);
@@ -246,6 +247,11 @@ void SceneMain::getTileAtCursorPosition(sf::Vector2f pos)
 				}
 		}
 		return nullptr;
+}
+
+void SceneMain::getTileEntities(const sf::Vector2f& pos)
+{
+
 }
 
 void SceneMain::handleCursorNavigation(const Action& action, ActionName act, CInput& cinput)
