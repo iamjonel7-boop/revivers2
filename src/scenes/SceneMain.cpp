@@ -59,12 +59,43 @@ void SMain::init()
 		{
 				std::cout << "ERROR: Player is null!" << std::endl;
 		}
+
+		m_sentencePanel = createBox({0.f, 450.f}, {800.f, 40.f}, sf::Color::Black);
+		m_sentencingPanel = createBox({0.f, 480.f}, {600.f, 120.f}, sf::Color::Black);
+		m_sentencingPanel.setOutlineThickness(1.f);
+		m_sentencingPanel.setOutlineColor(sf::Color::White);
+
+		m_font.loadFromFile("/usr/local/share/fonts/Liberation/LiberationMono-Regular.ttf");
+
+		m_helpMsg = createText("", m_font, {610.f, 388.f}, 10, sf::Color::White);
+		m_helpMsg2 = createText("", m_font, {610.f, 415.f}, 10, sf::Color::White);
 }
 
 void SMain::update()
 {
-  m_entities.update();
-  updateCursorPos();
+		m_entities.update();
+
+		std::string help1, help2;
+
+		const auto& func = m_updateTable[static_cast<size_t>(m_controlState)];
+		if(func != nullptr) (this->*func)(help1, help2);
+
+		m_helpMsg.setString(help1);
+		m_helpMsg2.setString(help2);
+}
+
+void SceneMain::updateSentencing(std::string& help1, std::string& help2)
+{
+		help1 = "Press Backspace to return.";
+		help2 = "";
+}
+
+void SceneMain::updateNavigating(std::string& help1, std::string& help2)
+{
+		help1 = "Use the arrow keys to navigate\nthe map.";
+		help2 = "Press Space to select a tile.";
+		updateCursorPos();
+}
 void SceneMain::createPopulation()
 {
 		auto& pathEntities = m_entities.getEntities("path");
