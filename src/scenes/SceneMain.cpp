@@ -331,11 +331,20 @@ void SceneMain::renderBuildings()
 
 void SceneMain::makeCursor()
 {
-  m_cursorEntity = m_entities.addEntity("cursor");
+		m_cursorEntity = m_entities.addEntity("cursor");
+		m_cursorEntity->addComponent<CTransform>();
+		auto& transform = m_cursorEntity->getComponent<CTransform>();
 
-  m_cursorEntity->addComponent<CTransform>();
-  auto& transform = m_cursorEntity->getComponent<CTransform>();
-  transform.position = sf::Vector2f(100.f, 100.f);
+		const auto& buildings = m_entities.getEntities("building");
+		if (!buildings.empty())
+		{
+				auto& bpos = buildings[0]->getComponent<CTransform>().position;
+				transform.position = bpos;
+		}
+		else
+		{
+				transform.position = sf::Vector2f(100.f, 100.f);
+		}
 
 		m_cursorEntity->addComponent<CInput>();
 
