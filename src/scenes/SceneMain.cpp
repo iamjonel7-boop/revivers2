@@ -71,7 +71,7 @@ void SMain::sDoAction(const Action& action)
       handleCursorNavigation(action, act, cinput);
       break;
     case MapControlState::SENTENCING:
-      handleSentencing();
+      handleSentencing(act);
       break;
     }
 }
