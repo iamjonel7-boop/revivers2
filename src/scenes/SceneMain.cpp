@@ -84,6 +84,27 @@ void SMain::update()
 		m_helpMsg2.setString(help2);
 }
 
+void SceneMain::makeStatistics()
+{
+		std::string a = "Population: " + std::to_string(WorldManager::population);
+		m_totalPopulation = createText(a, m_font, {7.f, 6.f}, 10, sf::Color::White);
+
+		std::string b = "Year: " + std::to_string(WorldManager::currentYear);
+		m_year = createText(b, m_font, {7.f, 23.f}, 10, sf::Color::White);
+
+		std::string c = "Native Ethnicity: " + std::to_string(WorldManager::nativEthnicity);
+		m_nativEthnicity = createText(c, m_font, {142.f, 6.f}, 10, sf::Color::White);
+
+		std::string d = "Imperial Ethnicity: " + std::to_string(WorldManager::imperialEthnicity);
+		m_imperialEthnicity = createText(d, m_font, {142.f, 23.f}, 10, sf::Color::White);
+
+		std::string e = "Native Language Speakers: " + std::to_string(WorldManager::nativeSpeakers);
+		m_nativeSpeakers = createText(e, m_font, {285.f, 6.f}, 10, sf::Color::White);
+
+		std::string f = "Imperial Language Speakers: " + std::to_string(WorldManager::imperialSpeakers);
+		m_imperialSpeakers = createText(f, m_font, {285.f, 23.f}, 10, sf::Color::White);
+}
+
 void SceneMain::updateSentencing(std::string& help1, std::string& help2)
 {
 		help1 = "Press Backspace to return.";
