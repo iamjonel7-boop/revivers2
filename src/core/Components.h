@@ -6,9 +6,31 @@
 
 class Entity;
 
+enum class Language
+{
+		IMPERIAL,
+		NATIVE
+};
+
+enum class Ethnicity
+{
+		NATIVE_CIV,
+		IMPERIAL_CIV
+};
+
 struct Component
 {
         bool has = false;
+};
+
+struct CPopulation : Component
+{
+		Ethnicity ethnicity;
+		Language speakingLanguage;
+		CPopulation(Ethnicity eth, Language lan)
+				: ethnicity(eth), speakingLanguage(lan)
+				{
+				}
 };
 
 struct CBoxField : Component

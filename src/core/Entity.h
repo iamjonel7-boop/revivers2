@@ -17,7 +17,8 @@ typedef std::tuple<
         std::optional<CProfile>,
         std::optional<CPath>,
         std::optional<CBoxField>,
-        std::optional<CRectangleShape>
+        std::optional<CRectangleShape>,
+		std::optional<CPopulation>
         > ComponentTuple;
 
 class Entity{
