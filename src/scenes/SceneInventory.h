@@ -40,8 +40,25 @@ protected:
                 ENTERING_NATIVE_WORD,
                 ENTERING_IMPERIAL_WORD,
                 ENTERING_WORD_CLASS,
-                SAVING_WORD
+				SELECTING,
+                SAVING_WORD,
+				COUNT
         };
+
+		void updateAddOrLook(std::string& help1, std::string& help2);
+		void updateAddingWord(std::string& help1, std::string& help2);
+		void updateLookUp(std::string& help1, std::string& help2);
+		void updateSelecting(std::string& help1, std::string& help2);
+
+		using updateStateFunc = void(SceneInventory::*)(std::string& help1, std::string& help2);
+		static constexpr std::array<updateStateFunc, (size_t)InventoryState::COUNT> m_updateTable = {
+				&SceneInventory::updateAddOrLook,
+				&SceneInventory::updateAddingWord,
+				&SceneInventory::updateLookUp,
+				nullptr, nullptr, nullptr,
+				&SceneInventory::updateSelecting,
+				nullptr
+		};
 
         enum class ActionName
         {
@@ -51,15 +68,31 @@ protected:
                 DOWN,
                 SELECT,
                 SAVE_WORD,
-                SEARCH,
                 SORT
         };
+
+		void handleAddOrLook(ActionName act);
+        void handleAddingWord(ActionName act);
+		void handleLookUp(ActionName act);
+		void handleSelecting(ActionName act);
+
+		using actionStateFunc = void(SceneInventory::*)(ActionName act);
+		static constexpr std::array<actionStateFunc, (size_t)InventoryState::COUNT > m_actionTable = {
+				&SceneInventory::handleAddOrLook,
+				&SceneInventory::handleAddingWord,
+				&SceneInventory::handleLookUp,
+				nullptr, nullptr, nullptr,
+				&SceneInventory::handleSelecting
+		};
 
         InventoryState m_state;
 
         int m_currentInitState;
         int m_currentWordClass;
         int m_currentWordInfo;
+		int m_currentLookUp;
+		int m_currentWordList;
+		int m_currentPage;
 
         sf::Font m_font;
         sf::RectangleShape m_indicator;
@@ -67,11 +100,16 @@ protected:
         sf::Text m_imperialName;
         sf::Text m_wordClass;
 
+		sf::Text m_helpMessage;
+		sf::Text m_helpMessage2;
+
         std::vector<std::string> m_words;
 
         std::vector<LexiconManager::WordClass> m_wordClasses;
         std::vector<InventoryState> m_initStates;
         std::vector<InventoryState> m_wordAddingDetails;
+		std::vector<InventoryState> m_lookUps;
+		std::vector<sf::RectangleShape> m_rectangles;
 
         std::shared_ptr<Entity> m_infoBox;
         std::shared_ptr<Entity> m_listBox;
@@ -87,17 +125,26 @@ protected:
         void updateInput();
 
         void sDoAction(const Action& action) override;
-        void handleAddOrLook(ActionName act);
-        void handleAddingWord(ActionName act);
+
         void handleInput();
+
+		void loadWords();
+		void loadNouns();
+		void loadVerbs();
+		void loadAdj();
+
+		void nextPage();
+		void previousPage();
+
+		std::vector<std::string> getWords();
 
         void onEnd() override;
 
         void printWords(const std::unordered_map<std::string, LexiconManager::Word>& words) const;
 
         void renderBoxes();
-        void renderWordList(const std::unordered_map<std::string, LexiconManager::Word>& words);
         void renderInputDetails();
+		void renderWordList();
 
 public:
         SceneInventory(GameEngine* gameEngine);
