@@ -201,6 +201,13 @@ void SMain::sRender()
 		renderTileGrid();
 		renderBuildings();
 		renderCursor();
+
+		m_game->window().setView(m_game->window().getDefaultView());
+		m_game->window().draw(m_sentencePanel);
+		m_game->window().draw(m_sentencingPanel);
+
+		m_game->window().draw(m_helpMsg);
+		m_game->window().draw(m_helpMsg2);
 }
 
 void SceneMain::handleSentencing()
