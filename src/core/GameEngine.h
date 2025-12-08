@@ -16,42 +16,47 @@ class GameEngine
 		sf::Clock m_clock;
 		float m_deltaTime;
 
-  sf::RenderWindow m_window;
+		sf::RenderWindow m_window;
 
-  std::string m_currentScene;
-  SceneMap m_sceneMap;
+		std::string m_currentScene;
+		SceneMap m_sceneMap;
 
-  bool m_running = true;
+		bool m_running = true;
 
-  void init();
-  void update();
-  void sUserInput();
+		void init();
+		void update();
+		void sUserInput();
 
-  std::shared_ptr<Scene> currentScene();
-  std::unique_ptr<WorldManager> m_world;
+		std::shared_ptr<Scene> currentScene();
+		std::unique_ptr<WorldManager> m_world;
 
 public:
-  GameEngine();
-  WorldManager* getWorldManager();
-  const WorldManager* getWorldManager() const;
+		GameEngine();
+		WorldManager* getWorldManager();
+		const WorldManager* getWorldManager() const;
 
-  void changeScene(const std::string& sceneName,
-                   std::shared_ptr<Scene> scene,
-                   bool endCurrentScene = false);
+		void changeScene(const std::string& sceneName,
+						 std::shared_ptr<Scene> scene,
+						 bool endCurrentScene = false);
 
-  void quit();
-  void run();
-  void sRender();
+		void quit();
+		void run();
+		void sRender();
 
-  sf::RenderWindow& window();
-  bool isRunning();
+		float getDeltaTime() const
+				{
+						return m_deltaTime;
+				}
 
-  size_t windowWidth() const
-  {
-    return m_window.getSize().x;
-  }
-  size_t windowHeight() const
-  {
-    return m_window.getSize().y;
-  }
+		sf::RenderWindow& window();
+		bool isRunning();
+
+		size_t windowWidth() const
+				{
+						return m_window.getSize().x;
+				}
+		size_t windowHeight() const
+				{
+						return m_window.getSize().y;
+				}
 };

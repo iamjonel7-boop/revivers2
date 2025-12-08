@@ -7,25 +7,21 @@
 
 GameEngine::GameEngine()
 {
-  init();
+		init();
 }
 
 void GameEngine::init()
 {
-  std::cout << "Game engine running.\n";
-  m_window.create(sf::VideoMode(800, 600), "Revivers");
-  m_window.setFramerateLimit(60);
-  std::cout << "Window created.\n";
+		std::cout << "Game engine running.\n";
+		m_window.create(sf::VideoMode(800, 600), "Revivers");
+		m_window.setFramerateLimit(60);
+		std::cout << "Window created.\n";
 
-  m_world = std::make_unique<WorldManager>(this);
+		m_world = std::make_unique<WorldManager>(this);
 }
 
 void GameEngine::update()
 {
-  if(auto scene = currentScene())
-    {
-      scene->update();
-    }
 		m_deltaTime = m_clock.restart().asSeconds();
 
 		if(auto scene = currentScene())
@@ -36,116 +32,116 @@ void GameEngine::update()
 
 void GameEngine::sUserInput()
 {
-  sf::Event event;
-  auto scene = currentScene();
-  auto& actionMap = scene->getActionMap();
-  auto& textInputManager = scene->getTextInputManager();
+		sf::Event event;
+		auto scene = currentScene();
+		auto& actionMap = scene->getActionMap();
+		auto& textInputManager = scene->getTextInputManager();
 
-  while(m_window.pollEvent(event))
-    {
-      switch(event.type)
-        {
-        case sf::Event::Closed:
-          quit();
-          break;
+		while(m_window.pollEvent(event))
+		{
+				switch(event.type)
+				{
+				case sf::Event::Closed:
+						quit();
+						break;
 
-        case sf::Event::TextEntered:
-          if(event.text.unicode < 128)
-            {
-              std::cout << "key entered " << static_cast<char>(event.text.unicode) << std::endl;
-              textInputManager.addCharacter(static_cast<char>(event.text.unicode));
-            }
-          break;
+				case sf::Event::TextEntered:
+						if(event.text.unicode < 128)
+						{
+								std::cout << "key entered " << static_cast<char>(event.text.unicode) << std::endl;
+								textInputManager.addCharacter(static_cast<char>(event.text.unicode));
+						}
+						break;
 
-        case sf::Event::KeyPressed:
-        case sf::Event::KeyReleased:
-          {
-            if(event.key.scancode == sf::Keyboard::Scan::Escape)
-              m_window.close();
-            if(actionMap.find(event.key.code) == actionMap.end())
-              continue;
+				case sf::Event::KeyPressed:
+				case sf::Event::KeyReleased:
+				{
+						if(event.key.scancode == sf::Keyboard::Scan::Escape)
+								m_window.close();
+						if(actionMap.find(event.key.code) == actionMap.end())
+								continue;
 
-            ActionType actionType = (event.type == sf::Event::KeyPressed) ?
-              ActionType::START : ActionType::END;
-            auto actionName = actionMap.at(event.key.code);
-            scene->doAction(Action(actionName, actionType));
-            break;
-          }
+						ActionType actionType = (event.type == sf::Event::KeyPressed) ?
+								ActionType::START : ActionType::END;
+						auto actionName = actionMap.at(event.key.code);
+						scene->doAction(Action(actionName, actionType));
+						break;
+				}
 
-        default:
-          break;
-        }
-    }
+				default:
+						break;
+				}
+		}
 }
 
 void GameEngine::sRender()
 {
-  auto scene = currentScene();
-  if(scene)
-    scene->sRender();
+		auto scene = currentScene();
+		if(scene)
+				scene->sRender();
 }
 
 void GameEngine::changeScene(const std::string& sceneName, std::shared_ptr<Scene> scene, bool endCurrentScene)
 {
-  if(endCurrentScene && m_sceneMap.count(m_currentScene))
-    {
-      m_sceneMap.erase(m_currentScene);
-    }
+		if(endCurrentScene && m_sceneMap.count(m_currentScene))
+		{
+				m_sceneMap.erase(m_currentScene);
+		}
 
-  m_sceneMap[sceneName] = scene;
-  m_currentScene = sceneName;
+		m_sceneMap[sceneName] = scene;
+		m_currentScene = sceneName;
 
-  std::cout << "Changing scene to " << m_currentScene << std::endl;
+		std::cout << "Changing scene to " << m_currentScene << std::endl;
 }
 
 void GameEngine::run()
 {
-  std::cout << "Game engine running.\n";
+		std::cout << "Game engine running.\n";
 
-  changeScene("titleScreen", std::make_shared<TitleScreen>(this));
+		changeScene("titleScreen", std::make_shared<TitleScreen>(this));
 
-  while(m_running)
-    {
-      sUserInput();
-      update();
-      m_window.clear();
-      sRender();
-      m_window.display();
-    }
+		while(m_running)
+		{
+				sUserInput();
+				update();
+				m_window.clear();
+				sRender();
+				m_window.display();
+		}
 }
 
 void GameEngine::quit()
 {
-  m_running = false;
-  m_window.close();
+		m_running = false;
+		m_window.close();
 }
 
 sf::RenderWindow& GameEngine::window()
 {
-  return m_window;
+		return m_window;
 }
 
 std::shared_ptr<Scene> GameEngine::currentScene()
 {
-  auto it = m_sceneMap.find(m_currentScene);
-  if (it != m_sceneMap.end()) {
-    return it->second;
-  }
-  return nullptr;
+		auto it = m_sceneMap.find(m_currentScene);
+		if (it != m_sceneMap.end()) {
+				return it->second;
+		}
+		return nullptr;
 }
 
 
 bool GameEngine::isRunning()
 {
-  return m_running;
+		return m_running;
 }
 
 WorldManager* GameEngine::getWorldManager()
 {
-  return m_world.get();
+		return m_world.get();
 }
 
 const WorldManager* GameEngine::getWorldManager() const
 {
-  return m_world.get();
+		return m_world.get();
 }
