@@ -215,6 +215,56 @@ void SceneMain::removeDeadEntities()
 
 void SceneMain::addNewBornEntities()
 {
+		auto& worldMgr = *m_game->getWorldManager();
+		auto& pathEntities = m_entities.getEntities("path");
+
+		if(pathEntities.empty()) return;
+
+		std::random_device rd;
+		std::mt19937 gen(rd());
+		std::uniform_int_distribution<size_t> dist(0, pathEntities.size() -1);
+
+		int nativeBirths = worldMgr.getNativeBirths();
+		for(int i = 0; i < nativeBirths; i++)
+		{
+				if(m_nativeEntities.size() + m_imperialEntities.size() >= MAX_VISIBLE_ENTITIES)
+						break;
+
+				size_t randomIndex = dist(gen);
+				auto& pathTile = pathEntities[randomIndex];
+
+				if(pathTile->hasComponent<CPath>())
+				{
+						auto civ = m_entities.addEntity("nat_ethnic");
+						civ->addComponent<CPopulation>(Ethnicity::NATIVE_CIV, Language::NATIVE);
+
+						auto& tileEntityList = pathTile->getComponent<CPath>().entities;
+						tileEntityList.push_back(civ);
+
+						m_nativeEntities.push_back(civ);
+				}
+		}
+
+		int imperialBirths = worldMgr.getImperialBirths();
+		for(int i = 0; i < imperialBirths; i++)
+		{
+				if(m_nativeEntities.size() + m_imperialEntities.size() >= MAX_VISIBLE_ENTITIES)
+						break;
+
+				size_t randomIndex = dist(gen);
+				auto& pathTile = pathEntities[randomIndex];
+
+				if(pathTile->hasComponent<CPath>())
+				{
+						auto civ = m_entities.addEntity("imp_ethnic");
+						civ->addComponent<CPopulation>(Ethnicity::IMPERIAL_CIV, Language::IMPERIAL);
+
+						auto& tileEntityList = pathTile->getComponent<CPath>().entities;
+						tileEntityList.push_back(civ);
+
+						m_imperialEntities.push_back(civ);
+				}
+		}
 }
 
 void SceneMain::redistributeEntities()
