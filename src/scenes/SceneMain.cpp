@@ -287,9 +287,61 @@ void SMain::sRender()
 }
 
 void SceneMain::handleSentencing()
+void SceneMain::renderTileEntities(std::vector<std::shared_ptr<Entity>> tileEntities)
 {
-void SceneMain::getTileAtCursorPosition(sf::Vector2f pos)
-void SceneMain::getTileAtCursorPosition(const sf::Vector2f& pos)
+		sf::Text a;
+		float space = 200.f;
+		int b = 0;
+		int n = 0;
+		int i = 0;
+		if(tileEntities.empty())
+		{
+				a =  createText("Nothing is in this tile", m_font, {58.f, 533.f}, 12, sf::Color::White);
+				//m_game->window().draw(a); //fix this
+		}
+		else
+		{
+				for(const auto& e : tileEntities)
+				{
+						if(e->hasComponent<CPopulation>())
+						{
+								auto& ethnicity = e->getComponent<CPopulation>().ethnicity;
+								std::string e;
+								switch(ethnicity)
+								{
+								case Ethnicity::NATIVE_CIV:
+										e = "Native Civilian";
+										a = createText(e, m_font, {20.f+(space*i), 505.f}, 12, sf::Color::White);
+										n++;
+										break;
+								case Ethnicity::IMPERIAL_CIV:
+										e = "Imperial Civilian";
+										a = createText(e, m_font, {20.f+(space*i), 535.f}, 12, sf::Color::White);
+										i++;
+										break;
+								}
+								m_game->window().draw(a);
+						}
+						else if(e->hasComponent<CBuilding>())
+						{
+								auto& building = e->getComponent<CBuilding>();
+								std::string buildingName;
+								switch(building.type)
+								{
+								case Building::HOME: buildingName = "Home"; break;
+								case Building::PLAZA: buildingName = "Plaza"; break;
+								case Building::SCHOOL: buildingName = "School"; break;
+								case Building::WORKPLACE: buildingName = "Workplace"; break;
+								case Building::GOVERNMENT: buildingName = "Government"; break;
+								default: buildingName = "Building"; break;
+								}
+								a = createText(buildingName, m_font, {20.f+(space*i), 565.f}, 12, sf::Color::White);
+								m_game->window().draw(a);
+								b++;
+						}
+				}
+		}
+}
 {
 		const float tileSize = 20.f;
 		int tileX = static_cast<int>(pos.x/tileSize);
