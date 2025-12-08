@@ -506,7 +506,6 @@ void SMain::makeMapGrid()
 		m_tileOutlineShape->addComponent<CShape>(shape);
 }
 
-
 void SceneMain::updateCursorPos()
 {
 		auto& transform = m_cursorEntity->getComponent<CTransform>();
@@ -553,6 +552,10 @@ void SceneMain::makeBuildings()
 				building->addComponent<CShape>(shape);
 
 				building->addComponent<CBuilding>();
+				auto type = static_cast<Building>(i % (int)Building::COUNT);
+
+				auto& buildingType = building->getComponent<CBuilding>().type;
+				buildingType = type;
 		}
 }
 
