@@ -21,10 +21,10 @@ SMain::SceneMain(GameEngine* gameEngine) :
 		registerAction(sf::Keyboard::A, static_cast<int>(ActionName::MOVE_LEFT));
 		registerAction(sf::Keyboard::S, static_cast<int>(ActionName::MOVE_DOWN));
 		registerAction(sf::Keyboard::D, static_cast<int>(ActionName::MOVE_RIGHT));
-		registerAction(sf::Keyboard::Space, static_cast<int>(ActionName::SELECT_TILE));
+		//	registerAction(sf::Keyboard::Space, static_cast<int>(ActionName::SELECT_TILE));
 		registerAction(sf::Keyboard::Tab, static_cast<int>(ActionName::OPEN_INVENTORY));
-		registerAction(sf::Keyboard::E, static_cast<int>(ActionName::SELECT_ENTITY));
-		registerAction(sf::Keyboard::Backspace, static_cast<int>(ActionName::RETURN));
+		registerAction(sf::Keyboard::E, static_cast<int>(ActionName::SELECT_TILE));
+		registerAction(sf::Keyboard::Q, static_cast<int>(ActionName::RETURN));
 }
 
 void SMain::init()
