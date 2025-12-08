@@ -26,6 +26,12 @@ void GameEngine::update()
     {
       scene->update();
     }
+		m_deltaTime = m_clock.restart().asSeconds();
+
+		if(auto scene = currentScene())
+		{
+				scene->update();
+		}
 }
 
 void GameEngine::sUserInput()

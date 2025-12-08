@@ -13,6 +13,8 @@ typedef std::map<std::string, std::shared_ptr<Scene>> SceneMap;
 
 class GameEngine
 {
+		sf::Clock m_clock;
+		float m_deltaTime;
 
   sf::RenderWindow m_window;
 
