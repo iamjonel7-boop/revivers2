@@ -351,28 +351,30 @@ void SceneMain::renderTileEntities(std::vector<std::shared_ptr<Entity>> tileEnti
 		for(auto& path : pathEnt)
 		{
 				if(path->getComponent<CTransform>())
+std::shared_ptr<Entity> SceneMain::getTileAtCursorPosition(const sf::Vector2f& pos)
+{
+		auto checkTile = [&](const std::shared_ptr<Entity>& entity) -> bool
 				{
-						auto& pathPos = path->getComponent<CTransform>.position;
-						int pathXpos = static_cast<int>(pathPos.x/tileSize);
-						int pathYpos = static_cast<int>(pathPos.y/tileSize);
+						if(entity->hasComponent<CTransform>())
+						{
+								auto& entityPos = entity->getComponent<CTransform>().position;
+								return entityPos.x == pos.x && entityPos.y == pos.y;
+						}
+						return false;
+				};
 
-						if(tileX == pathXpos && tileY == pathYpos)
-								return path;
-				}
+		auto& pathEnt = m_entities.getEntities("path");
+		for(auto& path : pathEnt)
+		{
+				if(checkTile(path))
+						return path;
 		}
 
 		auto& buildEnt = m_entities.getEntities("building");
 		for(auto& build : buildEnt)
 		{
-				if(build->getComponent<CTransform>())
-				{
-						auto& buildPos = path->getComponent<CTransform>.position;
-						int buildXpos = static_cast<int>(buildPos.x/tileSize);
-						int buildYpos = static_cast<int>(buildPos.y/tileSize);
-
-						if(tileX == buildXpos && tileY == buildYpos)
-								return build;
-				}
+				if(checkTile(build))
+						return build;
 		}
 		return nullptr;
 }
