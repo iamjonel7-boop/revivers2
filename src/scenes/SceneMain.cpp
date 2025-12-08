@@ -75,6 +75,12 @@ void SMain::update()
 {
 		m_entities.update();
 
+		float deltaTime = m_game->getDeltaTime();
+
+		m_game->getWorldManager()->updateTime(deltaTime);
+
+		updateStatistics();
+
 		std::string help1, help2;
 
 		const auto& func = m_updateTable[static_cast<size_t>(m_controlState)];
