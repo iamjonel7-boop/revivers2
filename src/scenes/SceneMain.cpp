@@ -342,15 +342,38 @@ void SceneMain::renderTileEntities(std::vector<std::shared_ptr<Entity>> tileEnti
 				}
 		}
 }
-{
-		const float tileSize = 20.f;
-		int tileX = static_cast<int>(pos.x/tileSize);
-		int tileY = static_cast<int>(pos.y/tileSize);
 
-		auto& pathEnt = m_entities.getEntities("path");
-		for(auto& path : pathEnt)
+void SceneMain::handleSentencing(ActionName act)
+{
+		std::cout << "sentencing" << std::endl;
+
+		const auto& cursor = m_cursorEntity->getComponent<CTransform>();
+		sf::Vector2f cursorPos = cursor.position;
+
+		auto tileEntities = getTileEntities(cursorPos);
+
+		if(!tileEntities.empty())
 		{
-				if(path->getComponent<CTransform>())
+				std::cout << "found " << tileEntities.size() << " entities "
+						  << "at position (" << cursorPos.x << ", "
+						  << cursorPos.y << ")." << std::endl;
+		}
+		else
+				std::cout << "no entities found at current tile." << std::endl;
+
+		switch(act)
+		{
+		case ActionName::SELECT_ENTITY:
+				break;
+		case ActionName::RETURN:
+				m_tileEntities.clear();
+				m_controlState = MapControlState::NAVIGATING;
+				break;
+		default:
+				break;
+		}
+}
+
 std::shared_ptr<Entity> SceneMain::getTileAtCursorPosition(const sf::Vector2f& pos)
 {
 		auto checkTile = [&](const std::shared_ptr<Entity>& entity) -> bool
