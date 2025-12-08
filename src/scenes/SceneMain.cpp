@@ -402,9 +402,29 @@ std::shared_ptr<Entity> SceneMain::getTileAtCursorPosition(const sf::Vector2f& p
 		return nullptr;
 }
 
-void SceneMain::getTileEntities(const sf::Vector2f& pos)
+std::vector<std::shared_ptr<Entity>> SceneMain::getTileEntities(const sf::Vector2f& pos)
 {
+		std::vector<std::shared_ptr<Entity>> tileEntities;
 
+		auto tile = getTileAtCursorPosition(pos);
+		if(!tile)
+		{
+				return tileEntities;
+		}
+
+		if(tile->hasComponent<CPath>())
+		{
+				auto& pathEnt = tile->getComponent<CPath>().entities;
+				tileEntities.insert(tileEntities.end(), pathEnt.begin(), pathEnt.end());
+		}
+
+		if(tile->hasComponent<CBuilding>())
+		{
+				tileEntities.push_back(tile);
+		}
+
+		m_tileEntities = tileEntities;
+		return tileEntities;
 }
 
 void SceneMain::handleCursorNavigation(const Action& action, ActionName act, CInput& cinput)
