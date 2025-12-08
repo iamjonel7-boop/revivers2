@@ -112,24 +112,58 @@ void SceneMain::makeStatistics()
 		m_imperialEthnicity = createText(d, m_font, {142.f, 23.f}, 10, sf::Color::White);
 
 		std::string e = "Native Language Speakers: " + std::to_string(WorldManager::nativeSpeakers);
-		m_nativeSpeakers = createText(e, m_font, {285.f, 6.f}, 10, sf::Color::White);
+		m_nativeSpeakers = createText(e, m_font, {300.f, 6.f}, 10, sf::Color::White);
 
 		std::string f = "Imperial Language Speakers: " + std::to_string(WorldManager::imperialSpeakers);
-		m_imperialSpeakers = createText(f, m_font, {285.f, 23.f}, 10, sf::Color::White);
+		m_imperialSpeakers = createText(f, m_font, {300.f, 23.f}, 10, sf::Color::White);
+}
+
+void SceneMain::updateStatistics()
+{
+		std::string a = "Population: " + std::to_string(WorldManager::population);
+		m_totalPopulation.setString(a);
+
+		std::string b = "Year: " + std::to_string(WorldManager::currentYear);
+		m_year.setString(b);
+
+		std::string c = "Native Ethnicity: " + std::to_string(WorldManager::nativEthnicity);
+		m_nativEthnicity.setString(c);
+
+		std::string d = "Imperial Ethnicity: " + std::to_string(WorldManager::imperialEthnicity);
+		m_imperialEthnicity.setString(d);
+
+		std::string e = "Native Language Speakers: " + std::to_string(WorldManager::nativeSpeakers);
+		m_nativeSpeakers.setString(e);
+
+		std::string f = "Imperial Language Speakers: " + std::to_string(WorldManager::imperialSpeakers);
+		m_imperialSpeakers.setString(f);
 }
 
 void SceneMain::updateSentencing(std::string& help1, std::string& help2)
 {
-		help1 = "Press Backspace to return.";
+		help1 = "Press Q to return.";
 		help2 = "";
 }
 
 void SceneMain::updateNavigating(std::string& help1, std::string& help2)
 {
-		help1 = "Use the arrow keys to navigate\nthe map.";
+		help1 = "Use the WASD keys to navigate\nthe map.";
 		help2 = "Press Space to select a tile.";
 		updateCursorPos();
 }
+
+void SceneMain::removeDeadEntities()
+{
+}
+
+void SceneMain::addNewBornEntities()
+{
+}
+
+void SceneMain::redistributeEntities()
+{
+}
+
 void SceneMain::createPopulation()
 {
 		auto& pathEntities = m_entities.getEntities("path");
@@ -242,6 +276,14 @@ void SMain::sRender()
 
 		m_game->window().draw(m_helpMsg);
 		m_game->window().draw(m_helpMsg2);
+
+		m_game->window().draw(m_totalPopulation);
+		m_game->window().draw(m_year);
+		m_game->window().draw(m_nativEthnicity);
+		m_game->window().draw(m_imperialEthnicity);
+		m_game->window().draw(m_imperialSpeakers);
+		m_game->window().draw(m_nativeSpeakers);
+		renderTileEntities(m_tileEntities);
 }
 
 void SceneMain::handleSentencing()
