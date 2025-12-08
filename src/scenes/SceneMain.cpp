@@ -153,6 +153,17 @@ void SceneMain::updateNavigating(std::string& help1, std::string& help2)
 		updateCursorPos();
 }
 
+void SceneMain::updatePopulationEntities()
+{
+		auto& worldMgr = *m_game->getWorldManager();
+
+		removeDeadEntities();
+		addNewBornEntities();
+		redistributeEntities();
+
+		worldMgr.resetEntityChanges();
+}
+
 void SceneMain::removeDeadEntities()
 {
 }
