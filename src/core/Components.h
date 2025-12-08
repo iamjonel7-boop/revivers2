@@ -18,6 +18,16 @@ enum class Ethnicity
 		IMPERIAL_CIV
 };
 
+enum class Building
+{
+		HOME,
+		PLAZA,
+		SCHOOL,
+		WORKPLACE,
+		GOVERNMENT,
+		COUNT
+};
+
 struct Component
 {
         bool has = false;
@@ -63,6 +73,7 @@ struct CBuilding : Component
         std::string nativeName;
         std::string imperialName;
         bool isClaimed = false;
+		Building type;
         CBuilding()
         {
         }
