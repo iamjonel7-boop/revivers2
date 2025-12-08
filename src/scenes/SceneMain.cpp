@@ -281,14 +281,10 @@ void SceneMain::redistributeEntities()
 
 void SceneMain::createPopulation()
 {
+		m_nativeEntities.clear();
+		m_imperialEntities.clear();
+
 		auto& pathEntities = m_entities.getEntities("path");
-
-		std::random_device rd;
-		std::mt19937 gen(rd());
-
-		std::cout << "[POPULATION] Spawning "
-				  << WorldManager::nativEthnicity
-				  << " civilians..." << std::endl;
 
 		if (pathEntities.empty())
 		{
@@ -296,7 +292,21 @@ void SceneMain::createPopulation()
 				return;
 		}
 
-		for(int i = 0; i < WorldManager::nativEthnicity; i++)
+		std::random_device rd;
+		std::mt19937 gen(rd());
+		std::uniform_int_distribution<size_t> dist(0, pathEntities.size() - 1);
+
+		float nativeRatio = static_cast<float>(WorldManager::nativEthnicity) / WorldManager::population;
+		float imperialRatio = static_cast<float>(WorldManager::imperialEthnicity) / WorldManager::population;
+
+		int nativeEntitiesToCreate = static_cast<int>(nativeRatio * MAX_VISIBLE_ENTITIES);
+		int imperialEntitiesToCreate = MAX_VISIBLE_ENTITIES - nativeEntitiesToCreate;
+
+		std::cout << "[POPULATION] Spawning "
+				  << WorldManager::nativEthnicity
+				  << " civilians..." << std::endl;
+
+		for(int i = 0; i < nativeEntitiesToCreate; i++)
 		{
 				std::uniform_int_distribution<size_t> dist(0, pathEntities.size() - 1);
 				size_t randomIndex = dist(gen);
@@ -320,7 +330,7 @@ void SceneMain::createPopulation()
 
 		}
 
-		for(int i = 0; i < WorldManager::imperialEthnicity; i++)
+		for(int i = 0; i < imperialEntitiesToCreate; i++)
 		{
 				std::uniform_int_distribution<size_t> dist(0, pathEntities.size() - 1);
 				size_t randomIndex = dist(gen);
