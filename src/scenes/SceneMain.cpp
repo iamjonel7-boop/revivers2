@@ -88,6 +88,13 @@ void SMain::update()
 
 		m_helpMsg.setString(help1);
 		m_helpMsg2.setString(help2);
+
+		if(m_game->getWorldManager()->isGameOver())
+		{
+				// Handle game over - change scene or show message
+				std::cout << "Game Over detected in SceneMain!" << std::endl;
+				// m_game->changeScene("gameover", ...);
+		}
 }
 
 void SceneMain::makeStatistics()
