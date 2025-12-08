@@ -10,8 +10,13 @@ class GameEngine;
 
 class WorldManager
 {
+public:
 		GameEngine* m_gameEngine;
-		std::shared_ptr<Entity> m_playerEntity;
+
+		using Entity = std::shared_ptr<Entity>;
+		Entity m_playerEntity;
+
+		std::vector<Entity> m_population;
 
 		void m_createPlayer(EntityManager& entityManager);
 
@@ -29,16 +34,41 @@ class WorldManager
 
 		Stage currentStage;
 
- public:
-  WorldManager(GameEngine* gameEngine);
+		static float timeScale; //0.0 paused, 1.0 normal
+		static float monthsPassed;
+		static int birthRate;
+		static int deathRate;
 
-  std::shared_ptr<Entity> getPlayer() const;
+		void updateTime(float deltaTime);
+		void simulatePopulationChanges();
+		void checkGameOver();
+		bool isGameOver() const;
 
-public:
+		static int population;
+		static int imperialEthnicity;
+		static int nativEthnicity;
+		static int currentYear;
+		static int nativeSpeakers;
+		static int imperialSpeakers;
+
+		int m_nativeBirths = 0; //i am still confuse sometimes if i should use static or not
+		int m_imperialBirths = 0;
+		int m_nativeDeaths = 0;
+		int m_imperialDeaths = 0;
+
 		WorldManager(GameEngine* gameEngine);
 
-		std::shared_ptr<Entity> getPlayer() const;
+		Entity getPlayer() const;
+		Entity getPopulation();
 
+		int getNativeBirths() const;
+		int getImperialBirths() const;
+		int getNativeDeaths() const;
+		int getImperialDeaths() const;
 
-		friend class SceneIntro;
+		void resetEntityChanges();
+		//	friend class SceneIntro;
+private:
+		bool m_gameOver = false;
+		std::string m_gameOverReason;
 };
