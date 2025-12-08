@@ -269,6 +269,14 @@ void SceneMain::addNewBornEntities()
 
 void SceneMain::redistributeEntities()
 {
+		float nativeRatio = static_cast<float>(WorldManager::nativEthnicity) / WorldManager::population;
+		float imperialRatio = static_cast<float>(WorldManager::imperialEthnicity) / WorldManager::population;
+
+		int targetNativeEntities = static_cast<int>(nativeRatio * MAX_VISIBLE_ENTITIES);
+		int targetImperialEntities = MAX_VISIBLE_ENTITIES - targetNativeEntities;
+
+		int nativeDiff = targetNativeEntities - m_nativeEntities.size();
+		int imperialDiff = targetImperialEntities - m_imperialEntities.size();
 }
 
 void SceneMain::createPopulation()
