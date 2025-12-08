@@ -80,6 +80,13 @@ void SMain::update()
 
 		m_game->getWorldManager()->updateTime(deltaTime);
 
+		static int lastYear = -1;
+		if(WorldManager::currentYear != lastYear)
+		{
+				updatePopulationEntities();
+				lastYear = WorldManager::currentYear;
+		}
+
 		updateStatistics();
 
 		std::string help1, help2;
