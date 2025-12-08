@@ -1,8 +1,8 @@
-
 #include "SceneMain.h"
 #include "Components.h"
 #include "GameEngine.h"
 #include "ManagerMap.h"
+#include "ManagerWorld.h"
 #include "SceneInventory.h"
 #include <iostream>
 #include <fstream>
@@ -39,6 +39,7 @@ void SMain::init()
 		m_mapManager.locatePaths();
 		m_mapManager.printPathCoords();
 		makePaths();
+		makeStatistics();
 
 		m_entities.update(); //solve paths not exist
 
@@ -172,7 +173,7 @@ void SceneMain::createPopulation()
 		std::mt19937 gen(rd());
 
 		std::cout << "[POPULATION] Spawning "
-				  << WorldManager::m_nativeEthnicity
+				  << WorldManager::nativEthnicity
 				  << " civilians..." << std::endl;
 
 		if (pathEntities.empty())
@@ -181,7 +182,7 @@ void SceneMain::createPopulation()
 				return;
 		}
 
-		for(int i = 0; i < WorldManager::m_nativeEthnicity; i++)
+		for(int i = 0; i < WorldManager::nativEthnicity; i++)
 		{
 				std::uniform_int_distribution<size_t> dist(0, pathEntities.size() - 1);
 				size_t randomIndex = dist(gen);
@@ -205,7 +206,7 @@ void SceneMain::createPopulation()
 
 		}
 
-		for(int i = 0; i < WorldManager::m_imperialEthnicity; i++)
+		for(int i = 0; i < WorldManager::imperialEthnicity; i++)
 		{
 				std::uniform_int_distribution<size_t> dist(0, pathEntities.size() - 1);
 				size_t randomIndex = dist(gen);
@@ -246,11 +247,12 @@ void SMain::sDoAction(const Action& action)
 		}
 }
 
-void SMain::onEnd()
+void SceneMain::onEnd()
 {
+		m_game->quit();
 }
 
-void SMain::sRender()
+void SceneMain::sRender()
 {
 		m_game->window().setView(m_mainView);
 
@@ -286,7 +288,6 @@ void SMain::sRender()
 		renderTileEntities(m_tileEntities);
 }
 
-void SceneMain::handleSentencing()
 void SceneMain::renderTileEntities(std::vector<std::shared_ptr<Entity>> tileEntities)
 {
 		sf::Text a;
@@ -507,7 +508,6 @@ void SceneMain::renderBuildings()
 		}
 }
 
-
 void SceneMain::makeCursor()
 {
 		m_cursorEntity = m_entities.addEntity("cursor");
@@ -601,6 +601,8 @@ void SceneMain::makeBuildings()
 				buildingType = type;
 		}
 }
+
+
 
 void SMain::renderTileGrid()
 {
