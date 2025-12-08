@@ -166,6 +166,51 @@ void SceneMain::updatePopulationEntities()
 
 void SceneMain::removeDeadEntities()
 {
+		auto& worldMgr = *m_game->getWorldManager();
+		int nativeDeaths = worldMgr.getNativeDeaths();
+		int imperialDeaths = worldMgr.getImperialDeaths();
+
+		int nativeToRemove = std::min(nativeDeaths, (int)m_nativeEntities.size());
+		for(int i = 0; i < nativeToRemove; i++)
+		{
+				if(!m_nativeEntities.empty())
+				{
+						auto entity = m_nativeEntities.back();
+						m_nativeEntities.pop_back();
+
+						auto& paths = m_entities.getEntities("path");
+						for(auto& path : paths)
+						{
+								if(path->hasComponent<CPath>())
+								{
+										auto& tileEntities = path->getComponent<CPath>().entities;
+										tileEntities.erase(std::remove(tileEntities.begin(), tileEntities.end(), entity), tileEntities.end());
+								}
+						}
+						entity->destroy();
+				}
+		}
+
+		int imperialToRemove = std::min(imperialDeaths, (int)m_imperialEntities.size());
+		for(int i = 0; i < imperialToRemove; i++)
+		{
+				if(!m_imperialEntities.empty())
+				{
+						auto entity = m_imperialEntities.back();
+						m_imperialEntities.pop_back();
+
+						auto& paths = m_entities.getEntities("path");
+						for(auto& path : paths)
+						{
+								if(path->hasComponent<CPath>())
+								{
+										auto& tileEntities = path->getComponent<CPath>().entities;
+										tileEntities.erase(std::remove(tileEntities.begin(), tileEntities.end(), entity), tileEntities.end());
+								}
+						}
+						entity->destroy();
+				}
+		}
 }
 
 void SceneMain::addNewBornEntities()
