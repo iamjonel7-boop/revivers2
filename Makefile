@@ -9,6 +9,7 @@ CXXFLAGS   = -std=c++20 -Wall -Wextra -g -O0\
 -I${SRC_DIR}/managers \
 -I${SRC_DIR}/core \
 -I${SRC_DIR}/scenes \
+-I${SRC_DIR}/languages \
 -I/usr/local/include
 LDFLAGS    = -L/usr/local/lib -lsfml-graphics -lsfml-window -lsfml-system
 
