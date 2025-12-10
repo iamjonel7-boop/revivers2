@@ -2,9 +2,11 @@
 #include "GameEngine.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "ManagerVerb.h"
 
 Scene::Scene()
    : m_game(nullptr)
+   , m_verbManager(*(new VerbManager(nullptr)))
    , m_hasEnded(false)
    , m_currentFrame(0)
 {
@@ -12,6 +14,7 @@ Scene::Scene()
 
 Scene::Scene(GameEngine* gameEngine)
    : m_game(gameEngine)
+   , m_verbManager(*(new VerbManager(gameEngine)))
    , m_hasEnded(false)
    , m_currentFrame(0)
 {
@@ -59,4 +62,34 @@ TextInputManager& Scene::getTextInputManager()
 MapManager& Scene::getMapManager()
 {
   return m_mapManager;
+}
+
+LexiconManager& Scene::getLexiconManager()
+{
+  return m_lexiconManager;
+}
+
+sf::Text Scene::createText(const std::string& content, const sf::Font& font, sf::Vector2f pos, float charSize, sf::Color color) const
+{
+  sf::Text text;
+  text.setString(content);
+  text.setFont(font);
+  text.setPosition(pos);
+  text.setCharacterSize(charSize);
+  text.setFillColor(color);
+  return text;
+}
+
+sf::RectangleShape Scene::createBox(sf::Vector2f pos, sf::Vector2f size, sf::Color color) const
+{
+  sf::RectangleShape box;
+  box.setPosition(pos);
+  box.setSize(size);
+  box.setFillColor(color);
+  return box;
+}
+
+int Scene::wrapIndex(int current, int delta, int size)
+{
+		return (current + delta + size) % size;
 }

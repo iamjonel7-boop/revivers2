@@ -4,6 +4,7 @@
 #include "ManagerMap.h"
 #include "ManagerWorld.h"
 #include "SceneInventory.h"
+#include "SceneDialogue.h"
 #include <iostream>
 #include <fstream>
 
@@ -1566,72 +1567,206 @@ void SceneMain::handleExecuteSentence(const Action& action, ActionName act)
 		{
         case ActionName::EXECUTE_SENTENCE: // Space key
         {
-				if(m_awaitingConfirmation && m_sentenceComplete)
+				/*	if(m_awaitingConfirmation && m_sentenceComplete)
+					{
+					std::cout << "\n=== EXECUTING SENTENCE ===" << std::endl;
+
+					// Validate the sentence
+					auto validation = m_verbManager.validateSentence(m_currentSentence);
+
+					if(validation.isValid)
+					{
+					std::cout << "Sentence is valid. Executing..." << std::endl;
+					m_verbManager.executeSentence(m_currentSentence);
+
+					// Reset for next sentence
+					m_currentSentence.clear();
+					m_selectedEntity = nullptr;
+					m_selectingFirstEntity = true;
+					m_sentenceComplete = false;
+					m_awaitingConfirmation = false;
+					m_controlState = MapControlState::NAVIGATING;
+					WorldManager::setPaused(false);
+					}
+					else
+					{
+					std::cout << "Sentence validation failed: "
+					<< validation.errorMessage << std::endl;
+					// Show error to player but stay in execute state
+					// Could display error message in UI
+					}
+					}
+					}
+					break;*/
+				case ActionName::EXECUTE_SENTENCE: // Space key
 				{
-						std::cout << "\n=== EXECUTING SENTENCE ===" << std::endl;
-
-						// Validate the sentence
-						auto validation = m_verbManager.validateSentence(m_currentSentence);
-
-						if(validation.isValid)
+						if(m_awaitingConfirmation && m_sentenceComplete)
 						{
-								std::cout << "Sentence is valid. Executing..." << std::endl;
-								m_verbManager.executeSentence(m_currentSentence);
+								std::cout << "\n=== EXECUTING SENTENCE ===" << std::endl;
 
-								// Reset for next sentence
-								m_currentSentence.clear();
-								m_selectedEntity = nullptr;
-								m_selectingFirstEntity = true;
-								m_sentenceComplete = false;
-								m_awaitingConfirmation = false;
-								m_controlState = MapControlState::NAVIGATING;
-								WorldManager::setPaused(false);
-						}
-						else
-						{
-								std::cout << "Sentence validation failed: "
-										  << validation.errorMessage << std::endl;
-								// Show error to player but stay in execute state
-								// Could display error message in UI
+								// Validate the sentence
+								auto validation = m_verbManager.validateSentence(m_currentSentence);
+
+								if(validation.isValid)
+								{
+										std::cout << "Sentence is valid. Executing..." << std::endl;
+
+										// Check if the verb is "kaulay" (to converse)
+										if(m_currentSentence.verb == "kaulay")
+										{
+												std::cout << "Verb 'kaulay' detected - initiating dialogue..." << std::endl;
+
+												// Get the target civilian from the second argument
+												std::shared_ptr<Entity> targetCivilian = nullptr;
+
+												if(m_currentSentence.hasSecondArgument)
+												{
+														if(!m_currentSentence.secondArgument.isPronoun &&
+														   m_currentSentence.secondArgument.entity &&
+														   m_currentSentence.secondArgument.entity->hasComponent<CPopulation>())
+														{
+																targetCivilian = m_currentSentence.secondArgument.entity;
+														}
+														else if(m_currentSentence.secondArgument.isPronoun)
+														{
+																// For pronouns, you might need to find the actual entity
+																// This is more complex - you'd need to track which entity pronouns refer to
+																std::cout << "Pronoun target - need to implement entity resolution" << std::endl;
+														}
+												}
+
+												if(targetCivilian)
+												{
+														// Check if civilian speaks Imperial (only these need conversion)
+														auto& pop = targetCivilian->getComponent<CPopulation>();
+														if(pop.speakingLanguage == Language::IMPERIAL)
+														{
+																// Calculate nearby civilians for difficulty
+																int nearbyNativeCivs = 0;
+																int nearbyImperialCivs = 0;
+
+																// Get cursor position to check surrounding tiles
+																auto cursorPos = m_cursorEntity->getComponent<CTransform>().position;
+
+																// Check 3x3 area around cursor
+																const float tileSize = 20.f;
+																for(int dx = -1; dx <= 1; dx++)
+																{
+																		for(int dy = -1; dy <= 1; dy++)
+																		{
+																				if(dx == 0 && dy == 0) continue; // Skip center tile
+
+																				sf::Vector2f checkPos = {
+																						cursorPos.x + (dx * tileSize),
+																						cursorPos.y + (dy * tileSize)
+																				};
+
+																				auto nearbyEntities = getTileEntities(checkPos);
+																				for(auto& entity : nearbyEntities)
+																				{
+																						if(entity->hasComponent<CPopulation>())
+																						{
+																								auto& nearbyPop = entity->getComponent<CPopulation>();
+																								if(nearbyPop.speakingLanguage == Language::NATIVE)
+																										nearbyNativeCivs++;
+																								else if(nearbyPop.speakingLanguage == Language::IMPERIAL)
+																										nearbyImperialCivs++;
+																						}
+																				}
+																		}
+																}
+
+																// Get a word to translate from lexicon manager
+																std::string imperialWord = m_lexiconManager.getRandomImperialWord();
+																std::string correctTranslation = m_lexiconManager.getTranslation(imperialWord);
+
+																std::cout << "Starting dialogue with Imperial speaker..." << std::endl;
+																std::cout << "Word to translate: " << imperialWord << std::endl;
+																std::cout << "Correct translation: " << correctTranslation << std::endl;
+
+																// Create and switch to dialogue scene
+																auto dialogueScene = std::make_shared<SceneDialogue>(
+																		m_game,
+																		targetCivilian,
+																		imperialWord,
+																		correctTranslation,
+																		nearbyNativeCivs,
+																		nearbyImperialCivs
+																		);
+
+																m_game->changeScene("dialogue", dialogueScene);
+														}
+														else
+														{
+																std::cout << "Target already speaks Native - no conversion needed." << std::endl;
+																m_verbManager.executeSentence(m_currentSentence);
+														}
+												}
+												else
+												{
+														std::cout << "No valid target civilian for conversation." << std::endl;
+														m_verbManager.executeSentence(m_currentSentence);
+												}
+										}
+										else
+										{
+												// Normal verb execution
+												m_verbManager.executeSentence(m_currentSentence);
+										}
+
+										// Reset for next sentence
+										m_currentSentence.clear();
+										m_selectedEntity = nullptr;
+										m_selectingFirstEntity = true;
+										m_sentenceComplete = false;
+										m_awaitingConfirmation = false;
+										m_controlState = MapControlState::NAVIGATING;
+										WorldManager::setPaused(false);
+								}
+								else
+								{
+										std::cout << "Sentence validation failed: "
+												  << validation.errorMessage << std::endl;
+										// Show error to player but stay in execute state
+								}
 						}
 				}
-        }
-        break;
-		case ActionName::RETURN: // Q key - cancel execution
-		{
-				std::cout << "Sentence execution cancelled." << std::endl;
-				m_currentSentence.clear();
-				m_selectedEntity = nullptr;
-				m_selectingFirstEntity = true;
-				m_sentenceComplete = false;
-				m_awaitingConfirmation = false;
-				m_controlState = MapControlState::NAVIGATING;
-				WorldManager::setPaused(false);
-		}
-		break;
-		default:
 				break;
+				case ActionName::RETURN: // Q key - cancel execution
+				{
+						std::cout << "Sentence execution cancelled." << std::endl;
+						m_currentSentence.clear();
+						m_selectedEntity = nullptr;
+						m_selectingFirstEntity = true;
+						m_sentenceComplete = false;
+						m_awaitingConfirmation = false;
+						m_controlState = MapControlState::NAVIGATING;
+						WorldManager::setPaused(false);
+				}
+				break;
+				default:
+						break;
 		}
-}
+		}
 
-std::shared_ptr<Entity> SceneMain::getPlayerEntity()
-{
-		return m_game->getWorldManager()->getPlayer();
-}
+		std::shared_ptr<Entity> SceneMain::getPlayerEntity()
+		{
+				return m_game->getWorldManager()->getPlayer();
+		}
 
-Building SceneMain::getBuildingType(const std::string& buildingName)
-{
-		if(buildingName == "harong") return Building::HOME;
-		if(buildingName == "plaza") return Building::PLAZA;
-		if(buildingName == "eskwelahan") return Building::SCHOOL;
-		if(buildingName == "trabahuhan") return Building::WORKPLACE;
-		if(buildingName == "gobierno") return Building::GOVERNMENT;
+		Building SceneMain::getBuildingType(const std::string& buildingName)
+		{
+				if(buildingName == "harong") return Building::HOME;
+				if(buildingName == "plaza") return Building::PLAZA;
+				if(buildingName == "eskwelahan") return Building::SCHOOL;
+				if(buildingName == "trabahuhan") return Building::WORKPLACE;
+				if(buildingName == "gobierno") return Building::GOVERNMENT;
 
-		return Building::HOME; // default
-}
+				return Building::HOME; // default
+		}
 
-void SceneMain::updateExecutionSentence(std::string& help1, std::string& help2)
-{
-		help1 = "Sentence complete!\nPress SPACE to execute";
-		help2 = "Press Q to cancel";
-}
+		void SceneMain::updateExecutionSentence(std::string& help1, std::string& help2)
+		{
+				help1 = "Sentence complete!\nPress SPACE to execute";
+				help2 = "Press Q to cancel";
+		}

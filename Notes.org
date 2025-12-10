@@ -1,0 +1,63 @@
+#+TITLE: notes
+#+AUTHOR: jonel ganalon
+
+* BUILDINGS
+The current design has a vector of entities specific to buiildings.
+I thought this was fine but I remembered the vector of entites managed by
+the entity manager.
+The coordinates of the building (their center coordinates) are produced by
+the map manager. These are passed to the main scene which creates the
+building entities and renders them.
+As of writing this, I have a for loop that creates the building entity until it reaches
+the size of the vector of building coordinates. I think the for loop variable
+will be the index of the vector of building entities. I worry about the tag. The easiest
+option is for them to have the same tag like "building". However, the buildings
+will have varying features. They are not identical. So, I am thinking if they should
+have different tags. But, it will be easier to render if they have the same tags.
+I have just realised that maybe I can indicate their type in the CBuilding component.
+I can then retrieve this type to determine their characteristics to condition the
+rendering like differnet colours for different buildings.
+we are not making each path as entity, we only make sf::shape then render the shape. i thnink this means also delteing the path component.
+
+* NPC
+when player click a tile, he will see the entities inside it, if there is an enemy, it reduces the likelihood of
+civilian to be persuaded.
+
+* turn
+turn is done every selection of a tile, so in each turn, the player is in a specific tile.
+
+every words have like likelihood that they make the civilian talk to be recruited. like not all adjectives
+can make the civilian ally.
+
+
+* Inventory Scene
+there are two box fields. right and left.
+** left box field
+contains information about the a word. mainly acts as interface for adding new words.
+there are input fields for:
+NativeName,
+ImperialName,
+WOrdClass
+Definition
+At the bottom is the button for Save.
+The second state of this box field is for read only, showing the information of the
+existing word picked from the right box field.
+we navigate inside the boxfield using Left, Right, Up, Down keys.
+
+* TODO make the narration at the start of the game
+* TODO make a test scene
+* TODO make game over scene
+* TODO make combat scene, translation, semantic chaining
+we have enemy, the enemy throws imperial, the player translates it,
+the player can add sematically related words so increase damage
+words have innate damage.
+for now, the imperial words that will be thrown by the enemy is related to each building
+the comabt happens at each building. so we store a set of defiend imperial words
+* TODO sentencing
+lexicon manager handles the lookups and retrievals
+also the matching of verb to verbSystems
+the main scene shoudl have a sentence as an output
+the lexicon manager will parse the sentence
+the verb system will handle the logics
+
+the grammar class will parse the sentence

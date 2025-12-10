@@ -3,90 +3,77 @@
 #include "Grammar.h"
 #include <iostream>
 #include <map>
+#include <Entity.h>
 
 class BicolGrammar : public Grammar
 {
-  enum class NominalMarkers
-    {
-      //direct
-      SI, AN,
-      //indirect
-      NI, KAN,
-      //oblique
-      SA, KI
-    };
-
-  /*  enum PronominalMarkers
-    {
-      //direct
-      AKO, IKA, SIYA,
-      //indirect
-      KO, MO, NIYA,
-      //oblique
-      SAKO, SAIMO, SAIYA
-    };
-  */
-
-  std::map<Cases, std::map<std::string, NominalMarkers>> m_NomMarkers;
-
 public:
-  BicolGrammar()
-  {
-    m_language = "Bicol";
-    m_aspects = {
-      {"imperfective", Aspects::IMPERFECTIVE},
-      {"perfective", Aspects::PERFECTIVE},
-      {"contemplative", Aspects::CONTEMPLATIVE}
-    };
-    m_voices = {
-      {"actor", Voices::ACTOR},
-      {"patient", Voices::PATIENT},
-      {"voices", Voices::LOCATIVE}
-    };
-    m_cases = {
-      {"direct", Cases::DIRECT},
-      {"indirect", Cases::INDIRECT},
-      {"oblique", Cases::OBLIQUE}
-    };
-    m_NomMarkers = {
-      {Cases::DIRECT, {{"si", NominalMarkers::SI}, {"an", NominalMarkers::AN}}},
-      {Cases::INDIRECT, {{"ni", NominalMarkers::NI}, {"kan", NominalMarkers::KAN}}},
-      {Cases::INDIRECT, {{"sa", NominalMarkers::SA}, {"ki", NominalMarkers::KI}}}
-    };
-  }
+		BicolGrammar();
 
-  void printAspects()
-  {
-    for(const auto& [key, value]: m_aspects)
-      {
-        std::cout << key << std::endl;
-      }
-  }
+		enum class NominalMarker
+		{
+				//direct
+				SI, AN,
+				//indirect
+				NI, KAN,
+				//oblique
+				SA, KI
+		};
 
-  void printVoices()
-  {
-    for(const auto& [key, value] : m_voices)
-      {
-        std::cout << key << std::endl;
-      }
-  }
+		enum PronominalMarker
+		{
+				//direct
+				AKO, IKA, SIYA,
+				//indirect
+				KO, MO, NIYA,
+				//oblique
+				SAKO, SAIMO, SAIYA
+		};
 
-  void printCases()
-  {
-    for(const auto& [key, value] : m_cases)
-      {
-        std::cout << key << std::endl;
-      }
-  }
+		struct SentenceElement
+		{
+				std::string marker;
+				std::shared_ptr<Entity> entity;
+				std::string entityName;
+				Case caseType;
+				bool isPronoun = false;
+				std::string pronounForm;
+		};
 
-  void printNomMarkers()
-  {
-    for(const auto& [caseKey, markers] : m_NomMarkers)
-      {
-        for(const auto& [markerKey, value] : markers)
-          {
-            std::cout << markerKey << std::endl;
-          }
-      }
-  }
+		struct Sentence
+		{
+				SentenceElement firstArgument;
+				std::string verb; //base
+				std::string conjugatedVerb; //with voice only for now
+				Voice voice;
+				SentenceElement secondArgument;
+				bool hasFirstArgument = false;
+				bool hasVerb = false;
+				bool hasVoice = false;
+				bool hasSecondArgument = false;
+
+				void clear()
+						{
+								firstArgument = SentenceElement();
+								verb = "";
+								conjugatedVerb = "";
+								secondArgument = SentenceElement();
+								hasFirstArgument = false;
+								hasVerb = false;
+								hasVoice = false;
+								hasSecondArgument = false;
+						}
+		};
+
+		std::map<Case, std::map<std::string, NominalMarker>> m_nomMarkers;
+		std::map<Case, std::map<std::string, PronominalMarker>> m_proNomMarkers;
+
+		std::vector<std::string> getVoicesAsStrings() const;
+		std::string conjugateVerb(const std::string& verb, Voice voice) const;
+		std::string applyVerbAffix(const std::string& verb, Voice voice) const;
+
+		void printAspects();
+		void printVoices();
+		void printCases();
+		void printNomMarkers();
 };

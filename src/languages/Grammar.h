@@ -4,21 +4,21 @@
 #include <vector>
 #include <map>
 
-enum class Aspects
+enum class Aspect
   {
     PERFECTIVE,
     IMPERFECTIVE,
     CONTEMPLATIVE
   };
 
-enum class Voices
+enum class Voice
   {
     ACTOR,
     PATIENT,
     LOCATIVE
   };
 
-enum class Cases
+enum class Case
   {
     DIRECT,
     INDIRECT,
@@ -27,13 +27,12 @@ enum class Cases
 
 class Grammar
 {
- protected:
+public:
   std::string m_language;
-  std::map<std::string, Aspects> m_aspects;
-  std::map<std::string, Voices> m_voices;
-  std::map<std::string, Cases> m_cases;
+  std::map<std::string, Aspect> m_aspects;
+  std::map<std::string, Voice> m_voices;
+  std::map<std::string, Case> m_cases;
 
- public:
   //return the address of name but it should be read only
   const std::string& getLanguageName() const
   {
