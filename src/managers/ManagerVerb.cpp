@@ -1,4 +1,5 @@
 #include "ManagerVerb.h"
+#include "SceneDialogue.h"
 
 VerbManager::VerbManager(GameEngine* game) :
 		m_game(game)
@@ -93,73 +94,161 @@ bool VerbManager::isPlayerInSentence(const BicolGrammar::Sentence& sentence)
 
 void VerbManager::verb_laog(const BicolGrammar::Sentence& sentence)
 {
-    std::cout << "=== LAOG (ENTER) ACTION ===" << std::endl;
+		std::cout << "=== LAOG (ENTER) ACTION ===" << std::endl;
 
-    // Check if player is the actor
-    if(!isPlayerInSentence(sentence))
-    {
-        std::cout << "Error: Only player can enter buildings" << std::endl;
-        return;
-    }
+		// Check if player is the actor
+		if(!isPlayerInSentence(sentence))
+		{
+				std::cout << "Error: Only player can enter buildings" << std::endl;
+				return;
+		}
 
-    // Check if second argument is a building with oblique case (sa)
-    if(sentence.secondArgument.caseType != Case::OBLIQUE)
-    {
-        std::cout << "Error: Use 'sa' marker for location" << std::endl;
-        return;
-    }
+		// Check if second argument is a building with oblique case (sa)
+		if(sentence.secondArgument.caseType != Case::OBLIQUE)
+		{
+				std::cout << "Error: Use 'sa' marker for location" << std::endl;
+				return;
+		}
 
-    if(!sentence.secondArgument.entity ||
-       !sentence.secondArgument.entity->hasComponent<CBuilding>())
-   {
-        std::cout << "Error: Can only enter buildings" << std::endl;
-        return;
-    }
+		if(!sentence.secondArgument.entity ||
+		   !sentence.secondArgument.entity->hasComponent<CBuilding>())
+		{
+				std::cout << "Error: Can only enter buildings" << std::endl;
+				return;
+		}
 
-    auto& building = sentence.secondArgument.entity->getComponent<CBuilding>();
+		auto& building = sentence.secondArgument.entity->getComponent<CBuilding>();
 
-    std::cout << "Player entering building: "
-              << sentence.secondArgument.entityName << std::endl;
+		std::cout << "Player entering building: "
+				  << sentence.secondArgument.entityName << std::endl;
 
-    // Trigger scene change based on building type
-    switch(building.type)
-    {
+		// Trigger scene change based on building type
+		switch(building.type)
+		{
         case Building::SCHOOL:
-            std::cout << "Entering school - triggering school scene" << std::endl;
-            // m_game->changeScene("school", std::make_shared<SceneSchool>(m_game));
-            break;
+				std::cout << "Entering school - triggering school scene" << std::endl;
+				// m_game->changeScene("school", std::make_shared<SceneSchool>(m_game));
+				break;
 
         case Building::HOME:
-            std::cout << "Entering home - triggering home scene" << std::endl;
-            // m_game->changeScene("home", std::make_shared<SceneHome>(m_game));
-            break;
+				std::cout << "Entering home - triggering home scene" << std::endl;
+				// m_game->changeScene("home", std::make_shared<SceneHome>(m_game));
+				break;
 
         case Building::PLAZA:
-            std::cout << "Entering plaza - triggering plaza scene" << std::endl;
-            // m_game->changeScene("plaza", std::make_shared<ScenePlaza>(m_game));
-            break;
+				std::cout << "Entering plaza - triggering plaza scene" << std::endl;
+				// m_game->changeScene("plaza", std::make_shared<ScenePlaza>(m_game));
+				break;
 
         case Building::WORKPLACE:
-            std::cout << "Entering workplace - triggering work scene" << std::endl;
-            // m_game->changeScene("work", std::make_shared<SceneWork>(m_game));
-            break;
+				std::cout << "Entering workplace - triggering work scene" << std::endl;
+				// m_game->changeScene("work", std::make_shared<SceneWork>(m_game));
+				break;
 
         case Building::GOVERNMENT:
-            std::cout << "Entering government building" << std::endl;
-            // m_game->changeScene("government", std::make_shared<SceneGov>(m_game));
-            break;
-	default:
-			break;
-    }
+				std::cout << "Entering government building" << std::endl;
+				// m_game->changeScene("government", std::make_shared<SceneGov>(m_game));
+				break;
+		default:
+				break;
+		}
 }
+
+//void VerbManager::verb_kaulay(const BicolGrammar::Sentence& sentence)
+/*{
+  std::cout << "=== KAULAY (TALK/CONVERSE) ACTION ===" << std::endl;
+
+  // Check if player is the actor
+  if(!isPlayerInSentence(sentence))
+  {
+  std::cout << "Error: Only player can initiate conversations" << std::endl;
+  return;
+  }
+
+  // Check if second argument is a person
+  if(!sentence.secondArgument.entity ||
+  !sentence.secondArgument.entity->hasComponent<CPopulation>())
+  {
+  std::cout << "Error: Can only talk to people" << std::endl;
+  return;
+  }
+
+  auto& targetPop = sentence.secondArgument.entity->getComponent<CPopulation>();
+
+  // Check if target speaks Imperial language (target for conversion)
+  if(targetPop.speakingLanguage != Language::IMPERIAL)
+  {
+  std::cout << "This person already speaks the native language!" << std::endl;
+  // TODO: Show a message in UI instead of just logging
+  return;
+  }
+
+  std::cout << "Initiating conversation with Imperial speaker..." << std::endl;
+
+  // Count nearby civilians for success chance calculation
+  // For now using placeholder values - you could enhance this by checking
+  // the tile's CPath component for nearby entities
+  int nearbyNativeSpeakers = 0;
+  int nearbyImperialSpeakers = 0;
+
+  // Get a random word to translate from the lexicon
+  auto& lexicon = m_game->getLexiconManager();
+  std::vector<std::string> allWords = lexicon.getVerbs();
+
+  // Add adjectives to the pool of words
+  auto adjectives = lexicon.getAdjectives();
+  allWords.insert(allWords.end(), adjectives.begin(), adjectives.end());
+
+  if(allWords.empty())
+  {
+  std::cout << "Error: No words in lexicon!" << std::endl;
+  return;
+  }
+
+  // Pick a random word
+  int randomIndex = rand() % allWords.size();
+  std::string nativeWord = allWords[randomIndex];
+
+  // Get the imperial translation
+  std::string imperialWord = lexicon.getImperialTranslation(nativeWord);
+
+  if(imperialWord.empty())
+  {
+  std::cout << "Error: No translation found for " << nativeWord << std::endl;
+  return;
+  }
+
+  std::cout << "Challenge: Translate \"" << imperialWord
+  << "\" to native language" << std::endl;
+  std::cout << "Correct answer: " << nativeWord << std::endl;
+
+  // Create and switch to dialogue scene
+  m_game->changeScene("dialogue",
+  std::make_shared<SceneDialogue>(
+  m_game,
+  sentence.secondArgument.entity,  // target civilian
+  imperialWord,                     // word to translate FROM (Imperial)
+  nativeWord,                       // correct translation TO (Native)
+  nearbyNativeSpeakers,            // bonus from nearby natives
+  nearbyImperialSpeakers           // penalty from nearby imperials
+  )
+  );
+
+  std::cout << "Dialogue scene started!" << std::endl;
+  }*/
 
 void VerbManager::verb_kaulay(const BicolGrammar::Sentence& sentence)
 {
-		std::cout << "=== BAKO (TALK/SPEAK) ACTION ===" << std::endl;
+		std::cout << "=== KAULAY (TALK/CONVERSE) ACTION ===" << std::endl;
 
-		// Implementation for talking to NPCs
-		// Check if second argument is another entity
+		// Check if player is the actor
+		if(!isPlayerInSentence(sentence))
+		{
+				std::cout << "Error: Only player can initiate conversations" << std::endl;
+				return;
+		}
 
+		// Check if second argument is a person
 		if(!sentence.secondArgument.entity ||
 		   !sentence.secondArgument.entity->hasComponent<CPopulation>())
 		{
@@ -167,6 +256,62 @@ void VerbManager::verb_kaulay(const BicolGrammar::Sentence& sentence)
 				return;
 		}
 
-		std::cout << "Initiating conversation" << std::endl;
-		// Trigger dialogue scene translation scene
+		auto& targetPop = sentence.secondArgument.entity->getComponent<CPopulation>();
+
+		// Check if target speaks Imperial language (target for conversion)
+		if(targetPop.speakingLanguage != Language::IMPERIAL)
+		{
+				std::cout << "This person already speaks the native language!" << std::endl;
+				return;
+		}
+
+		std::cout << "Initiating conversation with Imperial speaker..." << std::endl;
+
+		// Count nearby civilians for success chance calculation
+		int nearbyNativeSpeakers = 0;
+		int nearbyImperialSpeakers = 0;
+
+		// Hardcoded word pairs for now (Native -> Imperial)
+		// TODO: Get these from LexiconManager once we have access to it
+		std::vector<std::pair<std::string, std::string>> wordPairs = {
+				{"duman", "to go"},
+				{"laog", "to enter"},
+				{"kaulay", "to talk"},
+				{"magayon", "beautiful"},
+				{"matibay", "strong"},
+				{"makusog", "powerful"},
+				{"mahigos", "difficult"},
+				{"dakula", "big"},
+				{"sadit", "small"},
+				{"makanos", "hot"}
+		};
+
+		if(wordPairs.empty())
+		{
+				std::cout << "Error: No words available!" << std::endl;
+				return;
+		}
+
+		// Pick a random word
+		int randomIndex = rand() % wordPairs.size();
+		std::string nativeWord = wordPairs[randomIndex].first;
+		std::string imperialWord = wordPairs[randomIndex].second;
+
+		std::cout << "Challenge: Translate \"" << imperialWord
+				  << "\" to native language" << std::endl;
+		std::cout << "Correct answer: " << nativeWord << std::endl;
+
+		// Create and switch to dialogue scene
+		m_game->changeScene("dialogue",
+							std::make_shared<SceneDialogue>(
+									m_game,
+									sentence.secondArgument.entity,  // target civilian
+									imperialWord,                     // word to translate FROM (Imperial)
+									nativeWord,                       // correct translation TO (Native)
+									nearbyNativeSpeakers,            // bonus from nearby natives
+									nearbyImperialSpeakers           // penalty from nearby imperials
+									)
+				);
+
+		std::cout << "Dialogue scene started!" << std::endl;
 }

@@ -175,6 +175,16 @@ protected:
 		bool m_selectingVoice = true;
 		void renderVerbConjugation();
 
+		sf::Text m_statusHint;
+		int m_hintTimer = 0;
+		std::string getCurrentHint();
+		void updateHintSystem();
+
+		sf::RectangleShape m_progressBarBackground;
+		sf::RectangleShape m_progressBarNative;
+		sf::RectangleShape m_progressBarImperial;
+		void updateProgressBar();
+
 public:
 		SceneMain(GameEngine* gameEngine);
 		void sRender() override;

@@ -12,31 +12,31 @@ int WorldManager::population = 100;
 int WorldManager::imperialEthnicity = 40;
 int WorldManager::nativEthnicity = 60;
 int WorldManager::currentYear = 0;
-int WorldManager::imperialSpeakers = 100;
-int WorldManager::nativeSpeakers = 0;
+int WorldManager::imperialSpeakers = 70;
+int WorldManager::nativeSpeakers = 30;
 
 WorldManager::WorldManager(GameEngine* gameEngine) :
-  m_gameEngine(gameEngine)
+		m_gameEngine(gameEngine)
 {
 }
 
 void WorldManager::m_createPlayer(EntityManager& entityManager)
 {
-  if(!m_playerEntity)
-    {
+		if(!m_playerEntity)
+		{
 
-      m_playerEntity = entityManager.addEntity("player");
-      std::cout << "Player entity created." << std::endl;
-      m_playerEntity->addComponent<CTransform>();
-      std::cout << "Added transform component." << std::endl;
-      m_playerEntity->addComponent<CProfile>();
-      std::cout << "Added profile component." << std::endl;
-    }
+				m_playerEntity = entityManager.addEntity("player");
+				std::cout << "Player entity created." << std::endl;
+				m_playerEntity->addComponent<CTransform>();
+				std::cout << "Added transform component." << std::endl;
+				m_playerEntity->addComponent<CProfile>();
+				std::cout << "Added profile component." << std::endl;
+		}
 }
 
 std::shared_ptr<Entity> WorldManager::getPlayer() const
 {
-  return m_playerEntity;
+		return m_playerEntity;
 }
 
 void WorldManager::updateTime(float deltaTime)
@@ -136,109 +136,215 @@ void WorldManager::simulatePopulationChanges()
 
 		//birth--------------
 		int birthsThisYear = population*birthRate/100;
-		//	int totalBirths = birthsThisYear;
 
 		for(int i = 0; i < birthsThisYear; i++)
 		{
 				if (nativEthnicity <= 0)
 				{
+						// Only imperial ethnicity left
 						imperialEthnicity++;
 						imperialSpeakers++;
+						m_imperialBirths++;
 						continue;
 				}
 
 				std::uniform_real_distribution<> ethDist(0.0f, 100.f);
-				bool parentIsNative = ethDist(gen) <= (static_cast<float>(nativEthnicity)*100.0f/population);
+				float roll = ethDist(gen);
+				float nativeEthnicityPercent = (static_cast<float>(nativEthnicity) * 100.0f) / population;
 
-				bool speaksImperial = imperialSpeakers >= nativeSpeakers; //chiled speaks the dominant lang, highest speaker count
+				bool parentIsNative = roll <= nativeEthnicityPercent;
 
+				// Determine child's language based on DOMINANT language in society
+				bool learnNativeLanguage = nativeSpeakers >= imperialSpeakers;
+
+				// BONUS: If parent is native AND native language is still strong (>40%),
+				// higher chance child learns native
+				if (parentIsNative)
+				{
+						float nativeSpeakerPercent = (static_cast<float>(nativeSpeakers) * 100.0f) / population;
+						if (nativeSpeakerPercent > 40.0f)
+						{
+								// Strong native language presence - native parents teach native
+								learnNativeLanguage = true;
+						}
+						else if (nativeSpeakerPercent > 20.0f)
+						{
+								// Moderate presence - 70% chance to learn native from native parent
+								std::uniform_real_distribution<> languageDist(0.0f, 100.0f);
+								learnNativeLanguage = languageDist(gen) < 70.0f;
+						}
+						// else: weak presence, follows dominant language
+				}
+
+				// Handle native parent births
 				if(parentIsNative)
 				{
-						//nativEthnicity++;
-						if(speaksImperial)
+						nativEthnicity++;  // Child inherits native ethnicity
+
+						if(learnNativeLanguage)
 						{
-								imperialEthnicity++; //child becomes imperial ethnicity
-								imperialSpeakers++;
-								m_imperialBirths++;
-						}
-						else
-						{
-								nativEthnicity++;
 								nativeSpeakers++;
 								m_nativeBirths++;
 						}
+						else
+						{
+								// Native ethnicity but learns imperial language (assimilation)
+								imperialSpeakers++;
+								m_imperialBirths++;
+						}
 				}
-				else //emprial parents gives birth, always imperial ethnic
+				else  // Handle imperial parent births - THIS WAS MISSING!
 				{
-						imperialEthnicity++;
-						imperialSpeakers++; //imperial ethnciity always speaks imperial
-						m_imperialBirths++;
+						imperialEthnicity++;  // Child inherits imperial ethnicity
+
+						// Imperial parents almost always teach imperial
+						// Only if native language is VERY dominant (>75%) might they learn native
+						if (learnNativeLanguage && nativeSpeakers > imperialSpeakers * 3)
+						{
+								// Rare case: native language so dominant even imperial kids learn it
+								nativeSpeakers++;
+								m_nativeBirths++;
+						}
+						else
+						{
+								imperialSpeakers++;
+								m_imperialBirths++;
+						}
 				}
 		}
 
-		//update total population
-		population = nativEthnicity+imperialEthnicity;
+// Update total population
+		population = nativEthnicity + imperialEthnicity;
 
+// Ensure speaker counts are valid
 		if (nativeSpeakers <= 0)
 		{
 				imperialSpeakers = population;
+				nativeSpeakers = 0;
 		}
 
-		// ensure speaker counts dont exceed population
+// Ensure speaker counts don't exceed population
 		nativeSpeakers = std::min(nativeSpeakers, population);
 		imperialSpeakers = std::min(imperialSpeakers, population);
 
 		int totalSpeakers = nativeSpeakers + imperialSpeakers;
 		if (totalSpeakers < population)
 		{
-				// If there's a discrepancy, add to Imperial speakers
 				imperialSpeakers += (population - totalSpeakers);
 		}
 
 		std::cout << "\n=== YEAR " << currentYear << " ===" << std::endl;
 		std::cout << "Population: " << population << std::endl;
 		std::cout << "Native Ethnicity: " << nativEthnicity
-				  << " (Deaths: " << nativeDeaths << ")" << std::endl;
+				  << " (Deaths: " << m_nativeDeaths
+				  << ", Births: " << m_nativeBirths << ")" << std::endl;
 		std::cout << "Imperial Ethnicity: " << imperialEthnicity
-				  << " (Deaths: " << imperialDeaths << ")" << std::endl;
+				  << " (Deaths: " << m_imperialDeaths
+				  << ", Births: " << m_imperialBirths << ")" << std::endl;
 		std::cout << "Native Speakers: " << nativeSpeakers << std::endl;
 		std::cout << "Imperial Speakers: " << imperialSpeakers << std::endl;
-		std::cout << "Total Deaths: " << deathsThisYear << std::endl;
+		std::cout << "Total Deaths: " << (m_nativeDeaths + m_imperialDeaths) << std::endl;
 		std::cout << "Total Births: " << birthsThisYear << std::endl;
 		std::cout << "=================\n" << std::endl;
+
+}
+
+bool WorldManager::isVictory() const
+{
+		return m_isVictory;
 }
 
 void WorldManager::checkGameOver()
 {
 		// Game over if native speakers disappear
-		if(nativEthnicity <= 0)
-		{
-				m_gameOver = true;
-				m_gameOverReason = "Native language has gone extinct!";
-				std::cout << "GAME OVER: " << m_gameOverReason << std::endl;
-				return;
-		}
+		/*	if(nativEthnicity <= 0)
+			{
+			m_gameOver = true;
+			m_gameOverReason = "Native language has gone extinct!";
+			std::cout << "GAME OVER: " << m_gameOverReason << std::endl;
+			return;
+			}
 
-		// Game over if population collapses
-		if(population <= 10)
-		{
-				m_gameOver = true;
-				m_gameOverReason = "Population collapsed!";
-				std::cout << "GAME OVER: " << m_gameOverReason << std::endl;
-				return;
-		}
+			// Game over if population collapses
+			if(population <= 10)
+			{
+			m_gameOver = true;
+			m_gameOverReason = "Population collapsed!";
+			std::cout << "GAME OVER: " << m_gameOverReason << std::endl;
+			return;
+			}
 
-		// Game over if imperial dominance is too high
-		if(nativeSpeakers > 0)
+			// Game over if imperial dominance is too high
+			if(nativeSpeakers > 0)
+			{
+			float ratio = static_cast<float>(imperialSpeakers) / nativeSpeakers;
+			if(ratio >= 20.0f)  // Adjust this threshold as needed
+			{
+			m_gameOver = true;
+			m_gameOverReason = "Imperial language dominance too high!";
+			std::cout << "GAME OVER: " << m_gameOverReason << std::endl;
+			return;
+			}
+			}*/
+		// === WIN CONDITION ===
+		// Win if native speakers are 90% or more of population
+		if (nativeSpeakers > 0 && population > 0)
 		{
-				float ratio = static_cast<float>(imperialSpeakers) / nativeSpeakers;
-				if(ratio >= 20.0f)  // Adjust this threshold as needed
+				float nativeSpeakerRatio = static_cast<float>(nativeSpeakers) / population;
+				if (nativeSpeakerRatio >= 0.90f)  // 90% native speakers = victory!
 				{
 						m_gameOver = true;
-						m_gameOverReason = "Imperial language dominance too high!";
+						m_isVictory = true;
+						m_gameOverReason = "The native language thrives! 90% of the population speaks it!";
+						std::cout << "VICTORY: " << m_gameOverReason << std::endl;
+						return;
+				}
+		}
+
+		// === LOSS CONDITIONS ===
+
+		// Loss 1: Native ethnicity extinct
+		if (nativEthnicity <= 0)
+		{
+				m_gameOver = true;
+				m_isVictory = false;
+				m_gameOverReason = "Native population extinct - language lost forever";
+				std::cout << "GAME OVER: " << m_gameOverReason << std::endl;
+				return;
+		}
+
+		// Loss 2: Population collapse
+		if (population <= 10)
+		{
+				m_gameOver = true;
+				m_isVictory = false;
+				m_gameOverReason = "Population collapsed - too few to sustain the language";
+				std::cout << "GAME OVER: " << m_gameOverReason << std::endl;
+				return;
+		}
+
+		// Loss 3: Native speakers nearly extinct (less than 10% of population)
+		if (nativeSpeakers > 0 && population > 0)
+		{
+				float nativeSpeakerRatio = static_cast<float>(nativeSpeakers) / population;
+				if (nativeSpeakerRatio < 0.10f)  // Less than 10% = defeat
+				{
+						m_gameOver = true;
+						m_isVictory = false;
+						m_gameOverReason = "Native language speakers fell below 10% - language dying out";
 						std::cout << "GAME OVER: " << m_gameOverReason << std::endl;
 						return;
 				}
+		}
+
+		// Loss 4: No native speakers left at all
+		if (nativeSpeakers <= 0)
+		{
+				m_gameOver = true;
+				m_isVictory = false;
+				m_gameOverReason = "No native speakers remain - language extinct";
+				std::cout << "GAME OVER: " << m_gameOverReason << std::endl;
+				return;
 		}
 }
 
