@@ -2,9 +2,11 @@
 #include "GameEngine.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "ManagerVerb.h"
 
 Scene::Scene()
    : m_game(nullptr)
+   , m_verbManager(*(new VerbManager(nullptr)))
    , m_hasEnded(false)
    , m_currentFrame(0)
 {
@@ -12,6 +14,7 @@ Scene::Scene()
 
 Scene::Scene(GameEngine* gameEngine)
    : m_game(gameEngine)
+   , m_verbManager(*(new VerbManager(gameEngine)))
    , m_hasEnded(false)
    , m_currentFrame(0)
 {

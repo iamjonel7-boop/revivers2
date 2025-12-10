@@ -3,6 +3,7 @@
 #include <string>
 #include <SFML/Graphics.hpp>
 #include <memory>
+#include <random>
 
 class Entity;
 
@@ -37,9 +38,16 @@ struct CPopulation : Component
 {
 		Ethnicity ethnicity;
 		Language speakingLanguage;
+		int age = 0;
+		int maxAge;
+		bool willDieNextCycle = false;
 		CPopulation(Ethnicity eth, Language lan)
 				: ethnicity(eth), speakingLanguage(lan)
 				{
+						std::random_device rd;
+						std::mt19937 gen(rd());
+						std::uniform_int_distribution<> ageDist(15,70); //lifespan between 15 to 70
+						maxAge = ageDist(gen);
 				}
 };
 

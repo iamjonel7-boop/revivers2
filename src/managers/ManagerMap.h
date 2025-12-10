@@ -6,35 +6,41 @@
 
 class MapManager
 {
-  const float  m_tileSize = 20.f;
-  const int m_mapWidth = 40;
-  const int m_mapHeight = 30;
-  size_t m_numBuildings = 5;
+		const float  m_tileSize = 20.f;
+		const int m_mapWidth = 40;
+		const int m_mapHeight = 30;
+		size_t m_numBuildings = 5;
 
-  struct Tile
-  {
-    std::vector<std::shared_ptr<Entity>> m_tileEntities;
-    bool isClaimed;
-  };
+		struct Tile
+		{
+				std::vector<std::shared_ptr<Entity>> m_tileEntities;
+				bool isClaimed;
+		};
 
-  std::vector<Tile> m_mapData;
-  std::vector<sf::Vector2u> m_buildingCoords;
-  std::vector<sf::Vector2u> m_pathCoords;
+		std::vector<Tile> m_mapData;
+		std::vector<sf::Vector2u> m_buildingCoords;
+		std::vector<sf::Vector2u> m_pathCoords;
 
-  std::shared_ptr<Entity> m_tile;
+		std::shared_ptr<Entity> m_tile;
 
- public:
-  MapManager();
+public:
+		MapManager();
 
-  void locateBuildings();
-  void locatePaths();
-  void printBuildingCoords();
-  void printPathCoords();
+		void locateBuildings();
+		void locatePaths();
+		void printBuildingCoords();
+		void printPathCoords();
 
-  std::vector<sf::Vector2u> getBuildingCoords() const;
-  std::vector<sf::Vector2u> getPathCoords() const;
+		void makeBuildings(EntityManager& entityMgr);
+		void makePaths(EntityManager& entityMgr);
+		void makeMapView(sf::View& view);
+		void makeMapGrid(EntityManager& entityMgr, std::shared_ptr<Entity>& outlineShape);
 
-  int getWidth() const;
-  int getHeight() const ;
+
+		std::vector<sf::Vector2u> getBuildingCoords() const;
+		std::vector<sf::Vector2u> getPathCoords() const;
+
+		int getWidth() const;
+		int getHeight() const ;
 
 };

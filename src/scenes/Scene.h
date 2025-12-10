@@ -5,10 +5,13 @@
 #include "ManagerMap.h"
 #include "ManagerLexicon.h"
 #include "Actions.h"
+#include "GrammarBicol.h"
+#include "ManagerVerb.h"
 #include <memory>
 #include <map>
 
 class GameEngine;
+class VerbManager;
 
 typedef std::map<int, int> ActionMap;
 //the int key is the sfml key
@@ -23,6 +26,9 @@ protected:
 		TextInputManager m_textInputManager;
 		MapManager m_mapManager;
 		LexiconManager m_lexiconManager;
+		BicolGrammar m_bicolgrammar;
+		VerbManager& m_verbManager;
+
 
 		ActionMap m_actionMap;
 

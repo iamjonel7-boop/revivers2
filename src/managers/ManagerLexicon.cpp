@@ -139,5 +139,4 @@ const std::vector<std::string> LexiconManager::searchWord(std::string& nativeNam
 {
 		//return the native name, imperial name, and wordclass
 		std::vector<std::string> wordInfo;
-
 }

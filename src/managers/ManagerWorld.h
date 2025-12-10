@@ -11,12 +11,12 @@ class GameEngine;
 class WorldManager
 {
 public:
+		WorldManager(GameEngine* gameEngine);
 		GameEngine* m_gameEngine;
 
-		using Entity = std::shared_ptr<Entity>;
-		Entity m_playerEntity;
+		std::shared_ptr<Entity> m_playerEntity;
 
-		std::vector<Entity> m_population;
+		std::vector<std::shared_ptr<Entity>> m_population;
 
 		void m_createPlayer(EntityManager& entityManager);
 
@@ -39,6 +39,10 @@ public:
 		static int birthRate;
 		static int deathRate;
 
+		static void togglePause(){timeScale = (timeScale > 0.0f) ? 0.0f : 1.0f;}
+		static void setPaused(bool paused){timeScale = paused ? 0.0f : 1.0f;}
+		static bool isPause(){return timeScale == 0.0f;}
+
 		void updateTime(float deltaTime);
 		void simulatePopulationChanges();
 		void checkGameOver();
@@ -51,15 +55,13 @@ public:
 		static int nativeSpeakers;
 		static int imperialSpeakers;
 
-		int m_nativeBirths = 0; //i am still confuse sometimes if i should use static or not
+		int m_nativeBirths = 0;
 		int m_imperialBirths = 0;
 		int m_nativeDeaths = 0;
 		int m_imperialDeaths = 0;
 
-		WorldManager(GameEngine* gameEngine);
-
-		Entity getPlayer() const;
-		Entity getPopulation();
+		std::shared_ptr<Entity> getPlayer() const;
+		std::vector<std::shared_ptr<Entity>> getPopulation();
 
 		int getNativeBirths() const;
 		int getImperialBirths() const;
@@ -67,8 +69,18 @@ public:
 		int getImperialDeaths() const;
 
 		void resetEntityChanges();
-		//	friend class SceneIntro;
+		void updatePopulationEntities(std::vector<std::shared_ptr<Entity>>& nativEntities, std::vector<std::shared_ptr<Entity>>& imperialEntities, EntityManager& entityMgr);
+		void removeDeadEntities(std::vector<std::shared_ptr<Entity>>& nativEntities, std::vector<std::shared_ptr<Entity>>& imperialEntities, EntityManager& entityMgr);
+		void addNewBornEntities(std::vector<std::shared_ptr<Entity>>& nativEntities, std::vector<std::shared_ptr<Entity>>& imperialEntities, EntityManager& entityMgr);
+		void removeFromTileEntities(EntityManager& entityMgr, std::shared_ptr<Entity>& entityTobeRemoved);
+		void addToTileEntities(EntityManager& entityMgr, std::shared_ptr<Entity>& randomPath, std::vector<std::shared_ptr<Entity>>& civilians, size_t randomIndex);
+		void createPopulation(std::vector<std::shared_ptr<Entity>>& nativEntities, std::vector<std::shared_ptr<Entity>>& imperialEntities, EntityManager& entityMgr);
+		void updateWorld(std::vector<std::shared_ptr<Entity>>& nativEntities, std::vector<std::shared_ptr<Entity>>& imperialEntities, EntityManager& entityMgr);
+
 private:
+		const int MAX_VISIBLE_ENTITIES = 100;
+		const float NATIVE_TO_IMPERIAL_RATIO = 0.6f;
 		bool m_gameOver = false;
 		std::string m_gameOverReason;
+		bool m_overSpawned(std::vector<std::shared_ptr<Entity>>& nativEntities, std::vector<std::shared_ptr<Entity>>& imperialEntities);
 };

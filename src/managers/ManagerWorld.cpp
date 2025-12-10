@@ -1,4 +1,5 @@
 #include "ManagerWorld.h"
+#include "Components.h"
 #include <iostream>
 #include <string>
 
@@ -43,6 +44,8 @@ void WorldManager::updateTime(float deltaTime)
 		//	std::cout << "deltaTime = " << deltaTime
 		//         << ", timeScale = " << timeScale << std::endl;
 
+		if(timeScale <= 0.0f)
+				return;
 
 		//timescale = 1.0 -> 1 year per second -> 12 months per second
 		//so monthsPerSecond = 12.0f*timeScale
@@ -60,11 +63,6 @@ void WorldManager::updateTime(float deltaTime)
 
 void WorldManager::simulatePopulationChanges()
 {
-		m_nativeBirths = 0;
-		m_imperialBirths = 0;
-		m_nativeDeaths = 0;
-		m_imperialDeaths = 0;
-
 		int oldNativeEthnicity = nativEthnicity;
 		int oldImperialEthnicity = imperialEthnicity;
 		int oldNativeSpeakers = nativeSpeakers;
@@ -258,4 +256,151 @@ int WorldManager::getImperialDeaths() const {return m_imperialDeaths;}
 void WorldManager::resetEntityChanges()
 {
 		m_nativeBirths = m_imperialBirths = m_nativeDeaths = m_imperialDeaths = 0;
+}
+
+void WorldManager::updatePopulationEntities(std::vector<std::shared_ptr<Entity>>& nativEntities, std::vector<std::shared_ptr<Entity>>& imperialEntities, EntityManager& entityMgr)
+{
+		removeDeadEntities(nativEntities, imperialEntities, entityMgr);
+		addNewBornEntities(nativEntities, imperialEntities, entityMgr);
+		resetEntityChanges();
+}
+
+void WorldManager::removeFromTileEntities(EntityManager& entityMgr, std::shared_ptr<Entity>& entityTobeRemoved)
+{
+		auto& paths = entityMgr.getEntities("path");
+		for(auto& path: paths)
+		{
+				if(path->hasComponent<CPath>())
+				{
+						auto& tileEntities = path->getComponent<CPath>().entities;
+						tileEntities.erase(std::remove(tileEntities.begin(),
+													   tileEntities.end(), entityTobeRemoved),
+										   tileEntities.end());
+				}
+		}
+}
+
+void WorldManager::removeDeadEntities(std::vector<std::shared_ptr<Entity>>& nativEntities, std::vector<std::shared_ptr<Entity>>& imperialEntities, EntityManager& entityMgr)
+{
+		int nativeToRemove = std::min(m_nativeDeaths, (int)nativEntities.size());
+		for(int i = 0; i < nativeToRemove; i++)
+		{
+				if(!nativEntities.empty())
+				{
+						auto entity = nativEntities.back();
+						nativEntities.pop_back();
+						removeFromTileEntities(entityMgr, entity);
+						entity->destroy();
+				}
+		}
+
+		int imperialToRemove = std::min(m_imperialDeaths, (int)imperialEntities.size());
+		for(int i = 0; i < imperialToRemove; i++)
+		{
+				if(!imperialEntities.empty())
+				{
+						auto entity = imperialEntities.back();
+						imperialEntities.pop_back();
+						removeFromTileEntities(entityMgr, entity);
+						entity->destroy();
+				}
+		}
+}
+
+bool WorldManager::m_overSpawned(std::vector<std::shared_ptr<Entity>>& nativEntities, std::vector<std::shared_ptr<Entity>>& imperialEntities)
+{
+		return nativEntities.size() + imperialEntities.size() >= static_cast<size_t>(MAX_VISIBLE_ENTITIES);
+}
+
+void WorldManager::addToTileEntities(EntityManager& entityMgr, std::shared_ptr<Entity>& randomPath, std::vector<std::shared_ptr<Entity>>& civilians, size_t randomIndex)
+{
+		if(randomPath->hasComponent<CPath>())
+		{
+				auto civ = entityMgr.addEntity("nat_ethnic");
+				civ->addComponent<CPopulation>(Ethnicity::NATIVE_CIV, Language::NATIVE);
+
+				auto& tileEntityList = randomPath->getComponent<CPath>().entities;
+				tileEntityList.push_back(civ);
+				civilians.push_back(civ);
+
+				auto& pos = randomPath->getComponent<CTransform>();
+				std::cout << "[POPULATION] Native Civilian spawned on path at ("
+						  << pos.position.x << ", "
+						  << pos.position.y << ") — index "
+						  << randomIndex << std::endl;
+		}
+}
+
+void WorldManager::addNewBornEntities(std::vector<std::shared_ptr<Entity>>& nativEntities, std::vector<std::shared_ptr<Entity>>& imperialEntities, EntityManager& entityMgr)
+{
+		auto& pathEntities = entityMgr.getEntities("path");
+		if(pathEntities.empty()) return;
+
+		std::random_device rd;
+		std::mt19937 gen(rd());
+		std::uniform_int_distribution<size_t> dist(0, pathEntities.size() - 1);
+
+		if(m_overSpawned(nativEntities, imperialEntities)) return;
+
+		for(int i = 0; i < m_nativeBirths; i++)
+		{
+				size_t randomIndex = dist(gen);
+				auto& pathTile = pathEntities[randomIndex];
+				addToTileEntities(entityMgr, pathTile, nativEntities, randomIndex);
+		}
+
+		for(int i = 0; i < m_imperialBirths; i++)
+		{
+				size_t randomIndex = dist(gen);
+				auto& pathTile = pathEntities[randomIndex];
+				addToTileEntities(entityMgr, pathTile, imperialEntities, randomIndex);
+		}
+}
+
+void WorldManager::createPopulation(std::vector<std::shared_ptr<Entity>>& nativEntities, std::vector<std::shared_ptr<Entity>>& imperialEntities, EntityManager& entityMgr)
+{
+		nativEntities.clear(); imperialEntities.clear();
+
+		auto& pathEntities = entityMgr.getEntities("path");
+
+		if(pathEntities.empty())
+		{
+				std::cout << "[POPULATION] ERROR: No path tiles exist!" << std::endl; return;
+		}
+
+		std::random_device rd; std::mt19937 gen(rd());
+		std::uniform_int_distribution<size_t> dist(0, pathEntities.size() - 1);
+
+		int natCivToCreate = static_cast<int>(NATIVE_TO_IMPERIAL_RATIO * MAX_VISIBLE_ENTITIES);
+		int impCivToCreate = MAX_VISIBLE_ENTITIES - natCivToCreate;
+
+		std::cout << "[POPULATION] Spawning " << nativEthnicity << " civilians..." << std::endl;
+
+		for(int i = 0; i < natCivToCreate; i++)
+		{
+				std::uniform_int_distribution<size_t> dist(0, pathEntities.size() - 1);
+				size_t randomIndex = dist(gen);
+
+				auto& pathTile = pathEntities[randomIndex];
+				addToTileEntities(entityMgr, pathTile, nativEntities, randomIndex);
+		}
+
+		for(int i = 0; i < impCivToCreate; i++)
+		{
+				std::uniform_int_distribution<size_t> dist(0, pathEntities.size() - 1);
+				size_t randomIndex = dist(gen);
+
+				auto& pathTile = pathEntities[randomIndex];
+				addToTileEntities(entityMgr, pathTile, imperialEntities, randomIndex);
+		}
+}
+
+void WorldManager::updateWorld(std::vector<std::shared_ptr<Entity>>& nativEntities, std::vector<std::shared_ptr<Entity>>& imperialEntities, EntityManager& entityMgr)
+{
+		static int lastYear = -1;
+		if(currentYear != lastYear)
+		{
+				updatePopulationEntities(nativEntities, imperialEntities, entityMgr);
+				lastYear = currentYear;
+		}
 }
