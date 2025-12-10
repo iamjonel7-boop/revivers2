@@ -4,6 +4,7 @@
 #include "ManagerMap.h"
 #include "ManagerWorld.h"
 #include "SceneInventory.h"
+#include "SceneGameOver.h"
 #include <iostream>
 #include <fstream>
 
@@ -77,6 +78,21 @@ void SMain::init()
 
 		m_helpMsg = createText("", m_font, {610.f, 388.f}, 10, sf::Color::White);
 		m_helpMsg2 = createText("", m_font, {610.f, 415.f}, 10, sf::Color::White);
+
+		m_statusHint = createText("", m_font, {7.f, 40.f}, 10, sf::Color::Yellow);
+
+		m_progressBarBackground.setSize({586.f, 20.f});
+		m_progressBarBackground.setPosition({7.f, 58.f});
+		m_progressBarBackground.setFillColor(sf::Color(50, 50, 50));
+		m_progressBarBackground.setOutlineThickness(1.f);
+		m_progressBarBackground.setOutlineColor(sf::Color::White);
+
+		m_progressBarNative.setSize({0.f, 20.f});
+		m_progressBarNative.setPosition({7.f, 58.f});
+		m_progressBarNative.setFillColor(sf::Color::Green);
+
+		m_progressBarImperial.setSize({0.f, 20.f});
+		m_progressBarImperial.setFillColor(sf::Color::Red);
 }
 
 void SceneMain::createPronounOptions()
@@ -108,6 +124,8 @@ void SMain::update()
 		m_game->getWorldManager()->updateWorld(m_nativeEntities, m_imperialEntities, m_entities);
 
 		updateStatistics();
+		updateHintSystem();
+		updateProgressBar();
 
 		std::string help1, help2;
 		const auto& func = m_updateTable[static_cast<size_t>(m_controlState)];
@@ -119,7 +137,11 @@ void SMain::update()
 		if(m_game->getWorldManager()->isGameOver())
 		{
 				std::cout << "Game Over detected in SceneMain!" << std::endl;
-				// m_game->changeScene("gameover", ...);
+				bool victory = m_game->getWorldManager()->isVictory();
+
+				// Need to include SceneGameOver.h at top of SceneMain.cpp:
+				// #include "SceneGameOver.h"
+				m_game->changeScene("gameover", std::make_shared<SceneGameOver>(m_game, victory));
 		}
 }
 
@@ -610,6 +632,11 @@ void SceneMain::sRender()
 		m_game->window().draw(m_imperialEthnicity);
 		m_game->window().draw(m_imperialSpeakers);
 		m_game->window().draw(m_nativeSpeakers);
+		m_game->window().draw(m_progressBarBackground);
+		m_game->window().draw(m_progressBarNative);
+		m_game->window().draw(m_progressBarImperial);
+
+		m_game->window().draw(m_statusHint);
 
 		if(m_currentSentence.hasFirstArgument ||
 		   m_controlState == MapControlState::SENTENCING ||
@@ -1634,4 +1661,82 @@ void SceneMain::updateExecutionSentence(std::string& help1, std::string& help2)
 {
 		help1 = "Sentence complete!\nPress SPACE to execute";
 		help2 = "Press Q to cancel";
+}
+
+std::string SceneMain::getCurrentHint()
+{
+    auto& worldMgr = *m_game->getWorldManager();
+
+    // Calculate percentages
+    float nativePercent = (worldMgr.nativeSpeakers * 100.0f) / worldMgr.population;
+    float imperialPercent = (worldMgr.imperialSpeakers * 100.0f) / worldMgr.population;
+
+    // Critical situations
+    if (nativePercent < 15.0f)
+        return "CRITICAL! Native language near extinction! Convert more speakers NOW!";
+
+    if (imperialPercent > 85.0f)
+        return "WARNING: Imperial dominance very high. Find and convert speakers quickly!";
+
+    // Positive progress
+    if (nativePercent > 85.0f)
+        return "EXCELLENT! Native language thriving! Keep it up to win!";
+
+    if (nativePercent > 70.0f)
+        return "GOOD PROGRESS! Native language spreading well!";
+
+    // Guidance hints
+    if (worldMgr.currentYear < 5)
+        return "TIP: Use 'kaulay' verb to talk with Imperial speakers and teach them Native.";
+
+    if (worldMgr.currentYear < 10)
+        return "TIP: Convert near Native speakers for better success rates!";
+
+    // Population concerns
+    if (worldMgr.population < 50)
+        return "Population declining. Focus on language before it's too late.";
+
+    // Default strategic hints
+    static int hintRotation = 0;
+    hintRotation = (hintRotation + 1) % 3;
+
+    switch(hintRotation)
+    {
+    case 0:
+        return "Press TAB to study the lexicon and learn translations.";
+    case 1:
+        return "Children learn the dominant language - convert to shift the balance!";
+    case 2:
+        return "Native ethnicity parents raise Native speakers if language is strong.";
+    default:
+        return "";
+    }
+}
+
+void SceneMain::updateHintSystem()
+{
+		m_hintTimer++;
+
+		// Update hint every 3 seconds (180 frames at 60fps)
+		if (m_hintTimer >= 180)
+		{
+				m_statusHint.setString(getCurrentHint());
+				m_hintTimer = 0;
+		}
+}
+
+void SceneMain::updateProgressBar()
+{
+		auto& worldMgr = *m_game->getWorldManager();
+
+		if (worldMgr.population == 0) return;
+
+		float nativePercent = static_cast<float>(worldMgr.nativeSpeakers) / worldMgr.population;
+		float imperialPercent = static_cast<float>(worldMgr.imperialSpeakers) / worldMgr.population;
+
+		float barWidth = 586.f;
+
+		m_progressBarNative.setSize({barWidth * nativePercent, 20.f});
+		m_progressBarImperial.setSize({barWidth * imperialPercent, 20.f});
+		m_progressBarImperial.setPosition({7.f + barWidth * nativePercent, 58.f});
 }

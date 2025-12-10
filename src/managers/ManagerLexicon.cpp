@@ -140,3 +140,53 @@ const std::vector<std::string> LexiconManager::searchWord(std::string& nativeNam
 		//return the native name, imperial name, and wordclass
 		std::vector<std::string> wordInfo;
 }
+
+std::string LexiconManager::getRandomImperialWord() const
+{
+		// Collect all imperial words from all word types
+		std::vector<std::string> allImperialWords;
+
+		for (const auto& [key, word] : m_nouns)
+				allImperialWords.push_back(word.m_imperialWord);
+
+		for (const auto& [key, word] : m_verbs)
+				allImperialWords.push_back(word.m_imperialWord);
+
+		for (const auto& [key, word] : m_adjectives)
+				allImperialWords.push_back(word.m_imperialWord);
+
+		if (allImperialWords.empty())
+		{
+				std::cerr << "No words available in lexicon!" << std::endl;
+				return "unknown";
+		}
+
+		int randomIndex = rand() % allImperialWords.size();
+		return allImperialWords[randomIndex];
+}
+
+std::string LexiconManager::getTranslation(const std::string& imperialWord) const
+{
+		// Search through all word maps to find the native translation
+		auto searchMap = [&](const std::unordered_map<std::string, Word>& wordMap) -> std::string
+				{
+						for (const auto& [key, word] : wordMap)
+						{
+								if (word.m_imperialWord == imperialWord)
+										return word.m_nativeWord;
+						}
+						return "";
+				};
+
+		std::string translation = searchMap(m_nouns);
+		if (!translation.empty()) return translation;
+
+		translation = searchMap(m_verbs);
+		if (!translation.empty()) return translation;
+
+		translation = searchMap(m_adjectives);
+		if (!translation.empty()) return translation;
+
+		std::cerr << "Translation not found for: " << imperialWord << std::endl;
+		return "unknown";
+}

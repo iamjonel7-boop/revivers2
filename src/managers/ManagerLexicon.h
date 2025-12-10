@@ -46,4 +46,8 @@ public:
 
 		const std::vector<std::string> searchWord(std::string& nativeName) const;
 		void m_addWord(const std::string& nativeName, const std::string& imperialName, const std::string& wordClass);
+
+		std::string getRandomImperialWord() const;
+		std::string getTranslation(const std::string& imperialWord) const;
+
 };

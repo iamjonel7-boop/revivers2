@@ -77,10 +77,14 @@ public:
 		void createPopulation(std::vector<std::shared_ptr<Entity>>& nativEntities, std::vector<std::shared_ptr<Entity>>& imperialEntities, EntityManager& entityMgr);
 		void updateWorld(std::vector<std::shared_ptr<Entity>>& nativEntities, std::vector<std::shared_ptr<Entity>>& imperialEntities, EntityManager& entityMgr);
 
+		bool isVictory() const;
+
 private:
 		const int MAX_VISIBLE_ENTITIES = 100;
 		const float NATIVE_TO_IMPERIAL_RATIO = 0.6f;
 		bool m_gameOver = false;
 		std::string m_gameOverReason;
 		bool m_overSpawned(std::vector<std::shared_ptr<Entity>>& nativEntities, std::vector<std::shared_ptr<Entity>>& imperialEntities);
+
+		bool m_isVictory = false;
 };
